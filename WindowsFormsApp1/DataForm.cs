@@ -190,8 +190,8 @@ namespace WindowsFormsApp1
 
                             break;
                         case 5:
-                            ItemInformationTextBox.Text += "Latitude: " + l10[rowMess].latitude + " º" + Environment.NewLine;
-                            ItemInformationTextBox.Text += "Longitude: " + l10[rowMess].TYP + " º" + Environment.NewLine;
+                            ItemInformationTextBox.Text += "Latitude: " + Math.Round(l10[rowMess].latitude,3) + " º" + Environment.NewLine;
+                            ItemInformationTextBox.Text += "Longitude: " + Math.Round(l10[rowMess].longitude,3) + " º" + Environment.NewLine;
                             break;
                         case 6:
                             ItemInformationTextBox.Text += "rho: " + l10[rowMess].rho + " m" + Environment.NewLine;
@@ -204,8 +204,8 @@ namespace WindowsFormsApp1
 
                             break;
                         case 8:
-                            ItemInformationTextBox.Text += "Ground speed: " + l10[rowMess].groundSpeed + " kt" + Environment.NewLine;
-                            ItemInformationTextBox.Text += "Track angle: " + l10[rowMess].rho + " º" + Environment.NewLine;
+                            ItemInformationTextBox.Text += "Ground speed: " + Math.Round(l10[rowMess].groundSpeed,3) + " kt" + Environment.NewLine;
+                            ItemInformationTextBox.Text += "Track angle: " + Math.Round(l10[rowMess].trackAngle)+ " º" + Environment.NewLine;
                             break;
                         case 9:
                             ItemInformationTextBox.Text += "Vx: " + l10[rowMess].Vx + " m/s" + Environment.NewLine;
@@ -366,18 +366,18 @@ namespace WindowsFormsApp1
 
                         break;
                     case 5:
-                        ItemInformationTextBox.Text += "Time of Applicability for position: " + l21[rowMess].timeOfAppPos + " s" + Environment.NewLine;
+                        ItemInformationTextBox.Text += "Time of Applicability for position: " + l21[rowMess].timeOfAppPos + Environment.NewLine;
                         break;
                     case 6:
-                        ItemInformationTextBox.Text += "Latitude: " + l21[rowMess].latitude + " degrees" + Environment.NewLine;
-                        ItemInformationTextBox.Text += "Longitude: " + l21[rowMess].longitude + " degrees" + Environment.NewLine;
+                        ItemInformationTextBox.Text += "Latitude: " + Math.Round(l21[rowMess].latitude,3) + " degrees" + Environment.NewLine;
+                        ItemInformationTextBox.Text += "Longitude: " + Math.Round(l21[rowMess].longitude,3) + " degrees" + Environment.NewLine;
                         break;
                     case 7:
-                        ItemInformationTextBox.Text += "High Resolution Latitude: " + l21[rowMess].HRlatitude + " degrees" + Environment.NewLine;
-                        ItemInformationTextBox.Text += "High Resolution Longitude: " + l21[rowMess].HRlongitude + " degrees" + Environment.NewLine;
+                        ItemInformationTextBox.Text += "High Resolution Latitude: " + Math.Round(l21[rowMess].HRlatitude,5) + " degrees" + Environment.NewLine;
+                        ItemInformationTextBox.Text += "High Resolution Longitude: " + Math.Round(l21[rowMess].HRlongitude,5) + " degrees" + Environment.NewLine;
                         break;
                     case 8:
-                        ItemInformationTextBox.Text += "Time of Applicability for Velocity: " + l21[rowMess].timeOfAppVel + " s" + Environment.NewLine;
+                        ItemInformationTextBox.Text += "Time of Applicability for Velocity: " + l21[rowMess].timeOfAppVel + Environment.NewLine;
                         break;
                     case 9:
                         ItemInformationTextBox.Text += "Type speed: " + l21[rowMess].typeSpeed + Environment.NewLine;

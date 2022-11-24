@@ -48,6 +48,8 @@ namespace WindowsFormsApp1
 
         private void LoadButton_Click(object sender, EventArgs e)
         {
+            myListCAT10.Clear();
+            myListCAT21.Clear();
             subDataPanel.Visible = false;
             LoadForm LF = new LoadForm();
             LF.ShowDialog();
