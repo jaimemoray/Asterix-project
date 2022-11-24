@@ -56,7 +56,7 @@ namespace WindowsFormsApp1
             // CloseButton
             // 
             this.CloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CloseButton.Location = new System.Drawing.Point(1103, 0);
+            this.CloseButton.Location = new System.Drawing.Point(1121, 0);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(45, 45);
             this.CloseButton.TabIndex = 3;
@@ -69,7 +69,7 @@ namespace WindowsFormsApp1
             this.dataItemsGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dataItemsGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataItemsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataItemsGridView.Location = new System.Drawing.Point(549, 68);
+            this.dataItemsGridView.Location = new System.Drawing.Point(567, 68);
             this.dataItemsGridView.Name = "dataItemsGridView";
             this.dataItemsGridView.ReadOnly = true;
             this.dataItemsGridView.RowHeadersWidth = 51;
@@ -81,12 +81,14 @@ namespace WindowsFormsApp1
             // 
             // ItemInformationTextBox
             // 
-            this.ItemInformationTextBox.Location = new System.Drawing.Point(26, 464);
+            this.ItemInformationTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ItemInformationTextBox.Location = new System.Drawing.Point(26, 511);
             this.ItemInformationTextBox.Multiline = true;
             this.ItemInformationTextBox.Name = "ItemInformationTextBox";
             this.ItemInformationTextBox.ReadOnly = true;
             this.ItemInformationTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.ItemInformationTextBox.Size = new System.Drawing.Size(705, 116);
+            this.ItemInformationTextBox.Size = new System.Drawing.Size(1090, 116);
             this.ItemInformationTextBox.TabIndex = 5;
             // 
             // dataItemLabel
@@ -104,7 +106,7 @@ namespace WindowsFormsApp1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1148, 611);
+            this.ClientSize = new System.Drawing.Size(1166, 658);
             this.Controls.Add(this.dataItemLabel);
             this.Controls.Add(this.ItemInformationTextBox);
             this.Controls.Add(this.dataItemsGridView);

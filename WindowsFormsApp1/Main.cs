@@ -13,13 +13,15 @@ namespace WindowsFormsApp1
 {
     public partial class Main : Form
     {
-        Form currentForm = null;
-        List<CAT10> myListCAT10=new List<CAT10>();
-        List<CAT21> myListCAT21=new List<CAT21>();
+        public static Main main;
+        public List<CAT10> myListCAT10=new List<CAT10>();
+        public List<CAT21> myListCAT21=new List<CAT21>();
+       
        
         public Main()
         {
             InitializeComponent();
+            main = this;
             subDataPanel.Visible = false; //Invisible subpanel
         }
 
@@ -45,16 +47,36 @@ namespace WindowsFormsApp1
             
         //}
 
+        private void openChildForm(Form form)
+        {
+            //if (currentForm != null)
+            //{
+            //    currentForm.Close();
+            //}
+            if (panelChildForm.Controls.Count > 0)
+            {
+                panelChildForm.Controls.RemoveAt(0);
+            }
+            
+            Form f = form;
+            f.TopLevel = false;
+            f.Dock = DockStyle.Fill;
+            panelChildForm.Controls.Add(f);
+            panelChildForm.Tag = f;
+           
+            f.Show();
+        }
+
 
         private void LoadButton_Click(object sender, EventArgs e)
         {
-            myListCAT10.Clear();
-            myListCAT21.Clear();
+
             subDataPanel.Visible = false;
             LoadForm LF = new LoadForm();
-            LF.ShowDialog();
-            myListCAT10=LF.GetCAT10();
-            myListCAT21=LF.GetCAT21();
+            openChildForm(LF);
+            //LF.ShowDialog();
+            //myListCAT10=LF.GetCAT10();
+            //myListCAT21=LF.GetCAT21();
             
 
 
@@ -70,13 +92,20 @@ namespace WindowsFormsApp1
         private void CAT10button_Click(object sender, EventArgs e)
         {
             DataForm DF10 = new DataForm(myListCAT10);
-            DF10.ShowDialog();
+            openChildForm(DF10);
+            //DF10.ShowDialog();
         }
 
         private void CAT21button_Click(object sender, EventArgs e)
         {
             DataForm DF21 = new DataForm(myListCAT21);
-            DF21.ShowDialog();
+            openChildForm(DF21);
+            //DF21.ShowDialog();
+        }
+
+        private void simulationButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

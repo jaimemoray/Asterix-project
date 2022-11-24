@@ -48,6 +48,8 @@ namespace WindowsFormsApp1
             // 
             // OpenButton
             // 
+            this.OpenButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.OpenButton.AutoSize = true;
             this.OpenButton.Location = new System.Drawing.Point(390, 309);
             this.OpenButton.Name = "OpenButton";
             this.OpenButton.Size = new System.Drawing.Size(100, 75);
@@ -62,6 +64,8 @@ namespace WindowsFormsApp1
             // 
             // LoadButton
             // 
+            this.LoadButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.LoadButton.AutoSize = true;
             this.LoadButton.Location = new System.Drawing.Point(562, 309);
             this.LoadButton.Name = "LoadButton";
             this.LoadButton.Size = new System.Drawing.Size(100, 75);
@@ -82,6 +86,7 @@ namespace WindowsFormsApp1
             this.Name = "LoadForm";
             this.Text = "LoadForm";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

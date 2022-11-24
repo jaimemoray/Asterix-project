@@ -14,8 +14,8 @@ namespace WindowsFormsApp1
 {
     public partial class LoadForm : Form
     {
-        List<CAT10> l10 = new List<CAT10>();
-        List<CAT21> l21 = new List<CAT21>();
+        //List<CAT10> l10 = new List<CAT10>();
+        //List<CAT21> l21 = new List<CAT21>();
         string path;
         
        
@@ -27,6 +27,7 @@ namespace WindowsFormsApp1
 
         private void CloseButton_Click(object sender, EventArgs e)
         {
+
             Close();
         }
 
@@ -54,8 +55,8 @@ namespace WindowsFormsApp1
                     Fichero myFile = new Fichero(path);
                     myFile.readFile();
                     myFile.classifyMessage();
-                    l10 = myFile.GetListCAT10();
-                    l21 = myFile.GetListCAT21();
+                    Main.main.myListCAT10= myFile.GetListCAT10();
+                    Main.main.myListCAT21 = myFile.GetListCAT21();
                     MessageBox.Show("Load Submit");
 
                 }
@@ -66,15 +67,15 @@ namespace WindowsFormsApp1
             }
         }
 
-        public List<CAT10> GetCAT10()
-        {
-            return l10;
-        }
+        //public List<CAT10> GetCAT10()
+        //{
+        //    return l10;
+        //}
 
-        public List<CAT21> GetCAT21()
-        {
-            return l21;
-        }
+        //public List<CAT21> GetCAT21()
+        //{
+        //    return l21;
+        //}
 
     }
 }

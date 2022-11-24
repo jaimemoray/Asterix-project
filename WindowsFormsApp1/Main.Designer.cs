@@ -30,13 +30,14 @@ namespace WindowsFormsApp1
         private void InitializeComponent()
         {
             this.panelButtoms = new System.Windows.Forms.Panel();
+            this.subDataPanel = new System.Windows.Forms.Panel();
+            this.CAT21button = new System.Windows.Forms.Button();
+            this.CAT10button = new System.Windows.Forms.Button();
+            this.Databutton = new System.Windows.Forms.Button();
             this.LoadButton = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.panelChildForm = new System.Windows.Forms.Panel();
-            this.Databutton = new System.Windows.Forms.Button();
-            this.subDataPanel = new System.Windows.Forms.Panel();
-            this.CAT10button = new System.Windows.Forms.Button();
-            this.CAT21button = new System.Windows.Forms.Button();
+            this.simulationButton = new System.Windows.Forms.Button();
             this.panelButtoms.SuspendLayout();
             this.subDataPanel.SuspendLayout();
             this.SuspendLayout();
@@ -45,6 +46,7 @@ namespace WindowsFormsApp1
             // 
             this.panelButtoms.AutoScroll = true;
             this.panelButtoms.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panelButtoms.Controls.Add(this.simulationButton);
             this.panelButtoms.Controls.Add(this.subDataPanel);
             this.panelButtoms.Controls.Add(this.Databutton);
             this.panelButtoms.Controls.Add(this.LoadButton);
@@ -54,6 +56,56 @@ namespace WindowsFormsApp1
             this.panelButtoms.Name = "panelButtoms";
             this.panelButtoms.Size = new System.Drawing.Size(200, 658);
             this.panelButtoms.TabIndex = 0;
+            // 
+            // subDataPanel
+            // 
+            this.subDataPanel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.subDataPanel.Controls.Add(this.CAT21button);
+            this.subDataPanel.Controls.Add(this.CAT10button);
+            this.subDataPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.subDataPanel.Location = new System.Drawing.Point(0, 190);
+            this.subDataPanel.Name = "subDataPanel";
+            this.subDataPanel.Size = new System.Drawing.Size(200, 90);
+            this.subDataPanel.TabIndex = 3;
+            // 
+            // CAT21button
+            // 
+            this.CAT21button.Dock = System.Windows.Forms.DockStyle.Top;
+            this.CAT21button.Location = new System.Drawing.Point(0, 45);
+            this.CAT21button.Name = "CAT21button";
+            this.CAT21button.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+            this.CAT21button.Size = new System.Drawing.Size(200, 45);
+            this.CAT21button.TabIndex = 1;
+            this.CAT21button.Text = "CAT 21";
+            this.CAT21button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.CAT21button.UseVisualStyleBackColor = true;
+            this.CAT21button.Click += new System.EventHandler(this.CAT21button_Click);
+            // 
+            // CAT10button
+            // 
+            this.CAT10button.Dock = System.Windows.Forms.DockStyle.Top;
+            this.CAT10button.Location = new System.Drawing.Point(0, 0);
+            this.CAT10button.Name = "CAT10button";
+            this.CAT10button.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+            this.CAT10button.Size = new System.Drawing.Size(200, 45);
+            this.CAT10button.TabIndex = 0;
+            this.CAT10button.Text = "CAT 10";
+            this.CAT10button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.CAT10button.UseVisualStyleBackColor = true;
+            this.CAT10button.Click += new System.EventHandler(this.CAT10button_Click);
+            // 
+            // Databutton
+            // 
+            this.Databutton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Databutton.Location = new System.Drawing.Point(0, 145);
+            this.Databutton.Name = "Databutton";
+            this.Databutton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.Databutton.Size = new System.Drawing.Size(200, 45);
+            this.Databutton.TabIndex = 2;
+            this.Databutton.Text = "Data View";
+            this.Databutton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Databutton.UseVisualStyleBackColor = true;
+            this.Databutton.Click += new System.EventHandler(this.Databutton_Click);
             // 
             // LoadButton
             // 
@@ -85,55 +137,18 @@ namespace WindowsFormsApp1
             this.panelChildForm.Size = new System.Drawing.Size(1166, 658);
             this.panelChildForm.TabIndex = 1;
             // 
-            // Databutton
+            // simulationButton
             // 
-            this.Databutton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Databutton.Location = new System.Drawing.Point(0, 145);
-            this.Databutton.Name = "Databutton";
-            this.Databutton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.Databutton.Size = new System.Drawing.Size(200, 45);
-            this.Databutton.TabIndex = 2;
-            this.Databutton.Text = "Data View";
-            this.Databutton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Databutton.UseVisualStyleBackColor = true;
-            this.Databutton.Click += new System.EventHandler(this.Databutton_Click);
-            // 
-            // subDataPanel
-            // 
-            this.subDataPanel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.subDataPanel.Controls.Add(this.CAT21button);
-            this.subDataPanel.Controls.Add(this.CAT10button);
-            this.subDataPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.subDataPanel.Location = new System.Drawing.Point(0, 190);
-            this.subDataPanel.Name = "subDataPanel";
-            this.subDataPanel.Size = new System.Drawing.Size(200, 90);
-            this.subDataPanel.TabIndex = 3;
-            // 
-            // CAT10button
-            // 
-            this.CAT10button.Dock = System.Windows.Forms.DockStyle.Top;
-            this.CAT10button.Location = new System.Drawing.Point(0, 0);
-            this.CAT10button.Name = "CAT10button";
-            this.CAT10button.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
-            this.CAT10button.Size = new System.Drawing.Size(200, 45);
-            this.CAT10button.TabIndex = 0;
-            this.CAT10button.Text = "CAT 10";
-            this.CAT10button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CAT10button.UseVisualStyleBackColor = true;
-            this.CAT10button.Click += new System.EventHandler(this.CAT10button_Click);
-            // 
-            // CAT21button
-            // 
-            this.CAT21button.Dock = System.Windows.Forms.DockStyle.Top;
-            this.CAT21button.Location = new System.Drawing.Point(0, 45);
-            this.CAT21button.Name = "CAT21button";
-            this.CAT21button.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
-            this.CAT21button.Size = new System.Drawing.Size(200, 45);
-            this.CAT21button.TabIndex = 1;
-            this.CAT21button.Text = "CAT 21";
-            this.CAT21button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CAT21button.UseVisualStyleBackColor = true;
-            this.CAT21button.Click += new System.EventHandler(this.CAT21button_Click);
+            this.simulationButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.simulationButton.Location = new System.Drawing.Point(0, 280);
+            this.simulationButton.Name = "simulationButton";
+            this.simulationButton.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+            this.simulationButton.Size = new System.Drawing.Size(200, 45);
+            this.simulationButton.TabIndex = 4;
+            this.simulationButton.Text = "Sumulation";
+            this.simulationButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.simulationButton.UseVisualStyleBackColor = true;
+            this.simulationButton.Click += new System.EventHandler(this.simulationButton_Click);
             // 
             // Main
             // 
@@ -160,6 +175,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button CAT21button;
         private System.Windows.Forms.Button CAT10button;
         private System.Windows.Forms.Button Databutton;
+        private System.Windows.Forms.Button simulationButton;
     }
 }
 
