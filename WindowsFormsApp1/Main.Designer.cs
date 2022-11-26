@@ -30,6 +30,7 @@ namespace WindowsFormsApp1
         private void InitializeComponent()
         {
             this.panelButtoms = new System.Windows.Forms.Panel();
+            this.simulationButton = new System.Windows.Forms.Button();
             this.subDataPanel = new System.Windows.Forms.Panel();
             this.CAT21button = new System.Windows.Forms.Button();
             this.CAT10button = new System.Windows.Forms.Button();
@@ -37,7 +38,6 @@ namespace WindowsFormsApp1
             this.LoadButton = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.panelChildForm = new System.Windows.Forms.Panel();
-            this.simulationButton = new System.Windows.Forms.Button();
             this.panelButtoms.SuspendLayout();
             this.subDataPanel.SuspendLayout();
             this.SuspendLayout();
@@ -56,6 +56,19 @@ namespace WindowsFormsApp1
             this.panelButtoms.Name = "panelButtoms";
             this.panelButtoms.Size = new System.Drawing.Size(200, 658);
             this.panelButtoms.TabIndex = 0;
+            // 
+            // simulationButton
+            // 
+            this.simulationButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.simulationButton.Location = new System.Drawing.Point(0, 280);
+            this.simulationButton.Name = "simulationButton";
+            this.simulationButton.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+            this.simulationButton.Size = new System.Drawing.Size(200, 45);
+            this.simulationButton.TabIndex = 4;
+            this.simulationButton.Text = "Simulation";
+            this.simulationButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.simulationButton.UseVisualStyleBackColor = true;
+            this.simulationButton.Click += new System.EventHandler(this.simulationButton_Click);
             // 
             // subDataPanel
             // 
@@ -136,19 +149,6 @@ namespace WindowsFormsApp1
             this.panelChildForm.Name = "panelChildForm";
             this.panelChildForm.Size = new System.Drawing.Size(1166, 658);
             this.panelChildForm.TabIndex = 1;
-            // 
-            // simulationButton
-            // 
-            this.simulationButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.simulationButton.Location = new System.Drawing.Point(0, 280);
-            this.simulationButton.Name = "simulationButton";
-            this.simulationButton.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
-            this.simulationButton.Size = new System.Drawing.Size(200, 45);
-            this.simulationButton.TabIndex = 4;
-            this.simulationButton.Text = "Sumulation";
-            this.simulationButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.simulationButton.UseVisualStyleBackColor = true;
-            this.simulationButton.Click += new System.EventHandler(this.simulationButton_Click);
             // 
             // Main
             // 

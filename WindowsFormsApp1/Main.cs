@@ -105,7 +105,8 @@ namespace WindowsFormsApp1
 
         private void simulationButton_Click(object sender, EventArgs e)
         {
-
+            Simulation MapView = new Simulation();
+            openChildForm(MapView);
         }
     }
 }
