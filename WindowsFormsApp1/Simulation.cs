@@ -18,14 +18,18 @@ namespace WindowsFormsApp1
 {
     public partial class Simulation : Form
     {
+
         //SMR
-        static Bitmap smrR = (Bitmap)Image.FromFile("smrR.png");
-        GMarkerGoogle SMRmarker=new GMarkerGoogle(new PointLatLng(41.29561833, 2.095114167), smrR);
+
+        //GMapMarker SMRmarker=GMapMarker(new PointLatLng(41.29561833, 2.095114167));
+        static Bitmap smrA = (Bitmap)Image.FromFile("smrR.png");
+        GMarkerGoogle SMRmarker = new GMarkerGoogle(new PointLatLng(41.29561833, 2.095114167), smrA);
         GMapOverlay SMRlayer=new GMapOverlay("SMR");
+       
 
         //MLAT
-        static Bitmap mlatR = (Bitmap)Image.FromFile("mlatR.png");
-        GMarkerGoogle MLATmarker = new GMarkerGoogle(new PointLatLng(41.29706278, 2.078447222), mlatR);
+        static Bitmap mlatA = (Bitmap)Image.FromFile("mlatR.png");
+        GMarkerGoogle MLATmarker = new GMarkerGoogle(new PointLatLng(41.29706278, 2.078447222),mlatA);
         GMapOverlay MLATlayer=new GMapOverlay("MLAT");
 
         //ADSB
