@@ -12,16 +12,16 @@ using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
 
+using DECODEclass;
 
 
 namespace WindowsFormsApp1
 {
     public partial class Simulation : Form
     {
-
+        
+        List<marker> markers = new List<marker>();
         //SMR
-
-        //GMapMarker SMRmarker=GMapMarker(new PointLatLng(41.29561833, 2.095114167));
         static Bitmap smrA = (Bitmap)Image.FromFile("smrR.png");
         GMarkerGoogle SMRmarker = new GMarkerGoogle(new PointLatLng(41.29561833, 2.095114167), smrA);
         GMapOverlay SMRlayer=new GMapOverlay("SMR");
@@ -47,6 +47,9 @@ namespace WindowsFormsApp1
 
         private void Simulation_Load(object sender, EventArgs e)
         {
+            createListMark();
+
+
             gMapControl1.ShowCenter = false; //Marker cross red not visible
             gMapControl1.DragButton = MouseButtons.Left;
             gMapControl1.CanDragMap = true;
@@ -70,6 +73,19 @@ namespace WindowsFormsApp1
 
         }
 
+        private void createListMark()
+        {
+            //marker(double t, string c, int i, int SIC, double pos1, double pos2)
+            for (int i = 0; i < Main.main.myListCAT10.Count; i++)
+            {
+                markers.Add(new marker(Main.main.myListCAT10[i].TimeOfDay, "10", i, Main.main.myListCAT10[i].SIC, Main.main.myListCAT10[i].x, Main.main.myListCAT10[i].y));
+            }
+            for (int i = 0; i < Main.main.myListCAT10.Count; i++)
+            {
+                markers.Add(new marker(Main.main.myListCAT21[i].timeReportTrans, "21", i,Main.main.myListCAT10[i].SIC, Main.main.myListCAT10[i].latitude, Main.main.myListCAT10[i].longitude));
+            }
 
+            markers = markers.OrderBy(mark => mark.time).ToList();
+        }
     }
 }

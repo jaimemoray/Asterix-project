@@ -51,7 +51,7 @@ namespace WindowsFormsApp1
                 {
                     messagedataGrid.Rows[i].Cells[0].Value = i;
                     messagedataGrid.Rows[i].Cells[1].Value = 10;
-                    messagedataGrid.Rows[i].Cells[2].Value = l10[i].TimeOfDay;
+                    messagedataGrid.Rows[i].Cells[2].Value = l10[i].convert2TimeOfDay(l10[i].TimeOfDay);
                     messagedataGrid.Rows[i].Cells[3].Value = l10[i].GetLength();
                     messagedataGrid.Rows[i].Cells[4].Value = l10[i].GetItemList().Count;
 
@@ -186,7 +186,7 @@ namespace WindowsFormsApp1
 
                             break;
                         case 4:
-                            ItemInformationTextBox.Text += "Time of Day: " + l10[rowMess].TimeOfDay + Environment.NewLine;
+                            ItemInformationTextBox.Text += "Time of Day: " + l10[rowMess].convert2TimeOfDay(l10[rowMess].TimeOfDay) + Environment.NewLine;
 
                             break;
                         case 5:
@@ -366,7 +366,7 @@ namespace WindowsFormsApp1
 
                         break;
                     case 5:
-                        ItemInformationTextBox.Text += "Time of Applicability for position: " + l21[rowMess].timeOfAppPos + Environment.NewLine;
+                        ItemInformationTextBox.Text += "Time of Applicability for position: " + l21[rowMess].convert2TimeOfDay(l21[rowMess].timeOfAppPos) + Environment.NewLine;
                         break;
                     case 6:
                         ItemInformationTextBox.Text += "Latitude: " + Math.Round(l21[rowMess].latitude,3) + " degrees" + Environment.NewLine;

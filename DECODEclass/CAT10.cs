@@ -57,7 +57,7 @@ namespace DECODEclass
         //-----------------------------TIME OF DAY [I010/140]--------------------------------------------------------------------------------------------------
 
        
-        public string TimeOfDay { get; set; } // hh:mm:ss
+        public double TimeOfDay { get; set; } // hh:mm:ss
 
         //------------------------------------------POSITION IN WGS-84 CO-ORDINATES[I010/041]-------------------------------------------------------------------
 
@@ -603,9 +603,9 @@ namespace DECODEclass
             timeList.Add(DataFields[1]);
             timeList.Add(DataFields[2]);
 
-            time = computeData(timeList, 1, -7, false);
+            this.TimeOfDay = computeData(timeList, 1, -7, false);
 
-            this.TimeOfDay = convert2TimeOfDay(time);
+           
 
 
 

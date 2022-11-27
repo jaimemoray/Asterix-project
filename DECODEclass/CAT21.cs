@@ -88,7 +88,7 @@ namespace DECODEclass
 
         // public List<string> Get// DI5() { return // DI5; }
 
-        public string timeOfAppPos { get; set; }
+        public double timeOfAppPos { get; set; }
 
         //--------------------------------------------------------POSITION IN WGS-84 COOR// DINATES [I021/130]-------------------------------------------------------------------
 
@@ -1057,9 +1057,9 @@ namespace DECODEclass
             timeList.Add(DataFields[1]);
             timeList.Add(DataFields[2]);
 
-            timePos = computeData(timeList, 1, -7, false);
+            this.timeOfAppPos = computeData(timeList, 1, -7, false);
 
-            this.timeOfAppPos = convert2TimeOfDay(timePos);
+ 
 
 
 
