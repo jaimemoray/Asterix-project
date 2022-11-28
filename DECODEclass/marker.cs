@@ -25,7 +25,7 @@ namespace DECODEclass
 
         public string ins { get; set; }
 
-        public GMarkerGoogle mkr;
+        public GMarkerGoogle mkr { get; set; }
 
 
         public marker(double t, string c, int i,int SIC,double pos1,double pos2)
@@ -55,7 +55,7 @@ namespace DECODEclass
                     
                     break;
                 case "21":
-                    this.ins = "ADS-B";
+                    this.ins = "ADSB";
                     point = new PointLatLng(pos1, pos2);
                     this.mkr = new GMarkerGoogle(point, GMarkerGoogleType.blue_dot);
                     break;

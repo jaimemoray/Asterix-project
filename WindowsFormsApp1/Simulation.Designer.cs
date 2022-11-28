@@ -29,22 +29,23 @@ namespace WindowsFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panelMap = new System.Windows.Forms.Panel();
             this.gMapControl1 = new GMap.NET.WindowsForms.GMapControl();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.CloseButton = new System.Windows.Forms.Button();
             this.panelControl = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panelInfo = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panelTime = new System.Windows.Forms.Panel();
             this.panelSimu = new System.Windows.Forms.Panel();
-            this.start = new System.Windows.Forms.Button();
-            this.pauseButton = new System.Windows.Forms.Button();
             this.Nextbutton = new System.Windows.Forms.Button();
+            this.startPause = new System.Windows.Forms.Button();
+            this.panelTime = new System.Windows.Forms.Panel();
+            this.panelInfo = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.panelMap.SuspendLayout();
             this.panelControl.SuspendLayout();
-            this.panelTime.SuspendLayout();
             this.panelSimu.SuspendLayout();
+            this.panelTime.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMap
@@ -86,6 +87,13 @@ namespace WindowsFormsApp1
             this.gMapControl1.TabIndex = 0;
             this.gMapControl1.Zoom = 0D;
             // 
+            // panel2
+            // 
+            this.panel2.Location = new System.Drawing.Point(413, 471);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(350, 125);
+            this.panel2.TabIndex = 7;
+            // 
             // CloseButton
             // 
             this.CloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -108,27 +116,35 @@ namespace WindowsFormsApp1
             this.panelControl.Size = new System.Drawing.Size(1148, 125);
             this.panelControl.TabIndex = 6;
             // 
-            // panel1
+            // panelSimu
             // 
-            this.panel1.Location = new System.Drawing.Point(564, 56);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 0);
-            this.panel1.TabIndex = 5;
+            this.panelSimu.Controls.Add(this.Nextbutton);
+            this.panelSimu.Controls.Add(this.startPause);
+            this.panelSimu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelSimu.Location = new System.Drawing.Point(385, 0);
+            this.panelSimu.Name = "panelSimu";
+            this.panelSimu.Size = new System.Drawing.Size(413, 125);
+            this.panelSimu.TabIndex = 9;
             // 
-            // panelInfo
+            // Nextbutton
             // 
-            this.panelInfo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelInfo.Location = new System.Drawing.Point(0, 0);
-            this.panelInfo.Name = "panelInfo";
-            this.panelInfo.Size = new System.Drawing.Size(385, 125);
-            this.panelInfo.TabIndex = 6;
+            this.Nextbutton.Location = new System.Drawing.Point(235, 56);
+            this.Nextbutton.Name = "Nextbutton";
+            this.Nextbutton.Size = new System.Drawing.Size(75, 23);
+            this.Nextbutton.TabIndex = 2;
+            this.Nextbutton.Text = "Next";
+            this.Nextbutton.UseVisualStyleBackColor = true;
+            this.Nextbutton.Click += new System.EventHandler(this.Nextbutton_Click);
             // 
-            // panel2
+            // startPause
             // 
-            this.panel2.Location = new System.Drawing.Point(413, 471);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(350, 125);
-            this.panel2.TabIndex = 7;
+            this.startPause.Location = new System.Drawing.Point(98, 56);
+            this.startPause.Name = "startPause";
+            this.startPause.Size = new System.Drawing.Size(102, 23);
+            this.startPause.TabIndex = 0;
+            this.startPause.Text = "start/pause";
+            this.startPause.UseVisualStyleBackColor = true;
+            this.startPause.Click += new System.EventHandler(this.startPause_Click);
             // 
             // panelTime
             // 
@@ -139,43 +155,24 @@ namespace WindowsFormsApp1
             this.panelTime.Size = new System.Drawing.Size(350, 125);
             this.panelTime.TabIndex = 8;
             // 
-            // panelSimu
+            // panelInfo
             // 
-            this.panelSimu.Controls.Add(this.Nextbutton);
-            this.panelSimu.Controls.Add(this.pauseButton);
-            this.panelSimu.Controls.Add(this.start);
-            this.panelSimu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelSimu.Location = new System.Drawing.Point(385, 0);
-            this.panelSimu.Name = "panelSimu";
-            this.panelSimu.Size = new System.Drawing.Size(413, 125);
-            this.panelSimu.TabIndex = 9;
+            this.panelInfo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelInfo.Location = new System.Drawing.Point(0, 0);
+            this.panelInfo.Name = "panelInfo";
+            this.panelInfo.Size = new System.Drawing.Size(385, 125);
+            this.panelInfo.TabIndex = 6;
             // 
-            // start
+            // panel1
             // 
-            this.start.Location = new System.Drawing.Point(43, 56);
-            this.start.Name = "start";
-            this.start.Size = new System.Drawing.Size(75, 23);
-            this.start.TabIndex = 0;
-            this.start.Text = "start";
-            this.start.UseVisualStyleBackColor = true;
+            this.panel1.Location = new System.Drawing.Point(564, 56);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 0);
+            this.panel1.TabIndex = 5;
             // 
-            // pauseButton
+            // timer
             // 
-            this.pauseButton.Location = new System.Drawing.Point(141, 56);
-            this.pauseButton.Name = "pauseButton";
-            this.pauseButton.Size = new System.Drawing.Size(75, 23);
-            this.pauseButton.TabIndex = 1;
-            this.pauseButton.Text = "Pause";
-            this.pauseButton.UseVisualStyleBackColor = true;
-            // 
-            // Nextbutton
-            // 
-            this.Nextbutton.Location = new System.Drawing.Point(235, 56);
-            this.Nextbutton.Name = "Nextbutton";
-            this.Nextbutton.Size = new System.Drawing.Size(75, 23);
-            this.Nextbutton.TabIndex = 2;
-            this.Nextbutton.Text = "Next";
-            this.Nextbutton.UseVisualStyleBackColor = true;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // Simulation
             // 
@@ -190,8 +187,8 @@ namespace WindowsFormsApp1
             this.Load += new System.EventHandler(this.Simulation_Load);
             this.panelMap.ResumeLayout(false);
             this.panelControl.ResumeLayout(false);
-            this.panelTime.ResumeLayout(false);
             this.panelSimu.ResumeLayout(false);
+            this.panelTime.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -204,10 +201,10 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Panel panelControl;
         private System.Windows.Forms.Panel panelSimu;
         private System.Windows.Forms.Button Nextbutton;
-        private System.Windows.Forms.Button pauseButton;
-        private System.Windows.Forms.Button start;
+        private System.Windows.Forms.Button startPause;
         private System.Windows.Forms.Panel panelTime;
         private System.Windows.Forms.Panel panelInfo;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Timer timer;
     }
 }
