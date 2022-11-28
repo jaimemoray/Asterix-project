@@ -96,9 +96,9 @@ namespace WindowsFormsApp1
             this.dataItemLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dataItemLabel.AutoSize = true;
-            this.dataItemLabel.Location = new System.Drawing.Point(26, 441);
+            this.dataItemLabel.Location = new System.Drawing.Point(26, 480);
             this.dataItemLabel.Name = "dataItemLabel";
-            this.dataItemLabel.Size = new System.Drawing.Size(72, 17);
+            this.dataItemLabel.Size = new System.Drawing.Size(67, 16);
             this.dataItemLabel.TabIndex = 6;
             this.dataItemLabel.Text = "Data Item:";
             // 

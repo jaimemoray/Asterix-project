@@ -85,7 +85,7 @@ namespace WindowsFormsApp1
             // 
             // textBoxFile
             // 
-            this.textBoxFile.BackColor = System.Drawing.SystemColors.Control;
+            this.textBoxFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.textBoxFile.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxFile.Location = new System.Drawing.Point(360, 479);
             this.textBoxFile.Name = "textBoxFile";
@@ -94,7 +94,7 @@ namespace WindowsFormsApp1
             // 
             // textBoxLoad
             // 
-            this.textBoxLoad.BackColor = System.Drawing.SystemColors.Control;
+            this.textBoxLoad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.textBoxLoad.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxLoad.Location = new System.Drawing.Point(360, 536);
             this.textBoxLoad.Name = "textBoxLoad";
@@ -105,6 +105,7 @@ namespace WindowsFormsApp1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1166, 658);
             this.Controls.Add(this.textBoxLoad);
             this.Controls.Add(this.textBoxFile);

@@ -29,6 +29,7 @@ namespace WindowsFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.panelButtoms = new System.Windows.Forms.Panel();
             this.simulationButton = new System.Windows.Forms.Button();
             this.subDataPanel = new System.Windows.Forms.Panel();
@@ -66,7 +67,7 @@ namespace WindowsFormsApp1
             this.simulationButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.simulationButton.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.simulationButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.simulationButton.Location = new System.Drawing.Point(0, 365);
+            this.simulationButton.Location = new System.Drawing.Point(0, 339);
             this.simulationButton.Name = "simulationButton";
             this.simulationButton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.simulationButton.Size = new System.Drawing.Size(200, 70);
@@ -82,7 +83,7 @@ namespace WindowsFormsApp1
             this.subDataPanel.Controls.Add(this.CAT21button);
             this.subDataPanel.Controls.Add(this.CAT10button);
             this.subDataPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.subDataPanel.Location = new System.Drawing.Point(0, 265);
+            this.subDataPanel.Location = new System.Drawing.Point(0, 239);
             this.subDataPanel.Name = "subDataPanel";
             this.subDataPanel.Size = new System.Drawing.Size(200, 100);
             this.subDataPanel.TabIndex = 3;
@@ -131,7 +132,7 @@ namespace WindowsFormsApp1
             this.Databutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Databutton.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Databutton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Databutton.Location = new System.Drawing.Point(0, 195);
+            this.Databutton.Location = new System.Drawing.Point(0, 169);
             this.Databutton.Name = "Databutton";
             this.Databutton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.Databutton.Size = new System.Drawing.Size(200, 70);
@@ -149,7 +150,7 @@ namespace WindowsFormsApp1
             this.LoadButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LoadButton.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoadButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.LoadButton.Location = new System.Drawing.Point(0, 125);
+            this.LoadButton.Location = new System.Drawing.Point(0, 99);
             this.LoadButton.Name = "LoadButton";
             this.LoadButton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.LoadButton.Size = new System.Drawing.Size(200, 70);
@@ -161,15 +162,16 @@ namespace WindowsFormsApp1
             // 
             // panelLogo
             // 
+            this.panelLogo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelLogo.BackgroundImage")));
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
             this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(200, 125);
+            this.panelLogo.Size = new System.Drawing.Size(200, 99);
             this.panelLogo.TabIndex = 0;
             // 
             // panelChildForm
             // 
-            this.panelChildForm.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelChildForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.panelChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelChildForm.Location = new System.Drawing.Point(200, 0);
             this.panelChildForm.Name = "panelChildForm";
