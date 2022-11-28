@@ -100,9 +100,9 @@ namespace WindowsFormsApp1
             if (Main.main.myListCAT21.Count!=0)
             {
 
-                    for (int i = 0; i < Main.main.myListCAT10.Count; i++)
+                    for (int i = 0; i < Main.main.myListCAT21.Count; i++)
                     {
-                        markers.Add(new marker(Main.main.myListCAT21[i].timeReportTrans, "21", i, Main.main.myListCAT10[i].SIC, Main.main.myListCAT10[i].latitude, Main.main.myListCAT10[i].longitude));
+                        markers.Add(new marker(Main.main.myListCAT21[i].timeReportTrans, "21", i, Main.main.myListCAT21[i].SIC, Main.main.myListCAT21[i].latitude, Main.main.myListCAT21[i].longitude));
                     }
 
 
