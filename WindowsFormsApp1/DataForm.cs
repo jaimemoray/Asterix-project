@@ -1,6 +1,7 @@
 ﻿using DECODEclass;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
@@ -11,6 +12,7 @@ namespace WindowsFormsApp1
         List<CAT21> l21 = new List<CAT21>();
         int rowMess;
         int flag;
+        int filter;
         public DataForm()
         {
             InitializeComponent();
@@ -607,7 +609,31 @@ namespace WindowsFormsApp1
 
         }
 
+        private void SearchCallSignButton_Click(object sender, EventArgs e)
+        {
+            string searchText = searchCallsignBox.Text;
+            SearchAttributes(searchText);
+            
+        }
 
+        private void buttonFilterbyCallSign_Click(object sender, EventArgs e)
+        {
+            filter = 0;
+        }
+
+
+        public void SearchAttributes(string searchText)
+        {
+            switch (flag)
+            {
+                case 0:
+                    messagedataGrid.DataSource = l10.Where(x => x.targetIdentification.Contains (searchText));
+                break;
+
+            }
+            
+
+        }
     }
 }
 
