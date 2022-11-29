@@ -24,14 +24,14 @@ namespace WindowsFormsApp1
 
         List<marker> markers = new List<marker>();
         //SMR
-        static Bitmap smrA = (Bitmap)Image.FromFile("smrR.png");
-        GMarkerGoogle SMRmarker = new GMarkerGoogle(new PointLatLng(41.29561833, 2.095114167), smrA);
+        //static Bitmap smrA = (Bitmap)Image.FromFile("smrR.png");
+        //GMarkerGoogle SMRmarker = new GMarkerGoogle(new PointLatLng(41.29561833, 2.095114167), smrA);
         GMapOverlay SMRlayer=new GMapOverlay("SMR");
        
 
         //MLAT
-        static Bitmap mlatA = (Bitmap)Image.FromFile("mlatR.png");
-        GMarkerGoogle MLATmarker = new GMarkerGoogle(new PointLatLng(41.29706278, 2.078447222),mlatA);
+        //static Bitmap mlatA = (Bitmap)Image.FromFile("mlatR.png");
+        //GMarkerGoogle MLATmarker = new GMarkerGoogle(new PointLatLng(41.29706278, 2.078447222),mlatA);
         GMapOverlay MLATlayer=new GMapOverlay("MLAT");
 
         //ADSB
@@ -58,6 +58,14 @@ namespace WindowsFormsApp1
 
         private void Simulation_Load(object sender, EventArgs e)
         {
+            //CheckListBox Layer
+            layerListBox.Items.Add("SMR",true);
+            layerListBox.Items.Add("MLAT",true);
+            layerListBox.Items.Add("ADS-B",true);
+            layerListBox.CheckOnClick = true;
+
+
+            // Map
             createListMark();
             
 
@@ -73,8 +81,8 @@ namespace WindowsFormsApp1
 
 
 
-            SMRlayer.Markers.Add(SMRmarker);
-            SMRlayer.Markers.Add(MLATmarker);
+            //SMRlayer.Markers.Add(SMRmarker);
+            //SMRlayer.Markers.Add(MLATmarker);
             //marker.ToolTipMode = MarkerTooltipMode.Always;
             //marker.ToolTipText = String.Format("Estás aquí");
 
@@ -188,6 +196,12 @@ namespace WindowsFormsApp1
         {
             
         }
-            
+
+        private void layerListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SMRlayer.IsVisibile = layerListBox.GetItemChecked(0) == false ? false : true;
+            MLATlayer.IsVisibile = layerListBox.GetItemChecked(1) == false ? false : true;
+            ADSBlayer.IsVisibile = layerListBox.GetItemChecked(0) == false ? false : true;
+        }
     }
 }
