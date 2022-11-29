@@ -42,6 +42,10 @@ namespace WindowsFormsApp1
         double slot=1;
         int index = 0;
 
+
+        // Number of plane
+
+
         public Simulation()
         {
             InitializeComponent();
@@ -123,9 +127,17 @@ namespace WindowsFormsApp1
                 switch (markers[index].ins)
                 {
                     case "SMR":
- 
-                        SMRlayer.Markers.Add(markers[index].mkr);
-                        gMapControl1.Overlays.Add(SMRlayer);
+                        if (SMRlayer.Markers.Count > 10)
+                        {
+                            SMRlayer.Markers.RemoveAt(0);
+                        }
+                        if (Main.main.myListCAT10[markers[index].indexList].MessageType== "Target Report")
+                        {
+                            SMRlayer.Markers.Add(markers[index].mkr);
+                            gMapControl1.Overlays.Add(SMRlayer);
+                        }
+
+                       
                         break;
                     case "MLAT":
 
@@ -166,5 +178,16 @@ namespace WindowsFormsApp1
                 timer.Start();
             }
         }
+
+        private void previus_Click(object sender, EventArgs e)
+        {
+            stepBack();
+        }
+
+        private void stepBack()
+        {
+            
+        }
+            
     }
 }
