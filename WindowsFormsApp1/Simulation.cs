@@ -201,7 +201,14 @@ namespace WindowsFormsApp1
         {
             SMRlayer.IsVisibile = layerListBox.GetItemChecked(0) == false ? false : true;
             MLATlayer.IsVisibile = layerListBox.GetItemChecked(1) == false ? false : true;
-            ADSBlayer.IsVisibile = layerListBox.GetItemChecked(0) == false ? false : true;
+            ADSBlayer.IsVisibile = layerListBox.GetItemChecked(2) == false ? false : true;
+        }
+
+
+
+        private void gMapControl1_OnMarkerDoubleClick(GMapMarker item, MouseEventArgs e)
+        {
+            
         }
     }
 }
