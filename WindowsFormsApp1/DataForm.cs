@@ -609,17 +609,7 @@ namespace WindowsFormsApp1
 
         }
 
-        private void SearchCallSignButton_Click(object sender, EventArgs e)
-        {
-            string searchText = searchCallsignBox.Text;
-            SearchAttributes(searchText);
-            
-        }
 
-        private void buttonFilterbyCallSign_Click(object sender, EventArgs e)
-        {
-            filter = 0;
-        }
 
 
         public void SearchAttributes(string searchText)
@@ -632,6 +622,19 @@ namespace WindowsFormsApp1
 
             }
             
+
+        }
+
+        private void comboBoxFilters_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(comboBoxFilters.SelectedIndex = )
+            {
+
+            }
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
 
         }
     }

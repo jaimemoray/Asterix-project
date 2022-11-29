@@ -35,14 +35,11 @@ namespace WindowsFormsApp1
             this.ItemInformationTextBox = new System.Windows.Forms.TextBox();
             this.dataItemLabel = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.buttonFilterbyCallSign = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.searchCallsignBox = new System.Windows.Forms.TextBox();
-            this.SearchCallSignButton = new System.Windows.Forms.Button();
+            this.comboBoxFilters = new System.Windows.Forms.ComboBox();
+            this.textBoxSearch = new System.Windows.Forms.TextBox();
+            this.buttonSearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.messagedataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataItemsGridView)).BeginInit();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // messagedataGrid
@@ -123,62 +120,36 @@ namespace WindowsFormsApp1
             this.textBox1.TabIndex = 7;
             this.textBox1.Text = "Filter by:";
             // 
-            // buttonFilterbyCallSign
+            // comboBoxFilters
             // 
-            this.buttonFilterbyCallSign.Font = new System.Drawing.Font("Copperplate Gothic Bold", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonFilterbyCallSign.Location = new System.Drawing.Point(480, 106);
-            this.buttonFilterbyCallSign.Name = "buttonFilterbyCallSign";
-            this.buttonFilterbyCallSign.Size = new System.Drawing.Size(180, 50);
-            this.buttonFilterbyCallSign.TabIndex = 8;
-            this.buttonFilterbyCallSign.Text = "Callsign";
-            this.buttonFilterbyCallSign.UseVisualStyleBackColor = true;
-            this.buttonFilterbyCallSign.Click += new System.EventHandler(this.buttonFilterbyCallSign_Click);
+            this.comboBoxFilters.FormattingEnabled = true;
+            this.comboBoxFilters.Items.AddRange(new object[] {
+            "CALLSIGN",
+            "AIRCRAFT",
+            "TARGET NUMBER",
+            "TARGET ADDRESS"});
+            this.comboBoxFilters.Location = new System.Drawing.Point(482, 122);
+            this.comboBoxFilters.Name = "comboBoxFilters";
+            this.comboBoxFilters.Size = new System.Drawing.Size(179, 24);
+            this.comboBoxFilters.TabIndex = 8;
+            this.comboBoxFilters.SelectedIndexChanged += new System.EventHandler(this.comboBoxFilters_SelectedIndexChanged);
             // 
-            // panel1
+            // textBoxSearch
             // 
-            this.panel1.Controls.Add(this.SearchCallSignButton);
-            this.panel1.Controls.Add(this.searchCallsignBox);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Location = new System.Drawing.Point(480, 162);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(179, 305);
-            this.panel1.TabIndex = 9;
+            this.textBoxSearch.Location = new System.Drawing.Point(482, 166);
+            this.textBoxSearch.Name = "textBoxSearch";
+            this.textBoxSearch.Size = new System.Drawing.Size(179, 22);
+            this.textBoxSearch.TabIndex = 9;
             // 
-            // textBox2
+            // buttonSearch
             // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Copperplate Gothic Light", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox2.Location = new System.Drawing.Point(17, 13);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(150, 15);
-            this.textBox2.TabIndex = 0;
-            this.textBox2.Text = "Add a Callsign:";
-            // 
-            // searchCallsignBox
-            // 
-            this.searchCallsignBox.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.searchCallsignBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.searchCallsignBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchCallsignBox.Location = new System.Drawing.Point(17, 34);
-            this.searchCallsignBox.Name = "searchCallsignBox";
-            this.searchCallsignBox.Size = new System.Drawing.Size(149, 20);
-            this.searchCallsignBox.TabIndex = 1;
-            // 
-            // SearchCallSignButton
-            // 
-            this.SearchCallSignButton.BackColor = System.Drawing.Color.Black;
-            this.SearchCallSignButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SearchCallSignButton.Font = new System.Drawing.Font("Copperplate Gothic Light", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearchCallSignButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.SearchCallSignButton.Location = new System.Drawing.Point(53, 72);
-            this.SearchCallSignButton.Name = "SearchCallSignButton";
-            this.SearchCallSignButton.Size = new System.Drawing.Size(75, 23);
-            this.SearchCallSignButton.TabIndex = 2;
-            this.SearchCallSignButton.Text = "Search";
-            this.SearchCallSignButton.UseVisualStyleBackColor = false;
-            this.SearchCallSignButton.Click += new System.EventHandler(this.SearchCallSignButton_Click);
+            this.buttonSearch.Location = new System.Drawing.Point(533, 194);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(75, 23);
+            this.buttonSearch.TabIndex = 10;
+            this.buttonSearch.Text = "button1";
+            this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // DataForm
             // 
@@ -186,8 +157,9 @@ namespace WindowsFormsApp1
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1166, 658);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.buttonFilterbyCallSign);
+            this.Controls.Add(this.buttonSearch);
+            this.Controls.Add(this.textBoxSearch);
+            this.Controls.Add(this.comboBoxFilters);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.dataItemLabel);
             this.Controls.Add(this.ItemInformationTextBox);
@@ -200,8 +172,6 @@ namespace WindowsFormsApp1
             this.Load += new System.EventHandler(this.DataForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.messagedataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataItemsGridView)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -215,10 +185,8 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.TextBox ItemInformationTextBox;
         private System.Windows.Forms.Label dataItemLabel;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button buttonFilterbyCallSign;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button SearchCallSignButton;
-        private System.Windows.Forms.TextBox searchCallsignBox;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.ComboBox comboBoxFilters;
+        private System.Windows.Forms.TextBox textBoxSearch;
+        private System.Windows.Forms.Button buttonSearch;
     }
 }
