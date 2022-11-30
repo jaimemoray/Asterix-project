@@ -103,7 +103,7 @@ namespace WindowsFormsApp1
                 for (int i = 0; i < Main.main.myListCAT10.Count; i++)
                 {
 
-                        markers.Add(new marker(Main.main.myListCAT10[i].TimeOfDay, "10", i, Main.main.myListCAT10[i].SIC, Main.main.myListCAT10[i].x, Main.main.myListCAT10[i].y));
+                        markers.Add(new marker(Main.main.myListCAT10[i].TimeOfDay, "10", i, Main.main.myListCAT10[i].SIC, Main.main.myListCAT10[i].x, Main.main.myListCAT10[i].y, Main.main.myListCAT10[i].targetAddress));
 
                    
                 }
@@ -114,7 +114,7 @@ namespace WindowsFormsApp1
 
                     for (int i = 0; i < Main.main.myListCAT21.Count; i++)
                     {
-                        markers.Add(new marker(Main.main.myListCAT21[i].timeReportTrans, "21", i, Main.main.myListCAT21[i].SIC, Main.main.myListCAT21[i].latitude, Main.main.myListCAT21[i].longitude));
+                        markers.Add(new marker(Main.main.myListCAT21[i].timeReportTrans, "21", i, Main.main.myListCAT21[i].SIC, Main.main.myListCAT21[i].latitude, Main.main.myListCAT21[i].longitude, Main.main.myListCAT21[i].targetIdentification));
                     }
 
 
@@ -127,7 +127,7 @@ namespace WindowsFormsApp1
 
         private void move(double slot) //0.01
         {
-            
+
 
             while (markers[index].time<=ini+slot)
             {
@@ -149,11 +149,12 @@ namespace WindowsFormsApp1
                         break;
                     case "MLAT":
 
+                        eliminatePreviusPos(0, markers[index].mkr);
                         MLATlayer.Markers.Add(markers[index].mkr);
                         gMapControl1.Overlays.Add(MLATlayer);
                         break;
                     case "ADSB":
-
+                        eliminatePreviusPos(1, markers[index].mkr);
                         ADSBlayer.Markers.Add(markers[index].mkr);
                         gMapControl1.Overlays.Add(ADSBlayer);
                         break;
@@ -209,6 +210,33 @@ namespace WindowsFormsApp1
         private void gMapControl1_OnMarkerDoubleClick(GMapMarker item, MouseEventArgs e)
         {
             
+        }
+
+        private void eliminatePreviusPos(int f, GMarkerGoogle m)
+        {
+            switch (f)
+            {
+                case 0:
+                    for (int i = 0; i < MLATlayer.Markers.Count; i++)
+                    {
+                        if (MLATlayer.Markers[i].Tag == m.Tag)
+                        {
+                            MLATlayer.Markers.RemoveAt(i);
+                            break;
+                        }
+                    }
+                    break;
+                case 1:
+                    for (int i = 0; i < ADSBlayer.Markers.Count; i++)
+                    {
+                        if (ADSBlayer.Markers[i].Tag == m.Tag)
+                        {
+                            ADSBlayer.Markers.Remove(ADSBlayer.Markers[i]);
+                            break;
+                        }
+                    }
+                    break;
+            }
         }
     }
 }
