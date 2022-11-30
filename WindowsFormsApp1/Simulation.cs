@@ -38,8 +38,9 @@ namespace WindowsFormsApp1
         GMapOverlay ADSBlayer= new GMapOverlay("ADS-B");
 
         //Start simulation
-        double ini;
-        double slot=1;
+        int ini;
+        int end;
+        int slot=1;
         int index = 0;
 
 
@@ -93,6 +94,12 @@ namespace WindowsFormsApp1
             // Timer
             timer.Interval = 1000;
 
+            this.ini = Convert.ToInt32(markers[0].time);
+            this.end = Convert.ToInt32(markers[markers.Count - 1].time);
+            ClockLabel.Text= TimeSpan.FromSeconds(markers[0].time).ToString(@"hh\:mm\:ss");
+            startlabel.Text ="Start Simulation: "+TimeSpan.FromSeconds(markers[0].time).ToString(@"hh\:mm\:ss");
+            endlabel.Text = "End Simulation: "+TimeSpan.FromSeconds(markers[markers.Count-1].time).ToString(@"hh\:mm\:ss");
+
         }
 
         public void createListMark()
@@ -122,14 +129,14 @@ namespace WindowsFormsApp1
 
 
             markers = markers.OrderBy(mark => mark.time).ToList();
-            this.ini = markers[0].time;
+           
         }
 
-        private void move(double slot) //0.01
+        private void move() //0.01
         {
 
 
-            while (markers[index].time<=ini+slot)
+            while (markers[index].time<=ini)
             {
                 
                 switch (markers[index].ins)
@@ -162,17 +169,32 @@ namespace WindowsFormsApp1
                 }
                 index++;
             }
-            ini = ini + slot;
+          
         }
 
         private void Nextbutton_Click(object sender, EventArgs e)
         {
-            move(slot);
+           
+            move();
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            move(slot);
+            if (ini < end)
+            {
+                ini = ini + slot;
+                ClockLabel.Text = TimeSpan.FromSeconds(ini).ToString(@"hh\:mm\:ss");
+                move();
+            }
+            else
+            {
+                timer.Stop();
+                timer.Enabled = false;
+                MessageBox.Show("Finished Simulation");
+            }
+
+
+
         }
 
         private void startPause_Click(object sender, EventArgs e)
@@ -240,7 +262,48 @@ namespace WindowsFormsApp1
 
         }
 
- 
+        private void Setbutton_Click(object sender, EventArgs e)
+        {
+            if(timer.Enabled==false)
+            {
+                int setTime = Convert.ToInt32(HcomboBox.SelectedItem) * 3600 + Convert.ToInt32(McomboBox.SelectedItem) * 60 + Convert.ToInt32(ScomboBox.SelectedItem);
+
+                if (setTime > ini && setTime < end)
+                {
+                    SMRlayer.Clear();
+                    MLATlayer.Clear();
+                    ADSBlayer.Clear();
+                    ini = setTime;
+                    ClockLabel.Text = TimeSpan.FromSeconds(ini).ToString(@"hh\:mm\:ss");
+                    index = markers.FindIndex(p => Convert.ToInt32(p.time) >= ini);
+
+                }
+                else
+                {
+                    MessageBox.Show("Time does not belong to the simulation range");
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Must be selected when the simulation is not run");
+            }
+
+
+        }
+
+        private void SpeedTrackBar_Scroll(object sender, EventArgs e)
+        {
+            Speedlabel.Text = "Speed: x" + SpeedTrackBar.Value.ToString();
+            timer.Interval = Convert.ToInt32(1000 / SpeedTrackBar.Value);
+        }
+
+
+
+
+
+
+
 
 
 
