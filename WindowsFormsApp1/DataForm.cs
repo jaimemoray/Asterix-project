@@ -638,29 +638,31 @@ namespace WindowsFormsApp1
             switch (flag)
             {
                 case 0:
-                    if (selected == "CALLSIGN")
-                    {
-                        foreach (DataGridViewRow r in messagedataGrid.Rows)
-                        {
-                            r.Visible = false;
-                        }
-                        foreach (DataGridViewRow DI in dataItemsGridView.Rows)
-                        {
-                            DI.Visible = false;
-                        }
-                        for (int i = 0; i < dataItemsGridView.Rows.Count; i++)
-                        {
-                            if (l10[i].targetIdentification == textBoxSearch.Text)
-                            {
-                                DataGridViewRow message = messagedataGrid.Rows[i];
-                                message.Visible = true;
-                            }
-                        }
+                    //if (selected == "CALLSIGN")
+                    //{
+                    //    foreach (DataGridViewRow r in messagedataGrid.Rows)
+                    //    {
+                    //        r.Visible = false;
+                    //    }
+                    //    foreach (DataGridViewRow DI in dataItemsGridView.Rows)
+                    //    {
+                    //        DI.Visible = false;
+                    //    }
+                    //    for (int i = 0; i < dataItemsGridView.Rows.Count; i++)
+                    //    {
+                    //        if (l10[i].targetIdentification == textBoxSearch.Text)
+                    //        {
+                    //            DataGridViewRow message = messagedataGrid.Rows[i];
+                    //            message.Visible = true;
+                    //        }
+                    //    }
 
-                    }
+                    //}
+
+                    if (selected == "")
 
 
-                    break;
+                break;
             }
         }
     }

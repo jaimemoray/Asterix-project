@@ -125,8 +125,7 @@ namespace WindowsFormsApp1
             this.comboBoxFilters.FormattingEnabled = true;
             this.comboBoxFilters.Items.AddRange(new object[] {
             "CALLSIGN",
-            "AIRCRAFT",
-            "TARGET NUMBER",
+            "TRACK NUMBER",
             "TARGET ADDRESS"});
             this.comboBoxFilters.Location = new System.Drawing.Point(482, 122);
             this.comboBoxFilters.Name = "comboBoxFilters";
