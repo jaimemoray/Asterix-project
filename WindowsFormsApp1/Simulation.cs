@@ -240,6 +240,10 @@ namespace WindowsFormsApp1
 
         }
 
+ 
+
+
+
         //private void eliminatePreviusPos(int f, marker m, int ind)
         //{
         //    if (m.targetAddress!=null)
@@ -257,7 +261,7 @@ namespace WindowsFormsApp1
         //                        }
         //                    }
 
- 
+
         //                break;
         //            case 1:
         //                for (int i = 0; i < ind; i++)
