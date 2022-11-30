@@ -233,7 +233,7 @@ namespace DECODEclass
 
         // public List<string> Get// DI21() { return // DI21; }
 
-        public double flightLevel { get; set; }
+        public string flightLevel { get; set; }
 
         //--------------------------------------------------------MAGNETIC HEA// DING [I021/152]---------------------------------------------------------------
 
@@ -1739,7 +1739,7 @@ namespace DECODEclass
             FLList.Add(DataFields[0]);
             FLList.Add(DataFields[1]);
 
-            this.flightLevel = computeData(FLList, 1, -2, true);
+            this.flightLevel = Convert.ToString(computeData(FLList, 1, -2, true));
 
 
 

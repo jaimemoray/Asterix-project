@@ -103,7 +103,7 @@ namespace WindowsFormsApp1
                 for (int i = 0; i < Main.main.myListCAT10.Count; i++)
                 {
 
-                        markers.Add(new marker(Main.main.myListCAT10[i].TimeOfDay, "10", i, Main.main.myListCAT10[i].SIC, Main.main.myListCAT10[i].x, Main.main.myListCAT10[i].y, Main.main.myListCAT10[i].targetAddress));
+                        markers.Add(marker.myMarker(Main.main.myListCAT10[i].TimeOfDay, "10", i, Main.main.myListCAT10[i].SIC, Main.main.myListCAT10[i].x, Main.main.myListCAT10[i].y, Main.main.myListCAT10[i].targetAddress));
 
                    
                 }
@@ -114,7 +114,7 @@ namespace WindowsFormsApp1
 
                     for (int i = 0; i < Main.main.myListCAT21.Count; i++)
                     {
-                        markers.Add(new marker(Main.main.myListCAT21[i].timeReportTrans, "21", i, Main.main.myListCAT21[i].SIC, Main.main.myListCAT21[i].latitude, Main.main.myListCAT21[i].longitude, Main.main.myListCAT21[i].targetIdentification));
+                        markers.Add(marker.myMarker(Main.main.myListCAT21[i].timeReportTrans, "21", i, Main.main.myListCAT21[i].SIC, Main.main.myListCAT21[i].latitude, Main.main.myListCAT21[i].longitude, Main.main.myListCAT21[i].targetIdentification));
                     }
 
 
@@ -135,13 +135,13 @@ namespace WindowsFormsApp1
                 switch (markers[index].ins)
                 {
                     case "SMR":
-                        if (SMRlayer.Markers.Count > 10)
+                        if (SMRlayer.Markers.Count > 20)
                         {
                             SMRlayer.Markers.RemoveAt(0);
                         }
                         if (Main.main.myListCAT10[markers[index].indexList].MessageType== "Target Report")
                         {
-                            SMRlayer.Markers.Add(markers[index].mkr);
+                            SMRlayer.Markers.Add(markers[index]);
                             gMapControl1.Overlays.Add(SMRlayer);
                         }
 
@@ -149,13 +149,14 @@ namespace WindowsFormsApp1
                         break;
                     case "MLAT":
 
-                        eliminatePreviusPos(0, markers[index].mkr);
-                        MLATlayer.Markers.Add(markers[index].mkr);
+
+                        MLATlayer.Markers.Add(markers[index]);
                         gMapControl1.Overlays.Add(MLATlayer);
+
                         break;
                     case "ADSB":
-                        eliminatePreviusPos(1, markers[index].mkr);
-                        ADSBlayer.Markers.Add(markers[index].mkr);
+                        //eliminatePreviusPos(1, markers[index]);
+                        ADSBlayer.Markers.Add(markers[index]);
                         gMapControl1.Overlays.Add(ADSBlayer);
                         break;
                 }
@@ -209,34 +210,69 @@ namespace WindowsFormsApp1
 
         private void gMapControl1_OnMarkerDoubleClick(GMapMarker item, MouseEventArgs e)
         {
-            
-        }
+            int pos = markers.FindIndex(p => p.Position == item.Position);
 
-        private void eliminatePreviusPos(int f, GMarkerGoogle m)
-        {
-            switch (f)
+            switch (markers[pos].CAT)
             {
-                case 0:
-                    for (int i = 0; i < MLATlayer.Markers.Count; i++)
-                    {
-                        if (MLATlayer.Markers[i].Tag == m.Tag)
-                        {
-                            MLATlayer.Markers.RemoveAt(i);
-                            break;
-                        }
-                    }
+                case "10":
+                    TIlabel.Text = Main.main.myListCAT10[markers[pos].indexList].targetIdentification == null ? "Target Identification: N/A" : "Target Identification: "+Main.main.myListCAT10[markers[pos].indexList].targetIdentification;
+                    TAlabel.Text = Main.main.myListCAT10[markers[pos].indexList].targetAddress == null ? "Target Address: N/A" : "Target Address: "+Main.main.myListCAT10[markers[pos].indexList].targetAddress;
+                    SIClabel.Text = Convert.ToString(Main.main.myListCAT10[markers[pos].indexList].SIC) == null ? "SIC: N/A" : "SIC: " +Main.main.myListCAT10[markers[pos].indexList].SIC;
+                    TIMElabel.Text = Convert.ToString(Main.main.myListCAT10[markers[pos].indexList].TimeOfDay) == null ? "Time: N/A" : "Time: "+TimeSpan.FromSeconds(Main.main.myListCAT10[markers[pos].indexList].TimeOfDay).ToString(@"hh\:mm\:ss");
+                    FLlabel.Text = Main.main.myListCAT10[markers[pos].indexList].flightLevel == null ? "Flight Level: N/A" : "Flight Level: " + Main.main.myListCAT10[markers[pos].indexList].flightLevel+" FL";
+                    LATlabel.Text = "Latitude: N/A";
+                    LNGlabel.Text = "Longitude: N/A";
+                    Hlabel.Text = Main.main.myListCAT10[markers[pos].indexList].height == -1 ? "Height: N/A" : "Height : " + Main.main.myListCAT10[markers[pos].indexList].height + " ft";
                     break;
-                case 1:
-                    for (int i = 0; i < ADSBlayer.Markers.Count; i++)
-                    {
-                        if (ADSBlayer.Markers[i].Tag == m.Tag)
-                        {
-                            ADSBlayer.Markers.Remove(ADSBlayer.Markers[i]);
-                            break;
-                        }
-                    }
+                case "21":
+                    TIlabel.Text = Main.main.myListCAT21[markers[pos].indexList].targetIdentification == null ? "Target Identification: N/A" : "Target Identification: " + Main.main.myListCAT21[markers[pos].indexList].targetIdentification;
+                    TAlabel.Text = Main.main.myListCAT21[markers[pos].indexList].targetAddress == null ? "Target Address: N/A" : "Target Address: " + Main.main.myListCAT21[markers[pos].indexList].targetAddress;
+                    SIClabel.Text = Convert.ToString(Main.main.myListCAT21[markers[pos].indexList].SIC) == null ? "SIC: N/A" : "SIC: " + Main.main.myListCAT21[markers[pos].indexList].SIC;
+                    TIMElabel.Text = Convert.ToString(Main.main.myListCAT21[markers[pos].indexList].timeReportTrans) == null ? "Time: N/A" : "Time: " + TimeSpan.FromSeconds(Main.main.myListCAT21[markers[pos].indexList].timeReportTrans).ToString(@"hh\:mm\:ss");
+                    FLlabel.Text = Main.main.myListCAT21[markers[pos].indexList].flightLevel == null ? "Flight Level: N/A" : "Flight Level: " + Main.main.myListCAT21[markers[pos].indexList].flightLevel + " FL";
+                    LATlabel.Text = Main.main.myListCAT21[markers[pos].indexList].latitude == -1 ? "Latitude: N/A" : "Latitude: " + Math.Round(Main.main.myListCAT21[markers[pos].indexList].latitude, 4) + " º N";
+                    LNGlabel.Text = Main.main.myListCAT21[markers[pos].indexList].latitude == -1 ? "Longitude: N/A" : "Longitude: " + Math.Round(Main.main.myListCAT21[markers[pos].indexList].longitude, 4) + " º N";
+                    Hlabel.Text = Main.main.myListCAT21[markers[pos].indexList].geometricHeight == null ? "Height: N/A" : "Height : " + Main.main.myListCAT21[markers[pos].indexList].geometricHeight+" ft";
                     break;
             }
+
+
+
         }
+
+        //private void eliminatePreviusPos(int f, marker m, int ind)
+        //{
+        //    if (m.targetAddress!=null)
+        //    {
+        //        switch (f)
+        //        {
+        //            case 0:
+
+        //                    for (int i = 0; i < ind; i++)
+        //                    {
+        //                        if (markers[i].targetAddress == m.targetAddress)
+        //                        {
+        //                            MLATlayer.Markers.Remove(markers[i]);
+        //                            break;
+        //                        }
+        //                    }
+
+ 
+        //                break;
+        //            case 1:
+        //                for (int i = 0; i < ind; i++)
+        //                {
+        //                    if (markers[i].targetAddress == m.targetAddress)
+        //                    {
+        //                        MLATlayer.Markers.Remove(markers[i]);
+        //                        break;
+        //                    }
+        //                }
+
+        //                break;
+        //        }
+        //    }
+
+        //}
     }
 }

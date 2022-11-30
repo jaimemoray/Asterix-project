@@ -35,6 +35,15 @@ namespace WindowsFormsApp1
             this.gMapControl1 = new GMap.NET.WindowsForms.GMapControl();
             this.controlPanel = new System.Windows.Forms.Panel();
             this.dataPanel = new System.Windows.Forms.Panel();
+            this.Hlabel = new System.Windows.Forms.Label();
+            this.LNGlabel = new System.Windows.Forms.Label();
+            this.LATlabel = new System.Windows.Forms.Label();
+            this.FLlabel = new System.Windows.Forms.Label();
+            this.TIMElabel = new System.Windows.Forms.Label();
+            this.TAlabel = new System.Windows.Forms.Label();
+            this.TIlabel = new System.Windows.Forms.Label();
+            this.SIClabel = new System.Windows.Forms.Label();
+            this.AircraftDataLabel = new System.Windows.Forms.Label();
             this.panelTime = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -47,15 +56,6 @@ namespace WindowsFormsApp1
             this.previus = new System.Windows.Forms.Button();
             this.startPause = new System.Windows.Forms.Button();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.AircraftDataLabel = new System.Windows.Forms.Label();
-            this.SIClabel = new System.Windows.Forms.Label();
-            this.TIlabel = new System.Windows.Forms.Label();
-            this.TAlabel = new System.Windows.Forms.Label();
-            this.TIMElabel = new System.Windows.Forms.Label();
-            this.FLlabel = new System.Windows.Forms.Label();
-            this.LATlabel = new System.Windows.Forms.Label();
-            this.LNGlabel = new System.Windows.Forms.Label();
-            this.Hlabel = new System.Windows.Forms.Label();
             this.panelMap.SuspendLayout();
             this.mapPanel.SuspendLayout();
             this.controlPanel.SuspendLayout();
@@ -115,7 +115,6 @@ namespace WindowsFormsApp1
             this.gMapControl1.Size = new System.Drawing.Size(1148, 487);
             this.gMapControl1.TabIndex = 0;
             this.gMapControl1.Zoom = 0D;
-  
             this.gMapControl1.OnMarkerDoubleClick += new GMap.NET.WindowsForms.MarkerDoubleClick(this.gMapControl1_OnMarkerDoubleClick);
             // 
             // controlPanel
@@ -149,6 +148,104 @@ namespace WindowsFormsApp1
             this.dataPanel.Name = "dataPanel";
             this.dataPanel.Size = new System.Drawing.Size(469, 121);
             this.dataPanel.TabIndex = 9;
+            // 
+            // Hlabel
+            // 
+            this.Hlabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Hlabel.AutoSize = true;
+            this.Hlabel.Location = new System.Drawing.Point(299, 87);
+            this.Hlabel.Name = "Hlabel";
+            this.Hlabel.Size = new System.Drawing.Size(53, 17);
+            this.Hlabel.TabIndex = 8;
+            this.Hlabel.Text = "Height:";
+            // 
+            // LNGlabel
+            // 
+            this.LNGlabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.LNGlabel.AutoSize = true;
+            this.LNGlabel.Location = new System.Drawing.Point(155, 87);
+            this.LNGlabel.Name = "LNGlabel";
+            this.LNGlabel.Size = new System.Drawing.Size(75, 17);
+            this.LNGlabel.TabIndex = 7;
+            this.LNGlabel.Text = "Longitude:";
+            // 
+            // LATlabel
+            // 
+            this.LATlabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.LATlabel.AutoSize = true;
+            this.LATlabel.Location = new System.Drawing.Point(19, 87);
+            this.LATlabel.Name = "LATlabel";
+            this.LATlabel.Size = new System.Drawing.Size(63, 17);
+            this.LATlabel.TabIndex = 6;
+            this.LATlabel.Text = "Latitude:";
+            // 
+            // FLlabel
+            // 
+            this.FLlabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.FLlabel.AutoSize = true;
+            this.FLlabel.Location = new System.Drawing.Point(299, 59);
+            this.FLlabel.Name = "FLlabel";
+            this.FLlabel.Size = new System.Drawing.Size(88, 17);
+            this.FLlabel.TabIndex = 5;
+            this.FLlabel.Text = "Flight Level: ";
+            // 
+            // TIMElabel
+            // 
+            this.TIMElabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.TIMElabel.AutoSize = true;
+            this.TIMElabel.Location = new System.Drawing.Point(19, 59);
+            this.TIMElabel.Name = "TIMElabel";
+            this.TIMElabel.Size = new System.Drawing.Size(47, 17);
+            this.TIMElabel.TabIndex = 4;
+            this.TIMElabel.Text = "Time: ";
+            // 
+            // TAlabel
+            // 
+            this.TAlabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TAlabel.AutoSize = true;
+            this.TAlabel.Location = new System.Drawing.Point(299, 33);
+            this.TAlabel.Name = "TAlabel";
+            this.TAlabel.Size = new System.Drawing.Size(110, 17);
+            this.TAlabel.TabIndex = 3;
+            this.TAlabel.Text = "Target Address:";
+            // 
+            // TIlabel
+            // 
+            this.TIlabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.TIlabel.AutoSize = true;
+            this.TIlabel.Location = new System.Drawing.Point(19, 33);
+            this.TIlabel.Name = "TIlabel";
+            this.TIlabel.Size = new System.Drawing.Size(137, 17);
+            this.TIlabel.TabIndex = 2;
+            this.TIlabel.Text = "Target Identification:";
+            // 
+            // SIClabel
+            // 
+            this.SIClabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.SIClabel.AutoSize = true;
+            this.SIClabel.Location = new System.Drawing.Point(155, 59);
+            this.SIClabel.Name = "SIClabel";
+            this.SIClabel.Size = new System.Drawing.Size(37, 17);
+            this.SIClabel.TabIndex = 1;
+            this.SIClabel.Text = "SIC: ";
+            // 
+            // AircraftDataLabel
+            // 
+            this.AircraftDataLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.AircraftDataLabel.AutoSize = true;
+            this.AircraftDataLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AircraftDataLabel.Location = new System.Drawing.Point(19, 4);
+            this.AircraftDataLabel.Name = "AircraftDataLabel";
+            this.AircraftDataLabel.Size = new System.Drawing.Size(100, 17);
+            this.AircraftDataLabel.TabIndex = 0;
+            this.AircraftDataLabel.Text = "Aircraft Data";
             // 
             // panelTime
             // 
@@ -211,9 +308,10 @@ namespace WindowsFormsApp1
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Layerlabel.AutoSize = true;
+            this.Layerlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Layerlabel.Location = new System.Drawing.Point(6, 4);
             this.Layerlabel.Name = "Layerlabel";
-            this.Layerlabel.Size = new System.Drawing.Size(85, 17);
+            this.Layerlabel.Size = new System.Drawing.Size(97, 17);
             this.Layerlabel.TabIndex = 6;
             this.Layerlabel.Text = "Instruments:";
             // 
@@ -293,115 +391,6 @@ namespace WindowsFormsApp1
             // timer
             // 
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
-            // 
-            // AircraftDataLabel
-            // 
-            this.AircraftDataLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.AircraftDataLabel.AutoSize = true;
-            this.AircraftDataLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AircraftDataLabel.Location = new System.Drawing.Point(19, 4);
-            this.AircraftDataLabel.Name = "AircraftDataLabel";
-            this.AircraftDataLabel.Size = new System.Drawing.Size(100, 17);
-            this.AircraftDataLabel.TabIndex = 0;
-            this.AircraftDataLabel.Text = "Aircraft Data";
-            // 
-            // SIClabel
-            // 
-            this.SIClabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.SIClabel.AutoSize = true;
-            this.SIClabel.Location = new System.Drawing.Point(155, 59);
-            this.SIClabel.Name = "SIClabel";
-            this.SIClabel.Size = new System.Drawing.Size(37, 17);
-            this.SIClabel.TabIndex = 1;
-            this.SIClabel.Text = "SIC: ";
-            // 
-            // TIlabel
-            // 
-            this.TIlabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TIlabel.AutoSize = true;
-            this.TIlabel.Location = new System.Drawing.Point(19, 33);
-            this.TIlabel.Name = "TIlabel";
-            this.TIlabel.Size = new System.Drawing.Size(137, 17);
-            this.TIlabel.TabIndex = 2;
-            this.TIlabel.Text = "Target Identification:";
-            // 
-            // TAlabel
-            // 
-            this.TAlabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TAlabel.AutoSize = true;
-            this.TAlabel.Location = new System.Drawing.Point(299, 33);
-            this.TAlabel.Name = "TAlabel";
-            this.TAlabel.Size = new System.Drawing.Size(110, 17);
-            this.TAlabel.TabIndex = 3;
-            this.TAlabel.Text = "Target Address:";
-            // 
-            // TIMElabel
-            // 
-            this.TIMElabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TIMElabel.AutoSize = true;
-            this.TIMElabel.Location = new System.Drawing.Point(19, 59);
-            this.TIMElabel.Name = "TIMElabel";
-            this.TIMElabel.Size = new System.Drawing.Size(47, 17);
-            this.TIMElabel.TabIndex = 4;
-            this.TIMElabel.Text = "Time: ";
-            // 
-            // FLlabel
-            // 
-            this.FLlabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.FLlabel.AutoSize = true;
-            this.FLlabel.Location = new System.Drawing.Point(299, 59);
-            this.FLlabel.Name = "FLlabel";
-            this.FLlabel.Size = new System.Drawing.Size(88, 17);
-            this.FLlabel.TabIndex = 5;
-            this.FLlabel.Text = "Flight Level: ";
-            // 
-            // LATlabel
-            // 
-            this.LATlabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.LATlabel.AutoSize = true;
-            this.LATlabel.Location = new System.Drawing.Point(19, 87);
-            this.LATlabel.Name = "LATlabel";
-            this.LATlabel.Size = new System.Drawing.Size(63, 17);
-            this.LATlabel.TabIndex = 6;
-            this.LATlabel.Text = "Latitude:";
-            // 
-            // LNGlabel
-            // 
-            this.LNGlabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.LNGlabel.AutoSize = true;
-            this.LNGlabel.Location = new System.Drawing.Point(155, 87);
-            this.LNGlabel.Name = "LNGlabel";
-            this.LNGlabel.Size = new System.Drawing.Size(75, 17);
-            this.LNGlabel.TabIndex = 7;
-            this.LNGlabel.Text = "Longitude:";
-            // 
-            // Hlabel
-            // 
-            this.Hlabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Hlabel.AutoSize = true;
-            this.Hlabel.Location = new System.Drawing.Point(299, 87);
-            this.Hlabel.Name = "Hlabel";
-            this.Hlabel.Size = new System.Drawing.Size(53, 17);
-            this.Hlabel.TabIndex = 8;
-            this.Hlabel.Text = "Height:";
             // 
             // Simulation
             // 
