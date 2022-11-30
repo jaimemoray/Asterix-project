@@ -627,15 +627,41 @@ namespace WindowsFormsApp1
 
         private void comboBoxFilters_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(comboBoxFilters.SelectedIndex = )
-            {
+            
+            
 
-            }
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
+            string selected = comboBoxFilters.SelectedItem.ToString();
+            switch (flag)
+            {
+                case 0:
+                    if (selected == "CALLSIGN")
+                    {
+                        foreach (DataGridViewRow r in messagedataGrid.Rows)
+                        {
+                            r.Visible = false;
+                        }
+                        foreach (DataGridViewRow DI in dataItemsGridView.Rows)
+                        {
+                            DI.Visible = false;
+                        }
+                        for (int i = 0; i < dataItemsGridView.Rows.Count; i++)
+                        {
+                            if (l10[i].targetIdentification == textBoxSearch.Text)
+                            {
+                                DataGridViewRow message = messagedataGrid.Rows[i];
+                                message.Visible = true;
+                            }
+                        }
 
+                    }
+
+
+                    break;
+            }
         }
     }
 }
