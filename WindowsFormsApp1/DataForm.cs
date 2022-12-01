@@ -678,20 +678,50 @@ namespace WindowsFormsApp1
 
 
 
-                    dg.ColumnCount = 4;
+                    dg.ColumnCount = 16;
                     dg.RowCount = l10.Count;
                     dg.Columns[0].HeaderText = "ID";
                     dg.Columns[1].HeaderText = "CAT";
                     dg.Columns[2].HeaderText = "[Data Source Identifier] SAC";
                     dg.Columns[3].HeaderText = "[Data Source Identifier] SIC";
+                    dg.Columns[4].HeaderText = "[Message Type] ";
+                    dg.Columns[5].HeaderText = "[Target Report Descriptor] TYP";
+                    dg.Columns[6].HeaderText = "[Target Report Descriptor] DCR";
+                    dg.Columns[7].HeaderText = "[Target Report Descriptor] CHN";
+                    dg.Columns[8].HeaderText = "[Target Report Descriptor] GBS";
+                    dg.Columns[9].HeaderText = "[Target Report Descriptor] CRT";
+                    dg.Columns[10].HeaderText = "[Target Report Descriptor] SIM";
+                    dg.Columns[11].HeaderText = "[Target Report Descriptor] TST";
+                    dg.Columns[12].HeaderText = "[Target Report Descriptor] RAB";
+                    dg.Columns[13].HeaderText = "[Target Report Descriptor] LOP";
+                    dg.Columns[14].HeaderText = "[Target Report Descriptor] TOT";
+                    dg.Columns[15].HeaderText = "[Target Report Descriptor] SPI";
+                    dg.Columns[16].HeaderText = "[Time of day]";
 
 
-                    for(int i=0;i<l10.Count;i++)
+
+
+
+                    for (int i=0;i<l10.Count;i++)
                     {
                         dg.Rows[i].Cells[0].Value = i;
                         dg.Rows[i].Cells[1].Value = 10;
                         dg.Rows[i].Cells[2].Value = l10[i].SAC;
                         dg.Rows[i].Cells[3].Value = l10[i].SIC;
+                        dg.Rows[i].Cells[4].Value = l10[i].MessageType;
+                        dg.Rows[i].Cells[5].Value = l10[i].TYP;
+                        dg.Rows[i].Cells[6].Value = l10[i].DCR;
+                        dg.Rows[i].Cells[7].Value = l10[i].CHN;
+                        dg.Rows[i].Cells[8].Value = l10[i].GBS;
+                        dg.Rows[i].Cells[9].Value = l10[i].CRT;
+                        dg.Rows[i].Cells[10].Value = l10[i].SIM;
+                        dg.Rows[i].Cells[11].Value = l10[i].TST;
+                        dg.Rows[i].Cells[12].Value = l10[i].RAB;
+                        dg.Rows[i].Cells[13].Value = l10[i].LOP;
+                        dg.Rows[i].Cells[14].Value = l10[i].TOT;
+                        dg.Rows[i].Cells[15].Value = l10[i].SPI;
+                        dg.Rows[i].Cells[15].Value = TimeSpan.FromSeconds(l10[i].TimeOfDay).ToString("");
+
                     }
                     dg.Rows[0].Cells[0].Value = "Data Source Identifier";
                    
@@ -716,7 +746,7 @@ namespace WindowsFormsApp1
                                 List<string> cells = new List<string>();
                                 foreach (DataGridViewCell c in r.Cells)
                                 {
-                                    cells.Add(Convert.ToString(c.Value)==string.Empty? " ": Convert.ToString(c.Value));
+                                    cells.Add(Convert.ToString(c.Value)==string.Empty? "N/A": Convert.ToString(c.Value));
                                 }
                                 rows.Add(string.Join(SEP, cells));
                             }
