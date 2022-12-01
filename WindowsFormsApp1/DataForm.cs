@@ -678,7 +678,7 @@ namespace WindowsFormsApp1
 
 
 
-                    dg.ColumnCount = 16;
+                    dg.ColumnCount = 17;
                     dg.RowCount = l10.Count;
                     dg.Columns[0].HeaderText = "ID";
                     dg.Columns[1].HeaderText = "CAT";
@@ -697,6 +697,8 @@ namespace WindowsFormsApp1
                     dg.Columns[14].HeaderText = "[Target Report Descriptor] TOT";
                     dg.Columns[15].HeaderText = "[Target Report Descriptor] SPI";
                     dg.Columns[16].HeaderText = "[Time of day]";
+                    dg.Columns[17].HeaderText = "[WGS-84 Coordinates] Latitude (º)";
+                    dg.Columns[18].HeaderText = "[WGS-84 Coordinates] Longitude (º)";
 
 
 
@@ -720,7 +722,9 @@ namespace WindowsFormsApp1
                         dg.Rows[i].Cells[13].Value = l10[i].LOP;
                         dg.Rows[i].Cells[14].Value = l10[i].TOT;
                         dg.Rows[i].Cells[15].Value = l10[i].SPI;
-                        dg.Rows[i].Cells[15].Value = TimeSpan.FromSeconds(l10[i].TimeOfDay).ToString("");
+                        dg.Rows[i].Cells[16].Value = TimeSpan.FromSeconds(l10[i].TimeOfDay).ToString(@"hh\:mm\:ss");
+                        dg.Rows[i].Cells[17].Value = l10[i].latitude;
+                        dg.Rows[i].Cells[18].Value = l10[i].longitude;
 
                     }
                     dg.Rows[0].Cells[0].Value = "Data Source Identifier";

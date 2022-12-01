@@ -596,7 +596,7 @@ namespace DECODEclass
         {
             itemList.Add(new string[] { "4", "[I010/140]", "Time of Day" });
 
-            double time;
+
 
             List<byte> timeList = new List<byte>();
             timeList.Add(DataFields[0]);

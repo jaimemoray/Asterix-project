@@ -105,8 +105,16 @@ namespace WindowsFormsApp1
 
         private void simulationButton_Click(object sender, EventArgs e)
         {
-            Simulation MapView = new Simulation();
-            openChildForm(MapView);
+            if (myListCAT10.Count>0 || myListCAT21.Count>0)
+            {
+                Simulation MapView = new Simulation();
+                openChildForm(MapView);
+            }
+            else
+            {
+                MessageBox.Show("Must be loaded file!");
+            }
+
         }
     }
 }
