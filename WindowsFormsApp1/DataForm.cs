@@ -671,22 +671,34 @@ namespace WindowsFormsApp1
         private void csvbutton_Click(object sender, EventArgs e)
         {
             DataGridView dg = new DataGridView();
-            SaveFileDialog sfd = new SaveFileDialog() {Filter="CSV|*.csv"};
-            dg.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            dg.ColumnCount = 2;
-            dg.RowCount = 2;
-            dg.Columns[0].HeaderText = "ID";
-            dg.Columns[1].HeaderText = "CAT";
-            dg.Rows[0].Cells[0].Value = "Hola";
-            dg.Rows[0].Cells[1].Value = "Pepe";
+            SaveFileDialog sfd = new SaveFileDialog() { Filter = "CSV|*.csv" };
             switch (flag)
             {
                 case 0:
 
 
 
+                    dg.ColumnCount = 4;
+                    dg.RowCount = l10.Count;
+                    dg.Columns[0].HeaderText = "ID";
+                    dg.Columns[1].HeaderText = "CAT";
+                    dg.Columns[2].HeaderText = "[Data Source Identifier] SAC";
+                    dg.Columns[3].HeaderText = "[Data Source Identifier] SIC";
 
-                    
+
+                    for(int i=0;i<l10.Count;i++)
+                    {
+                        dg.Rows[i].Cells[0].Value = i;
+                        dg.Rows[i].Cells[1].Value = 10;
+                        dg.Rows[i].Cells[2].Value = l10[i].SAC;
+                        dg.Rows[i].Cells[3].Value = l10[i].SIC;
+                    }
+                    dg.Rows[0].Cells[0].Value = "Data Source Identifier";
+                   
+
+
+
+
                     if (sfd.ShowDialog()==DialogResult.OK)
                     {
                         List<string> rows = new List<string>();
