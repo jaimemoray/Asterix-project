@@ -115,6 +115,7 @@ namespace WindowsFormsApp1
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "LoadForm";
             this.Text = "LoadForm";
+
             this.ResumeLayout(false);
             this.PerformLayout();
 

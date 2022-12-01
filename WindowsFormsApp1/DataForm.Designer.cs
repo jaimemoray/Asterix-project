@@ -150,7 +150,6 @@ namespace WindowsFormsApp1
             this.buttonSearch.TabIndex = 10;
             this.buttonSearch.Text = "button1";
             this.buttonSearch.UseVisualStyleBackColor = true;
-            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // label1
             // 

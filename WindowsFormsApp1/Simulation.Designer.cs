@@ -615,7 +615,7 @@ namespace WindowsFormsApp1
             "57",
             "58",
             "59"});
-            this.ScomboBox.Location = new System.Drawing.Point(225, 67);
+            this.ScomboBox.Location = new System.Drawing.Point(225, 68);
             this.ScomboBox.Name = "ScomboBox";
             this.ScomboBox.Size = new System.Drawing.Size(46, 24);
             this.ScomboBox.TabIndex = 5;

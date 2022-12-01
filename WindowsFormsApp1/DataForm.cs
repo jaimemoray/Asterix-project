@@ -39,6 +39,7 @@ namespace WindowsFormsApp1
             switch (flag)
             {
                 case 0:
+                    
                 messagedataGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 messagedataGrid.ReadOnly = true;
                 messagedataGrid.RowHeadersVisible = false;
@@ -634,39 +635,7 @@ namespace WindowsFormsApp1
 
         }
 
-        private void buttonSearch_Click(object sender, EventArgs e)
-        {
-            string selected = comboBoxFilters.SelectedItem.ToString();
-            switch (flag)
-            {
-                //case 0:
-                    //if (selected == "CALLSIGN")
-                    //{
-                    //    foreach (DataGridViewRow r in messagedataGrid.Rows)
-                    //    {
-                    //        r.Visible = false;
-                    //    }
-                    //    foreach (DataGridViewRow DI in dataItemsGridView.Rows)
-                    //    {
-                    //        DI.Visible = false;
-                    //    }
-                    //    for (int i = 0; i < dataItemsGridView.Rows.Count; i++)
-                    //    {
-                    //        if (l10[i].targetIdentification == textBoxSearch.Text)
-                    //        {
-                    //            DataGridViewRow message = messagedataGrid.Rows[i];
-                    //            message.Visible = true;
-                    //        }
-                    //    }
 
-                    //}
-
-                //    if (selected == "")
-
-
-                //break;
-            }
-        }
 
         private void csvbutton_Click(object sender, EventArgs e)
         {
@@ -710,6 +679,7 @@ namespace WindowsFormsApp1
 
                             for (int i = 0; i < l10.Count; i++)
                             {
+                                dg.ColumnCount = 21;
                                 dg.Rows[i].Cells[0].Value = i;
                                 dg.Rows[i].Cells[1].Value = 10;
                                 dg.Rows[i].Cells[2].Value = l10[i].SAC;
@@ -729,48 +699,301 @@ namespace WindowsFormsApp1
                                 dg.Rows[i].Cells[16].Value = TimeSpan.FromSeconds(l10[i].TimeOfDay).ToString(@"hh\:mm\:ss");
                                 dg.Rows[i].Cells[17].Value = l10[i].latitude;
                                 dg.Rows[i].Cells[18].Value = l10[i].longitude;
-                                dg.Rows[i].Cells[19].Value = l10[i].latitude;
-                                dg.Rows[i].Cells[20].Value = l10[i].longitude;
+                                dg.Rows[i].Cells[19].Value = l10[i].rho;
+                                dg.Rows[i].Cells[20].Value = l10[i].theta;
+
 
                             }
-                            dg.Rows[0].Cells[0].Value = "Data Source Identifier";
-
-
-
-
-
-
-                            List<string> rows = new List<string>();
-                            List<string> header = new List<string>();
-                            foreach (DataGridViewColumn col in dg.Columns)
-                            {
-                                header.Add(col.HeaderText);
-                            }
-                            string SEP = ",";
-                            rows.Add(string.Join(SEP, header));
-                            foreach (DataGridViewRow r in dg.Rows)
-                            {
-                                try
-                                {
-                                    List<string> cells = new List<string>();
-                                    foreach (DataGridViewCell c in r.Cells)
-                                    {
-                                        cells.Add(Convert.ToString(c.Value) == string.Empty || Convert.ToString(c.Value) == "0" ? "N/A" : Convert.ToString(c.Value));
-                                    }
-                                    rows.Add(string.Join(SEP, cells));
-                                }
-                                catch (Exception ex) { }
-
-                            }
-                            File.WriteAllLines(sfd.FileName, rows);
+                            
 
 
                             break;
                     case 1:
+
+
+                        dg.ColumnCount = 118;
+                        dg.RowCount = l21.Count;
+                        dg.Columns[0].HeaderText = "ID";
+                        dg.Columns[1].HeaderText = "CAT";
+                        dg.Columns[2].HeaderText = "[Data Source Identifier] SAC";
+                        dg.Columns[3].HeaderText = "[Data Source Identifier] SIC";
+                        dg.Columns[4].HeaderText = "[Target Report Descriptor] ATP";
+                        dg.Columns[5].HeaderText = "[Target Report Descriptor] ARC";
+                        dg.Columns[6].HeaderText = "[Target Report Descriptor] RC";
+                        dg.Columns[7].HeaderText = "[Target Report Descriptor] RAB";
+                        dg.Columns[8].HeaderText = "[Target Report Descriptor] DCR";
+                        dg.Columns[9].HeaderText = "[Target Report Descriptor] GBS";
+                        dg.Columns[10].HeaderText = "[Target Report Descriptor] SIM";
+                        dg.Columns[11].HeaderText = "[Target Report Descriptor] TST";
+                        dg.Columns[12].HeaderText = "[Target Report Descriptor] SAA";
+                        dg.Columns[13].HeaderText = "[Target Report Descriptor] CL";
+                        dg.Columns[14].HeaderText = "[Target Report Descriptor] IPC";
+                        dg.Columns[15].HeaderText = "[Target Report Descriptor] NOGO";
+                        dg.Columns[16].HeaderText = "[Target Report Descriptor] CPR";
+                        dg.Columns[17].HeaderText = "[Target Report Descriptor] LDPJ";
+                        dg.Columns[18].HeaderText = "[Target Report Descriptor] RCF";
+                        dg.Columns[19].HeaderText = "[Track Number]";
+                        dg.Columns[20].HeaderText = "[Service Identification]";
+                        dg.Columns[21].HeaderText = "[Time of Applicability for Position]";
+                        dg.Columns[22].HeaderText = "[Position in WGS-84 Coordinates] Latitude (º)";
+                        dg.Columns[23].HeaderText = "[Position in WGS-84 Coordinates] Longitude (º)";
+                        dg.Columns[24].HeaderText = "[High-Resolution Position in WGS-84 Coordinates] Latitude (º)";
+                        dg.Columns[25].HeaderText = "[High-Resolution Position in WGS-84 Coordinates] Longitude (º)";
+                        dg.Columns[26].HeaderText = "[Time of Applicability for Velocity] (s)";
+                        dg.Columns[27].HeaderText = "[Air Speed] IM";
+                        dg.Columns[28].HeaderText = "[Air Speed] IAS/MACH (NM/s or Mach)";
+                        dg.Columns[29].HeaderText = "[True Airspeed] RE";
+                        dg.Columns[30].HeaderText = "[True Airspeed] (knot)";
+                        dg.Columns[31].HeaderText = "[Target Address]";
+                        dg.Columns[32].HeaderText = "[Time of Message Reception for Position]";
+                        dg.Columns[33].HeaderText = "[Time of Message Reception of Position–High Precision]";
+                        dg.Columns[34].HeaderText = "[Time of Message Reception for Velocity]";
+                        dg.Columns[35].HeaderText = "[Time of Message Reception of Velocity–High Precision]";
+                        dg.Columns[36].HeaderText = "[Geometric Height] (ft)";
+                        dg.Columns[37].HeaderText = "[Quality Indicators] NUCr or NACv";
+                        dg.Columns[38].HeaderText = "[Quality Indicators] NUCp or NIC";
+                        dg.Columns[39].HeaderText = "[Quality Indicators] NIC BARO";
+                        dg.Columns[40].HeaderText = "[Quality Indicators] SIL (I)";
+                        dg.Columns[41].HeaderText = "[Quality Indicators] NACp";
+                        dg.Columns[42].HeaderText = "[Quality Indicators] SIL (II)";
+                        dg.Columns[43].HeaderText = "[Quality Indicators] SDA";
+                        dg.Columns[44].HeaderText = "[Quality Indicators] GVA";
+                        dg.Columns[45].HeaderText = "[Quality Indicators] PIC";
+                        dg.Columns[46].HeaderText = "[MOPS Version] VNS";
+                        dg.Columns[47].HeaderText = "[MOPS Version] VN";
+                        dg.Columns[48].HeaderText = "[MOPS Version] LTT";
+                        dg.Columns[49].HeaderText = "[Mode 3/A Code in Octal Representation] ";
+                        dg.Columns[50].HeaderText = "[Roll Angle] (degree)";
+                        dg.Columns[51].HeaderText = "[Flight Level] (FL)";
+                        dg.Columns[52].HeaderText = "[Magnetic Heading] (º)";
+                        dg.Columns[53].HeaderText = "[Target Status] ICF";
+                        dg.Columns[54].HeaderText = "[Target Status] LNAV";
+                        dg.Columns[55].HeaderText = "[Target Status] PS";
+                        dg.Columns[56].HeaderText = "[Target Status] SS";
+                        dg.Columns[57].HeaderText = "[Barometric Vertical Rate] RE";
+                        dg.Columns[58].HeaderText = "[Barometric Vertical Rate] BVR (ft/min)";
+                        dg.Columns[59].HeaderText = "[Geometric Vertical Rate]";
+                        dg.Columns[60].HeaderText = "[Geometric Vertical Rate] GVR (ft/min)";
+                        dg.Columns[61].HeaderText = "[Airborne Ground Vector] RE";
+                        dg.Columns[62].HeaderText = "[Airborne Ground Vector] Ground Speed (NM/s)";
+                        dg.Columns[63].HeaderText = "[Airborne Ground Vector] Track Angle (degree)";
+                        dg.Columns[64].HeaderText = "[Track Angle Rate]  (º/s)";
+                        dg.Columns[65].HeaderText = "[Time of ASTERIX Report Transmission]";
+                        dg.Columns[66].HeaderText = "[Target Identification]";
+                        dg.Columns[67].HeaderText = "[Emitter Category]";
+                        dg.Columns[68].HeaderText = "[Met Information] Wind Speed (knot)";
+                        dg.Columns[69].HeaderText = "[Met Information] Wind Direction (degree)";
+                        dg.Columns[70].HeaderText = "[Met Information] Temperature (ºC)";
+                        dg.Columns[71].HeaderText = "[Met Information] Turbulence ";
+                        dg.Columns[72].HeaderText = "[Selected Altitude] SAS ";
+                        dg.Columns[73].HeaderText = "[Selected Altitude] Source ";
+                        dg.Columns[74].HeaderText = "[Selected Altitude] Altitude (ft) ";
+                        dg.Columns[75].HeaderText = "[Final State Selected Altitude] MV ";
+                        dg.Columns[76].HeaderText = "[Final State Selected Altitude] AH ";
+                        dg.Columns[77].HeaderText = "[Final State Selected Altitude] AM ";
+                        dg.Columns[78].HeaderText = "[Final State Selected Altitude] Altitude (ft) ";
+                        dg.Columns[79].HeaderText = "[Service Management] Report Period (s)";
+                        dg.Columns[80].HeaderText = "[Aircraft Operational Status] RA";
+                        dg.Columns[81].HeaderText = "[Aircraft Operational Status] TC";
+                        dg.Columns[82].HeaderText = "[Aircraft Operational Status] TS";
+                        dg.Columns[83].HeaderText = "[Aircraft Operational Status] ARV";
+                        dg.Columns[84].HeaderText = "[Aircraft Operational Status] CTDT/A";
+                        dg.Columns[85].HeaderText = "[Aircraft Operational Status] NOT CAS";
+                        dg.Columns[86].HeaderText = "[Aircraft Operational Status] SA";
+                        dg.Columns[87].HeaderText = "[Receiver ID]";
+                        dg.Columns[88].HeaderText = "[Message Amplitude] (dBm)";
+                        dg.Columns[89].HeaderText = "[Surface Capabilities and Characteristics] POA";
+                        dg.Columns[90].HeaderText = "[Surface Capabilities and Characteristics] CTDTI/S";
+                        dg.Columns[91].HeaderText = "[Surface Capabilities and Characteristics] B2 LOW";
+                        dg.Columns[92].HeaderText = "[Surface Capabilities and Characteristics] RAS";
+                        dg.Columns[93].HeaderText = "[Surface Capabilities and Characteristics] IDENT";
+                        dg.Columns[94].HeaderText = "[Surface Capabilities and Characteristics] L+W";
+                        dg.Columns[95].HeaderText = "[Data Ages] AOS(s)";
+                        dg.Columns[96].HeaderText = "[Data Ages] TRD(s)";
+                        dg.Columns[97].HeaderText = "[Data Ages] M3A(s)";
+                        dg.Columns[98].HeaderText = "[Data Ages] QI(s)";
+                        dg.Columns[99].HeaderText = "[Data Ages] TI(s)";
+                        dg.Columns[100].HeaderText = "[Data Ages] MAM(s)";
+                        dg.Columns[101].HeaderText = "[Data Ages] GH(s)";
+                        dg.Columns[102].HeaderText = "[Data Ages] FL(s)";
+                        dg.Columns[103].HeaderText = "[Data Ages] ISA(s)";
+                        dg.Columns[104].HeaderText = "[Data Ages] FSA(s)";
+                        dg.Columns[105].HeaderText = "[Data Ages] AS(s)";
+                        dg.Columns[106].HeaderText = "[Data Ages] TAS(s)";
+                        dg.Columns[107].HeaderText = "[Data Ages] MH(s)";
+                        dg.Columns[108].HeaderText = "[Data Ages] BVR(s)";
+                        dg.Columns[109].HeaderText = "[Data Ages] GVR(s)";
+                        dg.Columns[110].HeaderText = "[Data Ages] GV(s)";
+                        dg.Columns[111].HeaderText = "[Data Ages] TAR(s)";
+                        dg.Columns[112].HeaderText = "[Data Ages] TI(s)";
+                        dg.Columns[113].HeaderText = "[Data Ages] TS(s)";
+                        dg.Columns[114].HeaderText = "[Data Ages] MET(s)";
+                        dg.Columns[115].HeaderText = "[Data Ages] ROA(s)";
+                        dg.Columns[116].HeaderText = "[Data Ages] ARA(s)";
+                        dg.Columns[117].HeaderText = "[Data Ages] SCC(s)";
+
+
+
+
+                        for (int i = 0; i < l21.Count; i++)
+                        {
+                            dg.Rows[i].Cells[0].Value = i;
+                            dg.Rows[i].Cells[1].Value = 21;
+                            dg.Rows[i].Cells[2].Value = l21[i].SAC;
+                            dg.Rows[i].Cells[3].Value = l21[i].SIC;
+                            dg.Rows[i].Cells[4].Value = l21[i].ATP;
+                            dg.Rows[i].Cells[5].Value = l21[i].ARC;
+                            dg.Rows[i].Cells[6].Value = l21[i].RC;
+                            dg.Rows[i].Cells[7].Value = l21[i].RAB;
+                            dg.Rows[i].Cells[8].Value = l21[i].DCR;
+                            dg.Rows[i].Cells[9].Value = l21[i].GBS;
+                            dg.Rows[i].Cells[10].Value = l21[i].SIM;
+                            dg.Rows[i].Cells[11].Value = l21[i].TST;
+                            dg.Rows[i].Cells[12].Value = l21[i].SAA;
+                            dg.Rows[i].Cells[13].Value = l21[i].CL;
+                            dg.Rows[i].Cells[14].Value = l21[i].IPC;
+                            dg.Rows[i].Cells[15].Value = l21[i].NOGO;
+                            dg.Rows[i].Cells[16].Value = l21[i].CPR;
+                            dg.Rows[i].Cells[17].Value = l21[i].LDPJ;
+                            dg.Rows[i].Cells[18].Value = l21[i].RCF;
+                            dg.Rows[i].Cells[19].Value = l21[i].trackNumber;
+                            dg.Rows[i].Cells[20].Value = l21[i].serviceIdentification;
+                            dg.Rows[i].Cells[21].Value = TimeSpan.FromSeconds(l21[i].timeOfAppPos).ToString(@"hh\:mm\:ss");
+                            dg.Rows[i].Cells[22].Value =l21[i].latitude;
+                            dg.Rows[i].Cells[23].Value = l21[i].longitude;
+                            dg.Rows[i].Cells[24].Value = l21[i].HRlatitude;
+                            dg.Rows[i].Cells[25].Value = l21[i].HRlongitude;
+                            dg.Rows[i].Cells[26].Value = l21[i].timeOfAppVel;
+                            dg.Rows[i].Cells[27].Value = l21[i].typeSpeed;
+                            dg.Rows[i].Cells[28].Value = l21[i].airSpeed;
+                            dg.Rows[i].Cells[29].Value = l21[i].RE;
+                            dg.Rows[i].Cells[30].Value = l21[i].trueAirSpeed;
+                            dg.Rows[i].Cells[31].Value = l21[i].targetAddress;
+                            dg.Rows[i].Cells[32].Value = TimeSpan.FromSeconds(l21[i].timeReceptPos).ToString(@"hh\:mm\:ss");
+                            dg.Rows[i].Cells[33].Value = TimeSpan.FromSeconds(l21[i].timeReceptPosHP).ToString(@"hh\:mm\:ss");
+                            dg.Rows[i].Cells[34].Value = TimeSpan.FromSeconds(l21[i].timeReceptVel).ToString(@"hh\:mm\:ss");
+                            dg.Rows[i].Cells[35].Value = TimeSpan.FromSeconds(l21[i].timeReceptVelHP).ToString(@"hh\:mm\:ss");
+                            dg.Rows[i].Cells[36].Value = l21[i].geometricHeight;
+                            dg.Rows[i].Cells[37].Value = l21[i].NUCr;
+                            dg.Rows[i].Cells[38].Value = l21[i].NUCp;
+                            dg.Rows[i].Cells[39].Value = l21[i].NICbaro;
+                            dg.Rows[i].Cells[40].Value = l21[i].SIL1;
+                            dg.Rows[i].Cells[41].Value = l21[i].NACp;
+                            dg.Rows[i].Cells[42].Value = l21[i].SIL2;
+                            dg.Rows[i].Cells[43].Value = l21[i].SDA;
+                            dg.Rows[i].Cells[44].Value = l21[i].GVA;
+                            dg.Rows[i].Cells[45].Value = l21[i].PIC;
+                            dg.Rows[i].Cells[46].Value = l21[i].VNS;
+                            dg.Rows[i].Cells[47].Value = l21[i].VN;
+                            dg.Rows[i].Cells[48].Value = l21[i].LTT;
+                            dg.Rows[i].Cells[49].Value = l21[i].mode3A;
+                            dg.Rows[i].Cells[50].Value = l21[i].rollAngle;
+                            dg.Rows[i].Cells[51].Value = l21[i].flightLevel;
+                            dg.Rows[i].Cells[52].Value = l21[i].magneticHeading;
+                            dg.Rows[i].Cells[53].Value = l21[i].ICF;
+                            dg.Rows[i].Cells[54].Value = l21[i].LNAV;
+                            dg.Rows[i].Cells[55].Value = l21[i].PS;
+                            dg.Rows[i].Cells[56].Value = l21[i].SS;
+                            dg.Rows[i].Cells[57].Value = l21[i].RE_BVR;
+                            dg.Rows[i].Cells[58].Value = l21[i].barometricVerticalRate;
+                            dg.Rows[i].Cells[59].Value = l21[i].RE_GVR;
+                            dg.Rows[i].Cells[60].Value = l21[i].geometricVerticalRate;
+                            dg.Rows[i].Cells[61].Value = l21[i].RE_GS;
+                            dg.Rows[i].Cells[62].Value = l21[i].groundSpeed;
+                            dg.Rows[i].Cells[63].Value = l21[i].trackAngle;
+                            dg.Rows[i].Cells[64].Value = l21[i].trackAngleRate;
+                            dg.Rows[i].Cells[65].Value = TimeSpan.FromSeconds(l21[i].timeReportTrans).ToString(@"hh\:mm\:ss");
+                            dg.Rows[i].Cells[66].Value = l21[i].targetIdentification;
+                            dg.Rows[i].Cells[67].Value = l21[i].ECAT;
+                            dg.Rows[i].Cells[68].Value = l21[i].windSpeed;
+                            dg.Rows[i].Cells[69].Value = l21[i].windDirection;
+                            dg.Rows[i].Cells[70].Value = l21[i].temperature;
+                            dg.Rows[i].Cells[71].Value = l21[i].turbulence;
+                            dg.Rows[i].Cells[72].Value = l21[i].SAS;
+                            dg.Rows[i].Cells[73].Value = l21[i].source;
+                            dg.Rows[i].Cells[74].Value = l21[i].altitude;
+                            dg.Rows[i].Cells[75].Value = l21[i].MV;
+                            dg.Rows[i].Cells[76].Value = l21[i].AH;
+                            dg.Rows[i].Cells[77].Value = l21[i].AM;
+                            dg.Rows[i].Cells[78].Value = l21[i].altitudeFSS;
+                            dg.Rows[i].Cells[79].Value = l21[i].reportPeriod;
+                            dg.Rows[i].Cells[80].Value = l21[i].RA;
+                            dg.Rows[i].Cells[81].Value = l21[i].TC;
+                            dg.Rows[i].Cells[82].Value = l21[i].TS;
+                            dg.Rows[i].Cells[83].Value = l21[i].ARV;
+                            dg.Rows[i].Cells[84].Value = l21[i].CDTIA;
+                            dg.Rows[i].Cells[85].Value = l21[i].NotTCAS;
+                            dg.Rows[i].Cells[86].Value = l21[i].SA;
+                            dg.Rows[i].Cells[87].Value = l21[i].RID;
+                            dg.Rows[i].Cells[88].Value = l21[i].messageAmplitude;
+                            dg.Rows[i].Cells[89].Value = l21[i].POA;
+                            dg.Rows[i].Cells[90].Value = l21[i].CTDIS;
+                            dg.Rows[i].Cells[91].Value = l21[i].B2low;
+                            dg.Rows[i].Cells[92].Value = l21[i].RAS;
+                            dg.Rows[i].Cells[93].Value = l21[i].IDENT;
+                            dg.Rows[i].Cells[94].Value = l21[i].LandW;
+                            dg.Rows[i].Cells[95].Value = l21[i].LandW;
+                            dg.Rows[i].Cells[96].Value = l21[i].AOS_data;
+                            dg.Rows[i].Cells[97].Value = l21[i].TRD_data;
+                            dg.Rows[i].Cells[98].Value = l21[i].QI_data;
+                            dg.Rows[i].Cells[99].Value = l21[i].TI1_data;
+                            dg.Rows[i].Cells[100].Value = l21[i].MAM_data;
+                            dg.Rows[i].Cells[101].Value = l21[i].GH_data;
+                            dg.Rows[i].Cells[102].Value = l21[i].FL_data;
+                            dg.Rows[i].Cells[103].Value = l21[i].ISA_data;
+                            dg.Rows[i].Cells[104].Value = l21[i].FSA_data;
+                            dg.Rows[i].Cells[105].Value = l21[i].AS_data;
+                            dg.Rows[i].Cells[106].Value = l21[i].TAS_data;
+                            dg.Rows[i].Cells[107].Value = l21[i].MH_data;
+                            dg.Rows[i].Cells[108].Value = l21[i].BVR_data;
+                            dg.Rows[i].Cells[109].Value = l21[i].GVR_data;
+                            dg.Rows[i].Cells[110].Value = l21[i].GV_data;
+                            dg.Rows[i].Cells[111].Value = l21[i].TAR_data;
+                            dg.Rows[i].Cells[112].Value = l21[i].TI2_data;
+                            dg.Rows[i].Cells[113].Value = l21[i].TS_data;
+                            dg.Rows[i].Cells[114].Value = l21[i].MET_data;
+                            dg.Rows[i].Cells[115].Value = l21[i].ROA_data;
+                            dg.Rows[i].Cells[116].Value = l21[i].ARA_data;
+                            dg.Rows[i].Cells[117].Value = l21[i].SCC_data;
+
+
+
+
+                        }
+
                         break;
                 }
+
+
+
+
+                List<string> rows = new List<string>();
+                List<string> header = new List<string>();
+                foreach (DataGridViewColumn col in dg.Columns)
+                {
+                    header.Add(col.HeaderText);
+                }
+                string SEP = ";";
+                rows.Add(string.Join(SEP, header));
+                foreach (DataGridViewRow r in dg.Rows)
+                {
+                    try
+                    {
+                        List<string> cells = new List<string>();
+                        foreach (DataGridViewCell c in r.Cells)
+                        {
+                            cells.Add(Convert.ToString(c.Value) == string.Empty || Convert.ToString(c.Value) == "0" ? "N/A" : Convert.ToString(c.Value));
+                        }
+                        rows.Add(string.Join(SEP, cells));
+                    }
+                    catch (Exception ex) { }
+
+                }
+                File.WriteAllLines(sfd.FileName, rows);
             }
         }
+
+
     }
 }
 
