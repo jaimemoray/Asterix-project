@@ -18,11 +18,13 @@ namespace WindowsFormsApp1
         //List<CAT21> l21 = new List<CAT21>();
         string path;
         
+        
        
         public LoadForm()
         {
             InitializeComponent();
             openFileDialog1.Filter=".ast Files(*.ast)|*.ast"; //Show only  .ast files
+            LoadButton.Visible = false;
         }
 
         private void CloseButton_Click(object sender, EventArgs e)
@@ -37,6 +39,8 @@ namespace WindowsFormsApp1
             {
                 this.path = openFileDialog1.FileName;
                 MessageBox.Show("File selected");
+                LoadButton.Visible = true;
+                textBoxFile.Text = openFileDialog1.FileName;
 
             }
         }
@@ -51,13 +55,14 @@ namespace WindowsFormsApp1
             {
                 try
                 {
-
+                    textBoxLoad.Text = "Loading File...";
                     Fichero myFile = new Fichero(path);
                     myFile.readFile();
                     myFile.classifyMessage();
                     Main.main.myListCAT10= myFile.GetListCAT10();
                     Main.main.myListCAT21 = myFile.GetListCAT21();
-                    MessageBox.Show("Load Submit");
+                    //MessageBox.Show("Load Submit");
+                    textBoxLoad.Text = "File loaded successfully";
 
                 }
                 catch (FormatException)

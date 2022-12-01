@@ -1,7 +1,10 @@
 ﻿using DECODEclass;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
+using System.Data;
+using System.IO;
 
 namespace WindowsFormsApp1
 {
@@ -11,6 +14,7 @@ namespace WindowsFormsApp1
         List<CAT21> l21 = new List<CAT21>();
         int rowMess;
         int flag;
+        int filter;
         public DataForm()
         {
             InitializeComponent();
@@ -608,6 +612,155 @@ namespace WindowsFormsApp1
         }
 
 
+
+
+        public void SearchAttributes(string searchText)
+        {
+            switch (flag)
+            {
+                case 0:
+                    messagedataGrid.DataSource = l10.Where(x => x.targetIdentification.Contains (searchText));
+                break;
+
+            }
+            
+
+        }
+
+        private void comboBoxFilters_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            
+
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            string selected = comboBoxFilters.SelectedItem.ToString();
+            switch (flag)
+            {
+                //case 0:
+                    //if (selected == "CALLSIGN")
+                    //{
+                    //    foreach (DataGridViewRow r in messagedataGrid.Rows)
+                    //    {
+                    //        r.Visible = false;
+                    //    }
+                    //    foreach (DataGridViewRow DI in dataItemsGridView.Rows)
+                    //    {
+                    //        DI.Visible = false;
+                    //    }
+                    //    for (int i = 0; i < dataItemsGridView.Rows.Count; i++)
+                    //    {
+                    //        if (l10[i].targetIdentification == textBoxSearch.Text)
+                    //        {
+                    //            DataGridViewRow message = messagedataGrid.Rows[i];
+                    //            message.Visible = true;
+                    //        }
+                    //    }
+
+                    //}
+
+                //    if (selected == "")
+
+
+                //break;
+            }
+        }
+
+        private void csvbutton_Click(object sender, EventArgs e)
+        {
+            DataGridView dg = new DataGridView();
+            SaveFileDialog sfd = new SaveFileDialog() { Filter = "CSV|*.csv" };
+            switch (flag)
+            {
+                case 0:
+
+
+
+                    dg.ColumnCount = 16;
+                    dg.RowCount = l10.Count;
+                    dg.Columns[0].HeaderText = "ID";
+                    dg.Columns[1].HeaderText = "CAT";
+                    dg.Columns[2].HeaderText = "[Data Source Identifier] SAC";
+                    dg.Columns[3].HeaderText = "[Data Source Identifier] SIC";
+                    dg.Columns[4].HeaderText = "[Message Type] ";
+                    dg.Columns[5].HeaderText = "[Target Report Descriptor] TYP";
+                    dg.Columns[6].HeaderText = "[Target Report Descriptor] DCR";
+                    dg.Columns[7].HeaderText = "[Target Report Descriptor] CHN";
+                    dg.Columns[8].HeaderText = "[Target Report Descriptor] GBS";
+                    dg.Columns[9].HeaderText = "[Target Report Descriptor] CRT";
+                    dg.Columns[10].HeaderText = "[Target Report Descriptor] SIM";
+                    dg.Columns[11].HeaderText = "[Target Report Descriptor] TST";
+                    dg.Columns[12].HeaderText = "[Target Report Descriptor] RAB";
+                    dg.Columns[13].HeaderText = "[Target Report Descriptor] LOP";
+                    dg.Columns[14].HeaderText = "[Target Report Descriptor] TOT";
+                    dg.Columns[15].HeaderText = "[Target Report Descriptor] SPI";
+                    dg.Columns[16].HeaderText = "[Time of day]";
+
+
+
+
+
+                    for (int i=0;i<l10.Count;i++)
+                    {
+                        dg.Rows[i].Cells[0].Value = i;
+                        dg.Rows[i].Cells[1].Value = 10;
+                        dg.Rows[i].Cells[2].Value = l10[i].SAC;
+                        dg.Rows[i].Cells[3].Value = l10[i].SIC;
+                        dg.Rows[i].Cells[4].Value = l10[i].MessageType;
+                        dg.Rows[i].Cells[5].Value = l10[i].TYP;
+                        dg.Rows[i].Cells[6].Value = l10[i].DCR;
+                        dg.Rows[i].Cells[7].Value = l10[i].CHN;
+                        dg.Rows[i].Cells[8].Value = l10[i].GBS;
+                        dg.Rows[i].Cells[9].Value = l10[i].CRT;
+                        dg.Rows[i].Cells[10].Value = l10[i].SIM;
+                        dg.Rows[i].Cells[11].Value = l10[i].TST;
+                        dg.Rows[i].Cells[12].Value = l10[i].RAB;
+                        dg.Rows[i].Cells[13].Value = l10[i].LOP;
+                        dg.Rows[i].Cells[14].Value = l10[i].TOT;
+                        dg.Rows[i].Cells[15].Value = l10[i].SPI;
+                        dg.Rows[i].Cells[15].Value = TimeSpan.FromSeconds(l10[i].TimeOfDay).ToString("");
+
+                    }
+                    dg.Rows[0].Cells[0].Value = "Data Source Identifier";
+                   
+
+
+
+
+                    if (sfd.ShowDialog()==DialogResult.OK)
+                    {
+                        List<string> rows = new List<string>();
+                        List<string> header = new List<string>();
+                        foreach (DataGridViewColumn col in dg.Columns)
+                        {
+                            header.Add(col.HeaderText);
+                        }
+                        string SEP = ",";
+                        rows.Add(string.Join(SEP,header));
+                        foreach (DataGridViewRow r in dg.Rows)
+                        {
+                            try
+                            {
+                                List<string> cells = new List<string>();
+                                foreach (DataGridViewCell c in r.Cells)
+                                {
+                                    cells.Add(Convert.ToString(c.Value)==string.Empty? "N/A": Convert.ToString(c.Value));
+                                }
+                                rows.Add(string.Join(SEP, cells));
+                            }
+                            catch (Exception ex) { }
+
+                        }
+                        File.WriteAllLines(sfd.FileName,rows);
+                    }
+ 
+                    break;
+                case 1:
+                    break;
+            }
+        }
     }
 }
 

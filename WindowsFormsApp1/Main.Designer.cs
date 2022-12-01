@@ -45,7 +45,7 @@ namespace WindowsFormsApp1
             // panelButtoms
             // 
             this.panelButtoms.AutoScroll = true;
-            this.panelButtoms.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panelButtoms.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panelButtoms.Controls.Add(this.simulationButton);
             this.panelButtoms.Controls.Add(this.subDataPanel);
             this.panelButtoms.Controls.Add(this.Databutton);
@@ -59,78 +59,104 @@ namespace WindowsFormsApp1
             // 
             // simulationButton
             // 
+            this.simulationButton.AutoSize = true;
+            this.simulationButton.BackColor = System.Drawing.SystemColors.ControlText;
             this.simulationButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.simulationButton.Location = new System.Drawing.Point(0, 280);
+            this.simulationButton.FlatAppearance.BorderSize = 0;
+            this.simulationButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.simulationButton.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.simulationButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.simulationButton.Location = new System.Drawing.Point(0, 388);
             this.simulationButton.Name = "simulationButton";
-            this.simulationButton.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
-            this.simulationButton.Size = new System.Drawing.Size(200, 45);
+            this.simulationButton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.simulationButton.Size = new System.Drawing.Size(200, 70);
             this.simulationButton.TabIndex = 4;
             this.simulationButton.Text = "Simulation";
             this.simulationButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.simulationButton.UseVisualStyleBackColor = true;
+            this.simulationButton.UseVisualStyleBackColor = false;
             this.simulationButton.Click += new System.EventHandler(this.simulationButton_Click);
             // 
             // subDataPanel
             // 
-            this.subDataPanel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.subDataPanel.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.subDataPanel.Controls.Add(this.CAT21button);
             this.subDataPanel.Controls.Add(this.CAT10button);
             this.subDataPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.subDataPanel.Location = new System.Drawing.Point(0, 190);
+            this.subDataPanel.Location = new System.Drawing.Point(0, 288);
             this.subDataPanel.Name = "subDataPanel";
-            this.subDataPanel.Size = new System.Drawing.Size(200, 90);
+            this.subDataPanel.Size = new System.Drawing.Size(200, 100);
             this.subDataPanel.TabIndex = 3;
             // 
             // CAT21button
             // 
+            this.CAT21button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.CAT21button.Dock = System.Windows.Forms.DockStyle.Top;
-            this.CAT21button.Location = new System.Drawing.Point(0, 45);
+            this.CAT21button.FlatAppearance.BorderSize = 0;
+            this.CAT21button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CAT21button.Font = new System.Drawing.Font("Copperplate Gothic Light", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CAT21button.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.CAT21button.Location = new System.Drawing.Point(0, 50);
             this.CAT21button.Name = "CAT21button";
             this.CAT21button.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
-            this.CAT21button.Size = new System.Drawing.Size(200, 45);
+            this.CAT21button.Size = new System.Drawing.Size(200, 50);
             this.CAT21button.TabIndex = 1;
             this.CAT21button.Text = "CAT 21";
             this.CAT21button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CAT21button.UseVisualStyleBackColor = true;
+            this.CAT21button.UseVisualStyleBackColor = false;
             this.CAT21button.Click += new System.EventHandler(this.CAT21button_Click);
             // 
             // CAT10button
             // 
+            this.CAT10button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.CAT10button.Dock = System.Windows.Forms.DockStyle.Top;
+            this.CAT10button.FlatAppearance.BorderSize = 0;
+            this.CAT10button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CAT10button.Font = new System.Drawing.Font("Copperplate Gothic Light", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CAT10button.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.CAT10button.Location = new System.Drawing.Point(0, 0);
             this.CAT10button.Name = "CAT10button";
             this.CAT10button.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
-            this.CAT10button.Size = new System.Drawing.Size(200, 45);
+            this.CAT10button.Size = new System.Drawing.Size(200, 50);
             this.CAT10button.TabIndex = 0;
             this.CAT10button.Text = "CAT 10";
             this.CAT10button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CAT10button.UseVisualStyleBackColor = true;
+            this.CAT10button.UseVisualStyleBackColor = false;
             this.CAT10button.Click += new System.EventHandler(this.CAT10button_Click);
             // 
             // Databutton
             // 
+            this.Databutton.BackColor = System.Drawing.SystemColors.ControlText;
             this.Databutton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Databutton.Location = new System.Drawing.Point(0, 145);
+            this.Databutton.FlatAppearance.BorderSize = 0;
+            this.Databutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Databutton.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Databutton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Databutton.Location = new System.Drawing.Point(0, 218);
             this.Databutton.Name = "Databutton";
             this.Databutton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.Databutton.Size = new System.Drawing.Size(200, 45);
+            this.Databutton.Size = new System.Drawing.Size(200, 70);
             this.Databutton.TabIndex = 2;
             this.Databutton.Text = "Data View";
             this.Databutton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Databutton.UseVisualStyleBackColor = true;
+            this.Databutton.UseVisualStyleBackColor = false;
             this.Databutton.Click += new System.EventHandler(this.Databutton_Click);
             // 
             // LoadButton
             // 
+            this.LoadButton.BackColor = System.Drawing.SystemColors.ControlText;
             this.LoadButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.LoadButton.Location = new System.Drawing.Point(0, 100);
+            this.LoadButton.FlatAppearance.BorderSize = 0;
+            this.LoadButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LoadButton.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LoadButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.LoadButton.Location = new System.Drawing.Point(0, 148);
             this.LoadButton.Name = "LoadButton";
             this.LoadButton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.LoadButton.Size = new System.Drawing.Size(200, 45);
+            this.LoadButton.Size = new System.Drawing.Size(200, 70);
             this.LoadButton.TabIndex = 1;
             this.LoadButton.Text = "Load File";
             this.LoadButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.LoadButton.UseVisualStyleBackColor = true;
+            this.LoadButton.UseVisualStyleBackColor = false;
             this.LoadButton.Click += new System.EventHandler(this.LoadButton_Click);
             // 
             // panelLogo
@@ -138,12 +164,12 @@ namespace WindowsFormsApp1
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
             this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(200, 100);
+            this.panelLogo.Size = new System.Drawing.Size(200, 148);
             this.panelLogo.TabIndex = 0;
             // 
             // panelChildForm
             // 
-            this.panelChildForm.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelChildForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.panelChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelChildForm.Location = new System.Drawing.Point(200, 0);
             this.panelChildForm.Name = "panelChildForm";
@@ -160,6 +186,7 @@ namespace WindowsFormsApp1
             this.Name = "Main";
             this.Text = "Main";
             this.panelButtoms.ResumeLayout(false);
+            this.panelButtoms.PerformLayout();
             this.subDataPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
