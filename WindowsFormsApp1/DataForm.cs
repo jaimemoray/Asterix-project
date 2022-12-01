@@ -639,32 +639,69 @@ namespace WindowsFormsApp1
             string selected = comboBoxFilters.SelectedItem.ToString();
             switch (flag)
             {
-                //case 0:
-                    //if (selected == "CALLSIGN")
-                    //{
-                    //    foreach (DataGridViewRow r in messagedataGrid.Rows)
-                    //    {
-                    //        r.Visible = false;
-                    //    }
-                    //    foreach (DataGridViewRow DI in dataItemsGridView.Rows)
-                    //    {
-                    //        DI.Visible = false;
-                    //    }
-                    //    for (int i = 0; i < dataItemsGridView.Rows.Count; i++)
-                    //    {
-                    //        if (l10[i].targetIdentification == textBoxSearch.Text)
-                    //        {
-                    //            DataGridViewRow message = messagedataGrid.Rows[i];
-                    //            message.Visible = true;
-                    //        }
-                    //    }
-
-                    //}
-
-                //    if (selected == "")
+                case 0:
+                    if (selected == "TRACK NUMBER")
+                    {
+                        //foreach (DataGridViewRow r in messagedataGrid.Rows)
+                        //{
+                        //    r.Visible = false;
+                        //}
+                        //foreach (DataGridViewRow DI in dataItemsGridView.Rows)
+                        //{
+                        //    DI.Visible = false;
+                        //}
+                        //for (int i = 0; i < dataItemsGridView.Rows.Count; i++)
+                        //{
+                        //    if (l10[i].targetIdentification == textBoxSearch.Text)
+                        //    {
+                        //        DataGridViewRow message = messagedataGrid.Rows[i];
+                        //        message.Visible = true;
+                        //    }
+                        //}
 
 
-                //break;
+                        //for (int i = 0; i < l10.Count; i++)
+                        //{
+                        //    if(Convert.ToString(l10[i].trackNumber)== textBoxSearch.Text)
+                        //    {
+                        //        messagedataGrid.Rows[i].Visible = true;
+                        //    }
+
+                        //}
+
+                        //List<CAT10> filterlist10 = l10.FindAll(m => Convert.ToString(m.trackNumber) == textBoxSearch.Text);
+
+                        
+                        //messagedataGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                        //messagedataGrid.ReadOnly = true;
+                        //messagedataGrid.RowHeadersVisible = false;
+                        //messagedataGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                        //messagedataGrid.RowCount = filterlist10.Count; //Tendremos tantas filas como mensajes haya en nuestra lista
+                        //messagedataGrid.ColumnCount = 5; //ID, CAT, TIME,Length
+                        //messagedataGrid.Columns[0].HeaderText = "ID";
+                        //messagedataGrid.Columns[1].HeaderText = "CAT";
+                        //messagedataGrid.Columns[2].HeaderText = "Time of Day";
+                        //messagedataGrid.Columns[3].HeaderText = "Length";
+                        //messagedataGrid.Columns[4].HeaderText = "Data Items";
+
+                        //for (int i = 0; i < filterlist10.Count; i++)
+                        //{
+                        //    messagedataGrid.Rows[i].Cells[0].Value = i;
+                        //    messagedataGrid.Rows[i].Cells[1].Value = 10;
+                        //    messagedataGrid.Rows[i].Cells[2].Value = filterlist10[i].convert2TimeOfDay(l10[i].TimeOfDay);
+                        //    messagedataGrid.Rows[i].Cells[3].Value = filterlist10[i].GetLength();
+                        //    messagedataGrid.Rows[i].Cells[4].Value = filterlist10[i].GetItemList().Count;
+
+
+                        //}
+
+
+                    }
+
+                    if (selected == "") { }
+
+
+                  break;
             }
         }
 
