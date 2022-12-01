@@ -36,6 +36,7 @@ namespace WindowsFormsApp1
             this.LoadButton = new System.Windows.Forms.Button();
             this.textBoxFile = new System.Windows.Forms.TextBox();
             this.textBoxLoad = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // CloseButton
@@ -101,12 +102,22 @@ namespace WindowsFormsApp1
             this.textBoxLoad.Size = new System.Drawing.Size(340, 15);
             this.textBoxLoad.TabIndex = 4;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(842, 317);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(74, 16);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "jkhbhjkhghj";
+            // 
             // LoadForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1166, 658);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxLoad);
             this.Controls.Add(this.textBoxFile);
             this.Controls.Add(this.LoadButton);
@@ -128,5 +139,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button LoadButton;
         private System.Windows.Forms.TextBox textBoxFile;
         private System.Windows.Forms.TextBox textBoxLoad;
+        private System.Windows.Forms.Label label1;
     }
 }
