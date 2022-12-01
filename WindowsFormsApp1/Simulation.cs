@@ -18,9 +18,7 @@ using DECODEclass;
 namespace WindowsFormsApp1
 {
     public partial class Simulation : Form
-    {
-        //Timer
-        
+    {   
 
         List<marker> markers = new List<marker>();
         //SMR
@@ -43,8 +41,10 @@ namespace WindowsFormsApp1
         int slot=1;
         int index = 0;
 
+        //To eliminate previous positions
+        int lIni = 0; //Same value than index
+        
 
-        // Number of plane
 
 
         public Simulation()
@@ -109,8 +109,11 @@ namespace WindowsFormsApp1
             {
                 for (int i = 0; i < Main.main.myListCAT10.Count; i++)
                 {
-
-                        markers.Add(marker.myMarker(Main.main.myListCAT10[i].TimeOfDay, "10", i, Main.main.myListCAT10[i].SIC, Main.main.myListCAT10[i].x, Main.main.myListCAT10[i].y, Main.main.myListCAT10[i].targetAddress));
+                    if (Main.main.myListCAT10[i].MessageType=="Target Report")
+                    {
+                        markers.Add(marker.myMarker(Main.main.myListCAT10[i].TimeOfDay, "10", i, Main.main.myListCAT10[i].SIC, Main.main.myListCAT10[i].x, Main.main.myListCAT10[i].y, Convert.ToString(Main.main.myListCAT10[i].trackNumber)));
+                    }
+                        
 
                    
                 }
@@ -121,7 +124,7 @@ namespace WindowsFormsApp1
 
                     for (int i = 0; i < Main.main.myListCAT21.Count; i++)
                     {
-                        markers.Add(marker.myMarker(Main.main.myListCAT21[i].timeReportTrans, "21", i, Main.main.myListCAT21[i].SIC, Main.main.myListCAT21[i].latitude, Main.main.myListCAT21[i].longitude, Main.main.myListCAT21[i].targetIdentification));
+                        markers.Add(marker.myMarker(Main.main.myListCAT21[i].timeReportTrans, "21", i, Main.main.myListCAT21[i].SIC, Main.main.myListCAT21[i].latitude, Main.main.myListCAT21[i].longitude, Convert.ToString(Main.main.myListCAT21[i].trackNumber)));
                     }
 
 
@@ -142,12 +145,13 @@ namespace WindowsFormsApp1
                 switch (markers[index].ins)
                 {
                     case "SMR":
-                        if (SMRlayer.Markers.Count > 20)
-                        {
-                            SMRlayer.Markers.RemoveAt(0);
-                        }
+                        //if (SMRlayer.Markers.Count > 20)
+                        //{
+                        //    SMRlayer.Markers.RemoveAt(0);
+                        //}
                         if (Main.main.myListCAT10[markers[index].indexList].MessageType== "Target Report")
                         {
+                            //eliminatePreviusPos(0, markers[index]);
                             SMRlayer.Markers.Add(markers[index]);
                             gMapControl1.Overlays.Add(SMRlayer);
                         }
@@ -156,13 +160,15 @@ namespace WindowsFormsApp1
                         break;
                     case "MLAT":
 
-
-                        MLATlayer.Markers.Add(markers[index]);
-                        gMapControl1.Overlays.Add(MLATlayer);
-
+                        if (Main.main.myListCAT10[markers[index].indexList].MessageType == "Target Report")
+                        {
+                            //eliminatePreviusPos(1, markers[index]);
+                            MLATlayer.Markers.Add(markers[index]);
+                            gMapControl1.Overlays.Add(MLATlayer);
+                        }
                         break;
                     case "ADSB":
-                        //eliminatePreviusPos(1, markers[index]);
+                        //eliminatePreviusPos(2, markers[index]);
                         ADSBlayer.Markers.Add(markers[index]);
                         gMapControl1.Overlays.Add(ADSBlayer);
                         break;
@@ -307,38 +313,31 @@ namespace WindowsFormsApp1
 
 
 
-        //private void eliminatePreviusPos(int f, marker m, int ind)
+        //private void eliminatePreviusPos(int f,marker m)
         //{
-        //    if (m.targetAddress!=null)
+        //    try
         //    {
-        //        switch (f)
+        //        if (m.trackNumber != null)
         //        {
-        //            case 0:
-
-        //                    for (int i = 0; i < ind; i++)
-        //                    {
-        //                        if (markers[i].targetAddress == m.targetAddress)
-        //                        {
-        //                            MLATlayer.Markers.Remove(markers[i]);
-        //                            break;
-        //                        }
-        //                    }
-
-
-        //                break;
-        //            case 1:
-        //                for (int i = 0; i < ind; i++)
-        //                {
-        //                    if (markers[i].targetAddress == m.targetAddress)
-        //                    {
-        //                        MLATlayer.Markers.Remove(markers[i]);
-        //                        break;
-        //                    }
-        //                }
-
-        //                break;
+        //            marker mkr = markers.Find(p => p.trackNumber == m.trackNumber);
+                    
+        //            switch (f)
+        //            {
+        //                case 0:
+        //                   Console.WriteLine( SMRlayer.Markers.Remove(mkr.GetGMarker()));
+        //                    break;
+        //                case 1:
+        //                    MLATlayer.Markers.Remove(mkr);
+        //                    break;
+        //                case 2:
+        //                    ADSBlayer.Markers.Remove(mkr);
+        //                    break;
+        //            }
         //        }
         //    }
+        //    catch (Exception e) { }
+
+
 
         //}
     }
