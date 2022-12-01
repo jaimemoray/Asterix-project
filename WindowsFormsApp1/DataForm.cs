@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using System.Data;
+using System.IO;
 
 namespace WindowsFormsApp1
 {
@@ -637,7 +639,7 @@ namespace WindowsFormsApp1
             string selected = comboBoxFilters.SelectedItem.ToString();
             switch (flag)
             {
-                case 0:
+                //case 0:
                     //if (selected == "CALLSIGN")
                     //{
                     //    foreach (DataGridViewRow r in messagedataGrid.Rows)
@@ -659,10 +661,62 @@ namespace WindowsFormsApp1
 
                     //}
 
-                    if (selected == "")
+                //    if (selected == "")
 
 
-                break;
+                //break;
+            }
+        }
+
+        private void csvbutton_Click(object sender, EventArgs e)
+        {
+            DataGridView dg = new DataGridView();
+            SaveFileDialog sfd = new SaveFileDialog() {Filter="CSV|*.csv"};
+            dg.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dg.ColumnCount = 2;
+            dg.RowCount = 2;
+            dg.Columns[0].HeaderText = "ID";
+            dg.Columns[1].HeaderText = "CAT";
+            dg.Rows[0].Cells[0].Value = "Hola";
+            dg.Rows[0].Cells[1].Value = "Pepe";
+            switch (flag)
+            {
+                case 0:
+
+
+
+
+                    
+                    if (sfd.ShowDialog()==DialogResult.OK)
+                    {
+                        List<string> rows = new List<string>();
+                        List<string> header = new List<string>();
+                        foreach (DataGridViewColumn col in dg.Columns)
+                        {
+                            header.Add(col.HeaderText);
+                        }
+                        string SEP = ",";
+                        rows.Add(string.Join(SEP,header));
+                        foreach (DataGridViewRow r in dg.Rows)
+                        {
+                            try
+                            {
+                                List<string> cells = new List<string>();
+                                foreach (DataGridViewCell c in r.Cells)
+                                {
+                                    cells.Add(Convert.ToString(c.Value)==string.Empty? " ": Convert.ToString(c.Value));
+                                }
+                                rows.Add(string.Join(SEP, cells));
+                            }
+                            catch (Exception ex) { }
+
+                        }
+                        File.WriteAllLines(sfd.FileName,rows);
+                    }
+ 
+                    break;
+                case 1:
+                    break;
             }
         }
     }

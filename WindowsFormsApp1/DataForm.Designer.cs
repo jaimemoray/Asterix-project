@@ -38,6 +38,8 @@ namespace WindowsFormsApp1
             this.comboBoxFilters = new System.Windows.Forms.ComboBox();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.buttonSearch = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.csvbutton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.messagedataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataItemsGridView)).BeginInit();
             this.SuspendLayout();
@@ -150,12 +152,34 @@ namespace WindowsFormsApp1
             this.buttonSearch.UseVisualStyleBackColor = true;
             this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Location = new System.Drawing.Point(517, 267);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(101, 17);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Export to .csv :";
+            // 
+            // csvbutton
+            // 
+            this.csvbutton.Location = new System.Drawing.Point(533, 309);
+            this.csvbutton.Name = "csvbutton";
+            this.csvbutton.Size = new System.Drawing.Size(75, 23);
+            this.csvbutton.TabIndex = 12;
+            this.csvbutton.Text = "Export";
+            this.csvbutton.UseVisualStyleBackColor = true;
+            this.csvbutton.Click += new System.EventHandler(this.csvbutton_Click);
+            // 
             // DataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1166, 658);
+            this.Controls.Add(this.csvbutton);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.comboBoxFilters);
@@ -187,5 +211,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.ComboBox comboBoxFilters;
         private System.Windows.Forms.TextBox textBoxSearch;
         private System.Windows.Forms.Button buttonSearch;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button csvbutton;
     }
 }
