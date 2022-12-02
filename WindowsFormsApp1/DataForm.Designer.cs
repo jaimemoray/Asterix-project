@@ -57,7 +57,7 @@ namespace WindowsFormsApp1
             this.messagedataGrid.RowTemplate.Height = 24;
             this.messagedataGrid.Size = new System.Drawing.Size(433, 400);
             this.messagedataGrid.TabIndex = 0;
-            this.messagedataGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.messagedataGrid_CellDoubleClick);
+            this.messagedataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.messagedataGrid_CellClick);
             // 
             // CloseButton
             // 
@@ -83,7 +83,7 @@ namespace WindowsFormsApp1
             this.dataItemsGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataItemsGridView.Size = new System.Drawing.Size(434, 400);
             this.dataItemsGridView.TabIndex = 4;
-            this.dataItemsGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataItemsGridView_CellContentDoubleClick);
+            this.dataItemsGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataItemsGridView_CellClick);
             // 
             // ItemInformationTextBox
             // 

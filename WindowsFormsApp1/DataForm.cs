@@ -12,10 +12,12 @@ namespace WindowsFormsApp1
     {
         List<CAT10> l10 = new List<CAT10>();
         List<CAT10> FilterL10 = new List<CAT10>();
+        List<CAT21> FilterL21 = new List<CAT21>();
         List<CAT21> l21 = new List<CAT21>();
+        bool filter = false;
         int rowMess;
         int flag;
-        int filter;
+        
         public DataForm()
         {
             InitializeComponent();
@@ -34,7 +36,7 @@ namespace WindowsFormsApp1
             l21 = l;
             flag = 1;
         }
-        private void CreateDataGridView(bool filter)
+        private void CreateDataGridView()
         {
             messagedataGrid.Rows.Clear();
             messagedataGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -51,11 +53,8 @@ namespace WindowsFormsApp1
 
             switch (flag)
             {
-                case 0:
 
-                    switch (filter)
-                    {
-                        case false:
+                case 0:
                             messagedataGrid.RowCount = l10.Count; //Tendremos tantas filas como mensajes haya en nuestra lista
 
 
@@ -68,26 +67,7 @@ namespace WindowsFormsApp1
                                 messagedataGrid.Rows[i].Cells[4].Value = l10[i].GetItemList().Count;
 
                                 
-                            }
-                            break;
-                        case true:
-
-                            messagedataGrid.RowCount = FilterL10.Count; //Tendremos tantas filas como mensajes haya en nuestra lista
-
-
-                            for (int i = 0; i < FilterL10.Count; i++)
-                            {
-                                messagedataGrid.Rows[i].Cells[0].Value = i;
-                                messagedataGrid.Rows[i].Cells[1].Value = 10;
-                                messagedataGrid.Rows[i].Cells[2].Value = FilterL10[i].convert2TimeOfDay(FilterL10[i].TimeOfDay);
-                                messagedataGrid.Rows[i].Cells[3].Value = FilterL10[i].GetLength();
-                                messagedataGrid.Rows[i].Cells[4].Value = FilterL10[i].GetItemList().Count;
-
-
-                            }
-                            break;
-                           
-                    }
+                            }                   
  
                    
                     break;
@@ -113,7 +93,7 @@ namespace WindowsFormsApp1
         }
         private void DataForm_Load(object sender, EventArgs e)
         {
-            CreateDataGridView(false);
+            CreateDataGridView();
 
         }
 
@@ -122,517 +102,9 @@ namespace WindowsFormsApp1
             Close();
         }
 
-        private void messagedataGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            switch (flag)
-            {
-                case 0:
-                    rowMess = messagedataGrid.CurrentCell.RowIndex;
-                    dataItemsGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                    dataItemsGridView.ReadOnly = true;
-                    dataItemsGridView.RowHeadersVisible = false;
-                    dataItemsGridView.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-                    dataItemsGridView.RowCount = l10[rowMess].GetItemList().Count;
-                    dataItemsGridView.ColumnCount = 3;
-                    dataItemsGridView.Columns[0].HeaderText = "FRN";
-                    dataItemsGridView.Columns[1].HeaderText = "Data Field";
-                    dataItemsGridView.Columns[2].HeaderText = "Description";
-
-                    for (int i = 0; i < l10[rowMess].GetItemList().Count; i++)
-                    {
-                        dataItemsGridView.Rows[i].Cells[0].Value = l10[rowMess].GetItemList()[i][0];
-                        dataItemsGridView.Rows[i].Cells[1].Value = l10[rowMess].GetItemList()[i][1];
-                        dataItemsGridView.Rows[i].Cells[2].Value = l10[rowMess].GetItemList()[i][2];
-                    }
-                    break;
-
-                case 1:
-
-                    rowMess = messagedataGrid.CurrentCell.RowIndex;
-                    dataItemsGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                    dataItemsGridView.ReadOnly = true;
-                    dataItemsGridView.RowHeadersVisible = false;
-                    dataItemsGridView.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-                    dataItemsGridView.RowCount = l21[rowMess].GetItemList().Count;
-                    dataItemsGridView.ColumnCount = 3;
-                    dataItemsGridView.Columns[0].HeaderText = "FRN";
-                    dataItemsGridView.Columns[1].HeaderText = "Data Field";
-                    dataItemsGridView.Columns[2].HeaderText = "Description";
-
-                    for (int i = 0; i < l21[rowMess].GetItemList().Count; i++)
-                    {
-                        dataItemsGridView.Rows[i].Cells[0].Value = l21[rowMess].GetItemList()[i][0];
-                        dataItemsGridView.Rows[i].Cells[1].Value = l21[rowMess].GetItemList()[i][1];
-                        dataItemsGridView.Rows[i].Cells[2].Value = l21[rowMess].GetItemList()[i][2];
-                    }
-                    break;
-
-            }
-        }
-
-        private void dataItemsGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            ItemInformationTextBox.Text = "";
-            dataItemsGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            int rowDItem = dataItemsGridView.CurrentCell.RowIndex;
-
-            int FRN;
-
-            List<string> itemList = new List<string>();
-
-            
-
-            switch(flag)
-            {
-                case 0:
-                    FRN = Convert.ToInt32(l10[rowMess].GetItemList()[rowDItem][0]);
-
-                    switch (FRN)
-                    {
-                        case 1:
-                            ItemInformationTextBox.Text += "SAC: " + l10[rowMess].SAC+ Environment.NewLine;
-                            ItemInformationTextBox.Text += "SIC: " + l10[rowMess].SIC + Environment.NewLine;
-
-                            break;
-                        case 2:
-                            ItemInformationTextBox.Text += "Message Type: " + l10[rowMess].MessageType + Environment.NewLine;
-
-                            break;
-                        case 3:
-                            ItemInformationTextBox.Text += "TYP: " + l10[rowMess].TYP + Environment.NewLine;
-                            ItemInformationTextBox.Text += "DCR: " + l10[rowMess].DCR + Environment.NewLine;
-                            ItemInformationTextBox.Text += "CHN: " + l10[rowMess].CHN + Environment.NewLine;
-                            ItemInformationTextBox.Text += "GBS: " + l10[rowMess].GBS + Environment.NewLine;
-                            ItemInformationTextBox.Text += "CRT: " + l10[rowMess].CRT + Environment.NewLine;
-                            ItemInformationTextBox.Text += "SIM: " + l10[rowMess].SIM + Environment.NewLine;
-                            ItemInformationTextBox.Text += "TST: " + l10[rowMess].TST + Environment.NewLine;
-                            ItemInformationTextBox.Text += "RAB: " + l10[rowMess].RAB + Environment.NewLine;
-                            ItemInformationTextBox.Text += "LOP: " + l10[rowMess].LOP + Environment.NewLine;
-                            ItemInformationTextBox.Text += "TOT: " + l10[rowMess].TOT + Environment.NewLine;
-                            ItemInformationTextBox.Text += "SPI: " + l10[rowMess].SPI + Environment.NewLine;
-
-                            break;
-                        case 4:
-                            ItemInformationTextBox.Text += "Time of Day: " + l10[rowMess].convert2TimeOfDay(l10[rowMess].TimeOfDay) + Environment.NewLine;
-
-                            break;
-                        case 5:
-                            ItemInformationTextBox.Text += "Latitude: " + Math.Round(l10[rowMess].latitude,3) + " º" + Environment.NewLine;
-                            ItemInformationTextBox.Text += "Longitude: " + Math.Round(l10[rowMess].longitude,3) + " º" + Environment.NewLine;
-                            break;
-                        case 6:
-                            ItemInformationTextBox.Text += "rho: " + l10[rowMess].rho + " m" + Environment.NewLine;
-                            ItemInformationTextBox.Text += "theta: " + l10[rowMess].theta + " º"+ Environment.NewLine;
-
-                            break;
-                        case 7:
-                            ItemInformationTextBox.Text += "x: " + l10[rowMess].x + " m" + Environment.NewLine;
-                            ItemInformationTextBox.Text += "y: " + l10[rowMess].y + " m" + Environment.NewLine;
-
-                            break;
-                        case 8:
-                            ItemInformationTextBox.Text += "Ground speed: " + Math.Round(l10[rowMess].groundSpeed,3) + " kt" + Environment.NewLine;
-                            ItemInformationTextBox.Text += "Track angle: " + Math.Round(l10[rowMess].trackAngle)+ " º" + Environment.NewLine;
-                            break;
-                        case 9:
-                            ItemInformationTextBox.Text += "Vx: " + l10[rowMess].Vx + " m/s" + Environment.NewLine;
-                            ItemInformationTextBox.Text += "Vy: " + l10[rowMess].Vy + " m/s" + Environment.NewLine;
-                            break;
-                        case 10:
-                            ItemInformationTextBox.Text += "Track number: " + l10[rowMess].trackNumber + Environment.NewLine;
-
-                            break;
-                        case 11:
-                            ItemInformationTextBox.Text += "CNF: " + l10[rowMess].CNF + Environment.NewLine;
-                            ItemInformationTextBox.Text += "TRE: " + l10[rowMess].TRE + Environment.NewLine;
-                            ItemInformationTextBox.Text += "CST: " + l10[rowMess].CST + Environment.NewLine;
-                            ItemInformationTextBox.Text += "MAH: " + l10[rowMess].MAH + Environment.NewLine;
-                            ItemInformationTextBox.Text += "TCC: " + l10[rowMess].TCC + Environment.NewLine;
-                            ItemInformationTextBox.Text += "STH: " + l10[rowMess].STH + Environment.NewLine;
-                            ItemInformationTextBox.Text += "TOM: " + l10[rowMess].TOM + Environment.NewLine;
-                            ItemInformationTextBox.Text += "DOU: " + l10[rowMess].DOU + Environment.NewLine;
-                            ItemInformationTextBox.Text += "MSR: " + l10[rowMess].MSR + Environment.NewLine;
-                            ItemInformationTextBox.Text += "GHO: " + l10[rowMess].GHO + Environment.NewLine;
-
-                            break;
-                        case 12:
-                            ItemInformationTextBox.Text += "V 3A: " + l10[rowMess].V_3A + Environment.NewLine;
-                            ItemInformationTextBox.Text += "G 3A: " + l10[rowMess].G_3A + Environment.NewLine;
-                            ItemInformationTextBox.Text += "L: " + l10[rowMess].L + Environment.NewLine;
-                            ItemInformationTextBox.Text += "Mode 3A: " + l10[rowMess].mode3A + Environment.NewLine;
-
-                            break;
-                        case 13:
-                            ItemInformationTextBox.Text += "Target Address: " + l10[rowMess].targetAddress + Environment.NewLine;
-
-                            break;
-                        case 14:
-                            ItemInformationTextBox.Text += "STI: " + l10[rowMess].STI + Environment.NewLine;
-                            ItemInformationTextBox.Text += "Target Identification: " + l10[rowMess].targetIdentification + Environment.NewLine;
-
-                            break;
-                        case 15:
-                            ItemInformationTextBox.Text += "REP: " + l10[rowMess].REP_ModeSMB + Environment.NewLine;
-                            for (int j = 0; j < l10[rowMess].REP_ModeSMB; j++)
-                            {
-                                ItemInformationTextBox.Text += "Id: " + (j + 1) + Environment.NewLine;
-                                ItemInformationTextBox.Text += "MB Data: " + l10[rowMess].GetMBDataList()[j] + Environment.NewLine;
-                                ItemInformationTextBox.Text += "BDS1: " + l10[rowMess].GetBDS1List()[j] + Environment.NewLine;
-                                ItemInformationTextBox.Text += "BDS2: " + l10[rowMess].GetBDS2List()[j] + Environment.NewLine;
-                            }
-
-                            break;
-                        case 16:
-                            ItemInformationTextBox.Text += "VFI: " + l10[rowMess].VFI + Environment.NewLine;
-
-                            break;
-                        case 17:
-                            ItemInformationTextBox.Text += "V FL: " + l10[rowMess].V_FL + Environment.NewLine;
-                            ItemInformationTextBox.Text += "G FL: " + l10[rowMess].G_FL + Environment.NewLine;
-                            ItemInformationTextBox.Text += "Flight level: " + l10[rowMess].flightLevel + Environment.NewLine;
-
-                            break;
-                        case 18:
-                            ItemInformationTextBox.Text += "Height: " + l10[rowMess].height + " ft" + Environment.NewLine;
-
-                            break;
-                        case 19:
-                            ItemInformationTextBox.Text += "Target Length: " + l10[rowMess].targetLength + " m" + Environment.NewLine;
-                            ItemInformationTextBox.Text += "Target Orientation: " + l10[rowMess].targetOrientation + " º" + Environment.NewLine;
-                            ItemInformationTextBox.Text += "Target Width: " + l10[rowMess].targetWidth + " m" + Environment.NewLine;
-                            break;
-                        case 20:
-                            ItemInformationTextBox.Text += "NOGO: " + l10[rowMess].NOGO + Environment.NewLine;
-                            ItemInformationTextBox.Text += "OVL: " + l10[rowMess].OVL + Environment.NewLine;
-                            ItemInformationTextBox.Text += "TSV: " + l10[rowMess].TSV + Environment.NewLine;
-                            ItemInformationTextBox.Text += "DIV: " + l10[rowMess].DIV + Environment.NewLine;
-                            ItemInformationTextBox.Text += "TTF: " + l10[rowMess].TTF + Environment.NewLine;
-
-                            break;
-                        case 21:
-                            ItemInformationTextBox.Text += "TRB: " + l10[rowMess].TRB + Environment.NewLine;
-                            ItemInformationTextBox.Text += "MSG: " + l10[rowMess].MSG + Environment.NewLine;
-
-                            break;
-                        case 22:
-                            ItemInformationTextBox.Text += "Sigma X: " + l10[rowMess].sigmax + " m" + Environment.NewLine;
-                            ItemInformationTextBox.Text += "Sigma Y: " + l10[rowMess].sigmay + " m" + Environment.NewLine;
-                            ItemInformationTextBox.Text += "Sigma XY: " + l10[rowMess].sigmaxy + " m^2" + Environment.NewLine;
-
-                            break;
-                        case 23:
-                            ItemInformationTextBox.Text += "REP: " + l10[rowMess].REP_presence + Environment.NewLine;
-                            for (int j = 0; j < l10[rowMess].REP_presence; j++)
-                            {
-                                ItemInformationTextBox.Text += "Id: " + (j + 1) + Environment.NewLine;
-                                ItemInformationTextBox.Text += "Rho : " + l10[rowMess].GetRhoThetaPresenceList()[j][0] + " m" + Environment.NewLine;
-                                ItemInformationTextBox.Text += "Theta : " + l10[rowMess].GetRhoThetaPresenceList()[j][1] +" º" + Environment.NewLine;
-
-                            }
-
-                            break;
-                        case 24:
-                            ItemInformationTextBox.Text += "PAM: " + l10[rowMess].PAM + Environment.NewLine;
-
-                            break;
-                        case 25:
-                            ItemInformationTextBox.Text += "Ax: " + l10[rowMess].Ax + " m/s^2" + Environment.NewLine;
-                            ItemInformationTextBox.Text += "Ay: " + l10[rowMess].Ay + " m/s^2" + Environment.NewLine;
-                            break;
-                        case 26:
-
-                            break;
-                        case 27:
-                            ItemInformationTextBox.Text += "Special Purpose: " + l10[rowMess].specialPurpose + Environment.NewLine;
-                            break;
-                        case 28:
-                            ItemInformationTextBox.Text += "Reserved Field: " + l10[rowMess].reservedField + Environment.NewLine;
-
-                            break;
-                    }
-
-                    dataItemLabel.Text = l10[rowMess].GetItemList()[rowDItem][2];
-            
-            break;
-            case 1:
-                FRN = Convert.ToInt32(l21[rowMess].GetItemList()[rowDItem][0]);
-                switch (FRN)
-                {
-                    case 1:
-                        ItemInformationTextBox.Text += "SAC: " + l21[rowMess].SAC + Environment.NewLine;
-                        ItemInformationTextBox.Text += "SIC: " + l21[rowMess].SIC + Environment.NewLine;
-
-                        break;
-                    case 2:
-                        ItemInformationTextBox.Text += "ATP: " + l21[rowMess].ATP + Environment.NewLine;
-                        ItemInformationTextBox.Text += "ARC: " + l21[rowMess].ARC + Environment.NewLine;
-                        ItemInformationTextBox.Text += "RC: " + l21[rowMess].RC + Environment.NewLine;
-                        ItemInformationTextBox.Text += "RAB: " + l21[rowMess].RAB + Environment.NewLine;
-                        ItemInformationTextBox.Text += "DCR: " + l21[rowMess].DCR + Environment.NewLine;
-                        ItemInformationTextBox.Text += "GBS: " + l21[rowMess].GBS + Environment.NewLine;
-                        ItemInformationTextBox.Text += "SIM: " + l21[rowMess].SIM + Environment.NewLine;
-                        ItemInformationTextBox.Text += "TST: " + l21[rowMess].TST + Environment.NewLine;
-                        ItemInformationTextBox.Text += "SAA: " + l21[rowMess].SAA + Environment.NewLine;
-                        ItemInformationTextBox.Text += "CL: " + l21[rowMess].CL + Environment.NewLine;
-                        ItemInformationTextBox.Text += "IPC: " + l21[rowMess].IPC + Environment.NewLine;
-                        ItemInformationTextBox.Text += "NOGO: " + l21[rowMess].NOGO + Environment.NewLine;
-                        ItemInformationTextBox.Text += "CPR: " + l21[rowMess].CPR + Environment.NewLine;
-                        ItemInformationTextBox.Text += "LDPJ: " + l21[rowMess].LDPJ + Environment.NewLine;
-                        ItemInformationTextBox.Text += "RCF: " + l21[rowMess].RCF + Environment.NewLine;
-
-
-                        break;
-                    case 3:
-
-                        ItemInformationTextBox.Text += "Track Number: " + l21[rowMess].trackNumber + Environment.NewLine;
-
-                        break;
-                    case 4:
-
-                        ItemInformationTextBox.Text += "Service Identification: " + l21[rowMess].serviceIdentification + Environment.NewLine;
-
-                        break;
-                    case 5:
-                        ItemInformationTextBox.Text += "Time of Applicability for position: " + l21[rowMess].convert2TimeOfDay(l21[rowMess].timeOfAppPos) + Environment.NewLine;
-                        break;
-                    case 6:
-                        ItemInformationTextBox.Text += "Latitude: " + Math.Round(l21[rowMess].latitude,3) + " degrees" + Environment.NewLine;
-                        ItemInformationTextBox.Text += "Longitude: " + Math.Round(l21[rowMess].longitude,3) + " degrees" + Environment.NewLine;
-                        break;
-                    case 7:
-                        ItemInformationTextBox.Text += "High Resolution Latitude: " + Math.Round(l21[rowMess].HRlatitude,5) + " degrees" + Environment.NewLine;
-                        ItemInformationTextBox.Text += "High Resolution Longitude: " + Math.Round(l21[rowMess].HRlongitude,5) + " degrees" + Environment.NewLine;
-                        break;
-                    case 8:
-                        ItemInformationTextBox.Text += "Time of Applicability for Velocity: " + l21[rowMess].timeOfAppVel + Environment.NewLine;
-                        break;
-                    case 9:
-                        ItemInformationTextBox.Text += "Type speed: " + l21[rowMess].typeSpeed + Environment.NewLine;
-
-                        ItemInformationTextBox.Text += l21[rowMess].typeSpeed == "IAS" ? ("Air Speed: " + l21[rowMess].airSpeed + " m/s" + Environment.NewLine) : ("Air Speed: " + l21[rowMess].airSpeed + "Mach" + Environment.NewLine);
-                        break;
-                    case 10:
-                        ItemInformationTextBox.Text += "RE: " + l21[rowMess].RE + Environment.NewLine;
-                        ItemInformationTextBox.Text += "True air speed: " + l21[rowMess].trueAirSpeed + " m/s" + Environment.NewLine;
-                        break;
-                    case 11:
-                        ItemInformationTextBox.Text += "Target address: " + l21[rowMess].targetAddress + Environment.NewLine;
-                        break;
-                    case 12:
-                        ItemInformationTextBox.Text += "Time of Message Reception Reception of position : " + l21[rowMess].timeReceptPos + " s" + Environment.NewLine;
-                        break;
-                    case 13:
-                        ItemInformationTextBox.Text += "Time of Message Reception Reception of position - High Precision: " + l21[rowMess].timeReceptPosHP + " s" + Environment.NewLine;
-                        break;
-                    case 14:
-                        ItemInformationTextBox.Text += "Time of Message Reception Reception of Velocity: " + l21[rowMess].timeReceptVel + " s" + Environment.NewLine;
-                        break;
-                    case 15:
-                        ItemInformationTextBox.Text += "Time of Message Reception Reception of Velocity - High Precision: " + l21[rowMess].timeReceptVelHP + " s" + Environment.NewLine;
-                        break;
-                    case 16:
-                        ItemInformationTextBox.Text += "Geometric Height: " + l21[rowMess].geometricHeight + " ft" + Environment.NewLine;
-                        break;
-                    case 17:
-                        ItemInformationTextBox.Text += "NUCr or NACv: " + l21[rowMess].NUCr + Environment.NewLine;
-                        ItemInformationTextBox.Text += "NUCp or NIC: " + l21[rowMess].NUCp + Environment.NewLine;
-                        ItemInformationTextBox.Text += "NICbaro: " + l21[rowMess].NICbaro + Environment.NewLine;
-                        ItemInformationTextBox.Text += "SIL: " + l21[rowMess].SIL1 + Environment.NewLine;
-                        ItemInformationTextBox.Text += "NACp: " + l21[rowMess].NACp + Environment.NewLine;
-                        ItemInformationTextBox.Text += "NUCr or NACv: " + l21[rowMess].NUCr + Environment.NewLine;
-                        ItemInformationTextBox.Text += "SIL: " + l21[rowMess].SIL2 + Environment.NewLine;
-                        ItemInformationTextBox.Text += "SDA: " + l21[rowMess].SDA + Environment.NewLine;
-                        ItemInformationTextBox.Text += "GVA: " + l21[rowMess].GVA + Environment.NewLine;
-                        ItemInformationTextBox.Text += "PIC: " + l21[rowMess].PIC + Environment.NewLine;
-                        break;
-                    case 18:
-                        ItemInformationTextBox.Text += "VNS: " + l21[rowMess].VNS + Environment.NewLine;
-                        ItemInformationTextBox.Text += "VN: " + l21[rowMess].VN + Environment.NewLine;
-                        ItemInformationTextBox.Text += "LTT: " + l21[rowMess].PIC + Environment.NewLine;
-                        break;
-                    case 19:
-                        ItemInformationTextBox.Text += "Mode 3/A: " + l21[rowMess].mode3A + Environment.NewLine;
-                        break;
-                    case 20:
-                        ItemInformationTextBox.Text += "Roll Angle: " + l21[rowMess].rollAngle + " degrees" + Environment.NewLine;
-                        break;
-                    case 21:
-                        ItemInformationTextBox.Text += "Flight Level: " + l21[rowMess].flightLevel + " FL" + Environment.NewLine;
-
-                        break;
-                    case 22:
-                        ItemInformationTextBox.Text += "Magnetic Heading: " + l21[rowMess].magneticHeading + " degrees" + Environment.NewLine;
-
-                        break;
-                    case 23:
-                        ItemInformationTextBox.Text += "ICF: " + l21[rowMess].ICF + Environment.NewLine;
-                        ItemInformationTextBox.Text += "LNAV: " + l21[rowMess].LNAV + Environment.NewLine;
-                        ItemInformationTextBox.Text += "PS: " + l21[rowMess].PS + Environment.NewLine;
-
-                        break;
-                    case 24:
-
-                        ItemInformationTextBox.Text += "RE: " + l21[rowMess].RE_BVR + Environment.NewLine;
-                        ItemInformationTextBox.Text += "BVR: " + l21[rowMess].barometricVerticalRate + " feet/minute" + Environment.NewLine;
-
-                        break;
-                    case 25:
-
-                        ItemInformationTextBox.Text += "RE: " + l21[rowMess].RE_GVR + Environment.NewLine;
-                        ItemInformationTextBox.Text += "GVR: " + l21[rowMess].geometricVerticalRate + " feet/minute" + Environment.NewLine;
-
-                        break;
-                    case 26:
-                        ItemInformationTextBox.Text += "Ground Speed: " + l21[rowMess].groundSpeed + " NM/s" + Environment.NewLine;
-                        ItemInformationTextBox.Text += "Track Angle: " + l21[rowMess].trackAngle + " degrees" + Environment.NewLine;
-
-                        break;
-                    case 27:
-                        ItemInformationTextBox.Text += "Track Angle Rate: " + l21[rowMess].trackAngleRate + " degrees/s" + Environment.NewLine;
-                        break;
-                    case 28:
-                        ItemInformationTextBox.Text += "Time of report Transmission: " + l21[rowMess].timeReportTrans + " s" + Environment.NewLine;
-                        break;
-                    case 29:
-                        ItemInformationTextBox.Text += "Target Identification: " + l21[rowMess].targetIdentification + Environment.NewLine;
-                        break;
-                    case 30:
-                        ItemInformationTextBox.Text += "Emmiter Category: " + l21[rowMess].ECAT + Environment.NewLine;
-                        break;
-                    case 31:
-                        ItemInformationTextBox.Text += l21[rowMess].WS + " " + "Wind Speed: " + l21[rowMess].windSpeed + " knot" + Environment.NewLine;
-                        ItemInformationTextBox.Text += l21[rowMess].WD + " " + "Wind Direction: " + l21[rowMess].windDirection + " degrees" + Environment.NewLine;
-                        ItemInformationTextBox.Text += l21[rowMess].TMP + " " + "Temperature: " + l21[rowMess].temperature + " ºC" + Environment.NewLine;
-                        ItemInformationTextBox.Text += l21[rowMess].TRB + " " + "Turbulence: " + l21[rowMess].turbulence + Environment.NewLine;
-                        break;
-                    case 32:
-                        ItemInformationTextBox.Text += "SAS: " + l21[rowMess].SAS + Environment.NewLine;
-                        ItemInformationTextBox.Text += "Source: " + l21[rowMess].source + Environment.NewLine;
-                        ItemInformationTextBox.Text += "Altitude: " + l21[rowMess].altitude + " ft" + Environment.NewLine;
-                        break;
-                    case 33:
-                        ItemInformationTextBox.Text += "MV: " + l21[rowMess].MV + Environment.NewLine;
-                        ItemInformationTextBox.Text += "AH: " + l21[rowMess].AH + Environment.NewLine;
-                        ItemInformationTextBox.Text += "AM: " + l21[rowMess].AM + Environment.NewLine;
-                        ItemInformationTextBox.Text += "Altitude: " + l21[rowMess].altitudeFSS + Environment.NewLine;
-                        break;
-                    case 34:
-                        ItemInformationTextBox.Text += "TIS: " + l21[rowMess].TIS + Environment.NewLine;
-                        ItemInformationTextBox.Text += "TID: " + l21[rowMess].TID + Environment.NewLine;
-                        ItemInformationTextBox.Text += "NAV: " + l21[rowMess].NAV + Environment.NewLine;
-                        ItemInformationTextBox.Text += "TIS: " + l21[rowMess].TIS + Environment.NewLine;
-                        ItemInformationTextBox.Text += "NVB: " + l21[rowMess].NVB + Environment.NewLine;
-                        ItemInformationTextBox.Text += "REP: " + l21[rowMess].RE + Environment.NewLine;
-                        for (int j = 0; j < l21[rowMess].REP; j++)
-                        {
-                            ItemInformationTextBox.Text += "Id: " + (j + 1) + Environment.NewLine;
-                            ItemInformationTextBox.Text += "TCA: " + l21[rowMess].GetTCAList()[j] + Environment.NewLine;
-                            ItemInformationTextBox.Text += "TCA: " + l21[rowMess].GetTCAList()[j] + Environment.NewLine;
-                            ItemInformationTextBox.Text += "NC: " + l21[rowMess].GetNCList()[j] + Environment.NewLine;
-                            ItemInformationTextBox.Text += "TCP number: " + l21[rowMess].GetTCPList()[j] + Environment.NewLine;
-                            ItemInformationTextBox.Text += "Altitude : " + l21[rowMess].GetTIAList()[j] + Environment.NewLine;
-                            ItemInformationTextBox.Text += "Latitude: " + l21[rowMess].GetLatList()[j] + " degree" + Environment.NewLine;
-                            ItemInformationTextBox.Text += "Longitude: " + l21[rowMess].GetLongList()[j] + Environment.NewLine;
-                            ItemInformationTextBox.Text += "Point Type: " + l21[rowMess].GetPTypeList()[j] + Environment.NewLine;
-                            ItemInformationTextBox.Text += "TD: " + l21[rowMess].GetTDList()[j] + Environment.NewLine;
-                            ItemInformationTextBox.Text += "TRA: " + l21[rowMess].GetTRAList()[j] + Environment.NewLine;
-                            ItemInformationTextBox.Text += "TOA: " + l21[rowMess].GetTOAList()[j] + Environment.NewLine;
-                            ItemInformationTextBox.Text += "TOV: " + l21[rowMess].GetTOVList()[j] + Environment.NewLine;
-                            ItemInformationTextBox.Text += "TTR: " + l21[rowMess].GetTTRList()[j] + Environment.NewLine;
-
-                        }
-                        break;
-                    case 35:
-                        ItemInformationTextBox.Text += "RP: " + l21[rowMess].reportPeriod + " s" + Environment.NewLine;
-                        break;
-                    case 36:
-                        ItemInformationTextBox.Text += "RA: " + l21[rowMess].RA + Environment.NewLine;
-                        ItemInformationTextBox.Text += "TC: " + l21[rowMess].TC + Environment.NewLine;
-                        ItemInformationTextBox.Text += "TS: " + l21[rowMess].TS + Environment.NewLine;
-                        ItemInformationTextBox.Text += "ARV: " + l21[rowMess].ARV + Environment.NewLine;
-                        ItemInformationTextBox.Text += "CDTI/A: " + l21[rowMess].CDTIA + Environment.NewLine;
-                        ItemInformationTextBox.Text += "TCAS: " + l21[rowMess].NotTCAS + Environment.NewLine;
-                        ItemInformationTextBox.Text += "SA: " + l21[rowMess].SA + Environment.NewLine;
-                        break;
-                    case 37:
-                        ItemInformationTextBox.Text += "POA: " + l21[rowMess].POA + Environment.NewLine;
-                        ItemInformationTextBox.Text += "CTDI/S: " + l21[rowMess].CTDIS + Environment.NewLine;
-                        ItemInformationTextBox.Text += "B2 low: " + l21[rowMess].B2low + Environment.NewLine;
-                        ItemInformationTextBox.Text += "RAS: " + l21[rowMess].RAS + Environment.NewLine;
-                        ItemInformationTextBox.Text += "IDENT: " + l21[rowMess].IDENT + Environment.NewLine;
-                        ItemInformationTextBox.Text += "L+W: " + l21[rowMess].LandW + Environment.NewLine;
-                        break;
-                    case 38:
-                        ItemInformationTextBox.Text += "Message Amplitude: " + l21[rowMess].messageAmplitude + " dBm" + Environment.NewLine;
-                        break;
-                    case 39:
-                        ItemInformationTextBox.Text += "REP: " + l21[rowMess].REP_ModeSMB + Environment.NewLine;
-                        for (int j = 0; j < l21[rowMess].REP_ModeSMB; j++)
-                        {
-                            ItemInformationTextBox.Text += "ID: " + (j + 1) + Environment.NewLine;
-                            ItemInformationTextBox.Text += "MB Data: " + l21[rowMess].GetMBData()[j] + Environment.NewLine;
-                            ItemInformationTextBox.Text += "BDS1: " + l21[rowMess].GetBDS1()[j] + Environment.NewLine;
-                            ItemInformationTextBox.Text += "BDS2: " + l21[rowMess].GetBDS2()[j] + Environment.NewLine;
-
-                        }
-                        break;
-                    case 40:
-
-                        break;
-                    case 41:
-                        ItemInformationTextBox.Text += "Receiver ID: " + l21[rowMess].RID + Environment.NewLine;
-                        break;
-                    case 42:
-                        ItemInformationTextBox.Text += l21[rowMess].AOS_DA + " Aircraft Operational Status age: " + l21[rowMess].AOS_data + " s" + Environment.NewLine;
-                        ItemInformationTextBox.Text += l21[rowMess].TRD_DA + " Target Report Descriptor age: " + l21[rowMess].TRD_data + " s" + Environment.NewLine;
-                        ItemInformationTextBox.Text += l21[rowMess].M3A + " Mode 3/A Code age: " + l21[rowMess].M3A_data + " s" + Environment.NewLine;
-                        ItemInformationTextBox.Text += l21[rowMess].QI + " Quality Indicators age: " + l21[rowMess].QI_data + " s" + Environment.NewLine;
-                        ItemInformationTextBox.Text += l21[rowMess].TI1_DA + " Trajectory Intent age: " + l21[rowMess].TI1_data + " s" + Environment.NewLine;
-                        ItemInformationTextBox.Text += l21[rowMess].MAM_DA + " Message Amplitude age: " + l21[rowMess].MAM_data + " s" + Environment.NewLine;
-                        ItemInformationTextBox.Text += l21[rowMess].GH_DA + " Geometric Height age: " + l21[rowMess].GH_data + " s" + Environment.NewLine;
-                        ItemInformationTextBox.Text += l21[rowMess].FL_DA + " Flight Level age: " + l21[rowMess].FL_data + " s" + Environment.NewLine;
-                        ItemInformationTextBox.Text += l21[rowMess].ISA_DA + " Intermediate State Selected Altitude age: " + l21[rowMess].ISA_data + " s" + Environment.NewLine;
-                        ItemInformationTextBox.Text += l21[rowMess].FSA_DA + " Final State Selected Altitude age: " + l21[rowMess].FSA_data + " s" + Environment.NewLine;
-                        ItemInformationTextBox.Text += l21[rowMess].AS_DA + " Air Speed age: " + l21[rowMess].AS_data + " s" + Environment.NewLine;
-                        ItemInformationTextBox.Text += l21[rowMess].TAS_DA + " True Air Speed age: " + l21[rowMess].TAS_data + " s" + Environment.NewLine;
-                        ItemInformationTextBox.Text += l21[rowMess].MH_DA + " Magnetic Heading age: " + l21[rowMess].MH_data + " s" + Environment.NewLine;
-                        ItemInformationTextBox.Text += l21[rowMess].BVR_DA + " Barometric Vertical Rate age: " + l21[rowMess].BVR_data + " s" + Environment.NewLine;
-                        ItemInformationTextBox.Text += l21[rowMess].GVR_DA + " Geometric Vertical Rate age: " + l21[rowMess].GVR_data + " s" + Environment.NewLine;
-                        ItemInformationTextBox.Text += l21[rowMess].GV_DA + " Ground Vector age: " + l21[rowMess].GV_data + " s" + Environment.NewLine;
-                        ItemInformationTextBox.Text += l21[rowMess].TAR_DA + " Track Angle Rate age: " + l21[rowMess].TAR_data + " s" + Environment.NewLine;
-                        ItemInformationTextBox.Text += l21[rowMess].TI2_DA + " Target Identification age: " + l21[rowMess].TI2_data + " s" + Environment.NewLine;
-                        ItemInformationTextBox.Text += l21[rowMess].TS_DA + " Target Status age: " + l21[rowMess].TS_data + " s" + Environment.NewLine;
-                        ItemInformationTextBox.Text += l21[rowMess].MET_DA + " Met Information age: " + l21[rowMess].MET_data + " s" + Environment.NewLine;
-                        ItemInformationTextBox.Text += l21[rowMess].ROA_DA + " Roll Angle age: " + l21[rowMess].ROA_data + " s" + Environment.NewLine;
-                        ItemInformationTextBox.Text += l21[rowMess].ARA_DA + " ACAS Resolution Advisory age: " + l21[rowMess].ARA_data + " s" + Environment.NewLine;
-                        ItemInformationTextBox.Text += l21[rowMess].SCC_DA + "Surface Capabilities and Characteristics age: " + l21[rowMess].SCC_data + " s" + Environment.NewLine;
-
-                        break;
-                    case 48:
-                        ItemInformationTextBox.Text += "Reserver Expansion Field: " + Environment.NewLine;
-                        break;
-                    case 49:
-                        ItemInformationTextBox.Text += "Special Purpose Field: " + Environment.NewLine;
-                        break;
-                }
 
 
 
-                dataItemLabel.Text = l21[rowMess].GetItemList()[rowDItem][2];
-            break;
-            }
-        
-
-             
-
-            //for (int j = 0; j<itemList.Count; j++)
-            //{
-                
-            //    ItemInformationTextBox.Text += itemList[j]+Environment.NewLine;
-            //}
-
-
-        }
 
 
 
@@ -998,62 +470,617 @@ namespace WindowsFormsApp1
                 File.WriteAllLines(sfd.FileName, rows);
             }
         }
-        
+
 
 
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
+            filter = true;
+            messagedataGrid.Rows.Clear();
+            dataItemsGridView.Rows.Clear();
+            ItemInformationTextBox.Text = "";
             string myFilter = Convert.ToString(comboBoxFilter.SelectedItem);
-            switch (myFilter)
+
+            switch (flag)
             {
-                case "CALLSIGN":
-                    switch (flag)
+                case 0:
+
+
+
+                    messagedataGrid.RowCount = FilterL10.Count;
+
+                    for (int i = 0; i < FilterL10.Count; i++)
                     {
-                        case 0:
-                            FilterL10 = l10.FindAll(m => m.targetIdentification==textBoxSearch.Text);
-                            messagedataGrid.RowCount = FilterL10.Count; //Tendremos tantas filas como mensajes haya en nuestra lista
+                        messagedataGrid.Rows[i].Cells[0].Value = l10.FindIndex(m => m == FilterL10[i]);
+                        messagedataGrid.Rows[i].Cells[1].Value = 10;
+                        messagedataGrid.Rows[i].Cells[2].Value = FilterL10[i].convert2TimeOfDay(FilterL10[i].TimeOfDay);
+                        messagedataGrid.Rows[i].Cells[3].Value = FilterL10[i].GetLength();
+                        messagedataGrid.Rows[i].Cells[4].Value = FilterL10[i].GetItemList().Count;
 
 
-                            //for (int i = 0; i < FilterL10.Count; i++)
-                            //{
-                            //    messagedataGrid.Rows[i].Cells[0].Value = i;
-                            //    messagedataGrid.Rows[i].Cells[1].Value = 10;
-                            //    messagedataGrid.Rows[i].Cells[2].Value = FilterL10[i].convert2TimeOfDay(FilterL10[i].TimeOfDay);
-                            //    messagedataGrid.Rows[i].Cells[3].Value = FilterL10[i].GetLength();
-                            //    messagedataGrid.Rows[i].Cells[4].Value = FilterL10[i].GetItemList().Count;
+                    }
 
+                    break;
+                case 1:
 
-                            //}
-                            //break;
+                    switch (myFilter)
+                    {
+                        case "TRACK NUMBER":
+                            FilterL21 = l21.FindAll(m => Convert.ToString(m.trackNumber) == textBoxSearch.Text);
                             break;
-                        case 1:
-                            break;
+
+                    }
+                   
+                    messagedataGrid.RowCount = FilterL21.Count;
+
+                    for (int i = 0; i < FilterL21.Count; i++)
+                    {
+                        messagedataGrid.Rows[i].Cells[0].Value = l21.FindIndex(m => m == FilterL21[i]);
+                        messagedataGrid.Rows[i].Cells[1].Value = 21;
+                        messagedataGrid.Rows[i].Cells[2].Value = "";
+                        messagedataGrid.Rows[i].Cells[3].Value = FilterL21[i].GetLength();
+                        messagedataGrid.Rows[i].Cells[4].Value = FilterL21[i].GetItemList().Count;
+
+
                     }
                     break;
-                case "TRACK NUMBER":
-                    switch (flag)
+            }            
+           
+        }
+
+        private void messagedataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            rowMess = messagedataGrid.CurrentCell.RowIndex;
+            dataItemsGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataItemsGridView.ReadOnly = true;
+            dataItemsGridView.RowHeadersVisible = false;
+            dataItemsGridView.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            dataItemsGridView.ColumnCount = 3;
+            dataItemsGridView.Columns[0].HeaderText = "FRN";
+            dataItemsGridView.Columns[1].HeaderText = "Data Field";
+            dataItemsGridView.Columns[2].HeaderText = "Description";
+
+            switch (flag)
+            {
+                case 0:
+
+
+                    switch (filter)
                     {
-                        case 0:
-                            FilterL10 = l10.FindAll(m => Convert.ToString(m.trackNumber) == textBoxSearch.Text);
-                            
+                        case false:
+                            dataItemsGridView.RowCount = l10[rowMess].GetItemList().Count;
+
+                            for (int i = 0; i < l10[rowMess].GetItemList().Count; i++)
+                            {
+                                dataItemsGridView.Rows[i].Cells[0].Value = l10[rowMess].GetItemList()[i][0];
+                                dataItemsGridView.Rows[i].Cells[1].Value = l10[rowMess].GetItemList()[i][1];
+                                dataItemsGridView.Rows[i].Cells[2].Value = l10[rowMess].GetItemList()[i][2];
+                            }
                             break;
-                        case 1:
+                        case true:
+                            dataItemsGridView.RowCount = FilterL10[rowMess].GetItemList().Count;
+
+                            for (int i = 0; i < FilterL10[rowMess].GetItemList().Count; i++)
+                            {
+                                dataItemsGridView.Rows[i].Cells[0].Value = FilterL10[rowMess].GetItemList()[i][0];
+                                dataItemsGridView.Rows[i].Cells[1].Value = FilterL10[rowMess].GetItemList()[i][1];
+                                dataItemsGridView.Rows[i].Cells[2].Value = FilterL10[rowMess].GetItemList()[i][2];
+                            }
                             break;
                     }
+
                     break;
-                case "TARGET ADDRESS":
-                    switch (flag)
+
+                case 1:
+
+                    switch (filter)
                     {
-                        case 0:
+                        case false:
+                            dataItemsGridView.RowCount = l21[rowMess].GetItemList().Count;
+
+                            for (int i = 0; i < l21[rowMess].GetItemList().Count; i++)
+                            {
+                                dataItemsGridView.Rows[i].Cells[0].Value = l21[rowMess].GetItemList()[i][0];
+                                dataItemsGridView.Rows[i].Cells[1].Value = l21[rowMess].GetItemList()[i][1];
+                                dataItemsGridView.Rows[i].Cells[2].Value = l21[rowMess].GetItemList()[i][2];
+                            }
                             break;
-                        case 1:
+                        case true:
+                            dataItemsGridView.RowCount = FilterL21[rowMess].GetItemList().Count;
+
+                            for (int i = 0; i < FilterL21[rowMess].GetItemList().Count; i++)
+                            {
+                                dataItemsGridView.Rows[i].Cells[0].Value = FilterL21[rowMess].GetItemList()[i][0];
+                                dataItemsGridView.Rows[i].Cells[1].Value = FilterL21[rowMess].GetItemList()[i][1];
+                                dataItemsGridView.Rows[i].Cells[2].Value = FilterL21[rowMess].GetItemList()[i][2];
+                            }
                             break;
+
                     }
                     break;
+
 
             }
-            CreateDataGridView(true);
+        }
+
+        private void dataItemsGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ItemInformationTextBox.Text = "";
+            dataItemsGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            int rowDItem = dataItemsGridView.CurrentCell.RowIndex;
+
+            int FRN;
+
+
+
+            switch (flag)
+            {
+                case 0:
+
+
+                    List<CAT10> showI10;
+                    switch (filter)
+                    {
+                        case true:
+                            showI10 = FilterL10;
+                            FRN = Convert.ToInt32(FilterL10[rowMess].GetItemList()[rowDItem][0]);
+                            break;
+                        default:
+                            showI10 = l10;
+                            FRN = Convert.ToInt32(l10[rowMess].GetItemList()[rowDItem][0]);
+                            break;
+                    }
+
+
+
+
+                    switch (FRN)
+                    {
+                        case 1:
+                            ItemInformationTextBox.Text += "SAC: " + showI10[rowMess].SAC + Environment.NewLine;
+                            ItemInformationTextBox.Text += "SIC: " + showI10[rowMess].SIC + Environment.NewLine;
+
+                            break;
+                        case 2:
+                            ItemInformationTextBox.Text += "Message Type: " + showI10[rowMess].MessageType + Environment.NewLine;
+
+                            break;
+                        case 3:
+                            ItemInformationTextBox.Text += "TYP: " + showI10[rowMess].TYP + Environment.NewLine;
+                            ItemInformationTextBox.Text += "DCR: " + showI10[rowMess].DCR + Environment.NewLine;
+                            ItemInformationTextBox.Text += "CHN: " + showI10[rowMess].CHN + Environment.NewLine;
+                            ItemInformationTextBox.Text += "GBS: " + showI10[rowMess].GBS + Environment.NewLine;
+                            ItemInformationTextBox.Text += "CRT: " + showI10[rowMess].CRT + Environment.NewLine;
+                            ItemInformationTextBox.Text += "SIM: " + showI10[rowMess].SIM + Environment.NewLine;
+                            ItemInformationTextBox.Text += "TST: " + showI10[rowMess].TST + Environment.NewLine;
+                            ItemInformationTextBox.Text += "RAB: " + showI10[rowMess].RAB + Environment.NewLine;
+                            ItemInformationTextBox.Text += "LOP: " + showI10[rowMess].LOP + Environment.NewLine;
+                            ItemInformationTextBox.Text += "TOT: " + showI10[rowMess].TOT + Environment.NewLine;
+                            ItemInformationTextBox.Text += "SPI: " + showI10[rowMess].SPI + Environment.NewLine;
+
+                            break;
+                        case 4:
+                            ItemInformationTextBox.Text += "Time of Day: " + showI10[rowMess].convert2TimeOfDay(showI10[rowMess].TimeOfDay) + Environment.NewLine;
+
+                            break;
+                        case 5:
+                            ItemInformationTextBox.Text += "Latitude: " + Math.Round(showI10[rowMess].latitude, 3) + " º" + Environment.NewLine;
+                            ItemInformationTextBox.Text += "Longitude: " + Math.Round(showI10[rowMess].longitude, 3) + " º" + Environment.NewLine;
+                            break;
+                        case 6:
+                            ItemInformationTextBox.Text += "rho: " + showI10[rowMess].rho + " m" + Environment.NewLine;
+                            ItemInformationTextBox.Text += "theta: " + showI10[rowMess].theta + " º" + Environment.NewLine;
+
+                            break;
+                        case 7:
+                            ItemInformationTextBox.Text += "x: " + showI10[rowMess].x + " m" + Environment.NewLine;
+                            ItemInformationTextBox.Text += "y: " + showI10[rowMess].y + " m" + Environment.NewLine;
+
+                            break;
+                        case 8:
+                            ItemInformationTextBox.Text += "Ground speed: " + Math.Round(showI10[rowMess].groundSpeed, 3) + " kt" + Environment.NewLine;
+                            ItemInformationTextBox.Text += "Track angle: " + Math.Round(showI10[rowMess].trackAngle) + " º" + Environment.NewLine;
+                            break;
+                        case 9:
+                            ItemInformationTextBox.Text += "Vx: " + showI10[rowMess].Vx + " m/s" + Environment.NewLine;
+                            ItemInformationTextBox.Text += "Vy: " + showI10[rowMess].Vy + " m/s" + Environment.NewLine;
+                            break;
+                        case 10:
+                            ItemInformationTextBox.Text += "Track number: " + showI10[rowMess].trackNumber + Environment.NewLine;
+
+                            break;
+                        case 11:
+                            ItemInformationTextBox.Text += "CNF: " + showI10[rowMess].CNF + Environment.NewLine;
+                            ItemInformationTextBox.Text += "TRE: " + showI10[rowMess].TRE + Environment.NewLine;
+                            ItemInformationTextBox.Text += "CST: " + showI10[rowMess].CST + Environment.NewLine;
+                            ItemInformationTextBox.Text += "MAH: " + showI10[rowMess].MAH + Environment.NewLine;
+                            ItemInformationTextBox.Text += "TCC: " + showI10[rowMess].TCC + Environment.NewLine;
+                            ItemInformationTextBox.Text += "STH: " + showI10[rowMess].STH + Environment.NewLine;
+                            ItemInformationTextBox.Text += "TOM: " + showI10[rowMess].TOM + Environment.NewLine;
+                            ItemInformationTextBox.Text += "DOU: " + showI10[rowMess].DOU + Environment.NewLine;
+                            ItemInformationTextBox.Text += "MSR: " + showI10[rowMess].MSR + Environment.NewLine;
+                            ItemInformationTextBox.Text += "GHO: " + showI10[rowMess].GHO + Environment.NewLine;
+
+                            break;
+                        case 12:
+                            ItemInformationTextBox.Text += "V 3A: " + showI10[rowMess].V_3A + Environment.NewLine;
+                            ItemInformationTextBox.Text += "G 3A: " + showI10[rowMess].G_3A + Environment.NewLine;
+                            ItemInformationTextBox.Text += "L: " + showI10[rowMess].L + Environment.NewLine;
+                            ItemInformationTextBox.Text += "Mode 3A: " + showI10[rowMess].mode3A + Environment.NewLine;
+
+                            break;
+                        case 13:
+                            ItemInformationTextBox.Text += "Target Address: " + showI10[rowMess].targetAddress + Environment.NewLine;
+
+                            break;
+                        case 14:
+                            ItemInformationTextBox.Text += "STI: " + showI10[rowMess].STI + Environment.NewLine;
+                            ItemInformationTextBox.Text += "Target Identification: " + showI10[rowMess].targetIdentification + Environment.NewLine;
+
+                            break;
+                        case 15:
+                            ItemInformationTextBox.Text += "REP: " + showI10[rowMess].REP_ModeSMB + Environment.NewLine;
+                            for (int j = 0; j < showI10[rowMess].REP_ModeSMB; j++)
+                            {
+                                ItemInformationTextBox.Text += "Id: " + (j + 1) + Environment.NewLine;
+                                ItemInformationTextBox.Text += "MB Data: " + showI10[rowMess].GetMBDataList()[j] + Environment.NewLine;
+                                ItemInformationTextBox.Text += "BDS1: " + showI10[rowMess].GetBDS1List()[j] + Environment.NewLine;
+                                ItemInformationTextBox.Text += "BDS2: " + showI10[rowMess].GetBDS2List()[j] + Environment.NewLine;
+                            }
+
+                            break;
+                        case 16:
+                            ItemInformationTextBox.Text += "VFI: " + showI10[rowMess].VFI + Environment.NewLine;
+
+                            break;
+                        case 17:
+                            ItemInformationTextBox.Text += "V FL: " + showI10[rowMess].V_FL + Environment.NewLine;
+                            ItemInformationTextBox.Text += "G FL: " + showI10[rowMess].G_FL + Environment.NewLine;
+                            ItemInformationTextBox.Text += "Flight level: " + showI10[rowMess].flightLevel + Environment.NewLine;
+
+                            break;
+                        case 18:
+                            ItemInformationTextBox.Text += "Height: " + showI10[rowMess].height + " ft" + Environment.NewLine;
+
+                            break;
+                        case 19:
+                            ItemInformationTextBox.Text += "Target Length: " + showI10[rowMess].targetLength + " m" + Environment.NewLine;
+                            ItemInformationTextBox.Text += "Target Orientation: " + showI10[rowMess].targetOrientation + " º" + Environment.NewLine;
+                            ItemInformationTextBox.Text += "Target Width: " + showI10[rowMess].targetWidth + " m" + Environment.NewLine;
+                            break;
+                        case 20:
+                            ItemInformationTextBox.Text += "NOGO: " + showI10[rowMess].NOGO + Environment.NewLine;
+                            ItemInformationTextBox.Text += "OVL: " + showI10[rowMess].OVL + Environment.NewLine;
+                            ItemInformationTextBox.Text += "TSV: " + showI10[rowMess].TSV + Environment.NewLine;
+                            ItemInformationTextBox.Text += "DIV: " + showI10[rowMess].DIV + Environment.NewLine;
+                            ItemInformationTextBox.Text += "TTF: " + showI10[rowMess].TTF + Environment.NewLine;
+
+                            break;
+                        case 21:
+                            ItemInformationTextBox.Text += "TRB: " + showI10[rowMess].TRB + Environment.NewLine;
+                            ItemInformationTextBox.Text += "MSG: " + showI10[rowMess].MSG + Environment.NewLine;
+
+                            break;
+                        case 22:
+                            ItemInformationTextBox.Text += "Sigma X: " + showI10[rowMess].sigmax + " m" + Environment.NewLine;
+                            ItemInformationTextBox.Text += "Sigma Y: " + showI10[rowMess].sigmay + " m" + Environment.NewLine;
+                            ItemInformationTextBox.Text += "Sigma XY: " + showI10[rowMess].sigmaxy + " m^2" + Environment.NewLine;
+
+                            break;
+                        case 23:
+                            ItemInformationTextBox.Text += "REP: " + showI10[rowMess].REP_presence + Environment.NewLine;
+                            for (int j = 0; j < showI10[rowMess].REP_presence; j++)
+                            {
+                                ItemInformationTextBox.Text += "Id: " + (j + 1) + Environment.NewLine;
+                                ItemInformationTextBox.Text += "Rho : " + showI10[rowMess].GetRhoThetaPresenceList()[j][0] + " m" + Environment.NewLine;
+                                ItemInformationTextBox.Text += "Theta : " + showI10[rowMess].GetRhoThetaPresenceList()[j][1] + " º" + Environment.NewLine;
+
+                            }
+
+                            break;
+                        case 24:
+                            ItemInformationTextBox.Text += "PAM: " + showI10[rowMess].PAM + Environment.NewLine;
+
+                            break;
+                        case 25:
+                            ItemInformationTextBox.Text += "Ax: " + showI10[rowMess].Ax + " m/s^2" + Environment.NewLine;
+                            ItemInformationTextBox.Text += "Ay: " + showI10[rowMess].Ay + " m/s^2" + Environment.NewLine;
+                            break;
+                        case 26:
+
+                            break;
+                        case 27:
+                            ItemInformationTextBox.Text += "Special Purpose: " + showI10[rowMess].specialPurpose + Environment.NewLine;
+                            break;
+                        case 28:
+                            ItemInformationTextBox.Text += "Reserved Field: " + showI10[rowMess].reservedField + Environment.NewLine;
+
+                            break;
+                    }
+
+                    dataItemLabel.Text = showI10[rowMess].GetItemList()[rowDItem][2];
+
+                    break;
+                case 1:
+                    List<CAT21> showI21;
+                    switch (filter)
+                    {
+                        case true:
+                            showI21 = FilterL21;
+                            FRN = Convert.ToInt32(FilterL21[rowMess].GetItemList()[rowDItem][0]);
+                            break;
+                        default:
+                            showI21 = l21;
+                            FRN = Convert.ToInt32(l21[rowMess].GetItemList()[rowDItem][0]);
+                            break;
+                    }
+
+                    switch (FRN)
+                    {
+                        case 1:
+                            ItemInformationTextBox.Text += "SAC: " + showI21[rowMess].SAC + Environment.NewLine;
+                            ItemInformationTextBox.Text += "SIC: " + showI21[rowMess].SIC + Environment.NewLine;
+
+                            break;
+                        case 2:
+                            ItemInformationTextBox.Text += "ATP: " + showI21[rowMess].ATP + Environment.NewLine;
+                            ItemInformationTextBox.Text += "ARC: " + showI21[rowMess].ARC + Environment.NewLine;
+                            ItemInformationTextBox.Text += "RC: " + showI21[rowMess].RC + Environment.NewLine;
+                            ItemInformationTextBox.Text += "RAB: " + showI21[rowMess].RAB + Environment.NewLine;
+                            ItemInformationTextBox.Text += "DCR: " + showI21[rowMess].DCR + Environment.NewLine;
+                            ItemInformationTextBox.Text += "GBS: " + showI21[rowMess].GBS + Environment.NewLine;
+                            ItemInformationTextBox.Text += "SIM: " + showI21[rowMess].SIM + Environment.NewLine;
+                            ItemInformationTextBox.Text += "TST: " + showI21[rowMess].TST + Environment.NewLine;
+                            ItemInformationTextBox.Text += "SAA: " + showI21[rowMess].SAA + Environment.NewLine;
+                            ItemInformationTextBox.Text += "CL: " + showI21[rowMess].CL + Environment.NewLine;
+                            ItemInformationTextBox.Text += "IPC: " + showI21[rowMess].IPC + Environment.NewLine;
+                            ItemInformationTextBox.Text += "NOGO: " + showI21[rowMess].NOGO + Environment.NewLine;
+                            ItemInformationTextBox.Text += "CPR: " + showI21[rowMess].CPR + Environment.NewLine;
+                            ItemInformationTextBox.Text += "LDPJ: " + showI21[rowMess].LDPJ + Environment.NewLine;
+                            ItemInformationTextBox.Text += "RCF: " + showI21[rowMess].RCF + Environment.NewLine;
+
+
+                            break;
+                        case 3:
+
+                            ItemInformationTextBox.Text += "Track Number: " + showI21[rowMess].trackNumber + Environment.NewLine;
+
+                            break;
+                        case 4:
+
+                            ItemInformationTextBox.Text += "Service Identification: " + showI21[rowMess].serviceIdentification + Environment.NewLine;
+
+                            break;
+                        case 5:
+                            ItemInformationTextBox.Text += "Time of Applicability for position: " + showI21[rowMess].convert2TimeOfDay(showI21[rowMess].timeOfAppPos) + Environment.NewLine;
+                            break;
+                        case 6:
+                            ItemInformationTextBox.Text += "Latitude: " + Math.Round(showI21[rowMess].latitude, 3) + " degrees" + Environment.NewLine;
+                            ItemInformationTextBox.Text += "Longitude: " + Math.Round(showI21[rowMess].longitude, 3) + " degrees" + Environment.NewLine;
+                            break;
+                        case 7:
+                            ItemInformationTextBox.Text += "High Resolution Latitude: " + Math.Round(showI21[rowMess].HRlatitude, 5) + " degrees" + Environment.NewLine;
+                            ItemInformationTextBox.Text += "High Resolution Longitude: " + Math.Round(showI21[rowMess].HRlongitude, 5) + " degrees" + Environment.NewLine;
+                            break;
+                        case 8:
+                            ItemInformationTextBox.Text += "Time of Applicability for Velocity: " + showI21[rowMess].timeOfAppVel + Environment.NewLine;
+                            break;
+                        case 9:
+                            ItemInformationTextBox.Text += "Type speed: " + showI21[rowMess].typeSpeed + Environment.NewLine;
+
+                            ItemInformationTextBox.Text += showI21[rowMess].typeSpeed == "IAS" ? ("Air Speed: " + showI21[rowMess].airSpeed + " m/s" + Environment.NewLine) : ("Air Speed: " + showI21[rowMess].airSpeed + "Mach" + Environment.NewLine);
+                            break;
+                        case 10:
+                            ItemInformationTextBox.Text += "RE: " + showI21[rowMess].RE + Environment.NewLine;
+                            ItemInformationTextBox.Text += "True air speed: " + showI21[rowMess].trueAirSpeed + " m/s" + Environment.NewLine;
+                            break;
+                        case 11:
+                            ItemInformationTextBox.Text += "Target address: " + showI21[rowMess].targetAddress + Environment.NewLine;
+                            break;
+                        case 12:
+                            ItemInformationTextBox.Text += "Time of Message Reception Reception of position : " + showI21[rowMess].timeReceptPos + " s" + Environment.NewLine;
+                            break;
+                        case 13:
+                            ItemInformationTextBox.Text += "Time of Message Reception Reception of position - High Precision: " + showI21[rowMess].timeReceptPosHP + " s" + Environment.NewLine;
+                            break;
+                        case 14:
+                            ItemInformationTextBox.Text += "Time of Message Reception Reception of Velocity: " + showI21[rowMess].timeReceptVel + " s" + Environment.NewLine;
+                            break;
+                        case 15:
+                            ItemInformationTextBox.Text += "Time of Message Reception Reception of Velocity - High Precision: " + showI21[rowMess].timeReceptVelHP + " s" + Environment.NewLine;
+                            break;
+                        case 16:
+                            ItemInformationTextBox.Text += "Geometric Height: " + showI21[rowMess].geometricHeight + " ft" + Environment.NewLine;
+                            break;
+                        case 17:
+                            ItemInformationTextBox.Text += "NUCr or NACv: " + showI21[rowMess].NUCr + Environment.NewLine;
+                            ItemInformationTextBox.Text += "NUCp or NIC: " + showI21[rowMess].NUCp + Environment.NewLine;
+                            ItemInformationTextBox.Text += "NICbaro: " + showI21[rowMess].NICbaro + Environment.NewLine;
+                            ItemInformationTextBox.Text += "SIL: " + showI21[rowMess].SIL1 + Environment.NewLine;
+                            ItemInformationTextBox.Text += "NACp: " + showI21[rowMess].NACp + Environment.NewLine;
+                            ItemInformationTextBox.Text += "NUCr or NACv: " + showI21[rowMess].NUCr + Environment.NewLine;
+                            ItemInformationTextBox.Text += "SIL: " + showI21[rowMess].SIL2 + Environment.NewLine;
+                            ItemInformationTextBox.Text += "SDA: " + showI21[rowMess].SDA + Environment.NewLine;
+                            ItemInformationTextBox.Text += "GVA: " + showI21[rowMess].GVA + Environment.NewLine;
+                            ItemInformationTextBox.Text += "PIC: " + showI21[rowMess].PIC + Environment.NewLine;
+                            break;
+                        case 18:
+                            ItemInformationTextBox.Text += "VNS: " + showI21[rowMess].VNS + Environment.NewLine;
+                            ItemInformationTextBox.Text += "VN: " + showI21[rowMess].VN + Environment.NewLine;
+                            ItemInformationTextBox.Text += "LTT: " + showI21[rowMess].PIC + Environment.NewLine;
+                            break;
+                        case 19:
+                            ItemInformationTextBox.Text += "Mode 3/A: " + showI21[rowMess].mode3A + Environment.NewLine;
+                            break;
+                        case 20:
+                            ItemInformationTextBox.Text += "Roll Angle: " + showI21[rowMess].rollAngle + " degrees" + Environment.NewLine;
+                            break;
+                        case 21:
+                            ItemInformationTextBox.Text += "Flight Level: " + showI21[rowMess].flightLevel + " FL" + Environment.NewLine;
+
+                            break;
+                        case 22:
+                            ItemInformationTextBox.Text += "Magnetic Heading: " + showI21[rowMess].magneticHeading + " degrees" + Environment.NewLine;
+
+                            break;
+                        case 23:
+                            ItemInformationTextBox.Text += "ICF: " + showI21[rowMess].ICF + Environment.NewLine;
+                            ItemInformationTextBox.Text += "LNAV: " + showI21[rowMess].LNAV + Environment.NewLine;
+                            ItemInformationTextBox.Text += "PS: " + showI21[rowMess].PS + Environment.NewLine;
+
+                            break;
+                        case 24:
+
+                            ItemInformationTextBox.Text += "RE: " + showI21[rowMess].RE_BVR + Environment.NewLine;
+                            ItemInformationTextBox.Text += "BVR: " + showI21[rowMess].barometricVerticalRate + " feet/minute" + Environment.NewLine;
+
+                            break;
+                        case 25:
+
+                            ItemInformationTextBox.Text += "RE: " + showI21[rowMess].RE_GVR + Environment.NewLine;
+                            ItemInformationTextBox.Text += "GVR: " + showI21[rowMess].geometricVerticalRate + " feet/minute" + Environment.NewLine;
+
+                            break;
+                        case 26:
+                            ItemInformationTextBox.Text += "Ground Speed: " + showI21[rowMess].groundSpeed + " NM/s" + Environment.NewLine;
+                            ItemInformationTextBox.Text += "Track Angle: " + showI21[rowMess].trackAngle + " degrees" + Environment.NewLine;
+
+                            break;
+                        case 27:
+                            ItemInformationTextBox.Text += "Track Angle Rate: " + showI21[rowMess].trackAngleRate + " degrees/s" + Environment.NewLine;
+                            break;
+                        case 28:
+                            ItemInformationTextBox.Text += "Time of report Transmission: " + showI21[rowMess].timeReportTrans + " s" + Environment.NewLine;
+                            break;
+                        case 29:
+                            ItemInformationTextBox.Text += "Target Identification: " + showI21[rowMess].targetIdentification + Environment.NewLine;
+                            break;
+                        case 30:
+                            ItemInformationTextBox.Text += "Emmiter Category: " + showI21[rowMess].ECAT + Environment.NewLine;
+                            break;
+                        case 31:
+                            ItemInformationTextBox.Text += showI21[rowMess].WS + " " + "Wind Speed: " + showI21[rowMess].windSpeed + " knot" + Environment.NewLine;
+                            ItemInformationTextBox.Text += showI21[rowMess].WD + " " + "Wind Direction: " + showI21[rowMess].windDirection + " degrees" + Environment.NewLine;
+                            ItemInformationTextBox.Text += showI21[rowMess].TMP + " " + "Temperature: " + showI21[rowMess].temperature + " ºC" + Environment.NewLine;
+                            ItemInformationTextBox.Text += showI21[rowMess].TRB + " " + "Turbulence: " + showI21[rowMess].turbulence + Environment.NewLine;
+                            break;
+                        case 32:
+                            ItemInformationTextBox.Text += "SAS: " + showI21[rowMess].SAS + Environment.NewLine;
+                            ItemInformationTextBox.Text += "Source: " + showI21[rowMess].source + Environment.NewLine;
+                            ItemInformationTextBox.Text += "Altitude: " + showI21[rowMess].altitude + " ft" + Environment.NewLine;
+                            break;
+                        case 33:
+                            ItemInformationTextBox.Text += "MV: " + showI21[rowMess].MV + Environment.NewLine;
+                            ItemInformationTextBox.Text += "AH: " + showI21[rowMess].AH + Environment.NewLine;
+                            ItemInformationTextBox.Text += "AM: " + showI21[rowMess].AM + Environment.NewLine;
+                            ItemInformationTextBox.Text += "Altitude: " + showI21[rowMess].altitudeFSS + Environment.NewLine;
+                            break;
+                        case 34:
+                            ItemInformationTextBox.Text += "TIS: " + showI21[rowMess].TIS + Environment.NewLine;
+                            ItemInformationTextBox.Text += "TID: " + showI21[rowMess].TID + Environment.NewLine;
+                            ItemInformationTextBox.Text += "NAV: " + showI21[rowMess].NAV + Environment.NewLine;
+                            ItemInformationTextBox.Text += "TIS: " + showI21[rowMess].TIS + Environment.NewLine;
+                            ItemInformationTextBox.Text += "NVB: " + showI21[rowMess].NVB + Environment.NewLine;
+                            ItemInformationTextBox.Text += "REP: " + showI21[rowMess].RE + Environment.NewLine;
+                            for (int j = 0; j < showI21[rowMess].REP; j++)
+                            {
+                                ItemInformationTextBox.Text += "Id: " + (j + 1) + Environment.NewLine;
+                                ItemInformationTextBox.Text += "TCA: " + showI21[rowMess].GetTCAList()[j] + Environment.NewLine;
+                                ItemInformationTextBox.Text += "TCA: " + showI21[rowMess].GetTCAList()[j] + Environment.NewLine;
+                                ItemInformationTextBox.Text += "NC: " + showI21[rowMess].GetNCList()[j] + Environment.NewLine;
+                                ItemInformationTextBox.Text += "TCP number: " + showI21[rowMess].GetTCPList()[j] + Environment.NewLine;
+                                ItemInformationTextBox.Text += "Altitude : " + showI21[rowMess].GetTIAList()[j] + Environment.NewLine;
+                                ItemInformationTextBox.Text += "Latitude: " + showI21[rowMess].GetLatList()[j] + " degree" + Environment.NewLine;
+                                ItemInformationTextBox.Text += "Longitude: " + showI21[rowMess].GetLongList()[j] + Environment.NewLine;
+                                ItemInformationTextBox.Text += "Point Type: " + showI21[rowMess].GetPTypeList()[j] + Environment.NewLine;
+                                ItemInformationTextBox.Text += "TD: " + showI21[rowMess].GetTDList()[j] + Environment.NewLine;
+                                ItemInformationTextBox.Text += "TRA: " + showI21[rowMess].GetTRAList()[j] + Environment.NewLine;
+                                ItemInformationTextBox.Text += "TOA: " + showI21[rowMess].GetTOAList()[j] + Environment.NewLine;
+                                ItemInformationTextBox.Text += "TOV: " + showI21[rowMess].GetTOVList()[j] + Environment.NewLine;
+                                ItemInformationTextBox.Text += "TTR: " + showI21[rowMess].GetTTRList()[j] + Environment.NewLine;
+
+                            }
+                            break;
+                        case 35:
+                            ItemInformationTextBox.Text += "RP: " + showI21[rowMess].reportPeriod + " s" + Environment.NewLine;
+                            break;
+                        case 36:
+                            ItemInformationTextBox.Text += "RA: " + showI21[rowMess].RA + Environment.NewLine;
+                            ItemInformationTextBox.Text += "TC: " + showI21[rowMess].TC + Environment.NewLine;
+                            ItemInformationTextBox.Text += "TS: " + showI21[rowMess].TS + Environment.NewLine;
+                            ItemInformationTextBox.Text += "ARV: " + showI21[rowMess].ARV + Environment.NewLine;
+                            ItemInformationTextBox.Text += "CDTI/A: " + showI21[rowMess].CDTIA + Environment.NewLine;
+                            ItemInformationTextBox.Text += "TCAS: " + showI21[rowMess].NotTCAS + Environment.NewLine;
+                            ItemInformationTextBox.Text += "SA: " + showI21[rowMess].SA + Environment.NewLine;
+                            break;
+                        case 37:
+                            ItemInformationTextBox.Text += "POA: " + showI21[rowMess].POA + Environment.NewLine;
+                            ItemInformationTextBox.Text += "CTDI/S: " + showI21[rowMess].CTDIS + Environment.NewLine;
+                            ItemInformationTextBox.Text += "B2 low: " + showI21[rowMess].B2low + Environment.NewLine;
+                            ItemInformationTextBox.Text += "RAS: " + showI21[rowMess].RAS + Environment.NewLine;
+                            ItemInformationTextBox.Text += "IDENT: " + showI21[rowMess].IDENT + Environment.NewLine;
+                            ItemInformationTextBox.Text += "L+W: " + showI21[rowMess].LandW + Environment.NewLine;
+                            break;
+                        case 38:
+                            ItemInformationTextBox.Text += "Message Amplitude: " + showI21[rowMess].messageAmplitude + " dBm" + Environment.NewLine;
+                            break;
+                        case 39:
+                            ItemInformationTextBox.Text += "REP: " + showI21[rowMess].REP_ModeSMB + Environment.NewLine;
+                            for (int j = 0; j < showI21[rowMess].REP_ModeSMB; j++)
+                            {
+                                ItemInformationTextBox.Text += "ID: " + (j + 1) + Environment.NewLine;
+                                ItemInformationTextBox.Text += "MB Data: " + showI21[rowMess].GetMBData()[j] + Environment.NewLine;
+                                ItemInformationTextBox.Text += "BDS1: " + showI21[rowMess].GetBDS1()[j] + Environment.NewLine;
+                                ItemInformationTextBox.Text += "BDS2: " + showI21[rowMess].GetBDS2()[j] + Environment.NewLine;
+
+                            }
+                            break;
+                        case 40:
+
+                            break;
+                        case 41:
+                            ItemInformationTextBox.Text += "Receiver ID: " + showI21[rowMess].RID + Environment.NewLine;
+                            break;
+                        case 42:
+                            ItemInformationTextBox.Text += showI21[rowMess].AOS_DA + " Aircraft Operational Status age: " + showI21[rowMess].AOS_data + " s" + Environment.NewLine;
+                            ItemInformationTextBox.Text += showI21[rowMess].TRD_DA + " Target Report Descriptor age: " + showI21[rowMess].TRD_data + " s" + Environment.NewLine;
+                            ItemInformationTextBox.Text += showI21[rowMess].M3A + " Mode 3/A Code age: " + showI21[rowMess].M3A_data + " s" + Environment.NewLine;
+                            ItemInformationTextBox.Text += showI21[rowMess].QI + " Quality Indicators age: " + showI21[rowMess].QI_data + " s" + Environment.NewLine;
+                            ItemInformationTextBox.Text += showI21[rowMess].TI1_DA + " Trajectory Intent age: " + showI21[rowMess].TI1_data + " s" + Environment.NewLine;
+                            ItemInformationTextBox.Text += showI21[rowMess].MAM_DA + " Message Amplitude age: " + showI21[rowMess].MAM_data + " s" + Environment.NewLine;
+                            ItemInformationTextBox.Text += showI21[rowMess].GH_DA + " Geometric Height age: " + showI21[rowMess].GH_data + " s" + Environment.NewLine;
+                            ItemInformationTextBox.Text += showI21[rowMess].FL_DA + " Flight Level age: " + showI21[rowMess].FL_data + " s" + Environment.NewLine;
+                            ItemInformationTextBox.Text += showI21[rowMess].ISA_DA + " Intermediate State Selected Altitude age: " + showI21[rowMess].ISA_data + " s" + Environment.NewLine;
+                            ItemInformationTextBox.Text += showI21[rowMess].FSA_DA + " Final State Selected Altitude age: " + showI21[rowMess].FSA_data + " s" + Environment.NewLine;
+                            ItemInformationTextBox.Text += showI21[rowMess].AS_DA + " Air Speed age: " + showI21[rowMess].AS_data + " s" + Environment.NewLine;
+                            ItemInformationTextBox.Text += showI21[rowMess].TAS_DA + " True Air Speed age: " + showI21[rowMess].TAS_data + " s" + Environment.NewLine;
+                            ItemInformationTextBox.Text += showI21[rowMess].MH_DA + " Magnetic Heading age: " + showI21[rowMess].MH_data + " s" + Environment.NewLine;
+                            ItemInformationTextBox.Text += showI21[rowMess].BVR_DA + " Barometric Vertical Rate age: " + showI21[rowMess].BVR_data + " s" + Environment.NewLine;
+                            ItemInformationTextBox.Text += showI21[rowMess].GVR_DA + " Geometric Vertical Rate age: " + showI21[rowMess].GVR_data + " s" + Environment.NewLine;
+                            ItemInformationTextBox.Text += showI21[rowMess].GV_DA + " Ground Vector age: " + showI21[rowMess].GV_data + " s" + Environment.NewLine;
+                            ItemInformationTextBox.Text += showI21[rowMess].TAR_DA + " Track Angle Rate age: " + showI21[rowMess].TAR_data + " s" + Environment.NewLine;
+                            ItemInformationTextBox.Text += showI21[rowMess].TI2_DA + " Target Identification age: " + showI21[rowMess].TI2_data + " s" + Environment.NewLine;
+                            ItemInformationTextBox.Text += showI21[rowMess].TS_DA + " Target Status age: " + showI21[rowMess].TS_data + " s" + Environment.NewLine;
+                            ItemInformationTextBox.Text += showI21[rowMess].MET_DA + " Met Information age: " + showI21[rowMess].MET_data + " s" + Environment.NewLine;
+                            ItemInformationTextBox.Text += showI21[rowMess].ROA_DA + " Roll Angle age: " + showI21[rowMess].ROA_data + " s" + Environment.NewLine;
+                            ItemInformationTextBox.Text += showI21[rowMess].ARA_DA + " ACAS Resolution Advisory age: " + showI21[rowMess].ARA_data + " s" + Environment.NewLine;
+                            ItemInformationTextBox.Text += showI21[rowMess].SCC_DA + "Surface Capabilities and Characteristics age: " + showI21[rowMess].SCC_data + " s" + Environment.NewLine;
+
+                            break;
+                        case 48:
+                            ItemInformationTextBox.Text += "Reserver Expansion Field: " + Environment.NewLine;
+                            break;
+                        case 49:
+                            ItemInformationTextBox.Text += "Special Purpose Field: " + Environment.NewLine;
+                            break;
+                    }
+
+
+
+                    dataItemLabel.Text = showI21[rowMess].GetItemList()[rowDItem][2];
+                    break;
+            }
         }
     }
 }
