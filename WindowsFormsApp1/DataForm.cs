@@ -717,7 +717,7 @@ namespace WindowsFormsApp1
 
 
 
-                            dg.ColumnCount = 21;
+                            dg.ColumnCount = 65;
                             dg.RowCount = l10.Count;
                             dg.Columns[0].HeaderText = "ID";
                             dg.Columns[1].HeaderText = "CAT";
@@ -740,12 +740,62 @@ namespace WindowsFormsApp1
                             dg.Columns[18].HeaderText = "[WGS-84 Coordinates] Longitude (º)";
                             dg.Columns[19].HeaderText = "[Measured Position in Polar Coordinates] RHO (m)";
                             dg.Columns[20].HeaderText = "[Measured Position in Polar Coordinates] THETA (º)";
+                            dg.Columns[21].HeaderText = "[Measured Position in Cartesian Coordinates] x (m)";
+                            dg.Columns[22].HeaderText = "[Measured Position in Cartesian Coordinates] y (m)";
+                            dg.Columns[23].HeaderText = "[Track Velocity in Polar Coordinates] Ground Speed (kt)";
+                            dg.Columns[24].HeaderText = "[Track Velocity in Polar Coordinates] Track Angle (º)";
+                            dg.Columns[25].HeaderText = "[Track Velocity in Cartesian Coordinates] Vx (m/s)";
+                            dg.Columns[26].HeaderText = "[Track Velocity in Cartesian Coordinates] Vy (m/s)";
+                            dg.Columns[27].HeaderText = "[Track Number]";
+                            dg.Columns[28].HeaderText = "[Track Status] CNF";
+                            dg.Columns[29].HeaderText = "[Track Status] TRE";
+                            dg.Columns[30].HeaderText = "[Track Status] CST";
+                            dg.Columns[31].HeaderText = "[Track Status] MAH";
+                            dg.Columns[32].HeaderText = "[Track Status] TCC";
+                            dg.Columns[33].HeaderText = "[Track Status] STH";
+                            dg.Columns[34].HeaderText = "[Track Status] TOM";
+                            dg.Columns[35].HeaderText = "[Track Status] DOU";
+                            dg.Columns[36].HeaderText = "[Track Status] MRS";
+                            dg.Columns[37].HeaderText = "[Track Status] GHO";
+                            dg.Columns[38].HeaderText = "[Mode 3/A in Octal Representation] V";
+                            dg.Columns[39].HeaderText = "[Mode 3/A in Octal Representation] G";
+                            dg.Columns[40].HeaderText = "[Mode 3/A in Octal Representation] L";
+                            dg.Columns[41].HeaderText = "[Mode 3/A in Octal Representation] Mode 3/A";
+                            dg.Columns[41].HeaderText = "[Target Address]";
+                            dg.Columns[42].HeaderText = "[Target Identification] STI";
+                            dg.Columns[43].HeaderText = "[Target Identification]";
+                            dg.Columns[44].HeaderText = "[Vehicle Fleet Identification]";
+                            dg.Columns[45].HeaderText = "[Flight Level in Binary Representation] V";
+                            dg.Columns[46].HeaderText = "[Flight Level in Binary Representation] G";
+                            dg.Columns[47].HeaderText = "[Flight Level in Binary Representation] Flight Level";
+                            dg.Columns[48].HeaderText = "[Measured Height] (ft)";
+                            dg.Columns[49].HeaderText = "[Target Size and Orientation] Target Length (m)";
+                            dg.Columns[50].HeaderText = "[Target Size and Orientation] Target Orientation (º)";
+                            dg.Columns[51].HeaderText = "[Target Size and Orientation] Target Width (m)";
+                            dg.Columns[52].HeaderText = "[System Status] NOGO";
+                            dg.Columns[53].HeaderText = "[System Status] OVL";
+                            dg.Columns[54].HeaderText = "[System Status] TSV";
+                            dg.Columns[55].HeaderText = "[System Status] DIV";
+                            dg.Columns[56].HeaderText = "[System Status] TTF";
+                            dg.Columns[57].HeaderText = "[Pre-programmed Message] TRB";
+                            dg.Columns[58].HeaderText = "[Pre-programmed Message] MSG";
+                            dg.Columns[59].HeaderText = "[Standard Deviation of Position] sigmaX (m)";
+                            dg.Columns[60].HeaderText = "[Standard Deviation of Position] sigmaY (m)";
+                            dg.Columns[61].HeaderText = "[Standard Deviation of Position] sigmaXY (m^2)";
+                            dg.Columns[62].HeaderText = "[Amplitude of Primary Plot]";
+                            dg.Columns[63].HeaderText = "[Calculated Acceleration] Ax (m/(s^2))";
+                            dg.Columns[64].HeaderText = "[Calculated Acceleration] Ay (m/(s^2))";
 
 
 
 
 
-                            for (int i = 0; i < l10.Count; i++)
+
+
+
+
+
+                        for (int i = 0; i < l10.Count; i++)
                             {
                                 dg.Rows[i].Cells[0].Value = i;
                                 dg.Rows[i].Cells[1].Value = 10;
@@ -768,8 +818,55 @@ namespace WindowsFormsApp1
                                 dg.Rows[i].Cells[18].Value = l10[i].longitude;
                                 dg.Rows[i].Cells[19].Value = l10[i].latitude;
                                 dg.Rows[i].Cells[20].Value = l10[i].longitude;
+                                dg.Rows[i].Cells[21].Value = l10[i].x;
+                                dg.Rows[i].Cells[22].Value = l10[i].y;
+                                dg.Rows[i].Cells[23].Value = l10[i].groundSpeed;
+                                dg.Rows[i].Cells[24].Value = l10[i].trackAngle;
+                                dg.Rows[i].Cells[25].Value = l10[i].Vx;
+                                dg.Rows[i].Cells[26].Value = l10[i].Vy;
+                                dg.Rows[i].Cells[27].Value = l10[i].trackNumber;
+                                dg.Rows[i].Cells[28].Value = l10[i].CNF;
+                                dg.Rows[i].Cells[29].Value = l10[i].TRE;
+                                dg.Rows[i].Cells[30].Value = l10[i].CST;
+                                dg.Rows[i].Cells[31].Value = l10[i].MAH;
+                                dg.Rows[i].Cells[32].Value = l10[i].TCC;
+                                dg.Rows[i].Cells[33].Value = l10[i].STH;
+                                dg.Rows[i].Cells[34].Value = l10[i].TOM;
+                                dg.Rows[i].Cells[35].Value = l10[i].DOU;
+                                dg.Rows[i].Cells[36].Value = l10[i].MSR;
+                                dg.Rows[i].Cells[37].Value = l10[i].GHO;
+                                dg.Rows[i].Cells[38].Value = l10[i].V_3A;
+                                dg.Rows[i].Cells[39].Value = l10[i].G_3A;
+                                dg.Rows[i].Cells[40].Value = l10[i].L;
+                                dg.Rows[i].Cells[41].Value = l10[i].mode3A;
+                                dg.Rows[i].Cells[42].Value = l10[i].targetAddress;
+                                dg.Rows[i].Cells[43].Value = l10[i].STI;
+                                dg.Rows[i].Cells[44].Value = l10[i].targetIdentification;
+                                dg.Rows[i].Cells[45].Value = l10[i].V_FL;
+                                dg.Rows[i].Cells[46].Value = l10[i].G_FL;
+                                dg.Rows[i].Cells[47].Value = l10[i].flightLevel;
+                                dg.Rows[i].Cells[48].Value = l10[i].height;
+                                dg.Rows[i].Cells[49].Value = l10[i].targetLength;
+                                dg.Rows[i].Cells[50].Value = l10[i].targetOrientation;
+                                dg.Rows[i].Cells[51].Value = l10[i].targetWidth;
+                                dg.Rows[i].Cells[52].Value = l10[i].NOGO;
+                                dg.Rows[i].Cells[53].Value = l10[i].OVL;
+                                dg.Rows[i].Cells[54].Value = l10[i].TSV;
+                                dg.Rows[i].Cells[55].Value = l10[i].DIV;
+                                dg.Rows[i].Cells[56].Value = l10[i].TTF;
+                                dg.Rows[i].Cells[57].Value = l10[i].TRB;
+                                dg.Rows[i].Cells[58].Value = l10[i].MSG;
+                                dg.Rows[i].Cells[59].Value = l10[i].sigmax;
+                                dg.Rows[i].Cells[60].Value = l10[i].sigmay;
+                                dg.Rows[i].Cells[61].Value = l10[i].sigmaxy;
+                                dg.Rows[i].Cells[62].Value = l10[i].PAM;
+                                dg.Rows[i].Cells[63].Value = l10[i].Ax;
+                                dg.Rows[i].Cells[64].Value = l10[i].Ay;
 
-                            }
+
+
+
+                        }
                             dg.Rows[0].Cells[0].Value = "Data Source Identifier";
 
 
