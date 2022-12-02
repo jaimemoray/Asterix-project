@@ -95,6 +95,23 @@ namespace WindowsFormsApp1
         {
             CreateDataGridView();
 
+
+
+            switch (flag)
+            {
+                case 0:
+                    comboBoxFilter.Items.Add("MESSAGE TYPE");
+                    comboBoxFilter.Items.Add("TARGET IDENTIFICATION");
+                    comboBoxFilter.Items.Add("TRACK NUMBER");
+                    comboBoxFilter.Items.Add("TARGET ADDRESS");
+                    break;
+                case 1:
+                    comboBoxFilter.Items.Add("TARGET IDENTIFICATION");
+                    comboBoxFilter.Items.Add("TRACK NUMBER");
+                    comboBoxFilter.Items.Add("TARGET ADDRESS");
+                    break;
+            }
+
         }
 
         private void CloseButton_Click(object sender, EventArgs e)
@@ -476,57 +493,92 @@ namespace WindowsFormsApp1
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
-            filter = true;
-            messagedataGrid.Rows.Clear();
-            dataItemsGridView.Rows.Clear();
-            ItemInformationTextBox.Text = "";
-            string myFilter = Convert.ToString(comboBoxFilter.SelectedItem);
+            filter = filter == false ? true : false;
 
-            switch (flag)
+            if (filter == true)
             {
-                case 0:
+                messagedataGrid.Rows.Clear();
+                dataItemsGridView.Rows.Clear();
+                ItemInformationTextBox.Text = "";
+                string myFilter = Convert.ToString(comboBoxFilter.SelectedItem);
 
 
 
-                    messagedataGrid.RowCount = FilterL10.Count;
+                switch (flag)
+                {
+                    case 0:
 
-                    for (int i = 0; i < FilterL10.Count; i++)
-                    {
-                        messagedataGrid.Rows[i].Cells[0].Value = l10.FindIndex(m => m == FilterL10[i]);
-                        messagedataGrid.Rows[i].Cells[1].Value = 10;
-                        messagedataGrid.Rows[i].Cells[2].Value = FilterL10[i].convert2TimeOfDay(FilterL10[i].TimeOfDay);
-                        messagedataGrid.Rows[i].Cells[3].Value = FilterL10[i].GetLength();
-                        messagedataGrid.Rows[i].Cells[4].Value = FilterL10[i].GetItemList().Count;
+                        switch (myFilter)
+                        {
+                            case "MESSAGE TYPE":
+                                FilterL10 = l10.FindAll(m => m.MessageType == textBoxSearch.Text);
+                                break;
+                            case "TARGET IDENTIFICATION":
+                                FilterL10 = l10.FindAll(m => m.targetIdentification == textBoxSearch.Text);
+                                break;
+                            case "TRACK NUMBER":
+                                FilterL10 = l10.FindAll(m => Convert.ToString(m.trackNumber) == textBoxSearch.Text);
+                                break;
+                            case "TARGET ADDRESS":
+                                FilterL10 = l10.FindAll(m => Convert.ToString(m.targetAddress) == textBoxSearch.Text);
+                                break;
 
+                        }
 
-                    }
+                        messagedataGrid.RowCount = FilterL10.Count;
 
-                    break;
-                case 1:
-
-                    switch (myFilter)
-                    {
-                        case "TRACK NUMBER":
-                            FilterL21 = l21.FindAll(m => Convert.ToString(m.trackNumber) == textBoxSearch.Text);
-                            break;
-
-                    }
-                   
-                    messagedataGrid.RowCount = FilterL21.Count;
-
-                    for (int i = 0; i < FilterL21.Count; i++)
-                    {
-                        messagedataGrid.Rows[i].Cells[0].Value = l21.FindIndex(m => m == FilterL21[i]);
-                        messagedataGrid.Rows[i].Cells[1].Value = 21;
-                        messagedataGrid.Rows[i].Cells[2].Value = "";
-                        messagedataGrid.Rows[i].Cells[3].Value = FilterL21[i].GetLength();
-                        messagedataGrid.Rows[i].Cells[4].Value = FilterL21[i].GetItemList().Count;
+                        for (int i = 0; i < FilterL10.Count; i++)
+                        {
+                            messagedataGrid.Rows[i].Cells[0].Value = l10.FindIndex(m => m == FilterL10[i]);
+                            messagedataGrid.Rows[i].Cells[1].Value = 10;
+                            messagedataGrid.Rows[i].Cells[2].Value = FilterL10[i].convert2TimeOfDay(FilterL10[i].TimeOfDay);
+                            messagedataGrid.Rows[i].Cells[3].Value = FilterL10[i].GetLength();
+                            messagedataGrid.Rows[i].Cells[4].Value = FilterL10[i].GetItemList().Count;
 
 
-                    }
-                    break;
-            }            
-           
+                        }
+
+                        break;
+                    case 1:
+
+                        switch (myFilter)
+                        {
+                            case "TARGET IDENTIFICATION":
+                                FilterL21 = l21.FindAll(m => m.targetIdentification == textBoxSearch.Text);
+                                break;
+                            case "TRACK NUMBER":
+                                FilterL21 = l21.FindAll(m => Convert.ToString(m.trackNumber) == textBoxSearch.Text);
+                                break;
+                            case "TARGET ADDRESS":
+                                FilterL21 = l21.FindAll(m => Convert.ToString(m.targetAddress) == textBoxSearch.Text);
+                                break;
+
+                        }
+
+
+                        messagedataGrid.RowCount = FilterL21.Count;
+
+                        for (int i = 0; i < FilterL21.Count; i++)
+                        {
+                            messagedataGrid.Rows[i].Cells[0].Value = l21.FindIndex(m => m == FilterL21[i]);
+                            messagedataGrid.Rows[i].Cells[1].Value = 21;
+                            messagedataGrid.Rows[i].Cells[2].Value = "";
+                            messagedataGrid.Rows[i].Cells[3].Value = FilterL21[i].GetLength();
+                            messagedataGrid.Rows[i].Cells[4].Value = FilterL21[i].GetItemList().Count;
+
+
+                        }
+                        break;
+                }
+                buttonSearch.Text = "QUITAR FILTRO";
+            }
+            else
+            {
+                buttonSearch.Text = "FILTRAR";
+                CreateDataGridView();
+            }
+
+
         }
 
         private void messagedataGrid_CellClick(object sender, DataGridViewCellEventArgs e)

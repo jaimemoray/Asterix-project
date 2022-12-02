@@ -125,10 +125,6 @@ namespace WindowsFormsApp1
             // comboBoxFilter
             // 
             this.comboBoxFilter.FormattingEnabled = true;
-            this.comboBoxFilter.Items.AddRange(new object[] {
-            "CALLSIGN",
-            "TRACK NUMBER",
-            "TARGET ADDRESS"});
             this.comboBoxFilter.Location = new System.Drawing.Point(482, 122);
             this.comboBoxFilter.Name = "comboBoxFilter";
             this.comboBoxFilter.Size = new System.Drawing.Size(179, 24);
@@ -140,14 +136,15 @@ namespace WindowsFormsApp1
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(179, 22);
             this.textBoxSearch.TabIndex = 9;
+            this.textBoxSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // buttonSearch
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(533, 194);
+            this.buttonSearch.Location = new System.Drawing.Point(482, 207);
             this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(75, 23);
+            this.buttonSearch.Size = new System.Drawing.Size(179, 23);
             this.buttonSearch.TabIndex = 10;
-            this.buttonSearch.Text = "button1";
+            this.buttonSearch.Text = "FILTRAR";
             this.buttonSearch.UseVisualStyleBackColor = true;
             this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
