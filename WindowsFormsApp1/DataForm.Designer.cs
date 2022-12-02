@@ -35,7 +35,7 @@ namespace WindowsFormsApp1
             this.ItemInformationTextBox = new System.Windows.Forms.TextBox();
             this.dataItemLabel = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBoxFilters = new System.Windows.Forms.ComboBox();
+            this.comboBoxFilter = new System.Windows.Forms.ComboBox();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -122,18 +122,17 @@ namespace WindowsFormsApp1
             this.textBox1.TabIndex = 7;
             this.textBox1.Text = "Filter by:";
             // 
-            // comboBoxFilters
+            // comboBoxFilter
             // 
-            this.comboBoxFilters.FormattingEnabled = true;
-            this.comboBoxFilters.Items.AddRange(new object[] {
+            this.comboBoxFilter.FormattingEnabled = true;
+            this.comboBoxFilter.Items.AddRange(new object[] {
             "CALLSIGN",
             "TRACK NUMBER",
             "TARGET ADDRESS"});
-            this.comboBoxFilters.Location = new System.Drawing.Point(482, 122);
-            this.comboBoxFilters.Name = "comboBoxFilters";
-            this.comboBoxFilters.Size = new System.Drawing.Size(179, 24);
-            this.comboBoxFilters.TabIndex = 8;
-            this.comboBoxFilters.SelectedIndexChanged += new System.EventHandler(this.comboBoxFilters_SelectedIndexChanged);
+            this.comboBoxFilter.Location = new System.Drawing.Point(482, 122);
+            this.comboBoxFilter.Name = "comboBoxFilter";
+            this.comboBoxFilter.Size = new System.Drawing.Size(179, 24);
+            this.comboBoxFilter.TabIndex = 8;
             // 
             // textBoxSearch
             // 
@@ -150,6 +149,7 @@ namespace WindowsFormsApp1
             this.buttonSearch.TabIndex = 10;
             this.buttonSearch.Text = "button1";
             this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // label1
             // 
@@ -181,7 +181,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.textBoxSearch);
-            this.Controls.Add(this.comboBoxFilters);
+            this.Controls.Add(this.comboBoxFilter);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.dataItemLabel);
             this.Controls.Add(this.ItemInformationTextBox);
@@ -207,7 +207,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.TextBox ItemInformationTextBox;
         private System.Windows.Forms.Label dataItemLabel;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBoxFilters;
+        private System.Windows.Forms.ComboBox comboBoxFilter;
         private System.Windows.Forms.TextBox textBoxSearch;
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.Label label1;

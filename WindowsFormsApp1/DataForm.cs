@@ -11,6 +11,7 @@ namespace WindowsFormsApp1
     public partial class DataForm : Form
     {
         List<CAT10> l10 = new List<CAT10>();
+        List<CAT10> FilterL10 = new List<CAT10>();
         List<CAT21> l21 = new List<CAT21>();
         int rowMess;
         int flag;
@@ -33,65 +34,86 @@ namespace WindowsFormsApp1
             l21 = l;
             flag = 1;
         }
-
-        private void DataForm_Load(object sender, EventArgs e)
+        private void CreateDataGridView(bool filter)
         {
+            messagedataGrid.Rows.Clear();
+            messagedataGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            messagedataGrid.ReadOnly = true;
+            messagedataGrid.RowHeadersVisible = false;
+            messagedataGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+
+            messagedataGrid.ColumnCount = 5; //ID, CAT, TIME,Length
+            messagedataGrid.Columns[0].HeaderText = "ID";
+            messagedataGrid.Columns[1].HeaderText = "CAT";
+            messagedataGrid.Columns[2].HeaderText = "Time of Day";
+            messagedataGrid.Columns[3].HeaderText = "Length";
+            messagedataGrid.Columns[4].HeaderText = "Data Items";
+
             switch (flag)
             {
                 case 0:
-                    
-                messagedataGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                messagedataGrid.ReadOnly = true;
-                messagedataGrid.RowHeadersVisible = false;
-                messagedataGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-                messagedataGrid.RowCount = l10.Count; //Tendremos tantas filas como mensajes haya en nuestra lista
-                messagedataGrid.ColumnCount = 5; //ID, CAT, TIME,Length
-                messagedataGrid.Columns[0].HeaderText = "ID";
-                messagedataGrid.Columns[1].HeaderText = "CAT";
-                messagedataGrid.Columns[2].HeaderText = "Time of Day";
-                messagedataGrid.Columns[3].HeaderText = "Length";
-                messagedataGrid.Columns[4].HeaderText = "Data Items";
 
-                for (int i = 0; i < l10.Count; i++)
-                {
-                    messagedataGrid.Rows[i].Cells[0].Value = i;
-                    messagedataGrid.Rows[i].Cells[1].Value = 10;
-                    messagedataGrid.Rows[i].Cells[2].Value = l10[i].convert2TimeOfDay(l10[i].TimeOfDay);
-                    messagedataGrid.Rows[i].Cells[3].Value = l10[i].GetLength();
-                    messagedataGrid.Rows[i].Cells[4].Value = l10[i].GetItemList().Count;
+                    switch (filter)
+                    {
+                        case false:
+                            messagedataGrid.RowCount = l10.Count; //Tendremos tantas filas como mensajes haya en nuestra lista
 
 
-                }
+                            for (int i = 0; i < l10.Count; i++)
+                            {
+                                messagedataGrid.Rows[i].Cells[0].Value = i;
+                                messagedataGrid.Rows[i].Cells[1].Value = 10;
+                                messagedataGrid.Rows[i].Cells[2].Value = l10[i].convert2TimeOfDay(l10[i].TimeOfDay);
+                                messagedataGrid.Rows[i].Cells[3].Value = l10[i].GetLength();
+                                messagedataGrid.Rows[i].Cells[4].Value = l10[i].GetItemList().Count;
 
+                                
+                            }
+                            break;
+                        case true:
+
+                            messagedataGrid.RowCount = FilterL10.Count; //Tendremos tantas filas como mensajes haya en nuestra lista
+
+
+                            for (int i = 0; i < FilterL10.Count; i++)
+                            {
+                                messagedataGrid.Rows[i].Cells[0].Value = i;
+                                messagedataGrid.Rows[i].Cells[1].Value = 10;
+                                messagedataGrid.Rows[i].Cells[2].Value = FilterL10[i].convert2TimeOfDay(FilterL10[i].TimeOfDay);
+                                messagedataGrid.Rows[i].Cells[3].Value = FilterL10[i].GetLength();
+                                messagedataGrid.Rows[i].Cells[4].Value = FilterL10[i].GetItemList().Count;
+
+
+                            }
+                            break;
+                           
+                    }
+ 
+                   
                     break;
 
 
                 case 1:
-                messagedataGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                messagedataGrid.ReadOnly = true;
-                messagedataGrid.RowHeadersVisible = false;
-                messagedataGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-                messagedataGrid.RowCount = l21.Count; //Tendremos tantas filas como mensajes haya en nuestra lista
-                messagedataGrid.ColumnCount = 5; //ID, CAT, TIME,Length
-                messagedataGrid.Columns[0].HeaderText = "ID";
-                messagedataGrid.Columns[1].HeaderText = "CAT";
-                messagedataGrid.Columns[2].HeaderText = "Time of Day";
-                messagedataGrid.Columns[3].HeaderText = "Length";
-                messagedataGrid.Columns[4].HeaderText = "Data Items";
 
-                for (int i = 0; i < l21.Count; i++)
-                {
-                    messagedataGrid.Rows[i].Cells[0].Value = i;
-                    messagedataGrid.Rows[i].Cells[1].Value = 21;
-                    messagedataGrid.Rows[i].Cells[2].Value = " ";
-                    messagedataGrid.Rows[i].Cells[3].Value = l21[i].GetLength();
-                    messagedataGrid.Rows[i].Cells[4].Value = l21[i].GetItemList().Count;
+                    messagedataGrid.RowCount = l21.Count; //Tendremos tantas filas como mensajes haya en nuestra lista
+
+                    for (int i = 0; i < l21.Count; i++)
+                    {
+                        messagedataGrid.Rows[i].Cells[0].Value = i;
+                        messagedataGrid.Rows[i].Cells[1].Value = 21;
+                        messagedataGrid.Rows[i].Cells[2].Value = " ";
+                        messagedataGrid.Rows[i].Cells[3].Value = l21[i].GetLength();
+                        messagedataGrid.Rows[i].Cells[4].Value = l21[i].GetItemList().Count;
 
 
-                }
+                    }
                     break;
 
             }
+        }
+        private void DataForm_Load(object sender, EventArgs e)
+        {
+            CreateDataGridView(false);
 
         }
 
@@ -615,25 +637,9 @@ namespace WindowsFormsApp1
 
 
 
-        public void SearchAttributes(string searchText)
-        {
-            switch (flag)
-            {
-                case 0:
-                    messagedataGrid.DataSource = l10.Where(x => x.targetIdentification.Contains (searchText));
-                break;
 
-            }
-            
 
-        }
 
-        private void comboBoxFilters_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-            
-
-        }
 
 
 
@@ -992,8 +998,63 @@ namespace WindowsFormsApp1
                 File.WriteAllLines(sfd.FileName, rows);
             }
         }
+        
 
 
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            string myFilter = Convert.ToString(comboBoxFilter.SelectedItem);
+            switch (myFilter)
+            {
+                case "CALLSIGN":
+                    switch (flag)
+                    {
+                        case 0:
+                            FilterL10 = l10.FindAll(m => m.targetIdentification==textBoxSearch.Text);
+                            messagedataGrid.RowCount = FilterL10.Count; //Tendremos tantas filas como mensajes haya en nuestra lista
+
+
+                            //for (int i = 0; i < FilterL10.Count; i++)
+                            //{
+                            //    messagedataGrid.Rows[i].Cells[0].Value = i;
+                            //    messagedataGrid.Rows[i].Cells[1].Value = 10;
+                            //    messagedataGrid.Rows[i].Cells[2].Value = FilterL10[i].convert2TimeOfDay(FilterL10[i].TimeOfDay);
+                            //    messagedataGrid.Rows[i].Cells[3].Value = FilterL10[i].GetLength();
+                            //    messagedataGrid.Rows[i].Cells[4].Value = FilterL10[i].GetItemList().Count;
+
+
+                            //}
+                            //break;
+                            break;
+                        case 1:
+                            break;
+                    }
+                    break;
+                case "TRACK NUMBER":
+                    switch (flag)
+                    {
+                        case 0:
+                            FilterL10 = l10.FindAll(m => Convert.ToString(m.trackNumber) == textBoxSearch.Text);
+                            
+                            break;
+                        case 1:
+                            break;
+                    }
+                    break;
+                case "TARGET ADDRESS":
+                    switch (flag)
+                    {
+                        case 0:
+                            break;
+                        case 1:
+                            break;
+                    }
+                    break;
+
+            }
+            CreateDataGridView(true);
+        }
     }
 }
 
