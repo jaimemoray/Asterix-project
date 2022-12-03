@@ -18,7 +18,10 @@ using DECODEclass;
 namespace WindowsFormsApp1
 {
     public partial class Simulation : Form
-    {   
+    {
+        List<marker> currentSMR = new List<marker>();
+        List<marker> currentMLAT = new List<marker>();
+        List<marker> currentADSB = new List<marker>();
 
         List<marker> markers = new List<marker>();
         //SMR
@@ -88,6 +91,7 @@ namespace WindowsFormsApp1
             // Add Overlays to map
             gMapControl1.Overlays.Add(SMRlayer);
             gMapControl1.Overlays.Add(MLATlayer);
+            gMapControl1.Overlays.Add(ADSBlayer);
 
             // Timer
             timer.Interval = 1000;
@@ -149,9 +153,11 @@ namespace WindowsFormsApp1
                         //}
                         if (Main.main.myListCAT10[markers[index].indexList].MessageType== "Target Report")
                         {
-                            eliminatePreviusPos(0, markers[index]);
+                            eliminatePrevious(0, markers[index]);
+                            
                             SMRlayer.Markers.Add(markers[index]);
-                            gMapControl1.Overlays.Add(SMRlayer);
+                            currentSMR.Add(markers[index]);
+                            //gMapControl1.Overlays.Add(SMRlayer);
                         }
 
                        
@@ -160,20 +166,57 @@ namespace WindowsFormsApp1
 
                         if (Main.main.myListCAT10[markers[index].indexList].MessageType == "Target Report")
                         {
-                            //eliminatePreviusPos(1, markers[index]);
+                            eliminatePrevious(1, markers[index]);
                             MLATlayer.Markers.Add(markers[index]);
-                            gMapControl1.Overlays.Add(MLATlayer);
+                            currentMLAT.Add(markers[index]);
+                            //gMapControl1.Overlays.Add(MLATlayer);
                         }
                         break;
                     case "ADSB":
-                        //eliminatePreviusPos(2, markers[index]);
+                        eliminatePrevious(2, markers[index]);
                         ADSBlayer.Markers.Add(markers[index]);
-                        gMapControl1.Overlays.Add(ADSBlayer);
+                        currentADSB.Add(markers[index]);
+                        //gMapControl1.Overlays.Add(ADSBlayer);
                         break;
                 }
                 index++;
             }
           
+        }
+
+        private void eliminatePrevious(int f,marker m)
+        {
+            int ind;
+            switch (f)
+            {
+                case 0:
+                    ind = currentSMR.FindIndex(tn=>tn.trackNumber==m.trackNumber);
+
+                    if (ind>=0)
+                    {
+                        SMRlayer.Markers.RemoveAt(ind);
+                        currentSMR.RemoveAt(ind);
+                    }
+                    break;
+                case 1:
+                    ind = currentMLAT.FindIndex(tn => tn.trackNumber == m.trackNumber);
+
+                    if (ind >= 0)
+                    {
+                        MLATlayer.Markers.RemoveAt(ind);
+                        currentMLAT.RemoveAt(ind);
+                    }
+                    break;
+                case 2:
+                    ind = currentADSB.FindIndex(tn => tn.trackNumber == m.trackNumber);
+
+                    if (ind >= 0)
+                    {
+                        ADSBlayer.Markers.RemoveAt(ind);
+                        currentADSB.RemoveAt(ind);
+                    }
+                    break;
+            }
         }
 
         private void Nextbutton_Click(object sender, EventArgs e)
@@ -316,34 +359,11 @@ namespace WindowsFormsApp1
 
 
 
-        private void eliminatePreviusPos(int f,marker m)
-        {
-            try
-            {
-                if (m.trackNumber != null)
-                {
-                    marker mkr = markers.Find(p => p.trackNumber == m.trackNumber);
-                    
-                    switch (f)
-                    {
-                        case 0:
-                            SMRlayer.Markers.Remove(mkr.GetGMarker());
-                          Console.WriteLine(SMRlayer.Markers.Remove(mkr.GetGMarker()));
-                            break;
-                        //case 1:
-                        //    MLATlayer.Markers.Remove(mkr);
-                        //    break;
-                        //case 2:
-                        //    ADSBlayer.Markers.Remove(mkr);
-                        //    break;
-                    }
-                }
-            }
-            catch (Exception e) { Console.WriteLine(e.Message); }
+  
 
 
 
-        }
+        
 
 
     }
