@@ -43,8 +43,6 @@ namespace WindowsFormsApp1
 
         //To eliminate previous positions
         int lIni = 0; //Same value than index
-        
-
 
 
         public Simulation()
@@ -207,11 +205,14 @@ namespace WindowsFormsApp1
         {
             if (timer.Enabled == true)
             {
+                
+                startPause.BackgroundImage = Image.FromFile("play.png");
                 timer.Enabled = false;
                 timer.Stop();
             }
             else
             {
+                startPause.BackgroundImage = Image.FromFile("pause.png");
                 timer.Enabled = true;
                 timer.Start();
             }

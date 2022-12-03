@@ -30,6 +30,7 @@ namespace WindowsFormsApp1
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Simulation));
             this.panelMap = new System.Windows.Forms.Panel();
             this.mapPanel = new System.Windows.Forms.Panel();
             this.gMapControl1 = new GMap.NET.WindowsForms.GMapControl();
@@ -109,6 +110,7 @@ namespace WindowsFormsApp1
             // 
             // gMapControl1
             // 
+            this.gMapControl1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.gMapControl1.Bearing = 0F;
             this.gMapControl1.CanDragMap = true;
             this.gMapControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -151,6 +153,7 @@ namespace WindowsFormsApp1
             // 
             // dataPanel
             // 
+            this.dataPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dataPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.dataPanel.Controls.Add(this.ClockLabel);
             this.dataPanel.Controls.Add(this.Hlabel);
@@ -175,11 +178,11 @@ namespace WindowsFormsApp1
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ClockLabel.AutoSize = true;
-            this.ClockLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ClockLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClockLabel.Font = new System.Drawing.Font("Copperplate Gothic Light", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClockLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClockLabel.Location = new System.Drawing.Point(281, 32);
             this.ClockLabel.Name = "ClockLabel";
-            this.ClockLabel.Size = new System.Drawing.Size(129, 34);
+            this.ClockLabel.Size = new System.Drawing.Size(149, 30);
             this.ClockLabel.TabIndex = 9;
             this.ClockLabel.Text = "00:00:00";
             // 
@@ -188,9 +191,11 @@ namespace WindowsFormsApp1
             this.Hlabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Hlabel.AutoSize = true;
+            this.Hlabel.Font = new System.Drawing.Font("Berlin Sans FB", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Hlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Hlabel.Location = new System.Drawing.Point(320, 178);
             this.Hlabel.Name = "Hlabel";
-            this.Hlabel.Size = new System.Drawing.Size(53, 17);
+            this.Hlabel.Size = new System.Drawing.Size(44, 15);
             this.Hlabel.TabIndex = 8;
             this.Hlabel.Text = "Height:";
             // 
@@ -198,9 +203,11 @@ namespace WindowsFormsApp1
             // 
             this.LNGlabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.LNGlabel.AutoSize = true;
+            this.LNGlabel.Font = new System.Drawing.Font("Berlin Sans FB", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LNGlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.LNGlabel.Location = new System.Drawing.Point(169, 178);
             this.LNGlabel.Name = "LNGlabel";
-            this.LNGlabel.Size = new System.Drawing.Size(75, 17);
+            this.LNGlabel.Size = new System.Drawing.Size(64, 15);
             this.LNGlabel.TabIndex = 7;
             this.LNGlabel.Text = "Longitude:";
             // 
@@ -209,9 +216,11 @@ namespace WindowsFormsApp1
             this.LATlabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.LATlabel.AutoSize = true;
+            this.LATlabel.Font = new System.Drawing.Font("Berlin Sans FB", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LATlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.LATlabel.Location = new System.Drawing.Point(18, 178);
             this.LATlabel.Name = "LATlabel";
-            this.LATlabel.Size = new System.Drawing.Size(63, 17);
+            this.LATlabel.Size = new System.Drawing.Size(54, 15);
             this.LATlabel.TabIndex = 6;
             this.LATlabel.Text = "Latitude:";
             // 
@@ -220,9 +229,11 @@ namespace WindowsFormsApp1
             this.FLlabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.FLlabel.AutoSize = true;
+            this.FLlabel.Font = new System.Drawing.Font("Berlin Sans FB", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FLlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.FLlabel.Location = new System.Drawing.Point(320, 123);
             this.FLlabel.Name = "FLlabel";
-            this.FLlabel.Size = new System.Drawing.Size(88, 17);
+            this.FLlabel.Size = new System.Drawing.Size(72, 15);
             this.FLlabel.TabIndex = 5;
             this.FLlabel.Text = "Flight Level: ";
             // 
@@ -231,9 +242,11 @@ namespace WindowsFormsApp1
             this.TIMElabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.TIMElabel.AutoSize = true;
+            this.TIMElabel.Font = new System.Drawing.Font("Berlin Sans FB", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TIMElabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.TIMElabel.Location = new System.Drawing.Point(18, 123);
             this.TIMElabel.Name = "TIMElabel";
-            this.TIMElabel.Size = new System.Drawing.Size(47, 17);
+            this.TIMElabel.Size = new System.Drawing.Size(38, 15);
             this.TIMElabel.TabIndex = 4;
             this.TIMElabel.Text = "Time: ";
             // 
@@ -243,9 +256,11 @@ namespace WindowsFormsApp1
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TAlabel.AutoSize = true;
+            this.TAlabel.Font = new System.Drawing.Font("Berlin Sans FB", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TAlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.TAlabel.Location = new System.Drawing.Point(18, 80);
             this.TAlabel.Name = "TAlabel";
-            this.TAlabel.Size = new System.Drawing.Size(110, 17);
+            this.TAlabel.Size = new System.Drawing.Size(89, 15);
             this.TAlabel.TabIndex = 3;
             this.TAlabel.Text = "Target Address:";
             // 
@@ -254,9 +269,11 @@ namespace WindowsFormsApp1
             this.TIlabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.TIlabel.AutoSize = true;
+            this.TIlabel.Font = new System.Drawing.Font("Berlin Sans FB", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TIlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.TIlabel.Location = new System.Drawing.Point(18, 33);
             this.TIlabel.Name = "TIlabel";
-            this.TIlabel.Size = new System.Drawing.Size(137, 17);
+            this.TIlabel.Size = new System.Drawing.Size(114, 15);
             this.TIlabel.TabIndex = 2;
             this.TIlabel.Text = "Target Identification:";
             // 
@@ -264,9 +281,11 @@ namespace WindowsFormsApp1
             // 
             this.SIClabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.SIClabel.AutoSize = true;
+            this.SIClabel.Font = new System.Drawing.Font("Berlin Sans FB", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SIClabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.SIClabel.Location = new System.Drawing.Point(169, 123);
             this.SIClabel.Name = "SIClabel";
-            this.SIClabel.Size = new System.Drawing.Size(37, 17);
+            this.SIClabel.Size = new System.Drawing.Size(29, 15);
             this.SIClabel.TabIndex = 1;
             this.SIClabel.Text = "SIC: ";
             // 
@@ -275,15 +294,17 @@ namespace WindowsFormsApp1
             this.AircraftDataLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.AircraftDataLabel.AutoSize = true;
-            this.AircraftDataLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AircraftDataLabel.Font = new System.Drawing.Font("Copperplate Gothic Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AircraftDataLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.AircraftDataLabel.Location = new System.Drawing.Point(18, 4);
             this.AircraftDataLabel.Name = "AircraftDataLabel";
-            this.AircraftDataLabel.Size = new System.Drawing.Size(100, 17);
+            this.AircraftDataLabel.Size = new System.Drawing.Size(139, 19);
             this.AircraftDataLabel.TabIndex = 0;
             this.AircraftDataLabel.Text = "Aircraft Data";
             // 
             // panelTime
             // 
+            this.panelTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.panelTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelTime.Controls.Add(this.pictureBox2);
             this.panelTime.Controls.Add(this.Layerlabel);
@@ -317,10 +338,11 @@ namespace WindowsFormsApp1
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Layerlabel.AutoSize = true;
-            this.Layerlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Layerlabel.Font = new System.Drawing.Font("Copperplate Gothic Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Layerlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Layerlabel.Location = new System.Drawing.Point(13, 4);
             this.Layerlabel.Name = "Layerlabel";
-            this.Layerlabel.Size = new System.Drawing.Size(97, 17);
+            this.Layerlabel.Size = new System.Drawing.Size(128, 19);
             this.Layerlabel.TabIndex = 15;
             this.Layerlabel.Text = "Instruments:";
             // 
@@ -342,9 +364,10 @@ namespace WindowsFormsApp1
             this.layerListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.layerListBox.BackColor = System.Drawing.SystemColors.Control;
+            this.layerListBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.layerListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.layerListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.layerListBox.Font = new System.Drawing.Font("Berlin Sans FB", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.layerListBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.layerListBox.FormattingEnabled = true;
             this.layerListBox.Location = new System.Drawing.Point(61, 28);
             this.layerListBox.Name = "layerListBox";
@@ -367,13 +390,18 @@ namespace WindowsFormsApp1
             // CloseButton
             // 
             this.CloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CloseButton.Location = new System.Drawing.Point(226, 4);
+            this.CloseButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.CloseButton.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
+            this.CloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CloseButton.Font = new System.Drawing.Font("Copperplate Gothic Light", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CloseButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.CloseButton.Location = new System.Drawing.Point(251, 4);
             this.CloseButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CloseButton.Name = "CloseButton";
-            this.CloseButton.Size = new System.Drawing.Size(45, 46);
+            this.CloseButton.Size = new System.Drawing.Size(27, 28);
             this.CloseButton.TabIndex = 4;
             this.CloseButton.Text = "X";
-            this.CloseButton.UseVisualStyleBackColor = true;
+            this.CloseButton.UseVisualStyleBackColor = false;
             this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
             // panelInfo
@@ -389,6 +417,7 @@ namespace WindowsFormsApp1
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.Speedlabel);
@@ -408,12 +437,13 @@ namespace WindowsFormsApp1
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Copperplate Gothic Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label4.Location = new System.Drawing.Point(16, 12);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 17);
+            this.label4.Size = new System.Drawing.Size(102, 19);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Controls: ";
+            this.label4.Text = "Controls";
             // 
             // Speedlabel
             // 
@@ -421,9 +451,11 @@ namespace WindowsFormsApp1
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Speedlabel.AutoSize = true;
+            this.Speedlabel.Font = new System.Drawing.Font("Berlin Sans FB", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Speedlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Speedlabel.Location = new System.Drawing.Point(28, 78);
             this.Speedlabel.Name = "Speedlabel";
-            this.Speedlabel.Size = new System.Drawing.Size(71, 17);
+            this.Speedlabel.Size = new System.Drawing.Size(56, 15);
             this.Speedlabel.TabIndex = 5;
             this.Speedlabel.Text = "Speed: x1";
             // 
@@ -446,13 +478,17 @@ namespace WindowsFormsApp1
             this.startPause.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.startPause.Location = new System.Drawing.Point(257, 12);
+            this.startPause.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.startPause.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("startPause.BackgroundImage")));
+            this.startPause.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.startPause.FlatAppearance.BorderSize = 0;
+            this.startPause.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.startPause.Location = new System.Drawing.Point(270, 39);
             this.startPause.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.startPause.Name = "startPause";
             this.startPause.Size = new System.Drawing.Size(40, 40);
             this.startPause.TabIndex = 0;
-            this.startPause.Text = "start/pause";
-            this.startPause.UseVisualStyleBackColor = true;
+            this.startPause.UseVisualStyleBackColor = false;
             this.startPause.Click += new System.EventHandler(this.startPause_Click);
             // 
             // previus
@@ -460,13 +496,17 @@ namespace WindowsFormsApp1
             this.previus.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.previus.Location = new System.Drawing.Point(257, 55);
+            this.previus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.previus.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("previus.BackgroundImage")));
+            this.previus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.previus.FlatAppearance.BorderSize = 0;
+            this.previus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.previus.Location = new System.Drawing.Point(224, 39);
             this.previus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.previus.Name = "previus";
             this.previus.Size = new System.Drawing.Size(40, 40);
             this.previus.TabIndex = 3;
-            this.previus.Text = "Previus";
-            this.previus.UseVisualStyleBackColor = true;
+            this.previus.UseVisualStyleBackColor = false;
             this.previus.Click += new System.EventHandler(this.previus_Click);
             // 
             // Nextbutton
@@ -474,17 +514,22 @@ namespace WindowsFormsApp1
             this.Nextbutton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Nextbutton.Location = new System.Drawing.Point(303, 12);
+            this.Nextbutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Nextbutton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Nextbutton.BackgroundImage")));
+            this.Nextbutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Nextbutton.FlatAppearance.BorderSize = 0;
+            this.Nextbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Nextbutton.Location = new System.Drawing.Point(316, 39);
             this.Nextbutton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Nextbutton.Name = "Nextbutton";
             this.Nextbutton.Size = new System.Drawing.Size(40, 40);
             this.Nextbutton.TabIndex = 2;
-            this.Nextbutton.Text = "Next";
-            this.Nextbutton.UseVisualStyleBackColor = true;
+            this.Nextbutton.UseVisualStyleBackColor = false;
             this.Nextbutton.Click += new System.EventHandler(this.Nextbutton_Click);
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.Setbutton);
@@ -508,10 +553,11 @@ namespace WindowsFormsApp1
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Copperplate Gothic Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label5.Location = new System.Drawing.Point(14, 4);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(48, 17);
+            this.label5.Size = new System.Drawing.Size(51, 19);
             this.label5.TabIndex = 7;
             this.label5.Text = "Time ";
             // 
@@ -520,19 +566,25 @@ namespace WindowsFormsApp1
             this.Setbutton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Setbutton.Location = new System.Drawing.Point(292, 59);
+            this.Setbutton.BackColor = System.Drawing.Color.DimGray;
+            this.Setbutton.FlatAppearance.BorderSize = 0;
+            this.Setbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Setbutton.Font = new System.Drawing.Font("Copperplate Gothic Light", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Setbutton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Setbutton.Location = new System.Drawing.Point(292, 64);
             this.Setbutton.Name = "Setbutton";
-            this.Setbutton.Size = new System.Drawing.Size(42, 38);
+            this.Setbutton.Size = new System.Drawing.Size(64, 29);
             this.Setbutton.TabIndex = 8;
             this.Setbutton.Text = "Set";
-            this.Setbutton.UseVisualStyleBackColor = true;
+            this.Setbutton.UseVisualStyleBackColor = false;
             this.Setbutton.Click += new System.EventHandler(this.Setbutton_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(205, 72);
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label3.Location = new System.Drawing.Point(205, 70);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(14, 20);
             this.label3.TabIndex = 7;
@@ -541,10 +593,11 @@ namespace WindowsFormsApp1
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(129, 72);
+            this.label1.Font = new System.Drawing.Font("Copperplate Gothic Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Location = new System.Drawing.Point(129, 71);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(14, 20);
+            this.label1.Size = new System.Drawing.Size(14, 19);
             this.label1.TabIndex = 6;
             this.label1.Text = ":";
             // 
@@ -553,6 +606,8 @@ namespace WindowsFormsApp1
             this.ScomboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ScomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ScomboBox.Font = new System.Drawing.Font("Copperplate Gothic Light", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ScomboBox.FormattingEnabled = true;
             this.ScomboBox.Items.AddRange(new object[] {
             "00",
@@ -617,15 +672,16 @@ namespace WindowsFormsApp1
             "59"});
             this.ScomboBox.Location = new System.Drawing.Point(225, 68);
             this.ScomboBox.Name = "ScomboBox";
-            this.ScomboBox.Size = new System.Drawing.Size(46, 24);
+            this.ScomboBox.Size = new System.Drawing.Size(46, 22);
             this.ScomboBox.TabIndex = 5;
-            this.ScomboBox.Text = "ss";
             // 
             // McomboBox
             // 
             this.McomboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.McomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.McomboBox.Font = new System.Drawing.Font("Copperplate Gothic Light", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.McomboBox.FormattingEnabled = true;
             this.McomboBox.Items.AddRange(new object[] {
             "00",
@@ -690,15 +746,17 @@ namespace WindowsFormsApp1
             "59"});
             this.McomboBox.Location = new System.Drawing.Point(149, 68);
             this.McomboBox.Name = "McomboBox";
-            this.McomboBox.Size = new System.Drawing.Size(55, 24);
+            this.McomboBox.Size = new System.Drawing.Size(55, 22);
             this.McomboBox.TabIndex = 4;
-            this.McomboBox.Text = "mm";
             // 
             // HcomboBox
             // 
             this.HcomboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.HcomboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.HcomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.HcomboBox.Font = new System.Drawing.Font("Copperplate Gothic Light", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HcomboBox.FormattingEnabled = true;
             this.HcomboBox.Items.AddRange(new object[] {
             "00",
@@ -727,9 +785,8 @@ namespace WindowsFormsApp1
             "23"});
             this.HcomboBox.Location = new System.Drawing.Point(71, 68);
             this.HcomboBox.Name = "HcomboBox";
-            this.HcomboBox.Size = new System.Drawing.Size(52, 24);
+            this.HcomboBox.Size = new System.Drawing.Size(52, 22);
             this.HcomboBox.TabIndex = 3;
-            this.HcomboBox.Text = "hh";
             // 
             // label2
             // 
@@ -737,9 +794,11 @@ namespace WindowsFormsApp1
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Berlin Sans FB", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label2.Location = new System.Drawing.Point(10, 71);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 17);
+            this.label2.Size = new System.Drawing.Size(46, 15);
             this.label2.TabIndex = 2;
             this.label2.Text = "Skip at:";
             // 
@@ -749,9 +808,11 @@ namespace WindowsFormsApp1
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.endlabel.AutoSize = true;
+            this.endlabel.Font = new System.Drawing.Font("Berlin Sans FB", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.endlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.endlabel.Location = new System.Drawing.Point(194, 27);
             this.endlabel.Name = "endlabel";
-            this.endlabel.Size = new System.Drawing.Size(166, 17);
+            this.endlabel.Size = new System.Drawing.Size(145, 15);
             this.endlabel.TabIndex = 1;
             this.endlabel.Text = "End Simulation: 00:00:00";
             // 
@@ -761,9 +822,11 @@ namespace WindowsFormsApp1
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.startlabel.AutoSize = true;
+            this.startlabel.Font = new System.Drawing.Font("Berlin Sans FB", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.startlabel.Location = new System.Drawing.Point(10, 27);
             this.startlabel.Name = "startlabel";
-            this.startlabel.Size = new System.Drawing.Size(171, 17);
+            this.startlabel.Size = new System.Drawing.Size(149, 15);
             this.startlabel.TabIndex = 0;
             this.startlabel.Text = "Start Simulation: 00:00:00";
             // 

@@ -48,6 +48,8 @@ namespace WindowsFormsApp1
             // 
             this.messagedataGrid.AllowUserToAddRows = false;
             this.messagedataGrid.AllowUserToDeleteRows = false;
+            this.messagedataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.messagedataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.messagedataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.messagedataGrid.Location = new System.Drawing.Point(29, 68);
@@ -55,7 +57,7 @@ namespace WindowsFormsApp1
             this.messagedataGrid.ReadOnly = true;
             this.messagedataGrid.RowHeadersWidth = 51;
             this.messagedataGrid.RowTemplate.Height = 24;
-            this.messagedataGrid.Size = new System.Drawing.Size(433, 400);
+            this.messagedataGrid.Size = new System.Drawing.Size(535, 400);
             this.messagedataGrid.TabIndex = 0;
             this.messagedataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.messagedataGrid_CellClick);
             // 
@@ -72,16 +74,17 @@ namespace WindowsFormsApp1
             // 
             // dataItemsGridView
             // 
-            this.dataItemsGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataItemsGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataItemsGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataItemsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataItemsGridView.Location = new System.Drawing.Point(682, 68);
+            this.dataItemsGridView.Location = new System.Drawing.Point(570, 68);
             this.dataItemsGridView.Name = "dataItemsGridView";
             this.dataItemsGridView.ReadOnly = true;
             this.dataItemsGridView.RowHeadersWidth = 51;
             this.dataItemsGridView.RowTemplate.Height = 24;
             this.dataItemsGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataItemsGridView.Size = new System.Drawing.Size(434, 400);
+            this.dataItemsGridView.Size = new System.Drawing.Size(546, 400);
             this.dataItemsGridView.TabIndex = 4;
             this.dataItemsGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataItemsGridView_CellClick);
             // 
@@ -89,18 +92,20 @@ namespace WindowsFormsApp1
             // 
             this.ItemInformationTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ItemInformationTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ItemInformationTextBox.Font = new System.Drawing.Font("Berlin Sans FB", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ItemInformationTextBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ItemInformationTextBox.Location = new System.Drawing.Point(26, 511);
             this.ItemInformationTextBox.Multiline = true;
             this.ItemInformationTextBox.Name = "ItemInformationTextBox";
             this.ItemInformationTextBox.ReadOnly = true;
             this.ItemInformationTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.ItemInformationTextBox.Size = new System.Drawing.Size(1090, 116);
+            this.ItemInformationTextBox.Size = new System.Drawing.Size(657, 116);
             this.ItemInformationTextBox.TabIndex = 5;
             // 
             // dataItemLabel
             // 
-            this.dataItemLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dataItemLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.dataItemLabel.AutoSize = true;
             this.dataItemLabel.Font = new System.Drawing.Font("Copperplate Gothic Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataItemLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -112,11 +117,12 @@ namespace WindowsFormsApp1
             // 
             // textBox1
             // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Font = new System.Drawing.Font("Copperplate Gothic Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox1.Location = new System.Drawing.Point(480, 68);
+            this.textBox1.Location = new System.Drawing.Point(723, 511);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(128, 19);
             this.textBox1.TabIndex = 7;
@@ -124,15 +130,17 @@ namespace WindowsFormsApp1
             // 
             // comboBoxFilter
             // 
+            this.comboBoxFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxFilter.FormattingEnabled = true;
-            this.comboBoxFilter.Location = new System.Drawing.Point(482, 122);
+            this.comboBoxFilter.Location = new System.Drawing.Point(723, 537);
             this.comboBoxFilter.Name = "comboBoxFilter";
             this.comboBoxFilter.Size = new System.Drawing.Size(179, 24);
             this.comboBoxFilter.TabIndex = 8;
             // 
             // textBoxSearch
             // 
-            this.textBoxSearch.Location = new System.Drawing.Point(482, 166);
+            this.textBoxSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxSearch.Location = new System.Drawing.Point(723, 567);
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(179, 22);
             this.textBoxSearch.TabIndex = 9;
@@ -140,7 +148,8 @@ namespace WindowsFormsApp1
             // 
             // buttonSearch
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(482, 207);
+            this.buttonSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSearch.Location = new System.Drawing.Point(723, 595);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(179, 23);
             this.buttonSearch.TabIndex = 10;
@@ -150,17 +159,20 @@ namespace WindowsFormsApp1
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Copperplate Gothic Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(517, 267);
+            this.label1.Location = new System.Drawing.Point(949, 511);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 17);
+            this.label1.Size = new System.Drawing.Size(151, 19);
             this.label1.TabIndex = 11;
             this.label1.Text = "Export to .csv :";
             // 
             // csvbutton
             // 
-            this.csvbutton.Location = new System.Drawing.Point(533, 309);
+            this.csvbutton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.csvbutton.Location = new System.Drawing.Point(991, 567);
             this.csvbutton.Name = "csvbutton";
             this.csvbutton.Size = new System.Drawing.Size(75, 23);
             this.csvbutton.TabIndex = 12;
