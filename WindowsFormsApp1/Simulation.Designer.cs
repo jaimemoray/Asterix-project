@@ -195,7 +195,7 @@ namespace WindowsFormsApp1
             this.Hlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Hlabel.Location = new System.Drawing.Point(320, 178);
             this.Hlabel.Name = "Hlabel";
-            this.Hlabel.Size = new System.Drawing.Size(44, 15);
+            this.Hlabel.Size = new System.Drawing.Size(50, 16);
             this.Hlabel.TabIndex = 8;
             this.Hlabel.Text = "Height:";
             // 
@@ -207,7 +207,7 @@ namespace WindowsFormsApp1
             this.LNGlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.LNGlabel.Location = new System.Drawing.Point(169, 178);
             this.LNGlabel.Name = "LNGlabel";
-            this.LNGlabel.Size = new System.Drawing.Size(64, 15);
+            this.LNGlabel.Size = new System.Drawing.Size(69, 16);
             this.LNGlabel.TabIndex = 7;
             this.LNGlabel.Text = "Longitude:";
             // 
@@ -220,7 +220,7 @@ namespace WindowsFormsApp1
             this.LATlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.LATlabel.Location = new System.Drawing.Point(18, 178);
             this.LATlabel.Name = "LATlabel";
-            this.LATlabel.Size = new System.Drawing.Size(54, 15);
+            this.LATlabel.Size = new System.Drawing.Size(60, 16);
             this.LATlabel.TabIndex = 6;
             this.LATlabel.Text = "Latitude:";
             // 
@@ -233,7 +233,7 @@ namespace WindowsFormsApp1
             this.FLlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.FLlabel.Location = new System.Drawing.Point(320, 123);
             this.FLlabel.Name = "FLlabel";
-            this.FLlabel.Size = new System.Drawing.Size(72, 15);
+            this.FLlabel.Size = new System.Drawing.Size(79, 16);
             this.FLlabel.TabIndex = 5;
             this.FLlabel.Text = "Flight Level: ";
             // 
@@ -246,7 +246,7 @@ namespace WindowsFormsApp1
             this.TIMElabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.TIMElabel.Location = new System.Drawing.Point(18, 123);
             this.TIMElabel.Name = "TIMElabel";
-            this.TIMElabel.Size = new System.Drawing.Size(38, 15);
+            this.TIMElabel.Size = new System.Drawing.Size(41, 16);
             this.TIMElabel.TabIndex = 4;
             this.TIMElabel.Text = "Time: ";
             // 
@@ -260,7 +260,7 @@ namespace WindowsFormsApp1
             this.TAlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.TAlabel.Location = new System.Drawing.Point(18, 80);
             this.TAlabel.Name = "TAlabel";
-            this.TAlabel.Size = new System.Drawing.Size(89, 15);
+            this.TAlabel.Size = new System.Drawing.Size(100, 16);
             this.TAlabel.TabIndex = 3;
             this.TAlabel.Text = "Target Address:";
             // 
@@ -273,7 +273,7 @@ namespace WindowsFormsApp1
             this.TIlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.TIlabel.Location = new System.Drawing.Point(18, 33);
             this.TIlabel.Name = "TIlabel";
-            this.TIlabel.Size = new System.Drawing.Size(114, 15);
+            this.TIlabel.Size = new System.Drawing.Size(128, 16);
             this.TIlabel.TabIndex = 2;
             this.TIlabel.Text = "Target Identification:";
             // 
@@ -285,7 +285,7 @@ namespace WindowsFormsApp1
             this.SIClabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.SIClabel.Location = new System.Drawing.Point(169, 123);
             this.SIClabel.Name = "SIClabel";
-            this.SIClabel.Size = new System.Drawing.Size(29, 15);
+            this.SIClabel.Size = new System.Drawing.Size(33, 16);
             this.SIClabel.TabIndex = 1;
             this.SIClabel.Text = "SIC: ";
             // 
@@ -455,7 +455,7 @@ namespace WindowsFormsApp1
             this.Speedlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Speedlabel.Location = new System.Drawing.Point(28, 78);
             this.Speedlabel.Name = "Speedlabel";
-            this.Speedlabel.Size = new System.Drawing.Size(56, 15);
+            this.Speedlabel.Size = new System.Drawing.Size(62, 16);
             this.Speedlabel.TabIndex = 5;
             this.Speedlabel.Text = "Speed: x1";
             // 
@@ -606,8 +606,10 @@ namespace WindowsFormsApp1
             this.ScomboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ScomboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ScomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ScomboBox.Font = new System.Drawing.Font("Copperplate Gothic Light", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ScomboBox.Font = new System.Drawing.Font("Berlin Sans FB", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ScomboBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ScomboBox.FormattingEnabled = true;
             this.ScomboBox.Items.AddRange(new object[] {
             "00",
@@ -672,7 +674,7 @@ namespace WindowsFormsApp1
             "59"});
             this.ScomboBox.Location = new System.Drawing.Point(225, 68);
             this.ScomboBox.Name = "ScomboBox";
-            this.ScomboBox.Size = new System.Drawing.Size(46, 22);
+            this.ScomboBox.Size = new System.Drawing.Size(46, 23);
             this.ScomboBox.TabIndex = 5;
             // 
             // McomboBox
@@ -680,8 +682,10 @@ namespace WindowsFormsApp1
             this.McomboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.McomboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.McomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.McomboBox.Font = new System.Drawing.Font("Copperplate Gothic Light", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.McomboBox.Font = new System.Drawing.Font("Berlin Sans FB", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.McomboBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.McomboBox.FormattingEnabled = true;
             this.McomboBox.Items.AddRange(new object[] {
             "00",
@@ -746,7 +750,7 @@ namespace WindowsFormsApp1
             "59"});
             this.McomboBox.Location = new System.Drawing.Point(149, 68);
             this.McomboBox.Name = "McomboBox";
-            this.McomboBox.Size = new System.Drawing.Size(55, 22);
+            this.McomboBox.Size = new System.Drawing.Size(55, 23);
             this.McomboBox.TabIndex = 4;
             // 
             // HcomboBox
@@ -756,7 +760,8 @@ namespace WindowsFormsApp1
             | System.Windows.Forms.AnchorStyles.Right)));
             this.HcomboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.HcomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.HcomboBox.Font = new System.Drawing.Font("Copperplate Gothic Light", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HcomboBox.Font = new System.Drawing.Font("Berlin Sans FB", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HcomboBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.HcomboBox.FormattingEnabled = true;
             this.HcomboBox.Items.AddRange(new object[] {
             "00",
@@ -785,7 +790,7 @@ namespace WindowsFormsApp1
             "23"});
             this.HcomboBox.Location = new System.Drawing.Point(71, 68);
             this.HcomboBox.Name = "HcomboBox";
-            this.HcomboBox.Size = new System.Drawing.Size(52, 22);
+            this.HcomboBox.Size = new System.Drawing.Size(52, 23);
             this.HcomboBox.TabIndex = 3;
             // 
             // label2
@@ -798,7 +803,7 @@ namespace WindowsFormsApp1
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label2.Location = new System.Drawing.Point(10, 71);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 15);
+            this.label2.Size = new System.Drawing.Size(52, 16);
             this.label2.TabIndex = 2;
             this.label2.Text = "Skip at:";
             // 
@@ -812,7 +817,7 @@ namespace WindowsFormsApp1
             this.endlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.endlabel.Location = new System.Drawing.Point(194, 27);
             this.endlabel.Name = "endlabel";
-            this.endlabel.Size = new System.Drawing.Size(145, 15);
+            this.endlabel.Size = new System.Drawing.Size(153, 16);
             this.endlabel.TabIndex = 1;
             this.endlabel.Text = "End Simulation: 00:00:00";
             // 
@@ -826,7 +831,7 @@ namespace WindowsFormsApp1
             this.startlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.startlabel.Location = new System.Drawing.Point(10, 27);
             this.startlabel.Name = "startlabel";
-            this.startlabel.Size = new System.Drawing.Size(149, 15);
+            this.startlabel.Size = new System.Drawing.Size(160, 16);
             this.startlabel.TabIndex = 0;
             this.startlabel.Text = "Start Simulation: 00:00:00";
             // 
