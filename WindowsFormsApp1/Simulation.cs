@@ -149,7 +149,7 @@ namespace WindowsFormsApp1
                         //}
                         if (Main.main.myListCAT10[markers[index].indexList].MessageType== "Target Report")
                         {
-                            //eliminatePreviusPos(0, markers[index]);
+                            eliminatePreviusPos(0, markers[index]);
                             SMRlayer.Markers.Add(markers[index]);
                             gMapControl1.Overlays.Add(SMRlayer);
                         }
@@ -252,6 +252,7 @@ namespace WindowsFormsApp1
                     LATlabel.Text = "Latitude: N/A";
                     LNGlabel.Text = "Longitude: N/A";
                     Hlabel.Text = Main.main.myListCAT10[markers[pos].indexList].height == -1 ? "Height: N/A" : "Height : " + Main.main.myListCAT10[markers[pos].indexList].height + " ft";
+                    trackNumberlabel.Text = Main.main.myListCAT10[markers[pos].indexList].trackNumber == 0 ? "Track Number: N/A" : "Track Number:: " + Main.main.myListCAT10[markers[pos].indexList].trackNumber;
                     break;
                 case "21":
                     TIlabel.Text = Main.main.myListCAT21[markers[pos].indexList].targetIdentification == null ? "Target Identification: N/A" : "Target Identification: " + Main.main.myListCAT21[markers[pos].indexList].targetIdentification;
@@ -262,6 +263,7 @@ namespace WindowsFormsApp1
                     LATlabel.Text = Main.main.myListCAT21[markers[pos].indexList].latitude == -1 ? "Latitude: N/A" : "Latitude: " + Math.Round(Main.main.myListCAT21[markers[pos].indexList].latitude, 4) + " º N";
                     LNGlabel.Text = Main.main.myListCAT21[markers[pos].indexList].latitude == -1 ? "Longitude: N/A" : "Longitude: " + Math.Round(Main.main.myListCAT21[markers[pos].indexList].longitude, 4) + " º N";
                     Hlabel.Text = Main.main.myListCAT21[markers[pos].indexList].geometricHeight == null ? "Height: N/A" : "Height : " + Main.main.myListCAT21[markers[pos].indexList].geometricHeight+" ft";
+                    trackNumberlabel.Text = Main.main.myListCAT21[markers[pos].indexList].trackNumber == 0 ? "Track Number: N/A" : "Track Number:: " + Main.main.myListCAT21[markers[pos].indexList].trackNumber;
                     break;
             }
 
@@ -314,32 +316,35 @@ namespace WindowsFormsApp1
 
 
 
-        //private void eliminatePreviusPos(int f,marker m)
-        //{
-        //    try
-        //    {
-        //        if (m.trackNumber != null)
-        //        {
-        //            marker mkr = markers.Find(p => p.trackNumber == m.trackNumber);
+        private void eliminatePreviusPos(int f,marker m)
+        {
+            try
+            {
+                if (m.trackNumber != null)
+                {
+                    marker mkr = markers.Find(p => p.trackNumber == m.trackNumber);
                     
-        //            switch (f)
-        //            {
-        //                case 0:
-        //                   Console.WriteLine( SMRlayer.Markers.Remove(mkr.GetGMarker()));
-        //                    break;
-        //                case 1:
-        //                    MLATlayer.Markers.Remove(mkr);
-        //                    break;
-        //                case 2:
-        //                    ADSBlayer.Markers.Remove(mkr);
-        //                    break;
-        //            }
-        //        }
-        //    }
-        //    catch (Exception e) { }
+                    switch (f)
+                    {
+                        case 0:
+                            SMRlayer.Markers.Remove(mkr.GetGMarker());
+                          Console.WriteLine(SMRlayer.Markers.Remove(mkr.GetGMarker()));
+                            break;
+                        //case 1:
+                        //    MLATlayer.Markers.Remove(mkr);
+                        //    break;
+                        //case 2:
+                        //    ADSBlayer.Markers.Remove(mkr);
+                        //    break;
+                    }
+                }
+            }
+            catch (Exception e) { Console.WriteLine(e.Message); }
 
 
 
-        //}
+        }
+
+
     }
 }

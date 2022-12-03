@@ -36,6 +36,7 @@ namespace WindowsFormsApp1
             this.gMapControl1 = new GMap.NET.WindowsForms.GMapControl();
             this.controlPanel = new System.Windows.Forms.Panel();
             this.dataPanel = new System.Windows.Forms.Panel();
+            this.trackNumberlabel = new System.Windows.Forms.Label();
             this.ClockLabel = new System.Windows.Forms.Label();
             this.Hlabel = new System.Windows.Forms.Label();
             this.LNGlabel = new System.Windows.Forms.Label();
@@ -155,6 +156,7 @@ namespace WindowsFormsApp1
             // 
             this.dataPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dataPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.dataPanel.Controls.Add(this.trackNumberlabel);
             this.dataPanel.Controls.Add(this.ClockLabel);
             this.dataPanel.Controls.Add(this.Hlabel);
             this.dataPanel.Controls.Add(this.LNGlabel);
@@ -172,6 +174,20 @@ namespace WindowsFormsApp1
             this.dataPanel.Size = new System.Drawing.Size(499, 218);
             this.dataPanel.TabIndex = 9;
             // 
+            // trackNumberlabel
+            // 
+            this.trackNumberlabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.trackNumberlabel.AutoSize = true;
+            this.trackNumberlabel.Font = new System.Drawing.Font("Berlin Sans FB", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.trackNumberlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.trackNumberlabel.Location = new System.Drawing.Point(320, 80);
+            this.trackNumberlabel.Name = "trackNumberlabel";
+            this.trackNumberlabel.Size = new System.Drawing.Size(95, 16);
+            this.trackNumberlabel.TabIndex = 10;
+            this.trackNumberlabel.Text = "Track Number:";
+            // 
             // ClockLabel
             // 
             this.ClockLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -180,7 +196,7 @@ namespace WindowsFormsApp1
             this.ClockLabel.AutoSize = true;
             this.ClockLabel.Font = new System.Drawing.Font("Copperplate Gothic Light", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClockLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClockLabel.Location = new System.Drawing.Point(281, 32);
+            this.ClockLabel.Location = new System.Drawing.Point(277, 19);
             this.ClockLabel.Name = "ClockLabel";
             this.ClockLabel.Size = new System.Drawing.Size(149, 30);
             this.ClockLabel.TabIndex = 9;
@@ -913,5 +929,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label Speedlabel;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label trackNumberlabel;
     }
 }
