@@ -47,11 +47,11 @@ namespace WindowsFormsApp1
             this.TIlabel = new System.Windows.Forms.Label();
             this.SIClabel = new System.Windows.Forms.Label();
             this.AircraftDataLabel = new System.Windows.Forms.Label();
-            this.panelTime = new System.Windows.Forms.Panel();
+            this.instPanel = new System.Windows.Forms.Panel();
+            this.InscCheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.Layerlabel = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.layerListBox = new System.Windows.Forms.CheckedListBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.CloseButton = new System.Windows.Forms.Button();
             this.panelInfo = new System.Windows.Forms.Panel();
@@ -78,7 +78,7 @@ namespace WindowsFormsApp1
             this.mapPanel.SuspendLayout();
             this.controlPanel.SuspendLayout();
             this.dataPanel.SuspendLayout();
-            this.panelTime.SuspendLayout();
+            this.instPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -143,7 +143,7 @@ namespace WindowsFormsApp1
             // 
             this.controlPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.controlPanel.Controls.Add(this.dataPanel);
-            this.controlPanel.Controls.Add(this.panelTime);
+            this.controlPanel.Controls.Add(this.instPanel);
             this.controlPanel.Controls.Add(this.panelInfo);
             this.controlPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.controlPanel.Location = new System.Drawing.Point(0, 390);
@@ -318,22 +318,34 @@ namespace WindowsFormsApp1
             this.AircraftDataLabel.TabIndex = 0;
             this.AircraftDataLabel.Text = "Aircraft Data";
             // 
-            // panelTime
+            // instPanel
             // 
-            this.panelTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panelTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelTime.Controls.Add(this.pictureBox2);
-            this.panelTime.Controls.Add(this.Layerlabel);
-            this.panelTime.Controls.Add(this.pictureBox3);
-            this.panelTime.Controls.Add(this.layerListBox);
-            this.panelTime.Controls.Add(this.pictureBox1);
-            this.panelTime.Controls.Add(this.CloseButton);
-            this.panelTime.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelTime.Location = new System.Drawing.Point(863, 0);
-            this.panelTime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panelTime.Name = "panelTime";
-            this.panelTime.Size = new System.Drawing.Size(283, 218);
-            this.panelTime.TabIndex = 8;
+            this.instPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.instPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.instPanel.Controls.Add(this.InscCheckedListBox);
+            this.instPanel.Controls.Add(this.pictureBox2);
+            this.instPanel.Controls.Add(this.Layerlabel);
+            this.instPanel.Controls.Add(this.pictureBox3);
+            this.instPanel.Controls.Add(this.pictureBox1);
+            this.instPanel.Controls.Add(this.CloseButton);
+            this.instPanel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.instPanel.Location = new System.Drawing.Point(863, 0);
+            this.instPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.instPanel.Name = "instPanel";
+            this.instPanel.Size = new System.Drawing.Size(283, 218);
+            this.instPanel.TabIndex = 8;
+            // 
+            // InscCheckedListBox
+            // 
+            this.InscCheckedListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.InscCheckedListBox.FormattingEnabled = true;
+            this.InscCheckedListBox.Location = new System.Drawing.Point(61, 26);
+            this.InscCheckedListBox.Name = "InscCheckedListBox";
+            this.InscCheckedListBox.Size = new System.Drawing.Size(120, 89);
+            this.InscCheckedListBox.TabIndex = 19;
+            this.InscCheckedListBox.SelectedIndexChanged += new System.EventHandler(this.InscCheckedListBox_SelectedIndexChanged);
             // 
             // pictureBox2
             // 
@@ -374,22 +386,6 @@ namespace WindowsFormsApp1
             this.pictureBox3.Size = new System.Drawing.Size(16, 16);
             this.pictureBox3.TabIndex = 18;
             this.pictureBox3.TabStop = false;
-            // 
-            // layerListBox
-            // 
-            this.layerListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.layerListBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.layerListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.layerListBox.CheckOnClick = true;
-            this.layerListBox.Font = new System.Drawing.Font("Berlin Sans FB", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.layerListBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.layerListBox.FormattingEnabled = true;
-            this.layerListBox.Location = new System.Drawing.Point(61, 28);
-            this.layerListBox.Name = "layerListBox";
-            this.layerListBox.Size = new System.Drawing.Size(141, 95);
-            this.layerListBox.TabIndex = 14;
             // 
             // pictureBox1
             // 
@@ -872,8 +868,8 @@ namespace WindowsFormsApp1
             this.controlPanel.ResumeLayout(false);
             this.dataPanel.ResumeLayout(false);
             this.dataPanel.PerformLayout();
-            this.panelTime.ResumeLayout(false);
-            this.panelTime.PerformLayout();
+            this.instPanel.ResumeLayout(false);
+            this.instPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -892,7 +888,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button CloseButton;
         private System.Windows.Forms.Button Nextbutton;
         private System.Windows.Forms.Button startPause;
-        private System.Windows.Forms.Panel panelTime;
+        private System.Windows.Forms.Panel instPanel;
         private System.Windows.Forms.Panel panelInfo;
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.Button previus;
@@ -915,7 +911,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label Layerlabel;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.CheckedListBox layerListBox;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TrackBar SpeedTrackBar;
         private System.Windows.Forms.Label label3;
@@ -931,5 +926,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label trackNumberlabel;
+        private System.Windows.Forms.CheckedListBox InscCheckedListBox;
     }
 }

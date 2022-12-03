@@ -76,6 +76,8 @@ namespace WindowsFormsApp1
         {
 
             subDataPanel.Visible = false;
+            myListCAT10.Clear();
+            myListCAT21.Clear();
             LoadForm LF = new LoadForm();
             openChildForm(LF);
             //LF.ShowDialog();
