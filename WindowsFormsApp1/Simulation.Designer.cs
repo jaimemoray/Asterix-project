@@ -382,6 +382,7 @@ namespace WindowsFormsApp1
             | System.Windows.Forms.AnchorStyles.Right)));
             this.layerListBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.layerListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.layerListBox.CheckOnClick = true;
             this.layerListBox.Font = new System.Drawing.Font("Berlin Sans FB", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.layerListBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.layerListBox.FormattingEnabled = true;
