@@ -20,6 +20,7 @@ namespace WindowsFormsApp1
         public static Main main;
         public List<CAT10> myListCAT10=new List<CAT10>();
         public List<CAT21> myListCAT21=new List<CAT21>();
+        Form currentForm;
        
        
         public Main()
@@ -53,15 +54,15 @@ namespace WindowsFormsApp1
 
         private void openChildForm(Form form)
         {
-            //if (currentForm != null)
-            //{
-            //    currentForm.Close();
-            //}
+            if (currentForm != null)
+            {
+                currentForm.Close();
+            }
             if (panelChildForm.Controls.Count > 0)
             {
                 panelChildForm.Controls.RemoveAt(0);
             }
-            
+            currentForm = form;
             Form f = form;
             f.TopLevel = false;
             f.Dock = DockStyle.Fill;
@@ -76,8 +77,7 @@ namespace WindowsFormsApp1
         {
 
             subDataPanel.Visible = false;
-            myListCAT10.Clear();
-            myListCAT21.Clear();
+
             LoadForm LF = new LoadForm();
             openChildForm(LF);
             //LF.ShowDialog();

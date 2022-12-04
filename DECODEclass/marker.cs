@@ -61,15 +61,12 @@ namespace DECODEclass
                     break;
             }
 
-            return new marker(type,point,t,c,i,SIC,pos1,pos2,tn);
+            return new marker(type,point,t,c,i,SIC,tn);
         }
 
-        public GMapMarker GetGMarker()
-        {
-            return (GMapMarker)this;
-        }
 
-        private marker(GMarkerGoogleType type,PointLatLng point,double t, string c, int i,int sic,double pos1,double pos2, string tn) : base(point,type)
+
+        private marker(GMarkerGoogleType type,PointLatLng point,double t, string c, int i,int sic, string tn) : base(point,type)
         {
             this.time = t;
             this.CAT = c;
@@ -85,25 +82,21 @@ namespace DECODEclass
                         case 7: //SMR
                             
                             this.ins = "SMR"; //Coordinates Radar SMR
+
                             
-                            point = Convert2LatLng(Convert.ToInt32(pos1), Convert.ToInt32(pos2), new CoordinatesWGS84(41.29561833 * Math.PI/180.0, 2.095114167 * Math.PI/180));
-                            //this.mkr=new GMarkerGoogle(point, GMarkerGoogleType.yellow_dot);
                             break;
                         case 107:
                             this.ins = "MLAT"; //Coordinates Radar MLAT
-                            point = Convert2LatLng(Convert.ToInt32(pos1), Convert.ToInt32(pos2), new CoordinatesWGS84(41.29706278*Math.PI/180.0, 2.078447222*Math.PI/180));
-                            //this.mkr = new GMarkerGoogle(point, GMarkerGoogleType.red_dot);
                            
-                            //this.mkr.Tag = ta;
+
                             break;
                     }
                     
                     break;
                 case "21":
                     this.ins = "ADSB";
-                    point = new PointLatLng(pos1, pos2);
-                    //this.mkr = new GMarkerGoogle(point, GMarkerGoogleType.blue_dot);
-                    //this.mkr.Tag = ta;
+
+
                     break;
             }
         }

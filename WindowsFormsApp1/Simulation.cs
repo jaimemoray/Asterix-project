@@ -19,6 +19,13 @@ namespace WindowsFormsApp1
 {
     public partial class Simulation : Form
     {
+        //ROUTES
+        GMapOverlay Routes = new GMapOverlay("Routes");
+
+
+       
+
+        //MARKERS
         List<marker> currentSMR = new List<marker>();
         List<marker> currentMLAT = new List<marker>();
         List<marker> currentADSB = new List<marker>();
@@ -44,8 +51,7 @@ namespace WindowsFormsApp1
         int slot = 1;
         int index = 0;
 
-        //To eliminate previous positions
-        int lIni = 0; //Same value than index
+
 
 
         public Simulation()
@@ -139,7 +145,7 @@ namespace WindowsFormsApp1
 
         private void move() //0.01
         {
-
+            ini = ini + slot;
 
             while (markers[index].time <= ini)
             {
@@ -229,7 +235,7 @@ namespace WindowsFormsApp1
         {
             if (ini < end)
             {
-                ini = ini + slot;
+               
                 ClockLabel.Text = TimeSpan.FromSeconds(ini).ToString(@"hh\:mm\:ss");
                 move();
             }
@@ -351,5 +357,7 @@ namespace WindowsFormsApp1
             MLATlayer.IsVisibile = InscCheckedListBox.GetItemChecked(1) == false ? false : true;
             ADSBlayer.IsVisibile = InscCheckedListBox.GetItemChecked(2) == false ? false : true;
         }
+
+
     }
 }

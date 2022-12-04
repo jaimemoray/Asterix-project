@@ -55,6 +55,8 @@ namespace WindowsFormsApp1
             {
                 try
                 {
+                    Main.main.myListCAT10.Clear();
+                    Main.main.myListCAT21.Clear();
                     textBoxLoad.Text = "Loading File...";
                     Fichero myFile = new Fichero(path);
                     myFile.readFile();
@@ -74,15 +76,7 @@ namespace WindowsFormsApp1
 
 
 
-        //public List<CAT10> GetCAT10()
-        //{
-        //    return l10;
-        //}
 
-        //public List<CAT21> GetCAT21()
-        //{
-        //    return l21;
-        //}
 
     }
 }
