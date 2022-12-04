@@ -14,8 +14,7 @@ namespace WindowsFormsApp1
 {
     public partial class LoadForm : Form
     {
-        //List<CAT10> l10 = new List<CAT10>();
-        //List<CAT21> l21 = new List<CAT21>();
+
         string path;
         
         
@@ -25,6 +24,8 @@ namespace WindowsFormsApp1
             InitializeComponent();
             openFileDialog1.Filter=".ast Files(*.ast)|*.ast"; //Show only  .ast files
             LoadButton.Visible = false;
+            Loadlabel.Text = "";
+            Filelabel.Text = "";
         }
 
         private void CloseButton_Click(object sender, EventArgs e)
@@ -38,32 +39,37 @@ namespace WindowsFormsApp1
             if (openFileDialog1.ShowDialog()==DialogResult.OK)
             {
                 this.path = openFileDialog1.FileName;
-                MessageBox.Show("File selected");
+                //MessageBox.Show("File selected");
                 LoadButton.Visible = true;
-                textBoxFile.Text = openFileDialog1.FileName;
+                Filelabel.Text = openFileDialog1.FileName;
+                Loadlabel.Text = "Ready to decode!";
 
             }
         }
 
         private void LoadButton_Click(object sender, EventArgs e)
         {
-            if (path==null)
+           
+
+            if (path == null)
             {
                 MessageBox.Show("You must select File!!!");
             }
             else
             {
+
                 try
                 {
 
-                    textBoxLoad.Text = "Loading File...";
+
                     Fichero myFile = new Fichero(path);
                     myFile.readFile();
                     myFile.classifyMessage();
-                    Main.main.myListCAT10= myFile.GetListCAT10();
+                    Main.main.myListCAT10 = myFile.GetListCAT10();
                     Main.main.myListCAT21 = myFile.GetListCAT21();
-                    //MessageBox.Show("Load Submit");
-                    textBoxLoad.Text = "File loaded successfully";
+
+                    Loadlabel.Text = "File loaded successfully";
+
 
                 }
                 catch (FormatException)
@@ -71,6 +77,11 @@ namespace WindowsFormsApp1
                     MessageBox.Show("There is an error during process");
                 }
             }
+
+            //if (Main.main.myListCAT10.Count != 0 || Main.main.myListCAT21.Count != 0)
+            //{
+            
+            //}
         }
 
 

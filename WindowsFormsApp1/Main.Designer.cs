@@ -37,9 +37,12 @@ namespace WindowsFormsApp1
             this.Databutton = new System.Windows.Forms.Button();
             this.LoadButton = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelChildForm = new System.Windows.Forms.Panel();
             this.panelButtoms.SuspendLayout();
             this.subDataPanel.SuspendLayout();
+            this.panelLogo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelButtoms
@@ -63,10 +66,11 @@ namespace WindowsFormsApp1
             this.simulationButton.BackColor = System.Drawing.SystemColors.ControlText;
             this.simulationButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.simulationButton.FlatAppearance.BorderSize = 0;
+            this.simulationButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.simulationButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.simulationButton.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.simulationButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.simulationButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.simulationButton.Location = new System.Drawing.Point(0, 388);
+            this.simulationButton.Location = new System.Drawing.Point(0, 430);
             this.simulationButton.Name = "simulationButton";
             this.simulationButton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.simulationButton.Size = new System.Drawing.Size(200, 70);
@@ -82,23 +86,24 @@ namespace WindowsFormsApp1
             this.subDataPanel.Controls.Add(this.CAT21button);
             this.subDataPanel.Controls.Add(this.CAT10button);
             this.subDataPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.subDataPanel.Location = new System.Drawing.Point(0, 288);
+            this.subDataPanel.Location = new System.Drawing.Point(0, 290);
             this.subDataPanel.Name = "subDataPanel";
-            this.subDataPanel.Size = new System.Drawing.Size(200, 100);
+            this.subDataPanel.Size = new System.Drawing.Size(200, 140);
             this.subDataPanel.TabIndex = 3;
             // 
             // CAT21button
             // 
-            this.CAT21button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.CAT21button.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.CAT21button.Dock = System.Windows.Forms.DockStyle.Top;
             this.CAT21button.FlatAppearance.BorderSize = 0;
+            this.CAT21button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Blue;
             this.CAT21button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CAT21button.Font = new System.Drawing.Font("Copperplate Gothic Light", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CAT21button.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CAT21button.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.CAT21button.Location = new System.Drawing.Point(0, 50);
+            this.CAT21button.Location = new System.Drawing.Point(0, 70);
             this.CAT21button.Name = "CAT21button";
             this.CAT21button.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
-            this.CAT21button.Size = new System.Drawing.Size(200, 50);
+            this.CAT21button.Size = new System.Drawing.Size(200, 70);
             this.CAT21button.TabIndex = 1;
             this.CAT21button.Text = "CAT 21";
             this.CAT21button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -107,16 +112,17 @@ namespace WindowsFormsApp1
             // 
             // CAT10button
             // 
-            this.CAT10button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.CAT10button.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.CAT10button.Dock = System.Windows.Forms.DockStyle.Top;
             this.CAT10button.FlatAppearance.BorderSize = 0;
+            this.CAT10button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Blue;
             this.CAT10button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CAT10button.Font = new System.Drawing.Font("Copperplate Gothic Light", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CAT10button.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CAT10button.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.CAT10button.Location = new System.Drawing.Point(0, 0);
             this.CAT10button.Name = "CAT10button";
             this.CAT10button.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
-            this.CAT10button.Size = new System.Drawing.Size(200, 50);
+            this.CAT10button.Size = new System.Drawing.Size(200, 70);
             this.CAT10button.TabIndex = 0;
             this.CAT10button.Text = "CAT 10";
             this.CAT10button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -128,10 +134,11 @@ namespace WindowsFormsApp1
             this.Databutton.BackColor = System.Drawing.SystemColors.ControlText;
             this.Databutton.Dock = System.Windows.Forms.DockStyle.Top;
             this.Databutton.FlatAppearance.BorderSize = 0;
+            this.Databutton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.Databutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Databutton.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Databutton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Databutton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Databutton.Location = new System.Drawing.Point(0, 218);
+            this.Databutton.Location = new System.Drawing.Point(0, 220);
             this.Databutton.Name = "Databutton";
             this.Databutton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.Databutton.Size = new System.Drawing.Size(200, 70);
@@ -146,10 +153,11 @@ namespace WindowsFormsApp1
             this.LoadButton.BackColor = System.Drawing.SystemColors.ControlText;
             this.LoadButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.LoadButton.FlatAppearance.BorderSize = 0;
+            this.LoadButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.LoadButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LoadButton.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LoadButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoadButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.LoadButton.Location = new System.Drawing.Point(0, 148);
+            this.LoadButton.Location = new System.Drawing.Point(0, 150);
             this.LoadButton.Name = "LoadButton";
             this.LoadButton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.LoadButton.Size = new System.Drawing.Size(200, 70);
@@ -161,11 +169,26 @@ namespace WindowsFormsApp1
             // 
             // panelLogo
             // 
+            this.panelLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelLogo.Controls.Add(this.pictureBox1);
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
             this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(200, 148);
+            this.panelLogo.Size = new System.Drawing.Size(200, 150);
             this.panelLogo.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.ASTERIX;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(31, 4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(140, 140);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // panelChildForm
             // 
@@ -188,6 +211,8 @@ namespace WindowsFormsApp1
             this.panelButtoms.ResumeLayout(false);
             this.panelButtoms.PerformLayout();
             this.subDataPanel.ResumeLayout(false);
+            this.panelLogo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -203,6 +228,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button CAT10button;
         private System.Windows.Forms.Button Databutton;
         private System.Windows.Forms.Button simulationButton;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

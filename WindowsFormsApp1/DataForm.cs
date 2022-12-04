@@ -90,6 +90,19 @@ namespace WindowsFormsApp1
                     break;
 
             }
+           
+
+
+
+            //
+            dataItemsGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataItemsGridView.ReadOnly = true;
+            dataItemsGridView.RowHeadersVisible = false;
+            dataItemsGridView.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            dataItemsGridView.ColumnCount = 3;
+            dataItemsGridView.Columns[0].HeaderText = "FRN";
+            dataItemsGridView.Columns[1].HeaderText = "Data Field";
+            dataItemsGridView.Columns[2].HeaderText = "Description";
         }
         private void DataForm_Load(object sender, EventArgs e)
         {
@@ -679,14 +692,6 @@ namespace WindowsFormsApp1
         private void messagedataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             rowMess = messagedataGrid.CurrentCell.RowIndex;
-            dataItemsGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataItemsGridView.ReadOnly = true;
-            dataItemsGridView.RowHeadersVisible = false;
-            dataItemsGridView.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-            dataItemsGridView.ColumnCount = 3;
-            dataItemsGridView.Columns[0].HeaderText = "FRN";
-            dataItemsGridView.Columns[1].HeaderText = "Data Field";
-            dataItemsGridView.Columns[2].HeaderText = "Description";
 
             switch (flag)
             {

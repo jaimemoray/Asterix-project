@@ -177,15 +177,14 @@ namespace WindowsFormsApp1
             // 
             // trackNumberlabel
             // 
-            this.trackNumberlabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.trackNumberlabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.trackNumberlabel.AutoSize = true;
-            this.trackNumberlabel.Font = new System.Drawing.Font("Berlin Sans FB", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.trackNumberlabel.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.trackNumberlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.trackNumberlabel.Location = new System.Drawing.Point(320, 80);
             this.trackNumberlabel.Name = "trackNumberlabel";
-            this.trackNumberlabel.Size = new System.Drawing.Size(95, 16);
+            this.trackNumberlabel.Size = new System.Drawing.Size(97, 19);
             this.trackNumberlabel.TabIndex = 10;
             this.trackNumberlabel.Text = "Track Number:";
             // 
@@ -195,11 +194,11 @@ namespace WindowsFormsApp1
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ClockLabel.AutoSize = true;
-            this.ClockLabel.Font = new System.Drawing.Font("Copperplate Gothic Light", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClockLabel.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClockLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClockLabel.Location = new System.Drawing.Point(277, 19);
             this.ClockLabel.Name = "ClockLabel";
-            this.ClockLabel.Size = new System.Drawing.Size(149, 30);
+            this.ClockLabel.Size = new System.Drawing.Size(119, 38);
             this.ClockLabel.TabIndex = 9;
             this.ClockLabel.Text = "00:00:00";
             // 
@@ -208,11 +207,11 @@ namespace WindowsFormsApp1
             this.Hlabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Hlabel.AutoSize = true;
-            this.Hlabel.Font = new System.Drawing.Font("Berlin Sans FB", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Hlabel.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Hlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Hlabel.Location = new System.Drawing.Point(320, 178);
             this.Hlabel.Name = "Hlabel";
-            this.Hlabel.Size = new System.Drawing.Size(50, 16);
+            this.Hlabel.Size = new System.Drawing.Size(53, 19);
             this.Hlabel.TabIndex = 8;
             this.Hlabel.Text = "Height:";
             // 
@@ -220,11 +219,11 @@ namespace WindowsFormsApp1
             // 
             this.LNGlabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.LNGlabel.AutoSize = true;
-            this.LNGlabel.Font = new System.Drawing.Font("Berlin Sans FB", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LNGlabel.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LNGlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.LNGlabel.Location = new System.Drawing.Point(169, 178);
             this.LNGlabel.Name = "LNGlabel";
-            this.LNGlabel.Size = new System.Drawing.Size(69, 16);
+            this.LNGlabel.Size = new System.Drawing.Size(74, 19);
             this.LNGlabel.TabIndex = 7;
             this.LNGlabel.Text = "Longitude:";
             // 
@@ -233,11 +232,11 @@ namespace WindowsFormsApp1
             this.LATlabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.LATlabel.AutoSize = true;
-            this.LATlabel.Font = new System.Drawing.Font("Berlin Sans FB", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LATlabel.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LATlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.LATlabel.Location = new System.Drawing.Point(18, 178);
             this.LATlabel.Name = "LATlabel";
-            this.LATlabel.Size = new System.Drawing.Size(60, 16);
+            this.LATlabel.Size = new System.Drawing.Size(62, 19);
             this.LATlabel.TabIndex = 6;
             this.LATlabel.Text = "Latitude:";
             // 
@@ -246,11 +245,11 @@ namespace WindowsFormsApp1
             this.FLlabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.FLlabel.AutoSize = true;
-            this.FLlabel.Font = new System.Drawing.Font("Berlin Sans FB", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FLlabel.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FLlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.FLlabel.Location = new System.Drawing.Point(320, 123);
             this.FLlabel.Name = "FLlabel";
-            this.FLlabel.Size = new System.Drawing.Size(79, 16);
+            this.FLlabel.Size = new System.Drawing.Size(85, 19);
             this.FLlabel.TabIndex = 5;
             this.FLlabel.Text = "Flight Level: ";
             // 
@@ -259,11 +258,11 @@ namespace WindowsFormsApp1
             this.TIMElabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.TIMElabel.AutoSize = true;
-            this.TIMElabel.Font = new System.Drawing.Font("Berlin Sans FB", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TIMElabel.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TIMElabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.TIMElabel.Location = new System.Drawing.Point(18, 123);
             this.TIMElabel.Name = "TIMElabel";
-            this.TIMElabel.Size = new System.Drawing.Size(41, 16);
+            this.TIMElabel.Size = new System.Drawing.Size(45, 19);
             this.TIMElabel.TabIndex = 4;
             this.TIMElabel.Text = "Time: ";
             // 
@@ -273,11 +272,11 @@ namespace WindowsFormsApp1
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TAlabel.AutoSize = true;
-            this.TAlabel.Font = new System.Drawing.Font("Berlin Sans FB", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TAlabel.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TAlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.TAlabel.Location = new System.Drawing.Point(18, 80);
             this.TAlabel.Name = "TAlabel";
-            this.TAlabel.Size = new System.Drawing.Size(100, 16);
+            this.TAlabel.Size = new System.Drawing.Size(102, 19);
             this.TAlabel.TabIndex = 3;
             this.TAlabel.Text = "Target Address:";
             // 
@@ -286,11 +285,11 @@ namespace WindowsFormsApp1
             this.TIlabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.TIlabel.AutoSize = true;
-            this.TIlabel.Font = new System.Drawing.Font("Berlin Sans FB", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TIlabel.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TIlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.TIlabel.Location = new System.Drawing.Point(18, 33);
             this.TIlabel.Name = "TIlabel";
-            this.TIlabel.Size = new System.Drawing.Size(128, 16);
+            this.TIlabel.Size = new System.Drawing.Size(132, 19);
             this.TIlabel.TabIndex = 2;
             this.TIlabel.Text = "Target Identification:";
             // 
@@ -298,11 +297,11 @@ namespace WindowsFormsApp1
             // 
             this.SIClabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.SIClabel.AutoSize = true;
-            this.SIClabel.Font = new System.Drawing.Font("Berlin Sans FB", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SIClabel.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SIClabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.SIClabel.Location = new System.Drawing.Point(169, 123);
             this.SIClabel.Name = "SIClabel";
-            this.SIClabel.Size = new System.Drawing.Size(33, 16);
+            this.SIClabel.Size = new System.Drawing.Size(36, 19);
             this.SIClabel.TabIndex = 1;
             this.SIClabel.Text = "SIC: ";
             // 
@@ -311,11 +310,11 @@ namespace WindowsFormsApp1
             this.AircraftDataLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.AircraftDataLabel.AutoSize = true;
-            this.AircraftDataLabel.Font = new System.Drawing.Font("Copperplate Gothic Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AircraftDataLabel.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AircraftDataLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.AircraftDataLabel.Location = new System.Drawing.Point(18, 4);
             this.AircraftDataLabel.Name = "AircraftDataLabel";
-            this.AircraftDataLabel.Size = new System.Drawing.Size(139, 19);
+            this.AircraftDataLabel.Size = new System.Drawing.Size(106, 23);
             this.AircraftDataLabel.TabIndex = 0;
             this.AircraftDataLabel.Text = "Aircraft Data";
             // 
@@ -340,10 +339,11 @@ namespace WindowsFormsApp1
             // RoutecheckBox
             // 
             this.RoutecheckBox.AutoSize = true;
+            this.RoutecheckBox.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RoutecheckBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.RoutecheckBox.Location = new System.Drawing.Point(39, 118);
             this.RoutecheckBox.Name = "RoutecheckBox";
-            this.RoutecheckBox.Size = new System.Drawing.Size(223, 21);
+            this.RoutecheckBox.Size = new System.Drawing.Size(220, 23);
             this.RoutecheckBox.TabIndex = 20;
             this.RoutecheckBox.Text = "View current aircraft trajectory ";
             this.RoutecheckBox.UseVisualStyleBackColor = true;
@@ -354,10 +354,13 @@ namespace WindowsFormsApp1
             this.InscCheckedListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.InscCheckedListBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.InscCheckedListBox.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InscCheckedListBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.InscCheckedListBox.FormattingEnabled = true;
-            this.InscCheckedListBox.Location = new System.Drawing.Point(61, 26);
+            this.InscCheckedListBox.Location = new System.Drawing.Point(61, 38);
             this.InscCheckedListBox.Name = "InscCheckedListBox";
-            this.InscCheckedListBox.Size = new System.Drawing.Size(94, 72);
+            this.InscCheckedListBox.Size = new System.Drawing.Size(94, 64);
             this.InscCheckedListBox.TabIndex = 19;
             this.InscCheckedListBox.SelectedIndexChanged += new System.EventHandler(this.InscCheckedListBox_SelectedIndexChanged);
             // 
@@ -366,9 +369,9 @@ namespace WindowsFormsApp1
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox2.BackColor = System.Drawing.Color.Blue;
+            this.pictureBox2.BackColor = System.Drawing.Color.Lime;
             this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox2.Location = new System.Drawing.Point(39, 72);
+            this.pictureBox2.Location = new System.Drawing.Point(39, 83);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(16, 16);
             this.pictureBox2.TabIndex = 16;
@@ -380,11 +383,11 @@ namespace WindowsFormsApp1
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Layerlabel.AutoSize = true;
-            this.Layerlabel.Font = new System.Drawing.Font("Copperplate Gothic Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Layerlabel.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Layerlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Layerlabel.Location = new System.Drawing.Point(13, 4);
             this.Layerlabel.Name = "Layerlabel";
-            this.Layerlabel.Size = new System.Drawing.Size(128, 19);
+            this.Layerlabel.Size = new System.Drawing.Size(105, 23);
             this.Layerlabel.TabIndex = 15;
             this.Layerlabel.Text = "Instruments:";
             // 
@@ -395,7 +398,7 @@ namespace WindowsFormsApp1
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox3.BackColor = System.Drawing.Color.Red;
             this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox3.Location = new System.Drawing.Point(39, 50);
+            this.pictureBox3.Location = new System.Drawing.Point(39, 61);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(16, 16);
             this.pictureBox3.TabIndex = 18;
@@ -408,7 +411,7 @@ namespace WindowsFormsApp1
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackColor = System.Drawing.Color.Yellow;
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(39, 28);
+            this.pictureBox1.Location = new System.Drawing.Point(39, 39);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(16, 16);
             this.pictureBox1.TabIndex = 17;
@@ -419,8 +422,7 @@ namespace WindowsFormsApp1
             this.CloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CloseButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.CloseButton.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.CloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CloseButton.Font = new System.Drawing.Font("Copperplate Gothic Light", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CloseButton.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CloseButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.CloseButton.Location = new System.Drawing.Point(251, 4);
             this.CloseButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -464,11 +466,11 @@ namespace WindowsFormsApp1
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Copperplate Gothic Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label4.Location = new System.Drawing.Point(16, 12);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(102, 19);
+            this.label4.Size = new System.Drawing.Size(74, 23);
             this.label4.TabIndex = 6;
             this.label4.Text = "Controls";
             // 
@@ -478,11 +480,11 @@ namespace WindowsFormsApp1
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Speedlabel.AutoSize = true;
-            this.Speedlabel.Font = new System.Drawing.Font("Berlin Sans FB", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Speedlabel.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Speedlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Speedlabel.Location = new System.Drawing.Point(28, 78);
             this.Speedlabel.Name = "Speedlabel";
-            this.Speedlabel.Size = new System.Drawing.Size(62, 16);
+            this.Speedlabel.Size = new System.Drawing.Size(67, 19);
             this.Speedlabel.TabIndex = 5;
             this.Speedlabel.Text = "Speed: x1";
             // 
@@ -580,11 +582,11 @@ namespace WindowsFormsApp1
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Copperplate Gothic Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label5.Location = new System.Drawing.Point(14, 4);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(51, 19);
+            this.label5.Size = new System.Drawing.Size(52, 23);
             this.label5.TabIndex = 7;
             this.label5.Text = "Time ";
             // 
@@ -595,10 +597,9 @@ namespace WindowsFormsApp1
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Setbutton.BackColor = System.Drawing.Color.DimGray;
             this.Setbutton.FlatAppearance.BorderSize = 0;
-            this.Setbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Setbutton.Font = new System.Drawing.Font("Copperplate Gothic Light", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Setbutton.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Setbutton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Setbutton.Location = new System.Drawing.Point(292, 64);
+            this.Setbutton.Location = new System.Drawing.Point(291, 66);
             this.Setbutton.Name = "Setbutton";
             this.Setbutton.Size = new System.Drawing.Size(64, 29);
             this.Setbutton.TabIndex = 8;
@@ -635,7 +636,7 @@ namespace WindowsFormsApp1
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ScomboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ScomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ScomboBox.Font = new System.Drawing.Font("Berlin Sans FB", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ScomboBox.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ScomboBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ScomboBox.FormattingEnabled = true;
             this.ScomboBox.Items.AddRange(new object[] {
@@ -699,9 +700,9 @@ namespace WindowsFormsApp1
             "57",
             "58",
             "59"});
-            this.ScomboBox.Location = new System.Drawing.Point(225, 68);
+            this.ScomboBox.Location = new System.Drawing.Point(224, 68);
             this.ScomboBox.Name = "ScomboBox";
-            this.ScomboBox.Size = new System.Drawing.Size(46, 23);
+            this.ScomboBox.Size = new System.Drawing.Size(52, 25);
             this.ScomboBox.TabIndex = 5;
             // 
             // McomboBox
@@ -711,7 +712,7 @@ namespace WindowsFormsApp1
             | System.Windows.Forms.AnchorStyles.Right)));
             this.McomboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.McomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.McomboBox.Font = new System.Drawing.Font("Berlin Sans FB", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.McomboBox.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.McomboBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.McomboBox.FormattingEnabled = true;
             this.McomboBox.Items.AddRange(new object[] {
@@ -777,7 +778,7 @@ namespace WindowsFormsApp1
             "59"});
             this.McomboBox.Location = new System.Drawing.Point(149, 68);
             this.McomboBox.Name = "McomboBox";
-            this.McomboBox.Size = new System.Drawing.Size(55, 23);
+            this.McomboBox.Size = new System.Drawing.Size(52, 25);
             this.McomboBox.TabIndex = 4;
             // 
             // HcomboBox
@@ -787,7 +788,7 @@ namespace WindowsFormsApp1
             | System.Windows.Forms.AnchorStyles.Right)));
             this.HcomboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.HcomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.HcomboBox.Font = new System.Drawing.Font("Berlin Sans FB", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HcomboBox.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HcomboBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.HcomboBox.FormattingEnabled = true;
             this.HcomboBox.Items.AddRange(new object[] {
@@ -817,7 +818,7 @@ namespace WindowsFormsApp1
             "23"});
             this.HcomboBox.Location = new System.Drawing.Point(71, 68);
             this.HcomboBox.Name = "HcomboBox";
-            this.HcomboBox.Size = new System.Drawing.Size(52, 23);
+            this.HcomboBox.Size = new System.Drawing.Size(52, 25);
             this.HcomboBox.TabIndex = 3;
             // 
             // label2
@@ -826,11 +827,11 @@ namespace WindowsFormsApp1
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Berlin Sans FB", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(10, 71);
+            this.label2.Location = new System.Drawing.Point(14, 66);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(52, 16);
+            this.label2.Size = new System.Drawing.Size(53, 19);
             this.label2.TabIndex = 2;
             this.label2.Text = "Skip at:";
             // 
@@ -840,11 +841,11 @@ namespace WindowsFormsApp1
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.endlabel.AutoSize = true;
-            this.endlabel.Font = new System.Drawing.Font("Berlin Sans FB", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.endlabel.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.endlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.endlabel.Location = new System.Drawing.Point(194, 27);
             this.endlabel.Name = "endlabel";
-            this.endlabel.Size = new System.Drawing.Size(153, 16);
+            this.endlabel.Size = new System.Drawing.Size(161, 19);
             this.endlabel.TabIndex = 1;
             this.endlabel.Text = "End Simulation: 00:00:00";
             // 
@@ -854,11 +855,11 @@ namespace WindowsFormsApp1
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.startlabel.AutoSize = true;
-            this.startlabel.Font = new System.Drawing.Font("Berlin Sans FB", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startlabel.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.startlabel.Location = new System.Drawing.Point(10, 27);
             this.startlabel.Name = "startlabel";
-            this.startlabel.Size = new System.Drawing.Size(160, 16);
+            this.startlabel.Size = new System.Drawing.Size(167, 19);
             this.startlabel.TabIndex = 0;
             this.startlabel.Text = "Start Simulation: 00:00:00";
             // 

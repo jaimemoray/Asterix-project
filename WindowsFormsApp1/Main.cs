@@ -1,7 +1,6 @@
 ﻿//----------------------------------------------------------------ASTERIX INSPECTOR CODE-----------------------------------------------------------------------------------
 
-//TO DO: Export KML
-//       Robust
+
 
 
 using System;
@@ -32,27 +31,7 @@ namespace WindowsFormsApp1
             subDataPanel.Visible = false; //Invisible subpanel
         }
 
-  
 
- 
-
-
-        //private void OpenChildForm(Form childForm) //Open adapted form in panel 
-        //{
-        //    if (currentForm != null)
-        //    {
-        //        currentForm.Close();
-        //    }
-
-        //    currentForm = childForm;
-        //    childForm.TopLevel = false;
-        //    childForm.FormBorderStyle = FormBorderStyle.None;
-        //    childForm.Dock = DockStyle.Fill;
-        //    panelChildForm.Controls.Add(childForm);
-        //    panelChildForm.Tag = childForm;
-        //    childForm.BringToFront();
-            
-        //}
 
         private void openChildForm(Form form)
         {
@@ -125,5 +104,7 @@ namespace WindowsFormsApp1
             }
 
         }
+
+
     }
 }
