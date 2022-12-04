@@ -55,8 +55,7 @@ namespace WindowsFormsApp1
             {
                 try
                 {
-                    Main.main.myListCAT10.Clear();
-                    Main.main.myListCAT21.Clear();
+
                     textBoxLoad.Text = "Loading File...";
                     Fichero myFile = new Fichero(path);
                     myFile.readFile();

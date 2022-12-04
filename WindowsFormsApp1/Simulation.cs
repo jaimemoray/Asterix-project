@@ -20,9 +20,10 @@ namespace WindowsFormsApp1
     public partial class Simulation : Form
     {
         //ROUTES
-        GMapOverlay Routes = new GMapOverlay("Routes");
+        GMapOverlay Route = new GMapOverlay("Routes");
+       
 
-
+        
        
 
         //MARKERS
@@ -98,6 +99,7 @@ namespace WindowsFormsApp1
             gMapControl1.Overlays.Add(SMRlayer);
             gMapControl1.Overlays.Add(MLATlayer);
             gMapControl1.Overlays.Add(ADSBlayer);
+            gMapControl1.Overlays.Add(Route);
 
             // Timer
             timer.Interval = 1000;
@@ -267,15 +269,9 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void previus_Click(object sender, EventArgs e)
-        {
-            stepBack();
-        }
 
-        private void stepBack()
-        {
 
-        }
+
 
 
 
@@ -308,6 +304,13 @@ namespace WindowsFormsApp1
                     LNGlabel.Text = Main.main.myListCAT21[markers[pos].indexList].latitude == -1 ? "Longitude: N/A" : "Longitude: " + Math.Round(Main.main.myListCAT21[markers[pos].indexList].longitude, 4) + " º N";
                     Hlabel.Text = Main.main.myListCAT21[markers[pos].indexList].geometricHeight == null ? "Height: N/A" : "Height : " + Main.main.myListCAT21[markers[pos].indexList].geometricHeight + " ft";
                     trackNumberlabel.Text = Main.main.myListCAT21[markers[pos].indexList].trackNumber == 0 ? "Track Number: N/A" : "Track Number:: " + Main.main.myListCAT21[markers[pos].indexList].trackNumber;
+
+                    if (RoutecheckBox.Checked==true)
+                    {
+                        createRoutes(markers[pos].trackNumber);
+                        
+                    }
+                   
                     break;
             }
 
@@ -358,6 +361,49 @@ namespace WindowsFormsApp1
             ADSBlayer.IsVisibile = InscCheckedListBox.GetItemChecked(2) == false ? false : true;
         }
 
+        private void createRoutes(string tn)
+        {
+            Route.Routes.Clear();
+            List<marker> aircraftsADSB = markers.FindAll(c=>c.trackNumber==tn);
+            List<PointLatLng> wayPoints = new List<PointLatLng>();
 
+            foreach(marker m in aircraftsADSB)
+            {
+                wayPoints.Add(m.Position);
+            }
+            
+            GMapRoute myRoute = new GMapRoute(wayPoints, tn);
+            myRoute.Stroke = new Pen(Color.Black);
+            myRoute.Stroke.Width = 3;
+            Route.Routes.Add(myRoute);
+        }
+
+        private void RoutecheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            Route.IsVisibile = RoutecheckBox.Checked == true ? true : false;
+        }
+
+        private void Restart_Click(object sender, EventArgs e)
+        {
+            index = 0;
+            startPause.BackgroundImage = Image.FromFile("play.png");
+            timer.Enabled = false;
+            timer.Stop();
+
+            SMRlayer.Clear();
+            MLATlayer.Clear();
+            ADSBlayer.Clear();
+            Route.Clear();
+
+            currentSMR.Clear();
+            currentMLAT.Clear();
+            currentADSB.Clear();
+
+            this.ini = Convert.ToInt32(markers[0].time);
+            this.end = Convert.ToInt32(markers[markers.Count - 1].time);
+            ClockLabel.Text = TimeSpan.FromSeconds(markers[0].time).ToString(@"hh\:mm\:ss");
+            startlabel.Text = "Start Simulation: " + TimeSpan.FromSeconds(markers[0].time).ToString(@"hh\:mm\:ss");
+            endlabel.Text = "End Simulation: " + TimeSpan.FromSeconds(markers[markers.Count - 1].time).ToString(@"hh\:mm\:ss");
+        }
     }
 }

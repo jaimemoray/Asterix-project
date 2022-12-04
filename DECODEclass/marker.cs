@@ -16,6 +16,7 @@ namespace DECODEclass
     public class marker : GMarkerGoogle //Uso de Herencia
     {
         public string trackNumber { get; set; }
+       
         public double time { get; set; }
 
         public string CAT { get; set; }
@@ -54,7 +55,7 @@ namespace DECODEclass
 
                     break;
                 case "21":
-                    type = GMarkerGoogleType.blue_dot;
+                    type = GMarkerGoogleType.green_dot;
                     point = new PointLatLng(pos1, pos2);
                     //this.mkr = new GMarkerGoogle(point, GMarkerGoogleType.blue_dot);
                     //this.mkr.Tag = ta;
@@ -95,7 +96,7 @@ namespace DECODEclass
                     break;
                 case "21":
                     this.ins = "ADSB";
-
+                    
 
                     break;
             }

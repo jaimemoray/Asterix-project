@@ -48,6 +48,7 @@ namespace WindowsFormsApp1
             this.SIClabel = new System.Windows.Forms.Label();
             this.AircraftDataLabel = new System.Windows.Forms.Label();
             this.instPanel = new System.Windows.Forms.Panel();
+            this.RoutecheckBox = new System.Windows.Forms.CheckBox();
             this.InscCheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.Layerlabel = new System.Windows.Forms.Label();
@@ -60,7 +61,7 @@ namespace WindowsFormsApp1
             this.Speedlabel = new System.Windows.Forms.Label();
             this.SpeedTrackBar = new System.Windows.Forms.TrackBar();
             this.startPause = new System.Windows.Forms.Button();
-            this.previus = new System.Windows.Forms.Button();
+            this.Restart = new System.Windows.Forms.Button();
             this.Nextbutton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
@@ -322,6 +323,7 @@ namespace WindowsFormsApp1
             // 
             this.instPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.instPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.instPanel.Controls.Add(this.RoutecheckBox);
             this.instPanel.Controls.Add(this.InscCheckedListBox);
             this.instPanel.Controls.Add(this.pictureBox2);
             this.instPanel.Controls.Add(this.Layerlabel);
@@ -335,6 +337,18 @@ namespace WindowsFormsApp1
             this.instPanel.Size = new System.Drawing.Size(283, 218);
             this.instPanel.TabIndex = 8;
             // 
+            // RoutecheckBox
+            // 
+            this.RoutecheckBox.AutoSize = true;
+            this.RoutecheckBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.RoutecheckBox.Location = new System.Drawing.Point(39, 118);
+            this.RoutecheckBox.Name = "RoutecheckBox";
+            this.RoutecheckBox.Size = new System.Drawing.Size(223, 21);
+            this.RoutecheckBox.TabIndex = 20;
+            this.RoutecheckBox.Text = "View current aircraft trajectory ";
+            this.RoutecheckBox.UseVisualStyleBackColor = true;
+            this.RoutecheckBox.CheckedChanged += new System.EventHandler(this.RoutecheckBox_CheckedChanged);
+            // 
             // InscCheckedListBox
             // 
             this.InscCheckedListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -343,7 +357,7 @@ namespace WindowsFormsApp1
             this.InscCheckedListBox.FormattingEnabled = true;
             this.InscCheckedListBox.Location = new System.Drawing.Point(61, 26);
             this.InscCheckedListBox.Name = "InscCheckedListBox";
-            this.InscCheckedListBox.Size = new System.Drawing.Size(120, 89);
+            this.InscCheckedListBox.Size = new System.Drawing.Size(94, 72);
             this.InscCheckedListBox.TabIndex = 19;
             this.InscCheckedListBox.SelectedIndexChanged += new System.EventHandler(this.InscCheckedListBox_SelectedIndexChanged);
             // 
@@ -436,7 +450,7 @@ namespace WindowsFormsApp1
             this.panel2.Controls.Add(this.Speedlabel);
             this.panel2.Controls.Add(this.SpeedTrackBar);
             this.panel2.Controls.Add(this.startPause);
-            this.panel2.Controls.Add(this.previus);
+            this.panel2.Controls.Add(this.Restart);
             this.panel2.Controls.Add(this.Nextbutton);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 111);
@@ -504,23 +518,23 @@ namespace WindowsFormsApp1
             this.startPause.UseVisualStyleBackColor = false;
             this.startPause.Click += new System.EventHandler(this.startPause_Click);
             // 
-            // previus
+            // Restart
             // 
-            this.previus.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.Restart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.previus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.previus.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("previus.BackgroundImage")));
-            this.previus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.previus.FlatAppearance.BorderSize = 0;
-            this.previus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.previus.Location = new System.Drawing.Point(224, 39);
-            this.previus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.previus.Name = "previus";
-            this.previus.Size = new System.Drawing.Size(40, 40);
-            this.previus.TabIndex = 3;
-            this.previus.UseVisualStyleBackColor = false;
-            this.previus.Click += new System.EventHandler(this.previus_Click);
+            this.Restart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Restart.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Restart.BackgroundImage")));
+            this.Restart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Restart.FlatAppearance.BorderSize = 0;
+            this.Restart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Restart.Location = new System.Drawing.Point(224, 39);
+            this.Restart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Restart.Name = "Restart";
+            this.Restart.Size = new System.Drawing.Size(40, 40);
+            this.Restart.TabIndex = 3;
+            this.Restart.UseVisualStyleBackColor = false;
+            this.Restart.Click += new System.EventHandler(this.Restart_Click);
             // 
             // Nextbutton
             // 
@@ -891,7 +905,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Panel instPanel;
         private System.Windows.Forms.Panel panelInfo;
         private System.Windows.Forms.Timer timer;
-        private System.Windows.Forms.Button previus;
+        private System.Windows.Forms.Button Restart;
         private System.Windows.Forms.Panel mapPanel;
         private GMap.NET.WindowsForms.GMapControl gMapControl1;
         private System.Windows.Forms.Panel controlPanel;
@@ -927,5 +941,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label trackNumberlabel;
         private System.Windows.Forms.CheckedListBox InscCheckedListBox;
+        private System.Windows.Forms.CheckBox RoutecheckBox;
     }
 }
