@@ -75,6 +75,7 @@ namespace WindowsFormsApp1
             this.endlabel = new System.Windows.Forms.Label();
             this.startlabel = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.exportToKMLbutton = new System.Windows.Forms.Button();
             this.panelMap.SuspendLayout();
             this.mapPanel.SuspendLayout();
             this.controlPanel.SuspendLayout();
@@ -138,7 +139,7 @@ namespace WindowsFormsApp1
             this.gMapControl1.Size = new System.Drawing.Size(1148, 390);
             this.gMapControl1.TabIndex = 0;
             this.gMapControl1.Zoom = 0D;
-            this.gMapControl1.OnMarkerDoubleClick += new GMap.NET.WindowsForms.MarkerDoubleClick(this.gMapControl1_OnMarkerDoubleClick);
+            this.gMapControl1.OnMarkerClick += new GMap.NET.WindowsForms.MarkerClick(this.gMapControl1_OnMarkerClick);
             // 
             // controlPanel
             // 
@@ -196,7 +197,7 @@ namespace WindowsFormsApp1
             this.ClockLabel.AutoSize = true;
             this.ClockLabel.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClockLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClockLabel.Location = new System.Drawing.Point(277, 19);
+            this.ClockLabel.Location = new System.Drawing.Point(356, 11);
             this.ClockLabel.Name = "ClockLabel";
             this.ClockLabel.Size = new System.Drawing.Size(119, 38);
             this.ClockLabel.TabIndex = 9;
@@ -287,7 +288,7 @@ namespace WindowsFormsApp1
             this.TIlabel.AutoSize = true;
             this.TIlabel.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TIlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.TIlabel.Location = new System.Drawing.Point(18, 33);
+            this.TIlabel.Location = new System.Drawing.Point(18, 39);
             this.TIlabel.Name = "TIlabel";
             this.TIlabel.Size = new System.Drawing.Size(132, 19);
             this.TIlabel.TabIndex = 2;
@@ -322,6 +323,7 @@ namespace WindowsFormsApp1
             // 
             this.instPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.instPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.instPanel.Controls.Add(this.exportToKMLbutton);
             this.instPanel.Controls.Add(this.RoutecheckBox);
             this.instPanel.Controls.Add(this.InscCheckedListBox);
             this.instPanel.Controls.Add(this.pictureBox2);
@@ -341,11 +343,11 @@ namespace WindowsFormsApp1
             this.RoutecheckBox.AutoSize = true;
             this.RoutecheckBox.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RoutecheckBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.RoutecheckBox.Location = new System.Drawing.Point(39, 118);
+            this.RoutecheckBox.Location = new System.Drawing.Point(39, 125);
             this.RoutecheckBox.Name = "RoutecheckBox";
-            this.RoutecheckBox.Size = new System.Drawing.Size(220, 23);
+            this.RoutecheckBox.Size = new System.Drawing.Size(172, 23);
             this.RoutecheckBox.TabIndex = 20;
-            this.RoutecheckBox.Text = "View current aircraft trajectory ";
+            this.RoutecheckBox.Text = "View aircraft trajectory ";
             this.RoutecheckBox.UseVisualStyleBackColor = true;
             this.RoutecheckBox.CheckedChanged += new System.EventHandler(this.RoutecheckBox_CheckedChanged);
             // 
@@ -867,6 +869,23 @@ namespace WindowsFormsApp1
             // 
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
+            // exportToKMLbutton
+            // 
+            this.exportToKMLbutton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.exportToKMLbutton.BackColor = System.Drawing.Color.DimGray;
+            this.exportToKMLbutton.FlatAppearance.BorderSize = 0;
+            this.exportToKMLbutton.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exportToKMLbutton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.exportToKMLbutton.Location = new System.Drawing.Point(61, 168);
+            this.exportToKMLbutton.Name = "exportToKMLbutton";
+            this.exportToKMLbutton.Size = new System.Drawing.Size(120, 29);
+            this.exportToKMLbutton.TabIndex = 21;
+            this.exportToKMLbutton.Text = "Export to .kml";
+            this.exportToKMLbutton.UseVisualStyleBackColor = false;
+            this.exportToKMLbutton.Click += new System.EventHandler(this.exportToKMLbutton_Click);
+            // 
             // Simulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -943,5 +962,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label trackNumberlabel;
         private System.Windows.Forms.CheckedListBox InscCheckedListBox;
         private System.Windows.Forms.CheckBox RoutecheckBox;
+        private System.Windows.Forms.Button exportToKMLbutton;
     }
 }

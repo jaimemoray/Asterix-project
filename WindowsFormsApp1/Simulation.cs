@@ -277,46 +277,7 @@ namespace WindowsFormsApp1
 
 
 
-        private void gMapControl1_OnMarkerDoubleClick(GMapMarker item, MouseEventArgs e)
-        {
-            int pos = markers.FindIndex(p => p.Position == item.Position);
-
-            switch (markers[pos].CAT)
-            {
-                case "10":
-                    TIlabel.Text = Main.main.myListCAT10[markers[pos].indexList].targetIdentification == null ? "Target Identification: N/A" : "Target Identification: " + Main.main.myListCAT10[markers[pos].indexList].targetIdentification;
-                    TAlabel.Text = Main.main.myListCAT10[markers[pos].indexList].targetAddress == null ? "Target Address: N/A" : "Target Address: " + Main.main.myListCAT10[markers[pos].indexList].targetAddress;
-                    SIClabel.Text = Convert.ToString(Main.main.myListCAT10[markers[pos].indexList].SIC) == null ? "SIC: N/A" : "SIC: " + Main.main.myListCAT10[markers[pos].indexList].SIC;
-                    TIMElabel.Text = Convert.ToString(Main.main.myListCAT10[markers[pos].indexList].TimeOfDay) == null ? "Time: N/A" : "Time: " + TimeSpan.FromSeconds(Main.main.myListCAT10[markers[pos].indexList].TimeOfDay).ToString(@"hh\:mm\:ss");
-                    FLlabel.Text = Main.main.myListCAT10[markers[pos].indexList].flightLevel == null ? "Flight Level: N/A" : "Flight Level: " + Main.main.myListCAT10[markers[pos].indexList].flightLevel + " FL";
-                    LATlabel.Text = "Latitude: N/A";
-                    LNGlabel.Text = "Longitude: N/A";
-                    Hlabel.Text = Main.main.myListCAT10[markers[pos].indexList].height == -1 ? "Height: N/A" : "Height : " + Main.main.myListCAT10[markers[pos].indexList].height + " ft";
-                    trackNumberlabel.Text = Main.main.myListCAT10[markers[pos].indexList].trackNumber == 0 ? "Track Number: N/A" : "Track Number:: " + Main.main.myListCAT10[markers[pos].indexList].trackNumber;
-                    break;
-                case "21":
-                    TIlabel.Text = Main.main.myListCAT21[markers[pos].indexList].targetIdentification == null ? "Target Identification: N/A" : "Target Identification: " + Main.main.myListCAT21[markers[pos].indexList].targetIdentification;
-                    TAlabel.Text = Main.main.myListCAT21[markers[pos].indexList].targetAddress == null ? "Target Address: N/A" : "Target Address: " + Main.main.myListCAT21[markers[pos].indexList].targetAddress;
-                    SIClabel.Text = Convert.ToString(Main.main.myListCAT21[markers[pos].indexList].SIC) == null ? "SIC: N/A" : "SIC: " + Main.main.myListCAT21[markers[pos].indexList].SIC;
-                    TIMElabel.Text = Convert.ToString(Main.main.myListCAT21[markers[pos].indexList].timeReportTrans) == null ? "Time: N/A" : "Time: " + TimeSpan.FromSeconds(Main.main.myListCAT21[markers[pos].indexList].timeReportTrans).ToString(@"hh\:mm\:ss");
-                    FLlabel.Text = Main.main.myListCAT21[markers[pos].indexList].flightLevel == null ? "Flight Level: N/A" : "Flight Level: " + Main.main.myListCAT21[markers[pos].indexList].flightLevel + " FL";
-                    LATlabel.Text = Main.main.myListCAT21[markers[pos].indexList].latitude == -1 ? "Latitude: N/A" : "Latitude: " + Math.Round(Main.main.myListCAT21[markers[pos].indexList].latitude, 4) + " º N";
-                    LNGlabel.Text = Main.main.myListCAT21[markers[pos].indexList].latitude == -1 ? "Longitude: N/A" : "Longitude: " + Math.Round(Main.main.myListCAT21[markers[pos].indexList].longitude, 4) + " º N";
-                    Hlabel.Text = Main.main.myListCAT21[markers[pos].indexList].geometricHeight == null ? "Height: N/A" : "Height : " + Main.main.myListCAT21[markers[pos].indexList].geometricHeight + " ft";
-                    trackNumberlabel.Text = Main.main.myListCAT21[markers[pos].indexList].trackNumber == 0 ? "Track Number: N/A" : "Track Number:: " + Main.main.myListCAT21[markers[pos].indexList].trackNumber;
-
-                    if (RoutecheckBox.Checked==true)
-                    {
-                        createRoutes(markers[pos].trackNumber);
-                        
-                    }
-                   
-                    break;
-            }
-
-
-
-        }
+  
 
         private void Setbutton_Click(object sender, EventArgs e)
         {
@@ -326,6 +287,7 @@ namespace WindowsFormsApp1
 
                 if (setTime > ini && setTime < end)
                 {
+                    Route.Routes.Clear();
                     currentSMR.Clear();
                     currentADSB.Clear();
                     currentMLAT.Clear();
@@ -364,7 +326,7 @@ namespace WindowsFormsApp1
             ADSBlayer.IsVisibile = InscCheckedListBox.GetItemChecked(2) == false ? false : true;
         }
 
-        private void createRoutes(string tn)
+        private void createRoutes(string tn, Color myColor)
         {
             Route.Routes.Clear();
             List<marker> aircraftsADSB = markers.FindAll(c=>c.trackNumber==tn);
@@ -376,7 +338,7 @@ namespace WindowsFormsApp1
             }
             
             GMapRoute myRoute = new GMapRoute(wayPoints, tn);
-            myRoute.Stroke = new Pen(Color.Black);
+            myRoute.Stroke = new Pen(myColor);
             myRoute.Stroke.Width = 3;
             Route.Routes.Add(myRoute);
         }
@@ -409,6 +371,47 @@ namespace WindowsFormsApp1
             endlabel.Text = "End Simulation: " + TimeSpan.FromSeconds(markers[markers.Count - 1].time).ToString(@"hh\:mm\:ss");
         }
 
+        private void gMapControl1_OnMarkerClick(GMapMarker item, MouseEventArgs e)
+        {
+            int pos = markers.FindIndex(p => p.Position == item.Position);
 
+            switch (markers[pos].CAT)
+            {
+                case "10":
+                    TIlabel.Text = Main.main.myListCAT10[markers[pos].indexList].targetIdentification == null ? "Target Identification: N/A" : "Target Identification: " + Main.main.myListCAT10[markers[pos].indexList].targetIdentification;
+                    TAlabel.Text = Main.main.myListCAT10[markers[pos].indexList].targetAddress == null ? "Target Address: N/A" : "Target Address: " + Main.main.myListCAT10[markers[pos].indexList].targetAddress;
+                    SIClabel.Text = Convert.ToString(Main.main.myListCAT10[markers[pos].indexList].SIC) == null ? "SIC: N/A" : "SIC: " + Main.main.myListCAT10[markers[pos].indexList].SIC;
+                    TIMElabel.Text = Convert.ToString(Main.main.myListCAT10[markers[pos].indexList].TimeOfDay) == null ? "Time: N/A" : "Time: " + TimeSpan.FromSeconds(Main.main.myListCAT10[markers[pos].indexList].TimeOfDay).ToString(@"hh\:mm\:ss");
+                    FLlabel.Text = Main.main.myListCAT10[markers[pos].indexList].flightLevel == null ? "Flight Level: N/A" : "Flight Level: " + Main.main.myListCAT10[markers[pos].indexList].flightLevel + " FL";
+                    LATlabel.Text = "Latitude: N/A";
+                    LNGlabel.Text = "Longitude: N/A";
+                    Hlabel.Text = Main.main.myListCAT10[markers[pos].indexList].height == -1 ? "Height: N/A" : "Height : " + Main.main.myListCAT10[markers[pos].indexList].height + " ft";
+                    trackNumberlabel.Text = Main.main.myListCAT10[markers[pos].indexList].trackNumber == 0 ? "Track Number: N/A" : "Track Number:: " + Main.main.myListCAT10[markers[pos].indexList].trackNumber;
+                    break;
+                case "21":
+                    TIlabel.Text = Main.main.myListCAT21[markers[pos].indexList].targetIdentification == null ? "Target Identification: N/A" : "Target Identification: " + Main.main.myListCAT21[markers[pos].indexList].targetIdentification;
+                    TAlabel.Text = Main.main.myListCAT21[markers[pos].indexList].targetAddress == null ? "Target Address: N/A" : "Target Address: " + Main.main.myListCAT21[markers[pos].indexList].targetAddress;
+                    SIClabel.Text = Convert.ToString(Main.main.myListCAT21[markers[pos].indexList].SIC) == null ? "SIC: N/A" : "SIC: " + Main.main.myListCAT21[markers[pos].indexList].SIC;
+                    TIMElabel.Text = Convert.ToString(Main.main.myListCAT21[markers[pos].indexList].timeReportTrans) == null ? "Time: N/A" : "Time: " + TimeSpan.FromSeconds(Main.main.myListCAT21[markers[pos].indexList].timeReportTrans).ToString(@"hh\:mm\:ss");
+                    FLlabel.Text = Main.main.myListCAT21[markers[pos].indexList].flightLevel == null ? "Flight Level: N/A" : "Flight Level: " + Main.main.myListCAT21[markers[pos].indexList].flightLevel + " FL";
+                    LATlabel.Text = Main.main.myListCAT21[markers[pos].indexList].latitude == -1 ? "Latitude: N/A" : "Latitude: " + Math.Round(Main.main.myListCAT21[markers[pos].indexList].latitude, 4) + " º N";
+                    LNGlabel.Text = Main.main.myListCAT21[markers[pos].indexList].latitude == -1 ? "Longitude: N/A" : "Longitude: " + Math.Round(Main.main.myListCAT21[markers[pos].indexList].longitude, 4) + " º N";
+                    Hlabel.Text = Main.main.myListCAT21[markers[pos].indexList].geometricHeight == null ? "Height: N/A" : "Height : " + Main.main.myListCAT21[markers[pos].indexList].geometricHeight + " ft";
+                    trackNumberlabel.Text = Main.main.myListCAT21[markers[pos].indexList].trackNumber == 0 ? "Track Number: N/A" : "Track Number:: " + Main.main.myListCAT21[markers[pos].indexList].trackNumber;
+
+                    if (RoutecheckBox.Checked == true)
+                    {
+                        createRoutes(markers[pos].trackNumber,Color.Black);
+
+                    }
+
+                    break;
+            }
+        }
+
+        private void exportToKMLbutton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
