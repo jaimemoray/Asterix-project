@@ -79,16 +79,29 @@ namespace WindowsFormsApp1
 
         private void CAT10button_Click(object sender, EventArgs e)
         {
-            DataForm DF10 = new DataForm(myListCAT10);
-            openChildForm(DF10);
+            if (myListCAT10.Count!=0)
+            {
+                DataForm DF10 = new DataForm(myListCAT10);
+                openChildForm(DF10);
+            }
+            else
+            {
+                MessageBox.Show("you must load file with CAT10");
+            }
             //DF10.ShowDialog();
         }
 
         private void CAT21button_Click(object sender, EventArgs e)
         {
-            DataForm DF21 = new DataForm(myListCAT21);
+            if (myListCAT21.Count != 0)
+            {
+                DataForm DF21 = new DataForm(myListCAT21);
             openChildForm(DF21);
-            //DF21.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("you must load file with CAT21");
+            }
         }
 
         private void simulationButton_Click(object sender, EventArgs e)

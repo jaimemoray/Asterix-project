@@ -12,9 +12,9 @@ namespace DECODEclass
     public class CAT21
     {
         //Atributes
-        //byte[] message; //All message
+        
         int length; //message's length
-        List<byte> FSPEC; //FSPEC
+        //List<byte> FSPEC; //FSPEC
         List<byte> DataFields; //DataFields
         List<string[]> DataItemsList= new List<string[]>();
 
@@ -575,9 +575,9 @@ namespace DECODEclass
         {
             //this.message = message;
             this.length = length;
-            FSPEC = readFSPEC(message.Skip(3).ToArray()); //The three first byte is CAT (byte 1) and second and third bytes are length
+            List<byte> FSPEC = readFSPEC(message.Skip(3).ToArray()); //The three first byte is CAT (byte 1) and second and third bytes are length
             DataFields = new List<byte>(message.Skip(3 + FSPEC.Count).ToArray()); //Only contain DataFields without CAT,LENGTH and FSPEC
-            createDataItem(); //We calculte each data item of CAT 10
+            createDataItem(FSPEC); //We calculte each data item of CAT 10
         }
 
         //METHODS
@@ -618,10 +618,10 @@ namespace DECODEclass
         }
 
         //createDataItem() -> Create each data item through our FSPEC
-        public void createDataItem()
+        public void createDataItem(List<byte> FSPEC)
         {          
 
-            for(int i = 0; i < this.FSPEC.Count; i++)
+            for(int i = 0; i < FSPEC.Count; i++)
             {
                 BitArray Ebits = new BitArray(new byte[] { FSPEC[i] });
                 switch (i)

@@ -326,6 +326,9 @@ namespace WindowsFormsApp1
 
                 if (setTime > ini && setTime < end)
                 {
+                    currentSMR.Clear();
+                    currentADSB.Clear();
+                    currentMLAT.Clear();
                     SMRlayer.Clear();
                     MLATlayer.Clear();
                     ADSBlayer.Clear();
@@ -405,5 +408,7 @@ namespace WindowsFormsApp1
             startlabel.Text = "Start Simulation: " + TimeSpan.FromSeconds(markers[0].time).ToString(@"hh\:mm\:ss");
             endlabel.Text = "End Simulation: " + TimeSpan.FromSeconds(markers[markers.Count - 1].time).ToString(@"hh\:mm\:ss");
         }
+
+
     }
 }
