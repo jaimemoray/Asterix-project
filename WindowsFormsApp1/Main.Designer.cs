@@ -37,8 +37,9 @@ namespace WindowsFormsApp1
             this.Databutton = new System.Windows.Forms.Button();
             this.LoadButton = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelChildForm = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.buttonHelp = new System.Windows.Forms.Button();
             this.panelButtoms.SuspendLayout();
             this.subDataPanel.SuspendLayout();
             this.panelLogo.SuspendLayout();
@@ -49,6 +50,7 @@ namespace WindowsFormsApp1
             // 
             this.panelButtoms.AutoScroll = true;
             this.panelButtoms.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panelButtoms.Controls.Add(this.buttonHelp);
             this.panelButtoms.Controls.Add(this.simulationButton);
             this.panelButtoms.Controls.Add(this.subDataPanel);
             this.panelButtoms.Controls.Add(this.Databutton);
@@ -177,6 +179,15 @@ namespace WindowsFormsApp1
             this.panelLogo.Size = new System.Drawing.Size(200, 150);
             this.panelLogo.TabIndex = 0;
             // 
+            // panelChildForm
+            // 
+            this.panelChildForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panelChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelChildForm.Location = new System.Drawing.Point(200, 0);
+            this.panelChildForm.Name = "panelChildForm";
+            this.panelChildForm.Size = new System.Drawing.Size(1166, 658);
+            this.panelChildForm.TabIndex = 1;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -190,14 +201,23 @@ namespace WindowsFormsApp1
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // panelChildForm
+            // buttonHelp
             // 
-            this.panelChildForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panelChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelChildForm.Location = new System.Drawing.Point(200, 0);
-            this.panelChildForm.Name = "panelChildForm";
-            this.panelChildForm.Size = new System.Drawing.Size(1166, 658);
-            this.panelChildForm.TabIndex = 1;
+            this.buttonHelp.BackColor = System.Drawing.Color.Black;
+            this.buttonHelp.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonHelp.FlatAppearance.BorderSize = 0;
+            this.buttonHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonHelp.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonHelp.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonHelp.Location = new System.Drawing.Point(0, 500);
+            this.buttonHelp.Name = "buttonHelp";
+            this.buttonHelp.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.buttonHelp.Size = new System.Drawing.Size(200, 70);
+            this.buttonHelp.TabIndex = 5;
+            this.buttonHelp.Text = "Help";
+            this.buttonHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonHelp.UseVisualStyleBackColor = false;
+            this.buttonHelp.Click += new System.EventHandler(this.buttonHelp_Click);
             // 
             // Main
             // 
@@ -229,6 +249,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button Databutton;
         private System.Windows.Forms.Button simulationButton;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button buttonHelp;
     }
 }
 

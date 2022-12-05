@@ -118,6 +118,10 @@ namespace WindowsFormsApp1
 
         }
 
-
+        private void buttonHelp_Click(object sender, EventArgs e)
+        {
+            HelpForm HF = new HelpForm();
+            openChildForm(HF);
+        }
     }
 }
