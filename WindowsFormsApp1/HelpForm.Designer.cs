@@ -39,6 +39,7 @@
             // 
             // buttonStep1
             // 
+            this.buttonStep1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.buttonStep1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.buttonStep1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonStep1.ForeColor = System.Drawing.Color.White;
@@ -52,6 +53,7 @@
             // 
             // buttonStep2
             // 
+            this.buttonStep2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.buttonStep2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.buttonStep2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonStep2.ForeColor = System.Drawing.Color.White;
@@ -65,6 +67,7 @@
             // 
             // buttonStep3
             // 
+            this.buttonStep3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.buttonStep3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.buttonStep3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonStep3.ForeColor = System.Drawing.Color.White;
@@ -78,6 +81,7 @@
             // 
             // buttonStep4
             // 
+            this.buttonStep4.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.buttonStep4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.buttonStep4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonStep4.ForeColor = System.Drawing.Color.White;
@@ -91,6 +95,7 @@
             // 
             // buttonStep5
             // 
+            this.buttonStep5.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.buttonStep5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.buttonStep5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonStep5.ForeColor = System.Drawing.Color.White;
@@ -104,6 +109,9 @@
             // 
             // pictureBox
             // 
+            this.pictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox.Location = new System.Drawing.Point(87, 80);
