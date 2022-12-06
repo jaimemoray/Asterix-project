@@ -81,7 +81,7 @@ namespace WindowsFormsApp1
         {
             if (myListCAT10.Count!=0)
             {
-                DataForm DF10 = new DataForm(myListCAT10);
+                DataForm DF10 = new DataForm(0);
                 openChildForm(DF10);
             }
             else
@@ -95,7 +95,7 @@ namespace WindowsFormsApp1
         {
             if (myListCAT21.Count != 0)
             {
-                DataForm DF21 = new DataForm(myListCAT21);
+                DataForm DF21 = new DataForm(1);
             openChildForm(DF21);
             }
             else

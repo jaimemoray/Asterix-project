@@ -32,26 +32,26 @@ namespace DECODEclass
                                //------------------DATA SOURCE IDENTIFIER [I010/010]----------------------------------------------------------
 
 
-        public string SAC { get; set; } //System Area code fixed to zero
+        public string SAC { get; set; }="N/A"; //System Area code fixed to zero
         public int SIC { get; set; } //System identification Code
 
         //--------------------MESSAGE TYPE [I010/000]------------------------------------------------------------------
-        public string MessageType { get; set; }
+        public string MessageType { get; set; }="N/A";
 
 
 
         //------------------TARGET REPORT DESCRIPTOR [I010/020]--------------------------------------------------------
-        public string TYP { get; set; }
-        public string DCR { get; set; }
-        public string CHN { get; set; }
-        public string GBS { get; set; }
-        public string CRT { get; set; }
-        public string SIM { get; set; }
-        public string TST { get; set; }
-        public string RAB { get; set; }
-        public string LOP { get; set; }
-        public string TOT { get; set; }
-        public string SPI { get; set; }
+        public string TYP { get; set; }="N/A";
+        public string DCR { get; set; }="N/A";
+        public string CHN { get; set; }="N/A";
+        public string GBS { get; set; }="N/A";
+        public string CRT { get; set; }="N/A";
+        public string SIM { get; set; }="N/A";
+        public string TST { get; set; }="N/A";
+        public string RAB { get; set; }="N/A";
+        public string LOP { get; set; }="N/A";
+        public string TOT { get; set; }="N/A";
+        public string SPI { get; set; }="N/A";
 
 
         //-----------------------------TIME OF DAY [I010/140]--------------------------------------------------------------------------------------------------
@@ -84,29 +84,29 @@ namespace DECODEclass
         public int trackNumber { get; set; }
 
         //----------------------------------------------------------TRACK STATUS [I010/170]---------------------------------------------------------------------
-        public string CNF { get; set; }
-        public string TRE { get; set; }
-        public string CST { get; set; }
-        public string MAH { get; set; }
-        public string TCC { get; set; }
-        public string STH { get; set; }
-        public string TOM { get; set; }
-        public string DOU { get; set; }
-        public string MSR { get; set; }
-        public string GHO { get; set; }
+        public string CNF { get; set; }="N/A";
+        public string TRE { get; set; }="N/A";
+        public string CST { get; set; }="N/A";
+        public string MAH { get; set; }="N/A";
+        public string TCC { get; set; }="N/A";
+        public string STH { get; set; }="N/A";
+        public string TOM { get; set; }="N/A";
+        public string DOU { get; set; }="N/A";
+        public string MSR { get; set; }="N/A";
+        public string GHO { get; set; }="N/A";
 
         //-------------------------------------------------------MODE 3/A CODE IN OCTAL REPRESENTATION[I010/060]--------------------------------------------------
-        public string V_3A { get; set; }
-        public string G_3A { get; set; }
-        public string L { get; set; }
-        public string mode3A { get; set; }
+        public string V_3A { get; set; }="N/A";
+        public string G_3A { get; set; }="N/A";
+        public string L { get; set; }="N/A";
+        public string mode3A { get; set; }="N/A";
 
         //--------------------------------------------------------------TARGET ADDRESS[I010/220]---------------------------------------------------------------
-        public string targetAddress { get; set; }
+        public string targetAddress { get; set; }="N/A";
 
         //-----------------------------------------------------------TARGET IDENTIFICATION[I010/245]-----------------------------------------------------------------
-        public string STI { get; set; }
-        public string targetIdentification { get; set; }
+        public string STI { get; set; }="N/A";
+        public string targetIdentification { get; set; }="N/A";
 
         //------------------------------------------------------------MODE S MB DATA[I010/250]--------------------------------------------------------------------
 
@@ -129,12 +129,12 @@ namespace DECODEclass
 
         //------------------------------------------------------VEHICLE FLEET IDENTIFICATION[I010/300]------------------------------------------------------------
 
-        public string VFI { get; set; }
+        public string VFI { get; set; }="N/A";
 
         //---------------------------------------------------FLIGHT LEVEL IN BINARY REPRESENTATION[I010/090]------------------------------------------------------
-        public string V_FL { get; set; }
-        public string G_FL { get; set; }
-        public string flightLevel { get; set; }
+        public string V_FL { get; set; }="N/A";
+        public string G_FL { get; set; }="N/A";
+        public string flightLevel { get; set; }="N/A";
 
         //----------------------------------------------------------MEASURED HIGHT[I010/091]-----------------------------------------------------------------------
 
@@ -147,15 +147,15 @@ namespace DECODEclass
         public int targetWidth { get; set; }
 
         //------------------------------------------------------------SYSTEM STATUS[I010/550]----------------------------------------------------------------------
-        public string NOGO { get; set; }
-        public string OVL { get; set; }
-        public string TSV { get; set; }
-        public string DIV { get; set; }
-        public string TTF { get; set; }
+        public string NOGO { get; set; }="N/A";
+        public string OVL { get; set; }="N/A";
+        public string TSV { get; set; }="N/A";
+        public string DIV { get; set; }="N/A";
+        public string TTF { get; set; }="N/A";
         //------------------------------------------------------------PRE PROGRAMMED MESSAGE[I010/310]-------------------------------------------------------------
 
-        public string TRB { get; set; }
-        public string MSG { get; set; }
+        public string TRB { get; set; }="N/A";
+        public string MSG { get; set; }="N/A";
 
         //----------------------------------------------------------STANDARD DEVIATION OF POSITION[I010/500]-------------------------------------------------------
         public double sigmax { get; set; }

@@ -37,9 +37,9 @@ namespace DECODEclass
 
         //List<string> // DI1 = new List<string>();
 
-       // public List<string> Get// DI1() { return // DI1; }
+        // public List<string> Get// DI1() { return // DI1; }
 
-        public string SAC { get; set; } //System Area code fixed to zero
+        public string SAC { get; set; } = "N/A";//System Area code fixed to zero
         public int SIC { get; set; } //System identification Code
         
         //----------------------------------TARGET REPORT DESCRIPTOR [I021/040]------------------------------------------------------------------
@@ -49,21 +49,21 @@ namespace DECODEclass
        // public List<string> Get// DI2() { return // DI2; }
 
 
-        public string ATP { get; set;}
-        public string ARC { get; set; }
-        public string RC { get; set; }
-        public string RAB { get; set; }
-        public string DCR{ get; set;}
-        public string GBS { get; set; }
-        public string SIM { get; set; }
-        public string TST { get; set; }
-        public string SAA { get; set; }
-        public string CL{ get; set; }
-        public string IPC { get; set; }
-        public string NOGO { get; set; }
-        public string CPR { get; set; }
-        public string LDPJ { get; set; }
-        public string RCF { get; set; }
+        public string ATP { get; set;}="N/A";
+        public string ARC { get; set; }="N/A";
+        public string RC { get; set; }="N/A";
+        public string RAB { get; set; }="N/A";
+        public string DCR{ get; set;}="N/A";
+        public string GBS { get; set; }="N/A";
+        public string SIM { get; set; }="N/A";
+        public string TST { get; set; }="N/A";
+        public string SAA { get; set; }="N/A";
+        public string CL{ get; set; }="N/A";
+        public string IPC { get; set; }="N/A";
+        public string NOGO { get; set; }="N/A";
+        public string CPR { get; set; }="N/A";
+        public string LDPJ { get; set; }="N/A";
+        public string RCF { get; set; }="N/A";
 
 
         //-----------------------------------------TRACK NUMBER [I021/161]--------------------------------------------------------
@@ -80,7 +80,7 @@ namespace DECODEclass
 
         // public List<string> Get// DI4() { return // DI4; }
 
-        public string serviceIdentification { get; set; } //Seconds
+        public string serviceIdentification { get; set; }="N/A"; //Seconds
 
         //------------------------------------------TIME OF APPLICABILITY FOR POSITION[I021/071]-------------------------------------------------------------------
 
@@ -114,7 +114,7 @@ namespace DECODEclass
 
         // public List<string> Get// DI8() { return // DI8; }
 
-        public string timeOfAppVel { get; set; }
+        public string timeOfAppVel { get; set; }="N/A";
 
         //--------------------------------------------Air Speed [I010/150]---------------------------------------------------------
 
@@ -122,8 +122,8 @@ namespace DECODEclass
 
         // public List<string> Get// DI9() { return // DI9; }
 
-        public double airSpeed{get; set;} 
-        public string typeSpeed { get; set; }
+        public double airSpeed{get; set;}
+        public string typeSpeed { get; set; } = "N/A";
 
         //------------------------------------------------------TRUE AIR SPEED [I021/151]--------------------------------------------------------------------------
 
@@ -132,7 +132,7 @@ namespace DECODEclass
         // public List<string> Get// DI10() { return // DI10; }
 
         public double trueAirSpeed { get; set; }
-        public string RE { get; set; }
+        public string RE { get; set; }="N/A";
 
         //----------------------------------------------------------TARGET ADDRESS[I021/080]---------------------------------------------------------------------
 
@@ -140,13 +140,13 @@ namespace DECODEclass
 
         // public List<string> Get// DI11() { return // DI11; }
 
-        public string targetAddress { get; set; }
+        public string targetAddress { get; set; } = "N/A";
 
         //-------------------------------------------------------TIME OF MESSAGE RECEPTION OF POSITION[I021/073]--------------------------------------------------
 
         //List<string> // DI12 = new List<string>();
 
-        // public List<string> Get// DI12() { return // DI12; }
+        // public List<string> Get// DI12() { return // DI12; }="N/A";
 
         public double timeReceptPos { get; set; }
 
@@ -157,7 +157,7 @@ namespace DECODEclass
         // public List<string> Get// DI13() { return // DI13; }
 
         public double timeReceptPosHP { get; set; }
-        public string FSI_pos { get; set; }
+        public string FSI_pos { get; set; }="N/A";
 
         //------------------------------------------------TIME OF MESSAGE RECEPTION OF VELOCITY [I021/075]--------------------------------------------------------------------
 
@@ -175,7 +175,7 @@ namespace DECODEclass
         // public List<string> Get// DI15() { return // DI15; }
 
         public double timeReceptVelHP { get; set; }
-        public string FSI_Vel { get; set; }
+        public string FSI_Vel { get; set; }="N/A";
 
         //---------------------------------------------------------GEOMETRIC HEIGHT[I021/300] ------------------------------------------------------
 
@@ -183,7 +183,7 @@ namespace DECODEclass
 
         // public List<string> Get// DI16() { return // DI16; }
 
-        public string geometricHeight { get; set; }
+        public string geometricHeight { get; set; }="N/A";
 
         //----------------------------------------------------------QUALITY IN// DICATORS[I021/090]-----------------------------------------------------------------------
 
@@ -191,33 +191,33 @@ namespace DECODEclass
 
         // public List<string> Get// DI17() { return // DI17; }
 
-        public string NUCr { get; set; }
-        public string NUCp { get; set; }
-        public string NICbaro { get; set; }
-        public string SIL1 { get; set; }
-        public string NACp { get; set; }
-        public string SIL2 { get; set; }
-        public string SDA { get; set; }
-        public string GVA { get; set; }
-        public string PIC { get; set; }
+        public string NUCr { get; set; }="N/A";
+        public string NUCp { get; set; }="N/A";
+        public string NICbaro { get; set; }="N/A";
+        public string SIL1 { get; set; }="N/A";
+        public string NACp { get; set; }="N/A";
+        public string SIL2 { get; set; }="N/A";
+        public string SDA { get; set; }="N/A";
+        public string GVA { get; set; }="N/A";
+        public string PIC { get; set; }="N/A";
 
         //------------------------------------------------------MOPS VERSION [I021/210]-------------------------------------------------------------
 
         //List<string> // DI18 = new List<string>();
 
-        // public List<string> Get// DI18() { return // DI18; }
+        // public List<string> Get// DI18() { return // DI18; }="N/A";
 
-        public string VNS { get; set; }
-        public string VN { get; set; }
-        public string LTT { get; set; }
+        public string VNS { get; set; }="N/A";
+        public string VN { get; set; }="N/A";
+        public string LTT { get; set; }="N/A";
 
         //------------------------------------------------------------MODE 3/A CODE[I021/070]----------------------------------------------------------------------
 
         //List<string> // DI19 = new List<string>();
 
-        // public List<string> Get// DI19() { return // DI19; }
+        // public List<string> Get// DI19() { return // DI19; }="N/A";
 
-        public string mode3A { get; set; }
+        public string mode3A { get; set; } = "N/A";
 
         //------------------------------------------------------------ROLL ANGLE [I021/230]-------------------------------------------------------------
 
@@ -233,7 +233,7 @@ namespace DECODEclass
 
         // public List<string> Get// DI21() { return // DI21; }
 
-        public string flightLevel { get; set; }
+        public string flightLevel { get; set; }="N/A";
 
         //--------------------------------------------------------MAGNETIC HEA// DING [I021/152]---------------------------------------------------------------
 
@@ -249,18 +249,18 @@ namespace DECODEclass
 
         // public List<string> Get// DI23() { return // DI23; }
 
-        public string ICF { get; set; }
-        public string LNAV { get; set; }
-        public string PS { get; set; }
-        public string SS { get; set; }
+        public string ICF { get; set; }="N/A";
+        public string LNAV { get; set; }="N/A";
+        public string PS { get; set; }="N/A";
+        public string SS { get; set; }="N/A";
 
         //--------------------------------------------------------------BAROMETRIC VERTICAL RATE [I021/155]------------------------------------------------------
 
         //List<string> // DI24 = new List<string>();
 
-        // public List<string> Get// DI24() { return // DI24; }
+        // public List<string> Get// DI24() { return // DI24; }="N/A";
 
-        public string RE_BVR;
+        public string RE_BVR { get; set; }= "N/A";
         public double barometricVerticalRate { get; set; }
 
         //------------------------------------------------------------GEOMETRIC VERTICAL RATE [I021/157]------------------------------------------------------
@@ -269,7 +269,7 @@ namespace DECODEclass
 
         // public List<string> Get// DI25() { return // DI25; }
 
-        public string RE_GVR { get; set; }
+        public string RE_GVR { get; set; }="N/A";
         public double geometricVerticalRate { get; set; }
 
         //------------------------------------------------------------AIRBORNE GROUND VECTOR [I021/160]------------------------------------------------------
@@ -278,7 +278,7 @@ namespace DECODEclass
 
         // public List<string> Get// DI26() { return // DI26; }
 
-        public string RE_GS { get; set; }
+        public string RE_GS { get; set; }="N/A";
         public double groundSpeed { get; set; }
 
         public double trackAngle { get; set; }
@@ -304,14 +304,14 @@ namespace DECODEclass
 
         // public List<string> Get// DI29() { return // DI29; }
 
-        public string targetIdentification { get; set; }
+        public string targetIdentification { get; set; }="N/A";
         //------------------------------------------------------------------EMITTER CATEGORY[I021/020]---------------------------------------------------------------
 
         //List<string> // DI30 = new List<string>();
 
         // public List<string> Get// DI30() { return // DI30; }
 
-        public string ECAT { get; set; }
+        public string ECAT { get; set; }="N/A";
 
 
         //-------------------------------------------------------------------MET INFORMATION[I021/220]----------------------------------------------------------------
@@ -324,18 +324,18 @@ namespace DECODEclass
         public int windDirection { get; set; }
         public double temperature { get; set; }
         public int turbulence { get; set; }
-        public string WS { get; set; }
-        public string WD { get; set; }
-        public string TMP { get; set; }
-        public string TRB { get; set; }
+        public string WS { get; set; }="N/A";
+        public string WD { get; set; }="N/A";
+        public string TMP { get; set; }="N/A";
+        public string TRB { get; set; }="N/A";
 
         //------------------------------------------------------------------SELECTED ALTITUDE[I021/146]---------------------------------------------------------------------
         //List<string> // DI32 = new List<string>();
 
         // public List<string> Get// DI32() { return // DI32; }
 
-        public string SAS { get; set; }
-        public string source { get; set; }
+        public string SAS { get; set; }="N/A";
+        public string source { get; set; }="N/A";
         public int altitude { get; set; }
 
         //------------------------------------------------------------FINAL STATE SELECTED ALTITUDE[I021/148]---------------------------------------------------------------
@@ -343,9 +343,9 @@ namespace DECODEclass
 
         // public List<string> Get// DI33() { return // DI33; }
 
-        public string MV { get; set; }
-        public string AH { get; set; }
-        public string AM { get; set; }
+        public string MV { get; set; }="N/A";
+        public string AH { get; set; }="N/A";
+        public string AM { get; set; }="N/A";
         public int altitudeFSS { get; set; }
 
         //-----------------------------------------------------------------TRAJECTORY INTENT [I021/110 ]---------------------------------------------------------
@@ -354,10 +354,10 @@ namespace DECODEclass
 
         // public List<string> Get// DI34() { return // DI34; }
 
-        public string TIS { get; set; }
-        public string TID { get; set; }
-        public string NAV { get; set; }
-        public string NVB { get; set; }
+        public string TIS { get; set; }="N/A";
+        public string TID { get; set; }="N/A";
+        public string NAV { get; set; }="N/A";
+        public string NVB { get; set; }="N/A";
         public int REP { get; set; }
         List<string> TCAList = new List<string>();
         public List<string> GetTCAList()
@@ -434,26 +434,26 @@ namespace DECODEclass
 
        // public List<string> Get// DI36() { return // DI36; }
 
-        public string RA { get; set; }
-        public string TC { get; set; }
-        public string TS { get; set; }
-        public string ARV { get; set; }
-        public string CDTIA { get; set; }
-        public string NotTCAS { get; set; }
-        public string SA { get; set; }
+        public string RA { get; set; }="N/A";
+        public string TC { get; set; }="N/A";
+        public string TS { get; set; }="N/A";
+        public string ARV { get; set; }="N/A";
+        public string CDTIA { get; set; }="N/A";
+        public string NotTCAS { get; set; }="N/A";
+        public string SA { get; set; }="N/A";
 
         //--------------------------------------------------------SURFACE CAPABILITIES AND CHARACTERISTICS [I021/271] ------------------------------------------------------
 
         //List<string> // DI37 = new List<string>();
 
-        // public List<string> Get// DI37() { return // DI37; }
+        // public List<string> Get// DI37() { return // DI37; }="N/A";
 
-        public string POA { get; set; }
-        public string CTDIS { get; set; }
-        public string B2low { get; set; }
-        public string RAS { get; set; }
-        public string IDENT { get; set; }
-        public string LandW { get; set; }
+        public string POA { get; set; }="N/A";
+        public string CTDIS { get; set; }="N/A";
+        public string B2low { get; set; }="N/A";
+        public string RAS { get; set; }="N/A";
+        public string IDENT { get; set; }="N/A";
+        public string LandW { get; set; }="N/A";
         //-------------------------------------------------------------------MESSAGE AMPLITUDE[I021/132]---------------------------------------------------------------------
 
         //List<string> // DI38 = new List<string>();
@@ -502,29 +502,29 @@ namespace DECODEclass
 
         // public List<string> Get// DI42() { return // DI42; }
 
-        public string AOS_DA { get; set; }
-        public string TRD_DA { get; set; }
-        public string M3A { get; set; }
-        public string QI { get; set; }
-        public string TI1_DA { get; set; }
-        public string MAM_DA { get; set; }
-        public string GH_DA { get; set; }
-        public string FL_DA { get; set; }
-        public string ISA_DA { get; set; }
-        public string FSA_DA { get; set; }
-        public string AS_DA { get; set; }
-        public string TAS_DA { get; set; }
-        public string MH_DA { get; set; }
-        public string BVR_DA { get; set; }
-        public string GVR_DA { get; set; }
-        public string GV_DA { get; set; }
-        public string TAR_DA { get; set; }
-        public string TI2_DA { get; set; }
-        public string TS_DA { get; set; }
-        public string MET_DA { get; set; }
-        public string ROA_DA { get; set; }
-        public string ARA_DA { get; set; }
-        public string SCC_DA { get; set; }
+        public string AOS_DA { get; set; }="N/A";
+        public string TRD_DA { get; set; }="N/A";
+        public string M3A { get; set; }="N/A";
+        public string QI { get; set; }="N/A";
+        public string TI1_DA { get; set; }="N/A";
+        public string MAM_DA { get; set; }="N/A";
+        public string GH_DA { get; set; }="N/A";
+        public string FL_DA { get; set; }="N/A";
+        public string ISA_DA { get; set; }="N/A";
+        public string FSA_DA { get; set; }="N/A";
+        public string AS_DA { get; set; }="N/A";
+        public string TAS_DA { get; set; }="N/A";
+        public string MH_DA { get; set; }="N/A";
+        public string BVR_DA { get; set; }="N/A";
+        public string GVR_DA { get; set; }="N/A";
+        public string GV_DA { get; set; }="N/A";
+        public string TAR_DA { get; set; }="N/A";
+        public string TI2_DA { get; set; }="N/A";
+        public string TS_DA { get; set; }="N/A";
+        public string MET_DA { get; set; }="N/A";
+        public string ROA_DA { get; set; }="N/A";
+        public string ARA_DA { get; set; }="N/A";
+        public string SCC_DA { get; set; }="N/A";
         public double AOS_data { get; set; }
         public double TRD_data { get; set; }
         public double M3A_data { get; set; }
@@ -1072,7 +1072,7 @@ namespace DECODEclass
         }
         void DataItem6()
         {
-            DataItemsList.Add(new string[] { "6", "[I010/130]", "Position in WGS-84 Coor// DInates" });
+            DataItemsList.Add(new string[] { "6", "[I010/130]", "Position in WGS-84 Coordinates" });
 
             List<byte> latitudeBytes = new List<byte>();
             List<byte> longitudBytes = new List<byte>();
@@ -1109,7 +1109,7 @@ namespace DECODEclass
         }
         void DataItem7()
         {
-            DataItemsList.Add(new string[] { "7", "[I021/131]", "Position in WGS-84 Coor// DInates High Res." });
+            DataItemsList.Add(new string[] { "7", "[I021/131]", "Position in WGS-84 Coordinates High Res." });
 
             List<byte> latitudeHRBytes = new List<byte>();
             List<byte> longitudHRBytes = new List<byte>();

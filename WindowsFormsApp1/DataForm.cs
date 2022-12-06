@@ -10,10 +10,10 @@ namespace WindowsFormsApp1
 {
     public partial class DataForm : Form
     {
-        List<CAT10> l10 = new List<CAT10>();
+        //List<CAT10> l10 = new List<CAT10>();
         List<CAT10> FilterL10 = new List<CAT10>();
         List<CAT21> FilterL21 = new List<CAT21>();
-        List<CAT21> l21 = new List<CAT21>();
+        //List<CAT21> l21 = new List<CAT21>();
         bool filter = false;
         int rowMess;
         int flag;
@@ -23,19 +23,14 @@ namespace WindowsFormsApp1
             InitializeComponent();
 
         }
-        public DataForm(List<CAT10> l)
+        public DataForm(int f)
         {
             InitializeComponent();
-            l10 = l;
-            flag = 0;
+            
+            flag = f;
         }
 
-        public DataForm(List<CAT21> l)
-        {
-            InitializeComponent();
-            l21 = l;
-            flag = 1;
-        }
+
         private void CreateDataGridView()
         {
             messagedataGrid.Rows.Clear();
@@ -55,16 +50,16 @@ namespace WindowsFormsApp1
             {
 
                 case 0:
-                            messagedataGrid.RowCount = l10.Count; //Tendremos tantas filas como mensajes haya en nuestra lista
+                            messagedataGrid.RowCount = Main.main.myListCAT10.Count; //Tendremos tantas filas como mensajes haya en nuestra lista
 
 
-                            for (int i = 0; i < l10.Count; i++)
+                            for (int i = 0; i < Main.main.myListCAT10.Count; i++)
                             {
                                 messagedataGrid.Rows[i].Cells[0].Value = i;
                                 messagedataGrid.Rows[i].Cells[1].Value = 10;
-                                messagedataGrid.Rows[i].Cells[2].Value = l10[i].convert2TimeOfDay(l10[i].TimeOfDay);
-                                messagedataGrid.Rows[i].Cells[3].Value = l10[i].GetLength();
-                                messagedataGrid.Rows[i].Cells[4].Value = l10[i].GetItemList().Count;
+                                messagedataGrid.Rows[i].Cells[2].Value = Main.main.myListCAT10[i].convert2TimeOfDay(Main.main.myListCAT10[i].TimeOfDay);
+                                messagedataGrid.Rows[i].Cells[3].Value = Main.main.myListCAT10[i].GetLength();
+                                messagedataGrid.Rows[i].Cells[4].Value = Main.main.myListCAT10[i].GetItemList().Count;
 
                                 
                             }                   
@@ -75,15 +70,15 @@ namespace WindowsFormsApp1
 
                 case 1:
 
-                    messagedataGrid.RowCount = l21.Count; //Tendremos tantas filas como mensajes haya en nuestra lista
+                    messagedataGrid.RowCount = Main.main.myListCAT21.Count; //Tendremos tantas filas como mensajes haya en nuestra lista
 
-                    for (int i = 0; i < l21.Count; i++)
+                    for (int i = 0; i < Main.main.myListCAT21.Count; i++)
                     {
                         messagedataGrid.Rows[i].Cells[0].Value = i;
                         messagedataGrid.Rows[i].Cells[1].Value = 21;
                         messagedataGrid.Rows[i].Cells[2].Value = " ";
-                        messagedataGrid.Rows[i].Cells[3].Value = l21[i].GetLength();
-                        messagedataGrid.Rows[i].Cells[4].Value = l21[i].GetItemList().Count;
+                        messagedataGrid.Rows[i].Cells[3].Value = Main.main.myListCAT21[i].GetLength();
+                        messagedataGrid.Rows[i].Cells[4].Value = Main.main.myListCAT21[i].GetItemList().Count;
 
 
                     }
@@ -149,162 +144,166 @@ namespace WindowsFormsApp1
         {
             DataGridView dg = new DataGridView();
             SaveFileDialog sfd = new SaveFileDialog() { Filter = "CSV|*.csv" };
+            List<string> rows = new List<string>();
+            string SEP = ";";
             if (sfd.ShowDialog() == DialogResult.OK)
             {
                 switch (flag)
                 {
                     case 0:
 
+                        string[] header10 = new string[65];
+                        
+
+                        
+                        
+                        header10[0] = "ID";
+                        header10[1] = "CAT";
+                        header10[2] = "[Data Source Identifier] SAC";
+                        header10[3] = "[Data Source Identifier] SIC";
+                        header10[4] = "[Message Type] ";
+                        header10[5] = "[Target Report Descriptor] TYP";
+                        header10[6] = "[Target Report Descriptor] DCR";
+                        header10[7] = "[Target Report Descriptor] CHN";
+                        header10[8] = "[Target Report Descriptor] GBS";
+                        header10[9] = "[Target Report Descriptor] CRT";
+                        header10[10] = "[Target Report Descriptor] SIM";
+                        header10[11] = "[Target Report Descriptor] TST";
+                        header10[12] = "[Target Report Descriptor] RAB";
+                        header10[13] = "[Target Report Descriptor] LOP";
+                        header10[14] = "[Target Report Descriptor] TOT";
+                        header10[15] = "[Target Report Descriptor] SPI";
+                        header10[16] = "[Time of day]";
+                        header10[17] = "[WGS-84 Coordinates] Latitude (º)";
+                        header10[18] = "[WGS-84 Coordinates] Longitude (º)";
+                        header10[19] = "[Measured Position in Polar Coordinates] RHO (m)";
+                        header10[20] = "[Measured Position in Polar Coordinates] THETA (º)";
+                        header10[21] = "[Measured Position in Cartesian Coordinates] x (m)";
+                        header10[22] = "[Measured Position in Cartesian Coordinates] y (m)";
+                        header10[23] = "[Track Velocity in Polar Coordinates] Ground Speed (kt)";
+                        header10[24] = "[Track Velocity in Polar Coordinates] Track Angle (º)";
+                        header10[25] = "[Track Velocity in Cartesian Coordinates] Vx (m/s)";
+                        header10[26] = "[Track Velocity in Cartesian Coordinates] Vy (m/s)";
+                        header10[27] = "[Track Number]";
+                        header10[28] = "[Track Status] CNF";
+                        header10[29] = "[Track Status] TRE";
+                        header10[30] = "[Track Status] CST";
+                        header10[31] = "[Track Status] MAH";
+                        header10[32] = "[Track Status] TCC";
+                        header10[33] = "[Track Status] STH";
+                        header10[34] = "[Track Status] TOM";
+                        header10[35] = "[Track Status] DOU";
+                        header10[36] = "[Track Status] MRS";
+                        header10[37] = "[Track Status] GHO";
+                        header10[38] = "[Mode 3/A in Octal Representation] V";
+                        header10[39] = "[Mode 3/A in Octal Representation] G";
+                        header10[40] = "[Mode 3/A in Octal Representation] L";
+                        header10[41] = "[Mode 3/A in Octal Representation] Mode 3/A";
+                        header10[41] = "[Target Address]";
+                        header10[42] = "[Target Identification] STI";
+                        header10[43] = "[Target Identification]";
+                        header10[44] = "[Vehicle Fleet Identification]";
+                        header10[45] = "[Flight Level in Binary Representation] V";
+                        header10[46] = "[Flight Level in Binary Representation] G";
+                        header10[47] = "[Flight Level in Binary Representation] Flight Level";
+                        header10[48] = "[Measured Height] (ft)";
+                        header10[49] = "[Target Size and Orientation] Target Length (m)";
+                        header10[50] = "[Target Size and Orientation] Target Orientation (º)";
+                        header10[51] = "[Target Size and Orientation] Target Width (m)";
+                        header10[52] = "[System Status] NOGO";
+                        header10[53] = "[System Status] OVL";
+                        header10[54] = "[System Status] TSV";
+                        header10[55] = "[System Status] DIV";
+                        header10[56] = "[System Status] TTF";
+                        header10[57] = "[Pre-programmed Message] TRB";
+                        header10[58] = "[Pre-programmed Message] MSG";
+                        header10[59] = "[Standard Deviation of Position] sigmaX (m)";
+                        header10[60] = "[Standard Deviation of Position] sigmaY (m)";
+                        header10[61] = "[Standard Deviation of Position] sigmaXY (m^2)";
+                        header10[62] = "[Amplitude of Primary Plot]";
+                        header10[63] = "[Calculated Acceleration] Ax (m/(s^2))";
+                        header10[64] = "[Calculated Acceleration] Ay (m/(s^2))";
 
 
-                        dg.ColumnCount = 65;
-                        dg.RowCount = l10.Count;
-                        dg.Columns[0].HeaderText = "ID";
-                        dg.Columns[1].HeaderText = "CAT";
-                        dg.Columns[2].HeaderText = "[Data Source Identifier] SAC";
-                        dg.Columns[3].HeaderText = "[Data Source Identifier] SIC";
-                        dg.Columns[4].HeaderText = "[Message Type] ";
-                        dg.Columns[5].HeaderText = "[Target Report Descriptor] TYP";
-                        dg.Columns[6].HeaderText = "[Target Report Descriptor] DCR";
-                        dg.Columns[7].HeaderText = "[Target Report Descriptor] CHN";
-                        dg.Columns[8].HeaderText = "[Target Report Descriptor] GBS";
-                        dg.Columns[9].HeaderText = "[Target Report Descriptor] CRT";
-                        dg.Columns[10].HeaderText = "[Target Report Descriptor] SIM";
-                        dg.Columns[11].HeaderText = "[Target Report Descriptor] TST";
-                        dg.Columns[12].HeaderText = "[Target Report Descriptor] RAB";
-                        dg.Columns[13].HeaderText = "[Target Report Descriptor] LOP";
-                        dg.Columns[14].HeaderText = "[Target Report Descriptor] TOT";
-                        dg.Columns[15].HeaderText = "[Target Report Descriptor] SPI";
-                        dg.Columns[16].HeaderText = "[Time of day]";
-                        dg.Columns[17].HeaderText = "[WGS-84 Coordinates] Latitude (º)";
-                        dg.Columns[18].HeaderText = "[WGS-84 Coordinates] Longitude (º)";
-                        dg.Columns[19].HeaderText = "[Measured Position in Polar Coordinates] RHO (m)";
-                        dg.Columns[20].HeaderText = "[Measured Position in Polar Coordinates] THETA (º)";
-                        dg.Columns[21].HeaderText = "[Measured Position in Cartesian Coordinates] x (m)";
-                        dg.Columns[22].HeaderText = "[Measured Position in Cartesian Coordinates] y (m)";
-                        dg.Columns[23].HeaderText = "[Track Velocity in Polar Coordinates] Ground Speed (kt)";
-                        dg.Columns[24].HeaderText = "[Track Velocity in Polar Coordinates] Track Angle (º)";
-                        dg.Columns[25].HeaderText = "[Track Velocity in Cartesian Coordinates] Vx (m/s)";
-                        dg.Columns[26].HeaderText = "[Track Velocity in Cartesian Coordinates] Vy (m/s)";
-                        dg.Columns[27].HeaderText = "[Track Number]";
-                        dg.Columns[28].HeaderText = "[Track Status] CNF";
-                        dg.Columns[29].HeaderText = "[Track Status] TRE";
-                        dg.Columns[30].HeaderText = "[Track Status] CST";
-                        dg.Columns[31].HeaderText = "[Track Status] MAH";
-                        dg.Columns[32].HeaderText = "[Track Status] TCC";
-                        dg.Columns[33].HeaderText = "[Track Status] STH";
-                        dg.Columns[34].HeaderText = "[Track Status] TOM";
-                        dg.Columns[35].HeaderText = "[Track Status] DOU";
-                        dg.Columns[36].HeaderText = "[Track Status] MRS";
-                        dg.Columns[37].HeaderText = "[Track Status] GHO";
-                        dg.Columns[38].HeaderText = "[Mode 3/A in Octal Representation] V";
-                        dg.Columns[39].HeaderText = "[Mode 3/A in Octal Representation] G";
-                        dg.Columns[40].HeaderText = "[Mode 3/A in Octal Representation] L";
-                        dg.Columns[41].HeaderText = "[Mode 3/A in Octal Representation] Mode 3/A";
-                        dg.Columns[41].HeaderText = "[Target Address]";
-                        dg.Columns[42].HeaderText = "[Target Identification] STI";
-                        dg.Columns[43].HeaderText = "[Target Identification]";
-                        dg.Columns[44].HeaderText = "[Vehicle Fleet Identification]";
-                        dg.Columns[45].HeaderText = "[Flight Level in Binary Representation] V";
-                        dg.Columns[46].HeaderText = "[Flight Level in Binary Representation] G";
-                        dg.Columns[47].HeaderText = "[Flight Level in Binary Representation] Flight Level";
-                        dg.Columns[48].HeaderText = "[Measured Height] (ft)";
-                        dg.Columns[49].HeaderText = "[Target Size and Orientation] Target Length (m)";
-                        dg.Columns[50].HeaderText = "[Target Size and Orientation] Target Orientation (º)";
-                        dg.Columns[51].HeaderText = "[Target Size and Orientation] Target Width (m)";
-                        dg.Columns[52].HeaderText = "[System Status] NOGO";
-                        dg.Columns[53].HeaderText = "[System Status] OVL";
-                        dg.Columns[54].HeaderText = "[System Status] TSV";
-                        dg.Columns[55].HeaderText = "[System Status] DIV";
-                        dg.Columns[56].HeaderText = "[System Status] TTF";
-                        dg.Columns[57].HeaderText = "[Pre-programmed Message] TRB";
-                        dg.Columns[58].HeaderText = "[Pre-programmed Message] MSG";
-                        dg.Columns[59].HeaderText = "[Standard Deviation of Position] sigmaX (m)";
-                        dg.Columns[60].HeaderText = "[Standard Deviation of Position] sigmaY (m)";
-                        dg.Columns[61].HeaderText = "[Standard Deviation of Position] sigmaXY (m^2)";
-                        dg.Columns[62].HeaderText = "[Amplitude of Primary Plot]";
-                        dg.Columns[63].HeaderText = "[Calculated Acceleration] Ax (m/(s^2))";
-                        dg.Columns[64].HeaderText = "[Calculated Acceleration] Ay (m/(s^2))";
-
-
-
-
-
-
-
+                        rows.Add(string.Join(SEP,header10));
 
 
 
-                        for (int i = 0; i < l10.Count; i++)
+
+
+
+
+                        for (int i = 0; i < Main.main.myListCAT10.Count; i++)
                         {
-                            dg.Rows[i].Cells[0].Value = i;
-                            dg.Rows[i].Cells[1].Value = 10;
-                            dg.Rows[i].Cells[2].Value = l10[i].SAC;
-                            dg.Rows[i].Cells[3].Value = l10[i].SIC;
-                            dg.Rows[i].Cells[4].Value = l10[i].MessageType;
-                            dg.Rows[i].Cells[5].Value = l10[i].TYP;
-                            dg.Rows[i].Cells[6].Value = l10[i].DCR;
-                            dg.Rows[i].Cells[7].Value = l10[i].CHN;
-                            dg.Rows[i].Cells[8].Value = l10[i].GBS;
-                            dg.Rows[i].Cells[9].Value = l10[i].CRT;
-                            dg.Rows[i].Cells[10].Value = l10[i].SIM;
-                            dg.Rows[i].Cells[11].Value = l10[i].TST;
-                            dg.Rows[i].Cells[12].Value = l10[i].RAB;
-                            dg.Rows[i].Cells[13].Value = l10[i].LOP;
-                            dg.Rows[i].Cells[14].Value = l10[i].TOT;
-                            dg.Rows[i].Cells[15].Value = l10[i].SPI;
-                            dg.Rows[i].Cells[16].Value = TimeSpan.FromSeconds(l10[i].TimeOfDay).ToString(@"hh\:mm\:ss");
-                            dg.Rows[i].Cells[17].Value = l10[i].latitude;
-                            dg.Rows[i].Cells[18].Value = l10[i].longitude;
-                            dg.Rows[i].Cells[19].Value = l10[i].latitude;
-                            dg.Rows[i].Cells[20].Value = l10[i].longitude;
-                            dg.Rows[i].Cells[21].Value = l10[i].x;
-                            dg.Rows[i].Cells[22].Value = l10[i].y;
-                            dg.Rows[i].Cells[23].Value = l10[i].groundSpeed;
-                            dg.Rows[i].Cells[24].Value = l10[i].trackAngle;
-                            dg.Rows[i].Cells[25].Value = l10[i].Vx;
-                            dg.Rows[i].Cells[26].Value = l10[i].Vy;
-                            dg.Rows[i].Cells[27].Value = l10[i].trackNumber;
-                            dg.Rows[i].Cells[28].Value = l10[i].CNF;
-                            dg.Rows[i].Cells[29].Value = l10[i].TRE;
-                            dg.Rows[i].Cells[30].Value = l10[i].CST;
-                            dg.Rows[i].Cells[31].Value = l10[i].MAH;
-                            dg.Rows[i].Cells[32].Value = l10[i].TCC;
-                            dg.Rows[i].Cells[33].Value = l10[i].STH;
-                            dg.Rows[i].Cells[34].Value = l10[i].TOM;
-                            dg.Rows[i].Cells[35].Value = l10[i].DOU;
-                            dg.Rows[i].Cells[36].Value = l10[i].MSR;
-                            dg.Rows[i].Cells[37].Value = l10[i].GHO;
-                            dg.Rows[i].Cells[38].Value = l10[i].V_3A;
-                            dg.Rows[i].Cells[39].Value = l10[i].G_3A;
-                            dg.Rows[i].Cells[40].Value = l10[i].L;
-                            dg.Rows[i].Cells[41].Value = l10[i].mode3A;
-                            dg.Rows[i].Cells[42].Value = l10[i].targetAddress;
-                            dg.Rows[i].Cells[43].Value = l10[i].STI;
-                            dg.Rows[i].Cells[44].Value = l10[i].targetIdentification;
-                            dg.Rows[i].Cells[45].Value = l10[i].V_FL;
-                            dg.Rows[i].Cells[46].Value = l10[i].G_FL;
-                            dg.Rows[i].Cells[47].Value = l10[i].flightLevel;
-                            dg.Rows[i].Cells[48].Value = l10[i].height;
-                            dg.Rows[i].Cells[49].Value = l10[i].targetLength;
-                            dg.Rows[i].Cells[50].Value = l10[i].targetOrientation;
-                            dg.Rows[i].Cells[51].Value = l10[i].targetWidth;
-                            dg.Rows[i].Cells[52].Value = l10[i].NOGO;
-                            dg.Rows[i].Cells[53].Value = l10[i].OVL;
-                            dg.Rows[i].Cells[54].Value = l10[i].TSV;
-                            dg.Rows[i].Cells[55].Value = l10[i].DIV;
-                            dg.Rows[i].Cells[56].Value = l10[i].TTF;
-                            dg.Rows[i].Cells[57].Value = l10[i].TRB;
-                            dg.Rows[i].Cells[58].Value = l10[i].MSG;
-                            dg.Rows[i].Cells[59].Value = l10[i].sigmax;
-                            dg.Rows[i].Cells[60].Value = l10[i].sigmay;
-                            dg.Rows[i].Cells[61].Value = l10[i].sigmaxy;
-                            dg.Rows[i].Cells[62].Value = l10[i].PAM;
-                            dg.Rows[i].Cells[63].Value = l10[i].Ax;
-                            dg.Rows[i].Cells[64].Value = l10[i].Ay;
+                            string[] mess10 = new string[65];
+                            mess10[0] = i.ToString();
+                            mess10[1] = 10.ToString();
+                            mess10[2] = Main.main.myListCAT10[i].SAC.ToString();
+                            mess10[3] = Main.main.myListCAT10[i].SIC.ToString();
+                            mess10[4] = Main.main.myListCAT10[i].MessageType.ToString();
+                            mess10[5] = Main.main.myListCAT10[i].TYP.ToString();
+                            mess10[6] = Main.main.myListCAT10[i].DCR.ToString();
+                            mess10[7] = Main.main.myListCAT10[i].CHN.ToString();
+                            mess10[8] = Main.main.myListCAT10[i].GBS.ToString();
+                            mess10[9] = Main.main.myListCAT10[i].CRT.ToString();
+                            mess10[10] = Main.main.myListCAT10[i].SIM.ToString();
+                            mess10[11] = Main.main.myListCAT10[i].TST.ToString();
+                            mess10[12] = Main.main.myListCAT10[i].RAB.ToString();
+                            mess10[13] = Main.main.myListCAT10[i].LOP.ToString();
+                            mess10[14] = Main.main.myListCAT10[i].TOT.ToString();
+                            mess10[15] = Main.main.myListCAT10[i].SPI.ToString();
+                            mess10[16] = TimeSpan.FromSeconds(Main.main.myListCAT10[i].TimeOfDay).ToString(@"hh\:mm\:ss").ToString();
+                            mess10[17] = Main.main.myListCAT10[i].latitude.ToString();
+                            mess10[18] = Main.main.myListCAT10[i].longitude.ToString();
+                            mess10[19] = Main.main.myListCAT10[i].latitude.ToString();
+                            mess10[20] = Main.main.myListCAT10[i].longitude.ToString();
+                            mess10[21] = Main.main.myListCAT10[i].x.ToString();
+                            mess10[22] = Main.main.myListCAT10[i].y.ToString();
+                            mess10[23] = Main.main.myListCAT10[i].groundSpeed.ToString();
+                            mess10[24] = Main.main.myListCAT10[i].trackAngle.ToString();
+                            mess10[25] = Main.main.myListCAT10[i].Vx.ToString();
+                            mess10[26] = Main.main.myListCAT10[i].Vy.ToString();
+                            mess10[27] = Main.main.myListCAT10[i].trackNumber.ToString();
+                            mess10[28] = Main.main.myListCAT10[i].CNF.ToString();
+                            mess10[29] = Main.main.myListCAT10[i].TRE.ToString();
+                            mess10[30] = Main.main.myListCAT10[i].CST.ToString();
+                            mess10[31] = Main.main.myListCAT10[i].MAH.ToString();
+                            mess10[32] = Main.main.myListCAT10[i].TCC.ToString();
+                            mess10[33] = Main.main.myListCAT10[i].STH.ToString();
+                            mess10[34] = Main.main.myListCAT10[i].TOM.ToString();
+                            mess10[35] = Main.main.myListCAT10[i].DOU.ToString();
+                            mess10[36] = Main.main.myListCAT10[i].MSR.ToString();
+                            mess10[37] = Main.main.myListCAT10[i].GHO.ToString();
+                            mess10[38] = Main.main.myListCAT10[i].V_3A.ToString();
+                            mess10[39] = Main.main.myListCAT10[i].G_3A.ToString();
+                            mess10[40] = Main.main.myListCAT10[i].L.ToString();
+                            mess10[41] = Main.main.myListCAT10[i].mode3A.ToString();
+                            mess10[42] = Main.main.myListCAT10[i].targetAddress.ToString();
+                            mess10[43] = Main.main.myListCAT10[i].STI.ToString();
+                            mess10[44] = Main.main.myListCAT10[i].targetIdentification.ToString();
+                            mess10[45] = Main.main.myListCAT10[i].V_FL.ToString();
+                            mess10[46] = Main.main.myListCAT10[i].G_FL.ToString();
+                            mess10[47] = Main.main.myListCAT10[i].flightLevel.ToString();
+                            mess10[48] = Main.main.myListCAT10[i].height.ToString();
+                            mess10[49] = Main.main.myListCAT10[i].targetLength.ToString();
+                            mess10[50] = Main.main.myListCAT10[i].targetOrientation.ToString();
+                            mess10[51] = Main.main.myListCAT10[i].targetWidth.ToString();
+                            mess10[52] = Main.main.myListCAT10[i].NOGO.ToString();
+                            mess10[53] = Main.main.myListCAT10[i].OVL.ToString();
+                            mess10[54] = Main.main.myListCAT10[i].TSV.ToString();
+                            mess10[55] = Main.main.myListCAT10[i].DIV.ToString();
+                            mess10[56] = Main.main.myListCAT10[i].TTF.ToString();
+                            mess10[57] = Main.main.myListCAT10[i].TRB.ToString();
+                            mess10[58] = Main.main.myListCAT10[i].MSG.ToString();
+                            mess10[59] = Main.main.myListCAT10[i].sigmax.ToString();
+                            mess10[60] = Main.main.myListCAT10[i].sigmay.ToString();
+                            mess10[61] = Main.main.myListCAT10[i].sigmaxy.ToString();
+                            mess10[62] = Main.main.myListCAT10[i].PAM.ToString();
+                            mess10[63] = Main.main.myListCAT10[i].Ax.ToString();
+                            mess10[64] = Main.main.myListCAT10[i].Ay.ToString();
 
 
-
+                            rows.Add(string.Join(SEP, mess10));
 
                         }
 
@@ -313,254 +312,255 @@ namespace WindowsFormsApp1
                         break;
                     case 1:
 
+                        string[] header21 = new string[118];
+                        
 
-                        dg.ColumnCount = 118;
-                        dg.RowCount = l21.Count;
-                        dg.Columns[0].HeaderText = "ID";
-                        dg.Columns[1].HeaderText = "CAT";
-                        dg.Columns[2].HeaderText = "[Data Source Identifier] SAC";
-                        dg.Columns[3].HeaderText = "[Data Source Identifier] SIC";
-                        dg.Columns[4].HeaderText = "[Target Report Descriptor] ATP";
-                        dg.Columns[5].HeaderText = "[Target Report Descriptor] ARC";
-                        dg.Columns[6].HeaderText = "[Target Report Descriptor] RC";
-                        dg.Columns[7].HeaderText = "[Target Report Descriptor] RAB";
-                        dg.Columns[8].HeaderText = "[Target Report Descriptor] DCR";
-                        dg.Columns[9].HeaderText = "[Target Report Descriptor] GBS";
-                        dg.Columns[10].HeaderText = "[Target Report Descriptor] SIM";
-                        dg.Columns[11].HeaderText = "[Target Report Descriptor] TST";
-                        dg.Columns[12].HeaderText = "[Target Report Descriptor] SAA";
-                        dg.Columns[13].HeaderText = "[Target Report Descriptor] CL";
-                        dg.Columns[14].HeaderText = "[Target Report Descriptor] IPC";
-                        dg.Columns[15].HeaderText = "[Target Report Descriptor] NOGO";
-                        dg.Columns[16].HeaderText = "[Target Report Descriptor] CPR";
-                        dg.Columns[17].HeaderText = "[Target Report Descriptor] LDPJ";
-                        dg.Columns[18].HeaderText = "[Target Report Descriptor] RCF";
-                        dg.Columns[19].HeaderText = "[Track Number]";
-                        dg.Columns[20].HeaderText = "[Service Identification]";
-                        dg.Columns[21].HeaderText = "[Time of Applicability for Position]";
-                        dg.Columns[22].HeaderText = "[Position in WGS-84 Coordinates] Latitude (º)";
-                        dg.Columns[23].HeaderText = "[Position in WGS-84 Coordinates] Longitude (º)";
-                        dg.Columns[24].HeaderText = "[High-Resolution Position in WGS-84 Coordinates] Latitude (º)";
-                        dg.Columns[25].HeaderText = "[High-Resolution Position in WGS-84 Coordinates] Longitude (º)";
-                        dg.Columns[26].HeaderText = "[Time of Applicability for Velocity] (s)";
-                        dg.Columns[27].HeaderText = "[Air Speed] IM";
-                        dg.Columns[28].HeaderText = "[Air Speed] IAS/MACH (NM/s or Mach)";
-                        dg.Columns[29].HeaderText = "[True Airspeed] RE";
-                        dg.Columns[30].HeaderText = "[True Airspeed] (knot)";
-                        dg.Columns[31].HeaderText = "[Target Address]";
-                        dg.Columns[32].HeaderText = "[Time of Message Reception for Position]";
-                        dg.Columns[33].HeaderText = "[Time of Message Reception of Position–High Precision]";
-                        dg.Columns[34].HeaderText = "[Time of Message Reception for Velocity]";
-                        dg.Columns[35].HeaderText = "[Time of Message Reception of Velocity–High Precision]";
-                        dg.Columns[36].HeaderText = "[Geometric Height] (ft)";
-                        dg.Columns[37].HeaderText = "[Quality Indicators] NUCr or NACv";
-                        dg.Columns[38].HeaderText = "[Quality Indicators] NUCp or NIC";
-                        dg.Columns[39].HeaderText = "[Quality Indicators] NIC BARO";
-                        dg.Columns[40].HeaderText = "[Quality Indicators] SIL (I)";
-                        dg.Columns[41].HeaderText = "[Quality Indicators] NACp";
-                        dg.Columns[42].HeaderText = "[Quality Indicators] SIL (II)";
-                        dg.Columns[43].HeaderText = "[Quality Indicators] SDA";
-                        dg.Columns[44].HeaderText = "[Quality Indicators] GVA";
-                        dg.Columns[45].HeaderText = "[Quality Indicators] PIC";
-                        dg.Columns[46].HeaderText = "[MOPS Version] VNS";
-                        dg.Columns[47].HeaderText = "[MOPS Version] VN";
-                        dg.Columns[48].HeaderText = "[MOPS Version] LTT";
-                        dg.Columns[49].HeaderText = "[Mode 3/A Code in Octal Representation] ";
-                        dg.Columns[50].HeaderText = "[Roll Angle] (degree)";
-                        dg.Columns[51].HeaderText = "[Flight Level] (FL)";
-                        dg.Columns[52].HeaderText = "[Magnetic Heading] (º)";
-                        dg.Columns[53].HeaderText = "[Target Status] ICF";
-                        dg.Columns[54].HeaderText = "[Target Status] LNAV";
-                        dg.Columns[55].HeaderText = "[Target Status] PS";
-                        dg.Columns[56].HeaderText = "[Target Status] SS";
-                        dg.Columns[57].HeaderText = "[Barometric Vertical Rate] RE";
-                        dg.Columns[58].HeaderText = "[Barometric Vertical Rate] BVR (ft/min)";
-                        dg.Columns[59].HeaderText = "[Geometric Vertical Rate]";
-                        dg.Columns[60].HeaderText = "[Geometric Vertical Rate] GVR (ft/min)";
-                        dg.Columns[61].HeaderText = "[Airborne Ground Vector] RE";
-                        dg.Columns[62].HeaderText = "[Airborne Ground Vector] Ground Speed (NM/s)";
-                        dg.Columns[63].HeaderText = "[Airborne Ground Vector] Track Angle (degree)";
-                        dg.Columns[64].HeaderText = "[Track Angle Rate]  (º/s)";
-                        dg.Columns[65].HeaderText = "[Time of ASTERIX Report Transmission]";
-                        dg.Columns[66].HeaderText = "[Target Identification]";
-                        dg.Columns[67].HeaderText = "[Emitter Category]";
-                        dg.Columns[68].HeaderText = "[Met Information] Wind Speed (knot)";
-                        dg.Columns[69].HeaderText = "[Met Information] Wind Direction (degree)";
-                        dg.Columns[70].HeaderText = "[Met Information] Temperature (ºC)";
-                        dg.Columns[71].HeaderText = "[Met Information] Turbulence ";
-                        dg.Columns[72].HeaderText = "[Selected Altitude] SAS ";
-                        dg.Columns[73].HeaderText = "[Selected Altitude] Source ";
-                        dg.Columns[74].HeaderText = "[Selected Altitude] Altitude (ft) ";
-                        dg.Columns[75].HeaderText = "[Final State Selected Altitude] MV ";
-                        dg.Columns[76].HeaderText = "[Final State Selected Altitude] AH ";
-                        dg.Columns[77].HeaderText = "[Final State Selected Altitude] AM ";
-                        dg.Columns[78].HeaderText = "[Final State Selected Altitude] Altitude (ft) ";
-                        dg.Columns[79].HeaderText = "[Service Management] Report Period (s)";
-                        dg.Columns[80].HeaderText = "[Aircraft Operational Status] RA";
-                        dg.Columns[81].HeaderText = "[Aircraft Operational Status] TC";
-                        dg.Columns[82].HeaderText = "[Aircraft Operational Status] TS";
-                        dg.Columns[83].HeaderText = "[Aircraft Operational Status] ARV";
-                        dg.Columns[84].HeaderText = "[Aircraft Operational Status] CTDT/A";
-                        dg.Columns[85].HeaderText = "[Aircraft Operational Status] NOT CAS";
-                        dg.Columns[86].HeaderText = "[Aircraft Operational Status] SA";
-                        dg.Columns[87].HeaderText = "[Receiver ID]";
-                        dg.Columns[88].HeaderText = "[Message Amplitude] (dBm)";
-                        dg.Columns[89].HeaderText = "[Surface Capabilities and Characteristics] POA";
-                        dg.Columns[90].HeaderText = "[Surface Capabilities and Characteristics] CTDTI/S";
-                        dg.Columns[91].HeaderText = "[Surface Capabilities and Characteristics] B2 LOW";
-                        dg.Columns[92].HeaderText = "[Surface Capabilities and Characteristics] RAS";
-                        dg.Columns[93].HeaderText = "[Surface Capabilities and Characteristics] IDENT";
-                        dg.Columns[94].HeaderText = "[Surface Capabilities and Characteristics] L+W";
-                        dg.Columns[95].HeaderText = "[Data Ages] AOS(s)";
-                        dg.Columns[96].HeaderText = "[Data Ages] TRD(s)";
-                        dg.Columns[97].HeaderText = "[Data Ages] M3A(s)";
-                        dg.Columns[98].HeaderText = "[Data Ages] QI(s)";
-                        dg.Columns[99].HeaderText = "[Data Ages] TI(s)";
-                        dg.Columns[100].HeaderText = "[Data Ages] MAM(s)";
-                        dg.Columns[101].HeaderText = "[Data Ages] GH(s)";
-                        dg.Columns[102].HeaderText = "[Data Ages] FL(s)";
-                        dg.Columns[103].HeaderText = "[Data Ages] ISA(s)";
-                        dg.Columns[104].HeaderText = "[Data Ages] FSA(s)";
-                        dg.Columns[105].HeaderText = "[Data Ages] AS(s)";
-                        dg.Columns[106].HeaderText = "[Data Ages] TAS(s)";
-                        dg.Columns[107].HeaderText = "[Data Ages] MH(s)";
-                        dg.Columns[108].HeaderText = "[Data Ages] BVR(s)";
-                        dg.Columns[109].HeaderText = "[Data Ages] GVR(s)";
-                        dg.Columns[110].HeaderText = "[Data Ages] GV(s)";
-                        dg.Columns[111].HeaderText = "[Data Ages] TAR(s)";
-                        dg.Columns[112].HeaderText = "[Data Ages] TI(s)";
-                        dg.Columns[113].HeaderText = "[Data Ages] TS(s)";
-                        dg.Columns[114].HeaderText = "[Data Ages] MET(s)";
-                        dg.Columns[115].HeaderText = "[Data Ages] ROA(s)";
-                        dg.Columns[116].HeaderText = "[Data Ages] ARA(s)";
-                        dg.Columns[117].HeaderText = "[Data Ages] SCC(s)";
-
-
+                        header21[0] = "ID";
+                        header21[1] = "CAT";
+                        header21[2] = "[Data Source Identifier] SAC";
+                        header21[3] = "[Data Source Identifier] SIC";
+                        header21[4] = "[Target Report Descriptor] ATP";
+                        header21[5] = "[Target Report Descriptor] ARC";
+                        header21[6] = "[Target Report Descriptor] RC";
+                        header21[7] = "[Target Report Descriptor] RAB";
+                        header21[8] = "[Target Report Descriptor] DCR";
+                        header21[9] = "[Target Report Descriptor] GBS";
+                        header21[10] = "[Target Report Descriptor] SIM";
+                        header21[11] = "[Target Report Descriptor] TST";
+                        header21[12] = "[Target Report Descriptor] SAA";
+                        header21[13] = "[Target Report Descriptor] CL";
+                        header21[14] = "[Target Report Descriptor] IPC";
+                        header21[15] = "[Target Report Descriptor] NOGO";
+                        header21[16] = "[Target Report Descriptor] CPR";
+                        header21[17] = "[Target Report Descriptor] LDPJ";
+                        header21[18] = "[Target Report Descriptor] RCF";
+                        header21[19] = "[Track Number]";
+                        header21[20] = "[Service Identification]";
+                        header21[21] = "[Time of Applicability for Position]";
+                        header21[22] = "[Position in WGS-84 Coordinates] Latitude (º)";
+                        header21[23] = "[Position in WGS-84 Coordinates] Longitude (º)";
+                        header21[24] = "[High-Resolution Position in WGS-84 Coordinates] Latitude (º)";
+                        header21[25] = "[High-Resolution Position in WGS-84 Coordinates] Longitude (º)";
+                        header21[26] = "[Time of Applicability for Velocity] (s)";
+                        header21[27] = "[Air Speed] IM";
+                        header21[28] = "[Air Speed] IAS/MACH (NM/s or Mach)";
+                        header21[29] = "[True Airspeed] RE";
+                        header21[30] = "[True Airspeed] (knot)";
+                        header21[31] = "[Target Address]";
+                        header21[32] = "[Time of Message Reception for Position]";
+                        header21[33] = "[Time of Message Reception of Position–High Precision]";
+                        header21[34] = "[Time of Message Reception for Velocity]";
+                        header21[35] = "[Time of Message Reception of Velocity–High Precision]";
+                        header21[36] = "[Geometric Height] (ft)";
+                        header21[37] = "[Quality Indicators] NUCr or NACv";
+                        header21[38] = "[Quality Indicators] NUCp or NIC";
+                        header21[39] = "[Quality Indicators] NIC BARO";
+                        header21[40] = "[Quality Indicators] SIL (I)";
+                        header21[41] = "[Quality Indicators] NACp";
+                        header21[42] = "[Quality Indicators] SIL (II)";
+                        header21[43] = "[Quality Indicators] SDA";
+                        header21[44] = "[Quality Indicators] GVA";
+                        header21[45] = "[Quality Indicators] PIC";
+                        header21[46] = "[MOPS Version] VNS";
+                        header21[47] = "[MOPS Version] VN";
+                        header21[48] = "[MOPS Version] LTT";
+                        header21[49] = "[Mode 3/A Code in Octal Representation] ";
+                        header21[50] = "[Roll Angle] (degree)";
+                        header21[51] = "[Flight Level] (FL)";
+                        header21[52] = "[Magnetic Heading] (º)";
+                        header21[53] = "[Target Status] ICF";
+                        header21[54] = "[Target Status] LNAV";
+                        header21[55] = "[Target Status] PS";
+                        header21[56] = "[Target Status] SS";
+                        header21[57] = "[Barometric Vertical Rate] RE";
+                        header21[58] = "[Barometric Vertical Rate] BVR (ft/min)";
+                        header21[59] = "[Geometric Vertical Rate]";
+                        header21[60] = "[Geometric Vertical Rate] GVR (ft/min)";
+                        header21[61] = "[Airborne Ground Vector] RE";
+                        header21[62] = "[Airborne Ground Vector] Ground Speed (NM/s)";
+                        header21[63] = "[Airborne Ground Vector] Track Angle (degree)";
+                        header21[64] = "[Track Angle Rate]  (º/s)";
+                        header21[65] = "[Time of ASTERIX Report Transmission]";
+                        header21[66] = "[Target Identification]";
+                        header21[67] = "[Emitter Category]";
+                        header21[68] = "[Met Information] Wind Speed (knot)";
+                        header21[69] = "[Met Information] Wind Direction (degree)";
+                        header21[70] = "[Met Information] Temperature (ºC)";
+                        header21[71] = "[Met Information] Turbulence ";
+                        header21[72] = "[Selected Altitude] SAS ";
+                        header21[73] = "[Selected Altitude] Source ";
+                        header21[74] = "[Selected Altitude] Altitude (ft) ";
+                        header21[75] = "[Final State Selected Altitude] MV ";
+                        header21[76] = "[Final State Selected Altitude] AH ";
+                        header21[77] = "[Final State Selected Altitude] AM ";
+                        header21[78] = "[Final State Selected Altitude] Altitude (ft) ";
+                        header21[79] = "[Service Management] Report Period (s)";
+                        header21[80] = "[Aircraft Operational Status] RA";
+                        header21[81] = "[Aircraft Operational Status] TC";
+                        header21[82] = "[Aircraft Operational Status] TS";
+                        header21[83] = "[Aircraft Operational Status] ARV";
+                        header21[84] = "[Aircraft Operational Status] CTDT/A";
+                        header21[85] = "[Aircraft Operational Status] NOT CAS";
+                        header21[86] = "[Aircraft Operational Status] SA";
+                        header21[87] = "[Receiver ID]";
+                        header21[88] = "[Message Amplitude] (dBm)";
+                        header21[89] = "[Surface Capabilities and Characteristics] POA";
+                        header21[90] = "[Surface Capabilities and Characteristics] CTDTI/S";
+                        header21[91] = "[Surface Capabilities and Characteristics] B2 LOW";
+                        header21[92] = "[Surface Capabilities and Characteristics] RAS";
+                        header21[93] = "[Surface Capabilities and Characteristics] IDENT";
+                        header21[94] = "[Surface Capabilities and Characteristics] L+W";
+                        header21[95] = "[Data Ages] AOS(s)";
+                        header21[96] = "[Data Ages] TRD(s)";
+                        header21[97] = "[Data Ages] M3A(s)";
+                        header21[98] = "[Data Ages] QI(s)";
+                        header21[99] = "[Data Ages] TI(s)";
+                        header21[100] = "[Data Ages] MAM(s)";
+                        header21[101] = "[Data Ages] GH(s)";
+                        header21[102] = "[Data Ages] FL(s)";
+                        header21[103] = "[Data Ages] ISA(s)";
+                        header21[104] = "[Data Ages] FSA(s)";
+                        header21[105] = "[Data Ages] AS(s)";
+                        header21[106] = "[Data Ages] TAS(s)";
+                        header21[107] = "[Data Ages] MH(s)";
+                        header21[108] = "[Data Ages] BVR(s)";
+                        header21[109] = "[Data Ages] GVR(s)";
+                        header21[110] = "[Data Ages] GV(s)";
+                        header21[111] = "[Data Ages] TAR(s)";
+                        header21[112] = "[Data Ages] TI(s)";
+                        header21[113] = "[Data Ages] TS(s)";
+                        header21[114] = "[Data Ages] MET(s)";
+                        header21[115] = "[Data Ages] ROA(s)";
+                        header21[116] = "[Data Ages] ARA(s)";
+                        header21[117] = "[Data Ages] SCC(s)";
 
 
-                        for (int i = 0; i < l21.Count; i++)
+                        rows.Add(string.Join(SEP,header21));
+
+                        for (int i = 0; i < Main.main.myListCAT21.Count; i++)
                         {
-                            dg.Rows[i].Cells[0].Value = i;
-                            dg.Rows[i].Cells[1].Value = 21;
-                            dg.Rows[i].Cells[2].Value = l21[i].SAC;
-                            dg.Rows[i].Cells[3].Value = l21[i].SIC;
-                            dg.Rows[i].Cells[4].Value = l21[i].ATP;
-                            dg.Rows[i].Cells[5].Value = l21[i].ARC;
-                            dg.Rows[i].Cells[6].Value = l21[i].RC;
-                            dg.Rows[i].Cells[7].Value = l21[i].RAB;
-                            dg.Rows[i].Cells[8].Value = l21[i].DCR;
-                            dg.Rows[i].Cells[9].Value = l21[i].GBS;
-                            dg.Rows[i].Cells[10].Value = l21[i].SIM;
-                            dg.Rows[i].Cells[11].Value = l21[i].TST;
-                            dg.Rows[i].Cells[12].Value = l21[i].SAA;
-                            dg.Rows[i].Cells[13].Value = l21[i].CL;
-                            dg.Rows[i].Cells[14].Value = l21[i].IPC;
-                            dg.Rows[i].Cells[15].Value = l21[i].NOGO;
-                            dg.Rows[i].Cells[16].Value = l21[i].CPR;
-                            dg.Rows[i].Cells[17].Value = l21[i].LDPJ;
-                            dg.Rows[i].Cells[18].Value = l21[i].RCF;
-                            dg.Rows[i].Cells[19].Value = l21[i].trackNumber;
-                            dg.Rows[i].Cells[20].Value = l21[i].serviceIdentification;
-                            dg.Rows[i].Cells[21].Value = TimeSpan.FromSeconds(l21[i].timeOfAppPos).ToString(@"hh\:mm\:ss");
-                            dg.Rows[i].Cells[22].Value =l21[i].latitude;
-                            dg.Rows[i].Cells[23].Value = l21[i].longitude;
-                            dg.Rows[i].Cells[24].Value = l21[i].HRlatitude;
-                            dg.Rows[i].Cells[25].Value = l21[i].HRlongitude;
-                            dg.Rows[i].Cells[26].Value = l21[i].timeOfAppVel;
-                            dg.Rows[i].Cells[27].Value = l21[i].typeSpeed;
-                            dg.Rows[i].Cells[28].Value = l21[i].airSpeed;
-                            dg.Rows[i].Cells[29].Value = l21[i].RE;
-                            dg.Rows[i].Cells[30].Value = l21[i].trueAirSpeed;
-                            dg.Rows[i].Cells[31].Value = l21[i].targetAddress;
-                            dg.Rows[i].Cells[32].Value = TimeSpan.FromSeconds(l21[i].timeReceptPos).ToString(@"hh\:mm\:ss");
-                            dg.Rows[i].Cells[33].Value = TimeSpan.FromSeconds(l21[i].timeReceptPosHP).ToString(@"hh\:mm\:ss");
-                            dg.Rows[i].Cells[34].Value = TimeSpan.FromSeconds(l21[i].timeReceptVel).ToString(@"hh\:mm\:ss");
-                            dg.Rows[i].Cells[35].Value = TimeSpan.FromSeconds(l21[i].timeReceptVelHP).ToString(@"hh\:mm\:ss");
-                            dg.Rows[i].Cells[36].Value = l21[i].geometricHeight;
-                            dg.Rows[i].Cells[37].Value = l21[i].NUCr;
-                            dg.Rows[i].Cells[38].Value = l21[i].NUCp;
-                            dg.Rows[i].Cells[39].Value = l21[i].NICbaro;
-                            dg.Rows[i].Cells[40].Value = l21[i].SIL1;
-                            dg.Rows[i].Cells[41].Value = l21[i].NACp;
-                            dg.Rows[i].Cells[42].Value = l21[i].SIL2;
-                            dg.Rows[i].Cells[43].Value = l21[i].SDA;
-                            dg.Rows[i].Cells[44].Value = l21[i].GVA;
-                            dg.Rows[i].Cells[45].Value = l21[i].PIC;
-                            dg.Rows[i].Cells[46].Value = l21[i].VNS;
-                            dg.Rows[i].Cells[47].Value = l21[i].VN;
-                            dg.Rows[i].Cells[48].Value = l21[i].LTT;
-                            dg.Rows[i].Cells[49].Value = l21[i].mode3A;
-                            dg.Rows[i].Cells[50].Value = l21[i].rollAngle;
-                            dg.Rows[i].Cells[51].Value = l21[i].flightLevel;
-                            dg.Rows[i].Cells[52].Value = l21[i].magneticHeading;
-                            dg.Rows[i].Cells[53].Value = l21[i].ICF;
-                            dg.Rows[i].Cells[54].Value = l21[i].LNAV;
-                            dg.Rows[i].Cells[55].Value = l21[i].PS;
-                            dg.Rows[i].Cells[56].Value = l21[i].SS;
-                            dg.Rows[i].Cells[57].Value = l21[i].RE_BVR;
-                            dg.Rows[i].Cells[58].Value = l21[i].barometricVerticalRate;
-                            dg.Rows[i].Cells[59].Value = l21[i].RE_GVR;
-                            dg.Rows[i].Cells[60].Value = l21[i].geometricVerticalRate;
-                            dg.Rows[i].Cells[61].Value = l21[i].RE_GS;
-                            dg.Rows[i].Cells[62].Value = l21[i].groundSpeed;
-                            dg.Rows[i].Cells[63].Value = l21[i].trackAngle;
-                            dg.Rows[i].Cells[64].Value = l21[i].trackAngleRate;
-                            dg.Rows[i].Cells[65].Value = TimeSpan.FromSeconds(l21[i].timeReportTrans).ToString(@"hh\:mm\:ss");
-                            dg.Rows[i].Cells[66].Value = l21[i].targetIdentification;
-                            dg.Rows[i].Cells[67].Value = l21[i].ECAT;
-                            dg.Rows[i].Cells[68].Value = l21[i].windSpeed;
-                            dg.Rows[i].Cells[69].Value = l21[i].windDirection;
-                            dg.Rows[i].Cells[70].Value = l21[i].temperature;
-                            dg.Rows[i].Cells[71].Value = l21[i].turbulence;
-                            dg.Rows[i].Cells[72].Value = l21[i].SAS;
-                            dg.Rows[i].Cells[73].Value = l21[i].source;
-                            dg.Rows[i].Cells[74].Value = l21[i].altitude;
-                            dg.Rows[i].Cells[75].Value = l21[i].MV;
-                            dg.Rows[i].Cells[76].Value = l21[i].AH;
-                            dg.Rows[i].Cells[77].Value = l21[i].AM;
-                            dg.Rows[i].Cells[78].Value = l21[i].altitudeFSS;
-                            dg.Rows[i].Cells[79].Value = l21[i].reportPeriod;
-                            dg.Rows[i].Cells[80].Value = l21[i].RA;
-                            dg.Rows[i].Cells[81].Value = l21[i].TC;
-                            dg.Rows[i].Cells[82].Value = l21[i].TS;
-                            dg.Rows[i].Cells[83].Value = l21[i].ARV;
-                            dg.Rows[i].Cells[84].Value = l21[i].CDTIA;
-                            dg.Rows[i].Cells[85].Value = l21[i].NotTCAS;
-                            dg.Rows[i].Cells[86].Value = l21[i].SA;
-                            dg.Rows[i].Cells[87].Value = l21[i].RID;
-                            dg.Rows[i].Cells[88].Value = l21[i].messageAmplitude;
-                            dg.Rows[i].Cells[89].Value = l21[i].POA;
-                            dg.Rows[i].Cells[90].Value = l21[i].CTDIS;
-                            dg.Rows[i].Cells[91].Value = l21[i].B2low;
-                            dg.Rows[i].Cells[92].Value = l21[i].RAS;
-                            dg.Rows[i].Cells[93].Value = l21[i].IDENT;
-                            dg.Rows[i].Cells[94].Value = l21[i].LandW;
-                            dg.Rows[i].Cells[95].Value = l21[i].LandW;
-                            dg.Rows[i].Cells[96].Value = l21[i].AOS_data;
-                            dg.Rows[i].Cells[97].Value = l21[i].TRD_data;
-                            dg.Rows[i].Cells[98].Value = l21[i].QI_data;
-                            dg.Rows[i].Cells[99].Value = l21[i].TI1_data;
-                            dg.Rows[i].Cells[100].Value = l21[i].MAM_data;
-                            dg.Rows[i].Cells[101].Value = l21[i].GH_data;
-                            dg.Rows[i].Cells[102].Value = l21[i].FL_data;
-                            dg.Rows[i].Cells[103].Value = l21[i].ISA_data;
-                            dg.Rows[i].Cells[104].Value = l21[i].FSA_data;
-                            dg.Rows[i].Cells[105].Value = l21[i].AS_data;
-                            dg.Rows[i].Cells[106].Value = l21[i].TAS_data;
-                            dg.Rows[i].Cells[107].Value = l21[i].MH_data;
-                            dg.Rows[i].Cells[108].Value = l21[i].BVR_data;
-                            dg.Rows[i].Cells[109].Value = l21[i].GVR_data;
-                            dg.Rows[i].Cells[110].Value = l21[i].GV_data;
-                            dg.Rows[i].Cells[111].Value = l21[i].TAR_data;
-                            dg.Rows[i].Cells[112].Value = l21[i].TI2_data;
-                            dg.Rows[i].Cells[113].Value = l21[i].TS_data;
-                            dg.Rows[i].Cells[114].Value = l21[i].MET_data;
-                            dg.Rows[i].Cells[115].Value = l21[i].ROA_data;
-                            dg.Rows[i].Cells[116].Value = l21[i].ARA_data;
-                            dg.Rows[i].Cells[117].Value = l21[i].SCC_data;
+                            string[] mess21 = new string[118];
+                            mess21[0] = i.ToString();
+                            mess21[1] = 21.ToString();
+                            mess21[2] = Main.main.myListCAT21[i].SAC.ToString();
+                            mess21[3] = Main.main.myListCAT21[i].SIC.ToString();
+                            mess21[4] = Main.main.myListCAT21[i].ATP.ToString();
+                            mess21[5] = Main.main.myListCAT21[i].ARC.ToString();
+                            mess21[6] = Main.main.myListCAT21[i].RC.ToString();
+                            mess21[7] = Main.main.myListCAT21[i].RAB.ToString();
+                            mess21[8] = Main.main.myListCAT21[i].DCR.ToString();
+                            mess21[9] = Main.main.myListCAT21[i].GBS.ToString();
+                            mess21[10] = Main.main.myListCAT21[i].SIM.ToString();
+                            mess21[11] = Main.main.myListCAT21[i].TST.ToString();
+                            mess21[12] = Main.main.myListCAT21[i].SAA.ToString();
+                            mess21[13] = Main.main.myListCAT21[i].CL.ToString();
+                            mess21[14] = Main.main.myListCAT21[i].IPC.ToString();
+                            mess21[15] = Main.main.myListCAT21[i].NOGO.ToString();
+                            mess21[16] = Main.main.myListCAT21[i].CPR.ToString();
+                            mess21[17] = Main.main.myListCAT21[i].LDPJ.ToString();
+                            mess21[18] = Main.main.myListCAT21[i].RCF.ToString();
+                            mess21[19] = Main.main.myListCAT21[i].trackNumber.ToString();
+                            mess21[20] = Main.main.myListCAT21[i].serviceIdentification.ToString();
+                            mess21[21] = TimeSpan.FromSeconds(Main.main.myListCAT21[i].timeOfAppPos).ToString(@"hh\:mm\:ss").ToString();
+                            mess21[22] =Main.main.myListCAT21[i].latitude.ToString();
+                            mess21[23] = Main.main.myListCAT21[i].longitude.ToString();
+                            mess21[24] = Main.main.myListCAT21[i].HRlatitude.ToString();
+                            mess21[25] = Main.main.myListCAT21[i].HRlongitude.ToString();
+                            mess21[26] = Main.main.myListCAT21[i].timeOfAppVel.ToString();
+                            mess21[27] = Main.main.myListCAT21[i].typeSpeed.ToString();
+                            mess21[28] = Main.main.myListCAT21[i].airSpeed.ToString();
+                            mess21[29] = Main.main.myListCAT21[i].RE.ToString();
+                            mess21[30] = Main.main.myListCAT21[i].trueAirSpeed.ToString();
+                            mess21[31] = Main.main.myListCAT21[i].targetAddress.ToString();
+                            mess21[32] = TimeSpan.FromSeconds(Main.main.myListCAT21[i].timeReceptPos).ToString(@"hh\:mm\:ss").ToString();
+                            mess21[33] = TimeSpan.FromSeconds(Main.main.myListCAT21[i].timeReceptPosHP).ToString(@"hh\:mm\:ss").ToString();
+                            mess21[34] = TimeSpan.FromSeconds(Main.main.myListCAT21[i].timeReceptVel).ToString(@"hh\:mm\:ss").ToString();
+                            mess21[35] = TimeSpan.FromSeconds(Main.main.myListCAT21[i].timeReceptVelHP).ToString(@"hh\:mm\:ss").ToString();
+                            mess21[36] = Main.main.myListCAT21[i].geometricHeight.ToString();
+                            mess21[37] = Main.main.myListCAT21[i].NUCr.ToString();
+                            mess21[38] = Main.main.myListCAT21[i].NUCp.ToString();
+                            mess21[39] = Main.main.myListCAT21[i].NICbaro.ToString();
+                            mess21[40] = Main.main.myListCAT21[i].SIL1.ToString();
+                            mess21[41] = Main.main.myListCAT21[i].NACp.ToString();
+                            mess21[42] = Main.main.myListCAT21[i].SIL2.ToString();
+                            mess21[43] = Main.main.myListCAT21[i].SDA.ToString();
+                            mess21[44] = Main.main.myListCAT21[i].GVA.ToString();
+                            mess21[45] = Main.main.myListCAT21[i].PIC.ToString();
+                            mess21[46] = Main.main.myListCAT21[i].VNS.ToString();
+                            mess21[47] = Main.main.myListCAT21[i].VN.ToString();
+                            mess21[48] = Main.main.myListCAT21[i].LTT.ToString();
+                            mess21[49] = Main.main.myListCAT21[i].mode3A.ToString();
+                            mess21[50] = Main.main.myListCAT21[i].rollAngle.ToString();
+                            mess21[51] = Main.main.myListCAT21[i].flightLevel.ToString();
+                            mess21[52] = Main.main.myListCAT21[i].magneticHeading.ToString();
+                            mess21[53] = Main.main.myListCAT21[i].ICF.ToString();
+                            mess21[54] = Main.main.myListCAT21[i].LNAV.ToString();
+                            mess21[55] = Main.main.myListCAT21[i].PS.ToString();
+                            mess21[56] = Main.main.myListCAT21[i].SS.ToString();
+                            mess21[57] = Main.main.myListCAT21[i].RE_BVR.ToString();
+                            mess21[58] = Main.main.myListCAT21[i].barometricVerticalRate.ToString();
+                            mess21[59] = Main.main.myListCAT21[i].RE_GVR.ToString();
+                            mess21[60] = Main.main.myListCAT21[i].geometricVerticalRate.ToString();
+                            mess21[61] = Main.main.myListCAT21[i].RE_GS.ToString();
+                            mess21[62] = Main.main.myListCAT21[i].groundSpeed.ToString();
+                            mess21[63] = Main.main.myListCAT21[i].trackAngle.ToString();
+                            mess21[64] = Main.main.myListCAT21[i].trackAngleRate.ToString();
+                            mess21[65] = TimeSpan.FromSeconds(Main.main.myListCAT21[i].timeReportTrans).ToString(@"hh\:mm\:ss").ToString();
+                            mess21[66] = Main.main.myListCAT21[i].targetIdentification.ToString();
+                            mess21[67] = Main.main.myListCAT21[i].ECAT.ToString();
+                            mess21[68] = Main.main.myListCAT21[i].windSpeed.ToString();
+                            mess21[69] = Main.main.myListCAT21[i].windDirection.ToString();
+                            mess21[70] = Main.main.myListCAT21[i].temperature.ToString();
+                            mess21[71] = Main.main.myListCAT21[i].turbulence.ToString();
+                            mess21[72] = Main.main.myListCAT21[i].SAS.ToString();
+                            mess21[73] = Main.main.myListCAT21[i].source.ToString();
+                            mess21[74] = Main.main.myListCAT21[i].altitude.ToString();
+                            mess21[75] = Main.main.myListCAT21[i].MV.ToString();
+                            mess21[76] = Main.main.myListCAT21[i].AH.ToString();
+                            mess21[77] = Main.main.myListCAT21[i].AM.ToString();
+                            mess21[78] = Main.main.myListCAT21[i].altitudeFSS.ToString();
+                            mess21[79] = Main.main.myListCAT21[i].reportPeriod.ToString();
+                            mess21[80] = Main.main.myListCAT21[i].RA.ToString();
+                            mess21[81] = Main.main.myListCAT21[i].TC.ToString();
+                            mess21[82] = Main.main.myListCAT21[i].TS.ToString();
+                            mess21[83] = Main.main.myListCAT21[i].ARV.ToString();
+                            mess21[84] = Main.main.myListCAT21[i].CDTIA.ToString();
+                            mess21[85] = Main.main.myListCAT21[i].NotTCAS.ToString();
+                            mess21[86] = Main.main.myListCAT21[i].SA.ToString();
+                            mess21[87] = Main.main.myListCAT21[i].RID.ToString();
+                            mess21[88] = Main.main.myListCAT21[i].messageAmplitude.ToString();
+                            mess21[89] = Main.main.myListCAT21[i].POA.ToString();
+                            mess21[90] = Main.main.myListCAT21[i].CTDIS.ToString();
+                            mess21[91] = Main.main.myListCAT21[i].B2low.ToString();
+                            mess21[92] = Main.main.myListCAT21[i].RAS.ToString();
+                            mess21[93] = Main.main.myListCAT21[i].IDENT.ToString();
+                            mess21[94] = Main.main.myListCAT21[i].LandW.ToString();
+                            mess21[95] = Main.main.myListCAT21[i].LandW.ToString();
+                            mess21[96] = Main.main.myListCAT21[i].AOS_data.ToString();
+                            mess21[97] = Main.main.myListCAT21[i].TRD_data.ToString();
+                            mess21[98] = Main.main.myListCAT21[i].QI_data.ToString();
+                            mess21[99] = Main.main.myListCAT21[i].TI1_data.ToString();
+                            mess21[100] = Main.main.myListCAT21[i].MAM_data.ToString();
+                            mess21[101] = Main.main.myListCAT21[i].GH_data.ToString();
+                            mess21[102] = Main.main.myListCAT21[i].FL_data.ToString();
+                            mess21[103] = Main.main.myListCAT21[i].ISA_data.ToString();
+                            mess21[104] = Main.main.myListCAT21[i].FSA_data.ToString();
+                            mess21[105] = Main.main.myListCAT21[i].AS_data.ToString();
+                            mess21[106] = Main.main.myListCAT21[i].TAS_data.ToString();
+                            mess21[107] = Main.main.myListCAT21[i].MH_data.ToString();
+                            mess21[108] = Main.main.myListCAT21[i].BVR_data.ToString();
+                            mess21[109] = Main.main.myListCAT21[i].GVR_data.ToString();
+                            mess21[110] = Main.main.myListCAT21[i].GV_data.ToString();
+                            mess21[111] = Main.main.myListCAT21[i].TAR_data.ToString();
+                            mess21[112] = Main.main.myListCAT21[i].TI2_data.ToString();
+                            mess21[113] = Main.main.myListCAT21[i].TS_data.ToString();
+                            mess21[114] = Main.main.myListCAT21[i].MET_data.ToString();
+                            mess21[115] = Main.main.myListCAT21[i].ROA_data.ToString();
+                            mess21[116] = Main.main.myListCAT21[i].ARA_data.ToString();
+                            mess21[117] = Main.main.myListCAT21[i].SCC_data.ToString();
 
 
-
+                            rows.Add(string.Join(SEP, mess21));
 
                         }
 
@@ -570,28 +570,9 @@ namespace WindowsFormsApp1
 
 
 
-                List<string> rows = new List<string>();
-                List<string> header = new List<string>();
-                foreach (DataGridViewColumn col in dg.Columns)
-                {
-                    header.Add(col.HeaderText);
-                }
-                string SEP = ";";
-                rows.Add(string.Join(SEP, header));
-                foreach (DataGridViewRow r in dg.Rows)
-                {
-                    try
-                    {
-                        List<string> cells = new List<string>();
-                        foreach (DataGridViewCell c in r.Cells)
-                        {
-                            cells.Add(Convert.ToString(c.Value) == string.Empty || Convert.ToString(c.Value) == "0" ? "N/A" : Convert.ToString(c.Value));
-                        }
-                        rows.Add(string.Join(SEP, cells));
-                    }
-                    catch (Exception ex) { }
+   
 
-                }
+                
                 File.WriteAllLines(sfd.FileName, rows);
                 MessageBox.Show(".csv created successfully!");
             }
@@ -620,16 +601,16 @@ namespace WindowsFormsApp1
                         switch (myFilter)
                         {
                             case "MESSAGE TYPE":
-                                FilterL10 = l10.FindAll(m => m.MessageType == textBoxSearch.Text);
+                                FilterL10 = Main.main.myListCAT10.FindAll(m => m.MessageType == textBoxSearch.Text);
                                 break;
                             case "TARGET IDENTIFICATION":
-                                FilterL10 = l10.FindAll(m => m.targetIdentification == textBoxSearch.Text);
+                                FilterL10 = Main.main.myListCAT10.FindAll(m => m.targetIdentification == textBoxSearch.Text);
                                 break;
                             case "TRACK NUMBER":
-                                FilterL10 = l10.FindAll(m => Convert.ToString(m.trackNumber) == textBoxSearch.Text);
+                                FilterL10 = Main.main.myListCAT10.FindAll(m => Convert.ToString(m.trackNumber) == textBoxSearch.Text);
                                 break;
                             case "TARGET ADDRESS":
-                                FilterL10 = l10.FindAll(m => Convert.ToString(m.targetAddress) == textBoxSearch.Text);
+                                FilterL10 = Main.main.myListCAT10.FindAll(m => Convert.ToString(m.targetAddress) == textBoxSearch.Text);
                                 break;
 
                         }
@@ -638,7 +619,7 @@ namespace WindowsFormsApp1
 
                         for (int i = 0; i < FilterL10.Count; i++)
                         {
-                            messagedataGrid.Rows[i].Cells[0].Value = l10.FindIndex(m => m == FilterL10[i]);
+                            messagedataGrid.Rows[i].Cells[0].Value = Main.main.myListCAT10.FindIndex(m => m == FilterL10[i]);
                             messagedataGrid.Rows[i].Cells[1].Value = 10;
                             messagedataGrid.Rows[i].Cells[2].Value = FilterL10[i].convert2TimeOfDay(FilterL10[i].TimeOfDay);
                             messagedataGrid.Rows[i].Cells[3].Value = FilterL10[i].GetLength();
@@ -653,13 +634,13 @@ namespace WindowsFormsApp1
                         switch (myFilter)
                         {
                             case "TARGET IDENTIFICATION":
-                                FilterL21 = l21.FindAll(m => m.targetIdentification == textBoxSearch.Text);
+                                FilterL21 = Main.main.myListCAT21.FindAll(m => m.targetIdentification == textBoxSearch.Text);
                                 break;
                             case "TRACK NUMBER":
-                                FilterL21 = l21.FindAll(m => Convert.ToString(m.trackNumber) == textBoxSearch.Text);
+                                FilterL21 = Main.main.myListCAT21.FindAll(m => Convert.ToString(m.trackNumber) == textBoxSearch.Text);
                                 break;
                             case "TARGET ADDRESS":
-                                FilterL21 = l21.FindAll(m => Convert.ToString(m.targetAddress) == textBoxSearch.Text);
+                                FilterL21 = Main.main.myListCAT21.FindAll(m => Convert.ToString(m.targetAddress) == textBoxSearch.Text);
                                 break;
 
                         }
@@ -669,7 +650,7 @@ namespace WindowsFormsApp1
 
                         for (int i = 0; i < FilterL21.Count; i++)
                         {
-                            messagedataGrid.Rows[i].Cells[0].Value = l21.FindIndex(m => m == FilterL21[i]);
+                            messagedataGrid.Rows[i].Cells[0].Value = Main.main.myListCAT21.FindIndex(m => m == FilterL21[i]);
                             messagedataGrid.Rows[i].Cells[1].Value = 21;
                             messagedataGrid.Rows[i].Cells[2].Value = "";
                             messagedataGrid.Rows[i].Cells[3].Value = FilterL21[i].GetLength();
@@ -693,6 +674,8 @@ namespace WindowsFormsApp1
         private void messagedataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             rowMess = messagedataGrid.CurrentCell.RowIndex;
+            dataItemLabel.Text = "Data Item:";
+            ItemInformationTextBox.Text = "";
 
             switch (flag)
             {
@@ -702,13 +685,13 @@ namespace WindowsFormsApp1
                     switch (filter)
                     {
                         case false:
-                            dataItemsGridView.RowCount = l10[rowMess].GetItemList().Count;
+                            dataItemsGridView.RowCount = Main.main.myListCAT10[rowMess].GetItemList().Count;
 
-                            for (int i = 0; i < l10[rowMess].GetItemList().Count; i++)
+                            for (int i = 0; i < Main.main.myListCAT10[rowMess].GetItemList().Count; i++)
                             {
-                                dataItemsGridView.Rows[i].Cells[0].Value = l10[rowMess].GetItemList()[i][0];
-                                dataItemsGridView.Rows[i].Cells[1].Value = l10[rowMess].GetItemList()[i][1];
-                                dataItemsGridView.Rows[i].Cells[2].Value = l10[rowMess].GetItemList()[i][2];
+                                dataItemsGridView.Rows[i].Cells[0].Value = Main.main.myListCAT10[rowMess].GetItemList()[i][0];
+                                dataItemsGridView.Rows[i].Cells[1].Value = Main.main.myListCAT10[rowMess].GetItemList()[i][1];
+                                dataItemsGridView.Rows[i].Cells[2].Value = Main.main.myListCAT10[rowMess].GetItemList()[i][2];
                             }
                             break;
                         case true:
@@ -730,13 +713,13 @@ namespace WindowsFormsApp1
                     switch (filter)
                     {
                         case false:
-                            dataItemsGridView.RowCount = l21[rowMess].GetItemList().Count;
+                            dataItemsGridView.RowCount = Main.main.myListCAT21[rowMess].GetItemList().Count;
 
-                            for (int i = 0; i < l21[rowMess].GetItemList().Count; i++)
+                            for (int i = 0; i < Main.main.myListCAT21[rowMess].GetItemList().Count; i++)
                             {
-                                dataItemsGridView.Rows[i].Cells[0].Value = l21[rowMess].GetItemList()[i][0];
-                                dataItemsGridView.Rows[i].Cells[1].Value = l21[rowMess].GetItemList()[i][1];
-                                dataItemsGridView.Rows[i].Cells[2].Value = l21[rowMess].GetItemList()[i][2];
+                                dataItemsGridView.Rows[i].Cells[0].Value = Main.main.myListCAT21[rowMess].GetItemList()[i][0];
+                                dataItemsGridView.Rows[i].Cells[1].Value = Main.main.myListCAT21[rowMess].GetItemList()[i][1];
+                                dataItemsGridView.Rows[i].Cells[2].Value = Main.main.myListCAT21[rowMess].GetItemList()[i][2];
                             }
                             break;
                         case true:
@@ -780,8 +763,8 @@ namespace WindowsFormsApp1
                             FRN = Convert.ToInt32(FilterL10[rowMess].GetItemList()[rowDItem][0]);
                             break;
                         default:
-                            showI10 = l10;
-                            FRN = Convert.ToInt32(l10[rowMess].GetItemList()[rowDItem][0]);
+                            showI10 = Main.main.myListCAT10;
+                            FRN = Convert.ToInt32(Main.main.myListCAT10[rowMess].GetItemList()[rowDItem][0]);
                             break;
                     }
 
@@ -964,8 +947,8 @@ namespace WindowsFormsApp1
                             FRN = Convert.ToInt32(FilterL21[rowMess].GetItemList()[rowDItem][0]);
                             break;
                         default:
-                            showI21 = l21;
-                            FRN = Convert.ToInt32(l21[rowMess].GetItemList()[rowDItem][0]);
+                            showI21 = Main.main.myListCAT21;
+                            FRN = Convert.ToInt32(Main.main.myListCAT21[rowMess].GetItemList()[rowDItem][0]);
                             break;
                     }
 
