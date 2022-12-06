@@ -48,21 +48,16 @@ namespace WindowsFormsApp1
             this.SIClabel = new System.Windows.Forms.Label();
             this.AircraftDataLabel = new System.Windows.Forms.Label();
             this.instPanel = new System.Windows.Forms.Panel();
+            this.exportToKMLbutton = new System.Windows.Forms.Button();
             this.RoutecheckBox = new System.Windows.Forms.CheckBox();
             this.InscCheckedListBox = new System.Windows.Forms.CheckedListBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.Layerlabel = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.CloseButton = new System.Windows.Forms.Button();
             this.panelInfo = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.Speedlabel = new System.Windows.Forms.Label();
             this.SpeedTrackBar = new System.Windows.Forms.TrackBar();
-            this.startPause = new System.Windows.Forms.Button();
-            this.Restart = new System.Windows.Forms.Button();
-            this.Nextbutton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.Setbutton = new System.Windows.Forms.Button();
@@ -75,19 +70,24 @@ namespace WindowsFormsApp1
             this.endlabel = new System.Windows.Forms.Label();
             this.startlabel = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.exportToKMLbutton = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.startPause = new System.Windows.Forms.Button();
+            this.Restart = new System.Windows.Forms.Button();
+            this.Nextbutton = new System.Windows.Forms.Button();
             this.panelMap.SuspendLayout();
             this.mapPanel.SuspendLayout();
             this.controlPanel.SuspendLayout();
             this.dataPanel.SuspendLayout();
             this.instPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelInfo.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpeedTrackBar)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMap
@@ -185,7 +185,7 @@ namespace WindowsFormsApp1
             this.trackNumberlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.trackNumberlabel.Location = new System.Drawing.Point(320, 80);
             this.trackNumberlabel.Name = "trackNumberlabel";
-            this.trackNumberlabel.Size = new System.Drawing.Size(97, 19);
+            this.trackNumberlabel.Size = new System.Drawing.Size(93, 17);
             this.trackNumberlabel.TabIndex = 10;
             this.trackNumberlabel.Text = "Track Number:";
             // 
@@ -212,7 +212,7 @@ namespace WindowsFormsApp1
             this.Hlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Hlabel.Location = new System.Drawing.Point(320, 178);
             this.Hlabel.Name = "Hlabel";
-            this.Hlabel.Size = new System.Drawing.Size(53, 19);
+            this.Hlabel.Size = new System.Drawing.Size(49, 17);
             this.Hlabel.TabIndex = 8;
             this.Hlabel.Text = "Height:";
             // 
@@ -224,7 +224,7 @@ namespace WindowsFormsApp1
             this.LNGlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.LNGlabel.Location = new System.Drawing.Point(169, 178);
             this.LNGlabel.Name = "LNGlabel";
-            this.LNGlabel.Size = new System.Drawing.Size(74, 19);
+            this.LNGlabel.Size = new System.Drawing.Size(69, 17);
             this.LNGlabel.TabIndex = 7;
             this.LNGlabel.Text = "Longitude:";
             // 
@@ -237,7 +237,7 @@ namespace WindowsFormsApp1
             this.LATlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.LATlabel.Location = new System.Drawing.Point(18, 178);
             this.LATlabel.Name = "LATlabel";
-            this.LATlabel.Size = new System.Drawing.Size(62, 19);
+            this.LATlabel.Size = new System.Drawing.Size(57, 17);
             this.LATlabel.TabIndex = 6;
             this.LATlabel.Text = "Latitude:";
             // 
@@ -250,7 +250,7 @@ namespace WindowsFormsApp1
             this.FLlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.FLlabel.Location = new System.Drawing.Point(320, 123);
             this.FLlabel.Name = "FLlabel";
-            this.FLlabel.Size = new System.Drawing.Size(85, 19);
+            this.FLlabel.Size = new System.Drawing.Size(79, 17);
             this.FLlabel.TabIndex = 5;
             this.FLlabel.Text = "Flight Level: ";
             // 
@@ -263,7 +263,7 @@ namespace WindowsFormsApp1
             this.TIMElabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.TIMElabel.Location = new System.Drawing.Point(18, 123);
             this.TIMElabel.Name = "TIMElabel";
-            this.TIMElabel.Size = new System.Drawing.Size(45, 19);
+            this.TIMElabel.Size = new System.Drawing.Size(43, 17);
             this.TIMElabel.TabIndex = 4;
             this.TIMElabel.Text = "Time: ";
             // 
@@ -277,7 +277,7 @@ namespace WindowsFormsApp1
             this.TAlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.TAlabel.Location = new System.Drawing.Point(18, 80);
             this.TAlabel.Name = "TAlabel";
-            this.TAlabel.Size = new System.Drawing.Size(102, 19);
+            this.TAlabel.Size = new System.Drawing.Size(100, 17);
             this.TAlabel.TabIndex = 3;
             this.TAlabel.Text = "Target Address:";
             // 
@@ -290,7 +290,7 @@ namespace WindowsFormsApp1
             this.TIlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.TIlabel.Location = new System.Drawing.Point(18, 39);
             this.TIlabel.Name = "TIlabel";
-            this.TIlabel.Size = new System.Drawing.Size(132, 19);
+            this.TIlabel.Size = new System.Drawing.Size(126, 17);
             this.TIlabel.TabIndex = 2;
             this.TIlabel.Text = "Target Identification:";
             // 
@@ -302,7 +302,7 @@ namespace WindowsFormsApp1
             this.SIClabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.SIClabel.Location = new System.Drawing.Point(169, 123);
             this.SIClabel.Name = "SIClabel";
-            this.SIClabel.Size = new System.Drawing.Size(36, 19);
+            this.SIClabel.Size = new System.Drawing.Size(33, 17);
             this.SIClabel.TabIndex = 1;
             this.SIClabel.Text = "SIC: ";
             // 
@@ -338,6 +338,23 @@ namespace WindowsFormsApp1
             this.instPanel.Size = new System.Drawing.Size(283, 218);
             this.instPanel.TabIndex = 8;
             // 
+            // exportToKMLbutton
+            // 
+            this.exportToKMLbutton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.exportToKMLbutton.BackColor = System.Drawing.Color.DimGray;
+            this.exportToKMLbutton.FlatAppearance.BorderSize = 0;
+            this.exportToKMLbutton.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exportToKMLbutton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.exportToKMLbutton.Location = new System.Drawing.Point(61, 168);
+            this.exportToKMLbutton.Name = "exportToKMLbutton";
+            this.exportToKMLbutton.Size = new System.Drawing.Size(120, 29);
+            this.exportToKMLbutton.TabIndex = 21;
+            this.exportToKMLbutton.Text = "Export to .kml";
+            this.exportToKMLbutton.UseVisualStyleBackColor = false;
+            this.exportToKMLbutton.Click += new System.EventHandler(this.exportToKMLbutton_Click);
+            // 
             // RoutecheckBox
             // 
             this.RoutecheckBox.AutoSize = true;
@@ -345,7 +362,7 @@ namespace WindowsFormsApp1
             this.RoutecheckBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.RoutecheckBox.Location = new System.Drawing.Point(39, 125);
             this.RoutecheckBox.Name = "RoutecheckBox";
-            this.RoutecheckBox.Size = new System.Drawing.Size(172, 23);
+            this.RoutecheckBox.Size = new System.Drawing.Size(165, 21);
             this.RoutecheckBox.TabIndex = 20;
             this.RoutecheckBox.Text = "View aircraft trajectory ";
             this.RoutecheckBox.UseVisualStyleBackColor = true;
@@ -366,19 +383,6 @@ namespace WindowsFormsApp1
             this.InscCheckedListBox.TabIndex = 19;
             this.InscCheckedListBox.SelectedIndexChanged += new System.EventHandler(this.InscCheckedListBox_SelectedIndexChanged);
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox2.BackColor = System.Drawing.Color.Lime;
-            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox2.Location = new System.Drawing.Point(39, 83);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(16, 16);
-            this.pictureBox2.TabIndex = 16;
-            this.pictureBox2.TabStop = false;
-            // 
             // Layerlabel
             // 
             this.Layerlabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -392,32 +396,6 @@ namespace WindowsFormsApp1
             this.Layerlabel.Size = new System.Drawing.Size(105, 23);
             this.Layerlabel.TabIndex = 15;
             this.Layerlabel.Text = "Instruments:";
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox3.BackColor = System.Drawing.Color.Red;
-            this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox3.Location = new System.Drawing.Point(39, 61);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(16, 16);
-            this.pictureBox3.TabIndex = 18;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.BackColor = System.Drawing.Color.Yellow;
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(39, 39);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(16, 16);
-            this.pictureBox1.TabIndex = 17;
-            this.pictureBox1.TabStop = false;
             // 
             // CloseButton
             // 
@@ -486,7 +464,7 @@ namespace WindowsFormsApp1
             this.Speedlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Speedlabel.Location = new System.Drawing.Point(28, 78);
             this.Speedlabel.Name = "Speedlabel";
-            this.Speedlabel.Size = new System.Drawing.Size(67, 19);
+            this.Speedlabel.Size = new System.Drawing.Size(65, 17);
             this.Speedlabel.TabIndex = 5;
             this.Speedlabel.Text = "Speed: x1";
             // 
@@ -503,60 +481,6 @@ namespace WindowsFormsApp1
             this.SpeedTrackBar.TabIndex = 4;
             this.SpeedTrackBar.Value = 1;
             this.SpeedTrackBar.Scroll += new System.EventHandler(this.SpeedTrackBar_Scroll);
-            // 
-            // startPause
-            // 
-            this.startPause.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.startPause.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.startPause.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("startPause.BackgroundImage")));
-            this.startPause.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.startPause.FlatAppearance.BorderSize = 0;
-            this.startPause.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.startPause.Location = new System.Drawing.Point(270, 39);
-            this.startPause.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.startPause.Name = "startPause";
-            this.startPause.Size = new System.Drawing.Size(40, 40);
-            this.startPause.TabIndex = 0;
-            this.startPause.UseVisualStyleBackColor = false;
-            this.startPause.Click += new System.EventHandler(this.startPause_Click);
-            // 
-            // Restart
-            // 
-            this.Restart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Restart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Restart.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Restart.BackgroundImage")));
-            this.Restart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Restart.FlatAppearance.BorderSize = 0;
-            this.Restart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Restart.Location = new System.Drawing.Point(224, 39);
-            this.Restart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Restart.Name = "Restart";
-            this.Restart.Size = new System.Drawing.Size(40, 40);
-            this.Restart.TabIndex = 3;
-            this.Restart.UseVisualStyleBackColor = false;
-            this.Restart.Click += new System.EventHandler(this.Restart_Click);
-            // 
-            // Nextbutton
-            // 
-            this.Nextbutton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Nextbutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Nextbutton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Nextbutton.BackgroundImage")));
-            this.Nextbutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Nextbutton.FlatAppearance.BorderSize = 0;
-            this.Nextbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Nextbutton.Location = new System.Drawing.Point(316, 39);
-            this.Nextbutton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Nextbutton.Name = "Nextbutton";
-            this.Nextbutton.Size = new System.Drawing.Size(40, 40);
-            this.Nextbutton.TabIndex = 2;
-            this.Nextbutton.UseVisualStyleBackColor = false;
-            this.Nextbutton.Click += new System.EventHandler(this.Nextbutton_Click);
             // 
             // panel1
             // 
@@ -833,7 +757,7 @@ namespace WindowsFormsApp1
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label2.Location = new System.Drawing.Point(14, 66);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 19);
+            this.label2.Size = new System.Drawing.Size(50, 17);
             this.label2.TabIndex = 2;
             this.label2.Text = "Skip at:";
             // 
@@ -845,9 +769,9 @@ namespace WindowsFormsApp1
             this.endlabel.AutoSize = true;
             this.endlabel.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.endlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.endlabel.Location = new System.Drawing.Point(194, 27);
+            this.endlabel.Location = new System.Drawing.Point(146, 32);
             this.endlabel.Name = "endlabel";
-            this.endlabel.Size = new System.Drawing.Size(161, 19);
+            this.endlabel.Size = new System.Drawing.Size(149, 17);
             this.endlabel.TabIndex = 1;
             this.endlabel.Text = "End Simulation: 00:00:00";
             // 
@@ -859,9 +783,9 @@ namespace WindowsFormsApp1
             this.startlabel.AutoSize = true;
             this.startlabel.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startlabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.startlabel.Location = new System.Drawing.Point(10, 27);
+            this.startlabel.Location = new System.Drawing.Point(146, 15);
             this.startlabel.Name = "startlabel";
-            this.startlabel.Size = new System.Drawing.Size(167, 19);
+            this.startlabel.Size = new System.Drawing.Size(154, 17);
             this.startlabel.TabIndex = 0;
             this.startlabel.Text = "Start Simulation: 00:00:00";
             // 
@@ -869,22 +793,98 @@ namespace WindowsFormsApp1
             // 
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
-            // exportToKMLbutton
+            // pictureBox2
             // 
-            this.exportToKMLbutton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.exportToKMLbutton.BackColor = System.Drawing.Color.DimGray;
-            this.exportToKMLbutton.FlatAppearance.BorderSize = 0;
-            this.exportToKMLbutton.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exportToKMLbutton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.exportToKMLbutton.Location = new System.Drawing.Point(61, 168);
-            this.exportToKMLbutton.Name = "exportToKMLbutton";
-            this.exportToKMLbutton.Size = new System.Drawing.Size(120, 29);
-            this.exportToKMLbutton.TabIndex = 21;
-            this.exportToKMLbutton.Text = "Export to .kml";
-            this.exportToKMLbutton.UseVisualStyleBackColor = false;
-            this.exportToKMLbutton.Click += new System.EventHandler(this.exportToKMLbutton_Click);
+            this.pictureBox2.BackColor = System.Drawing.Color.Lime;
+            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox2.Location = new System.Drawing.Point(39, 83);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(16, 16);
+            this.pictureBox2.TabIndex = 16;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox3.BackColor = System.Drawing.Color.Red;
+            this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox3.Location = new System.Drawing.Point(39, 61);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(16, 16);
+            this.pictureBox3.TabIndex = 18;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.BackColor = System.Drawing.Color.Yellow;
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Location = new System.Drawing.Point(39, 39);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(16, 16);
+            this.pictureBox1.TabIndex = 17;
+            this.pictureBox1.TabStop = false;
+            // 
+            // startPause
+            // 
+            this.startPause.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.startPause.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.startPause.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("startPause.BackgroundImage")));
+            this.startPause.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.startPause.FlatAppearance.BorderSize = 0;
+            this.startPause.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.startPause.Location = new System.Drawing.Point(270, 39);
+            this.startPause.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.startPause.Name = "startPause";
+            this.startPause.Size = new System.Drawing.Size(40, 40);
+            this.startPause.TabIndex = 0;
+            this.startPause.UseVisualStyleBackColor = false;
+            this.startPause.Click += new System.EventHandler(this.startPause_Click);
+            // 
+            // Restart
+            // 
+            this.Restart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Restart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Restart.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Restart.BackgroundImage")));
+            this.Restart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Restart.FlatAppearance.BorderSize = 0;
+            this.Restart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Restart.Location = new System.Drawing.Point(224, 39);
+            this.Restart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Restart.Name = "Restart";
+            this.Restart.Size = new System.Drawing.Size(40, 40);
+            this.Restart.TabIndex = 3;
+            this.Restart.UseVisualStyleBackColor = false;
+            this.Restart.Click += new System.EventHandler(this.Restart_Click);
+            // 
+            // Nextbutton
+            // 
+            this.Nextbutton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Nextbutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Nextbutton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Nextbutton.BackgroundImage")));
+            this.Nextbutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Nextbutton.FlatAppearance.BorderSize = 0;
+            this.Nextbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Nextbutton.Location = new System.Drawing.Point(316, 39);
+            this.Nextbutton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Nextbutton.Name = "Nextbutton";
+            this.Nextbutton.Size = new System.Drawing.Size(40, 40);
+            this.Nextbutton.TabIndex = 2;
+            this.Nextbutton.UseVisualStyleBackColor = false;
+            this.Nextbutton.Click += new System.EventHandler(this.Nextbutton_Click);
             // 
             // Simulation
             // 
@@ -904,15 +904,15 @@ namespace WindowsFormsApp1
             this.dataPanel.PerformLayout();
             this.instPanel.ResumeLayout(false);
             this.instPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelInfo.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpeedTrackBar)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

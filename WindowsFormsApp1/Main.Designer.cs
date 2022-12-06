@@ -29,7 +29,9 @@ namespace WindowsFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.panelButtoms = new System.Windows.Forms.Panel();
+            this.buttonHelp = new System.Windows.Forms.Button();
             this.simulationButton = new System.Windows.Forms.Button();
             this.subDataPanel = new System.Windows.Forms.Panel();
             this.CAT21button = new System.Windows.Forms.Button();
@@ -49,6 +51,7 @@ namespace WindowsFormsApp1
             // 
             this.panelButtoms.AutoScroll = true;
             this.panelButtoms.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panelButtoms.Controls.Add(this.buttonHelp);
             this.panelButtoms.Controls.Add(this.simulationButton);
             this.panelButtoms.Controls.Add(this.subDataPanel);
             this.panelButtoms.Controls.Add(this.Databutton);
@@ -59,6 +62,25 @@ namespace WindowsFormsApp1
             this.panelButtoms.Name = "panelButtoms";
             this.panelButtoms.Size = new System.Drawing.Size(200, 658);
             this.panelButtoms.TabIndex = 0;
+            // 
+            // buttonHelp
+            // 
+            this.buttonHelp.BackColor = System.Drawing.Color.Black;
+            this.buttonHelp.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonHelp.FlatAppearance.BorderSize = 0;
+            this.buttonHelp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.buttonHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonHelp.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonHelp.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonHelp.Location = new System.Drawing.Point(0, 500);
+            this.buttonHelp.Name = "buttonHelp";
+            this.buttonHelp.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.buttonHelp.Size = new System.Drawing.Size(200, 70);
+            this.buttonHelp.TabIndex = 5;
+            this.buttonHelp.Text = "Help";
+            this.buttonHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonHelp.UseVisualStyleBackColor = false;
+            this.buttonHelp.Click += new System.EventHandler(this.buttonHelp_Click);
             // 
             // simulationButton
             // 
@@ -193,6 +215,8 @@ namespace WindowsFormsApp1
             // panelChildForm
             // 
             this.panelChildForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panelChildForm.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelChildForm.BackgroundImage")));
+            this.panelChildForm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.panelChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelChildForm.Location = new System.Drawing.Point(200, 0);
             this.panelChildForm.Name = "panelChildForm";
@@ -229,6 +253,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button Databutton;
         private System.Windows.Forms.Button simulationButton;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button buttonHelp;
     }
 }
 
