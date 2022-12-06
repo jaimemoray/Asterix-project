@@ -29,6 +29,7 @@ namespace WindowsFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.panelButtoms = new System.Windows.Forms.Panel();
             this.buttonHelp = new System.Windows.Forms.Button();
             this.simulationButton = new System.Windows.Forms.Button();
@@ -214,6 +215,8 @@ namespace WindowsFormsApp1
             // panelChildForm
             // 
             this.panelChildForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panelChildForm.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelChildForm.BackgroundImage")));
+            this.panelChildForm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.panelChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelChildForm.Location = new System.Drawing.Point(200, 0);
             this.panelChildForm.Name = "panelChildForm";
