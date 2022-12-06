@@ -2018,7 +2018,7 @@ namespace DECODEclass
         }
         void DataItem29()
         {
-
+            this.targetIdentification = "";
             DataItemsList.Add(new string[] { "29", "[I021/170]", "Target Identification" });
 
             List<BitArray> listbytes = new List<BitArray>();
