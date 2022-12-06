@@ -615,18 +615,27 @@ namespace WindowsFormsApp1
 
                         }
 
-                        messagedataGrid.RowCount = FilterL10.Count;
-
-                        for (int i = 0; i < FilterL10.Count; i++)
+                        if (FilterL10.Count!=0)
                         {
-                            messagedataGrid.Rows[i].Cells[0].Value = Main.main.myListCAT10.FindIndex(m => m == FilterL10[i]);
-                            messagedataGrid.Rows[i].Cells[1].Value = 10;
-                            messagedataGrid.Rows[i].Cells[2].Value = FilterL10[i].convert2TimeOfDay(FilterL10[i].TimeOfDay);
-                            messagedataGrid.Rows[i].Cells[3].Value = FilterL10[i].GetLength();
-                            messagedataGrid.Rows[i].Cells[4].Value = FilterL10[i].GetItemList().Count;
+                            for (int i = 0; i < FilterL10.Count; i++)
+                            {
+                                messagedataGrid.Rows[i].Cells[0].Value = Main.main.myListCAT10.FindIndex(m => m == FilterL10[i]);
+                                messagedataGrid.Rows[i].Cells[1].Value = 10;
+                                messagedataGrid.Rows[i].Cells[2].Value = FilterL10[i].convert2TimeOfDay(FilterL10[i].TimeOfDay);
+                                messagedataGrid.Rows[i].Cells[3].Value = FilterL10[i].GetLength();
+                                messagedataGrid.Rows[i].Cells[4].Value = FilterL10[i].GetItemList().Count;
 
 
+                            }
+                            messagedataGrid.RowCount = FilterL10.Count;
                         }
+                        else
+                        {
+                            MessageBox.Show("No messages found");
+                        }
+                        
+
+
 
                         break;
                     case 1:
@@ -645,18 +654,25 @@ namespace WindowsFormsApp1
 
                         }
 
-
-                        messagedataGrid.RowCount = FilterL21.Count;
-
-                        for (int i = 0; i < FilterL21.Count; i++)
+                        if (FilterL21.Count!=0)
                         {
-                            messagedataGrid.Rows[i].Cells[0].Value = Main.main.myListCAT21.FindIndex(m => m == FilterL21[i]);
-                            messagedataGrid.Rows[i].Cells[1].Value = 21;
-                            messagedataGrid.Rows[i].Cells[2].Value = "";
-                            messagedataGrid.Rows[i].Cells[3].Value = FilterL21[i].GetLength();
-                            messagedataGrid.Rows[i].Cells[4].Value = FilterL21[i].GetItemList().Count;
+                            messagedataGrid.RowCount = FilterL21.Count;
+
+                            for (int i = 0; i < FilterL21.Count; i++)
+                            {
+                                messagedataGrid.Rows[i].Cells[0].Value = Main.main.myListCAT21.FindIndex(m => m == FilterL21[i]);
+                                messagedataGrid.Rows[i].Cells[1].Value = 21;
+                                messagedataGrid.Rows[i].Cells[2].Value = "";
+                                messagedataGrid.Rows[i].Cells[3].Value = FilterL21[i].GetLength();
+                                messagedataGrid.Rows[i].Cells[4].Value = FilterL21[i].GetItemList().Count;
 
 
+                            }
+                            
+                        }
+                        else
+                        {
+                            MessageBox.Show("No messages found");
                         }
                         break;
                 }
