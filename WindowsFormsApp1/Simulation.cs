@@ -411,7 +411,27 @@ namespace WindowsFormsApp1
 
         private void exportToKMLbutton_Click(object sender, EventArgs e)
         {
+            StringBuilder kmlfile = new StringBuilder();
+            kmlfile.AppendLine("<?xml version='1.0' encoding='UTF-8'?>");
+            kmlfile.AppendLine("<kml xmlns='http://www.opengis.net/kml/2.2'>");
+            kmlfile.AppendLine("<Document>");
 
+            if (InscCheckedListBox.GetItemChecked(0)==true)
+            {
+                
+   
+
+            }
+
+            if (InscCheckedListBox.GetItemChecked(1) == true)
+            {
+
+            }
+
+            if (InscCheckedListBox.GetItemChecked(2) == true)
+            {
+
+            }
         }
     }
 }
