@@ -30,6 +30,7 @@ namespace WindowsFormsApp1
         private void InitializeComponent()
         {
             this.panelButtoms = new System.Windows.Forms.Panel();
+            this.buttonHelp = new System.Windows.Forms.Button();
             this.simulationButton = new System.Windows.Forms.Button();
             this.subDataPanel = new System.Windows.Forms.Panel();
             this.CAT21button = new System.Windows.Forms.Button();
@@ -37,9 +38,8 @@ namespace WindowsFormsApp1
             this.Databutton = new System.Windows.Forms.Button();
             this.LoadButton = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
-            this.panelChildForm = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.buttonHelp = new System.Windows.Forms.Button();
+            this.panelChildForm = new System.Windows.Forms.Panel();
             this.panelButtoms.SuspendLayout();
             this.subDataPanel.SuspendLayout();
             this.panelLogo.SuspendLayout();
@@ -61,6 +61,25 @@ namespace WindowsFormsApp1
             this.panelButtoms.Name = "panelButtoms";
             this.panelButtoms.Size = new System.Drawing.Size(200, 658);
             this.panelButtoms.TabIndex = 0;
+            // 
+            // buttonHelp
+            // 
+            this.buttonHelp.BackColor = System.Drawing.Color.Black;
+            this.buttonHelp.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonHelp.FlatAppearance.BorderSize = 0;
+            this.buttonHelp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.buttonHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonHelp.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonHelp.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonHelp.Location = new System.Drawing.Point(0, 500);
+            this.buttonHelp.Name = "buttonHelp";
+            this.buttonHelp.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.buttonHelp.Size = new System.Drawing.Size(200, 70);
+            this.buttonHelp.TabIndex = 5;
+            this.buttonHelp.Text = "Help";
+            this.buttonHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonHelp.UseVisualStyleBackColor = false;
+            this.buttonHelp.Click += new System.EventHandler(this.buttonHelp_Click);
             // 
             // simulationButton
             // 
@@ -179,15 +198,6 @@ namespace WindowsFormsApp1
             this.panelLogo.Size = new System.Drawing.Size(200, 150);
             this.panelLogo.TabIndex = 0;
             // 
-            // panelChildForm
-            // 
-            this.panelChildForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panelChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelChildForm.Location = new System.Drawing.Point(200, 0);
-            this.panelChildForm.Name = "panelChildForm";
-            this.panelChildForm.Size = new System.Drawing.Size(1166, 658);
-            this.panelChildForm.TabIndex = 1;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -201,23 +211,14 @@ namespace WindowsFormsApp1
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // buttonHelp
+            // panelChildForm
             // 
-            this.buttonHelp.BackColor = System.Drawing.Color.Black;
-            this.buttonHelp.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonHelp.FlatAppearance.BorderSize = 0;
-            this.buttonHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonHelp.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonHelp.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonHelp.Location = new System.Drawing.Point(0, 500);
-            this.buttonHelp.Name = "buttonHelp";
-            this.buttonHelp.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.buttonHelp.Size = new System.Drawing.Size(200, 70);
-            this.buttonHelp.TabIndex = 5;
-            this.buttonHelp.Text = "Help";
-            this.buttonHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonHelp.UseVisualStyleBackColor = false;
-            this.buttonHelp.Click += new System.EventHandler(this.buttonHelp_Click);
+            this.panelChildForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panelChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelChildForm.Location = new System.Drawing.Point(200, 0);
+            this.panelChildForm.Name = "panelChildForm";
+            this.panelChildForm.Size = new System.Drawing.Size(1166, 658);
+            this.panelChildForm.TabIndex = 1;
             // 
             // Main
             // 
