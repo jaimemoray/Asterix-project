@@ -128,7 +128,11 @@ namespace WindowsFormsApp1
                                 markers.Add(marker.myMarker(Main.main.myListCAT10[i].TimeOfDay, "10", i, Main.main.myListCAT10[i].SIC, Main.main.myListCAT10[i].x, Main.main.myListCAT10[i].y, Convert.ToString(Main.main.myListCAT10[i].trackNumber)));
                                 break;
                         case 107:
-                                markers.Add(marker.myMarker(Main.main.myListCAT10[i].TimeOfDay, "10", i, Main.main.myListCAT10[i].SIC, Main.main.myListCAT10[i].x, Main.main.myListCAT10[i].y, Convert.ToString(Main.main.myListCAT10[i].targetAddress)));
+                                if (Main.main.myListCAT10[i].targetAddress!=string.Empty)
+                                {
+                                    markers.Add(marker.myMarker(Main.main.myListCAT10[i].TimeOfDay, "10", i, Main.main.myListCAT10[i].SIC, Main.main.myListCAT10[i].x, Main.main.myListCAT10[i].y, Main.main.myListCAT10[i].targetAddress));
+                                }
+                                
                                 break;
                         }
                         
@@ -144,7 +148,11 @@ namespace WindowsFormsApp1
 
                 for (int i = 0; i < Main.main.myListCAT21.Count; i++)
                 {
-                    markers.Add(marker.myMarker(Main.main.myListCAT21[i].timeReportTrans, "21", i, Main.main.myListCAT21[i].SIC, Main.main.myListCAT21[i].latitude, Main.main.myListCAT21[i].longitude, Convert.ToString(Main.main.myListCAT21[i].targetAddress)));
+                    if (Main.main.myListCAT21[i].targetAddress!=string.Empty)
+                    {
+                        markers.Add(marker.myMarker(Main.main.myListCAT21[i].timeReportTrans, "21", i, Main.main.myListCAT21[i].SIC, Main.main.myListCAT21[i].latitude, Main.main.myListCAT21[i].longitude, Main.main.myListCAT21[i].targetAddress));
+                    }
+                    
                 }
 
 
@@ -435,7 +443,6 @@ namespace WindowsFormsApp1
 
                 if (InscCheckedListBox.GetItemChecked(0) == true)
                 {
-                    List<string> created = new List<string>();
 
                     List<marker> SMR = markers.FindAll(p => p.ins == "SMR" && p.Position.Lat!= 41.29561833 && p.Position.Lng!= 2.095114167);
 
@@ -446,15 +453,15 @@ namespace WindowsFormsApp1
                         kmlfile.AppendLine("<Placemark>");
                         kmlfile.AppendLine("<Style id='yellowLineGreenPoly'>");
                         kmlfile.AppendLine("<LineStyle>");
-                        kmlfile.AppendLine("<color>ff00ffff</color>"); ///color 501400FF red ok , 50000000 black ok , FFF60808 blue OK
+                        kmlfile.AppendLine("<color>ff00ffff</color>"); // YELLOW
                         kmlfile.AppendLine("<width>3</width>");
                         kmlfile.AppendLine("</LineStyle>"); 
                         kmlfile.AppendLine("<PolyStyle>");
-                        kmlfile.AppendLine("<color>ff00ffff</color>"); ///color
+                        kmlfile.AppendLine("<color>ff00ffff</color>"); 
                         kmlfile.AppendLine("</PolyStyle>");
                         kmlfile.AppendLine("</Style>");
-                        kmlfile.AppendLine("<name>" + id + "</name>");
-                        kmlfile.AppendLine("<description>" + "Track Number: " + id + "</description>");
+                        kmlfile.AppendLine("<name>" + "SMR" + "</name>");
+                        kmlfile.AppendLine("<description>" + "Time: " + TimeSpan.FromSeconds(SMR[0].time).ToString(@"hh\:mm\:ss")+" Track Number: " + id +  "</description>");
                         kmlfile.AppendLine("<styleUrl>#yellowLineGreenPoly</styleUrl>");
                         kmlfile.AppendLine("<LineString>");
                         kmlfile.AppendLine("<coordinates>");
@@ -464,13 +471,8 @@ namespace WindowsFormsApp1
                         for (int i = 0; i < allMyId.Count; i++)
                         {
 
-                            //if (allMyId[i].Position.Lng!= 2.095114167 && allMyId[i].Position.Lat != 41.29561833) //41.29561833 , 2.095114167
-                            //{
                                 kmlfile.AppendLine(Convert.ToString(allMyId[i].Position.Lng).Replace(",", ".") + "," + Convert.ToString(allMyId[i].Position.Lat).Replace(",", "."));
                             
-                            
-                                
-                          
                             
                         }
 
@@ -479,19 +481,90 @@ namespace WindowsFormsApp1
                         kmlfile.AppendLine("</Placemark>");
 
                         SMR.RemoveAll(p => p.id == id);
+                    }
+
+
                 }
-
-
-            }
 
                 if (InscCheckedListBox.GetItemChecked(1) == true)
                 {
 
+                    List<marker> MLAT = markers.FindAll(p => p.ins == "MLAT");
+
+                    while (MLAT.Count != 0)
+                    {
+                        string id = MLAT[0].id;
+
+                        kmlfile.AppendLine("<Placemark>");
+                        kmlfile.AppendLine("<Style id='yellowLineGreenPoly'>");
+                        kmlfile.AppendLine("<LineStyle>");
+                        kmlfile.AppendLine("<color>ff0000ff</color>"); // RED
+                        kmlfile.AppendLine("<width>3</width>");
+                        kmlfile.AppendLine("</LineStyle>"); 
+                        kmlfile.AppendLine("<PolyStyle>");
+                        kmlfile.AppendLine("<color>ff0000ff</color>"); 
+                        kmlfile.AppendLine("</PolyStyle>");
+                        kmlfile.AppendLine("</Style>");
+                        kmlfile.AppendLine("<name>" + "MLAT" + "</name>");
+                        kmlfile.AppendLine("<description>" + "Time: " + TimeSpan.FromSeconds(MLAT[0].time).ToString(@"hh\:mm\:ss") + " Target Address: " + id + "</description>");
+                        kmlfile.AppendLine("<styleUrl>#yellowLineGreenPoly</styleUrl>");
+                        kmlfile.AppendLine("<LineString>");
+                        kmlfile.AppendLine("<coordinates>");
+
+                        List<marker> allMyId = MLAT.FindAll(p => p.id == id );
+
+                        for (int i = 0; i < allMyId.Count; i++)
+                        {
+                                kmlfile.AppendLine(Convert.ToString(allMyId[i].Position.Lng).Replace(",", ".") + "," + Convert.ToString(allMyId[i].Position.Lat).Replace(",", "."));
+                            
+                        }
+
+                        kmlfile.AppendLine("</coordinates>");
+                        kmlfile.AppendLine("</LineString>");
+                        kmlfile.AppendLine("</Placemark>");
+
+                        MLAT.RemoveAll(p => p.id == id);
+                    }
                 }
 
-                if (InscCheckedListBox.GetItemChecked(2) == true)
+                if (InscCheckedListBox.GetItemChecked(2) == true) 
                 {
+                    List<marker> ADSB = markers.FindAll(p => p.ins == "ADSB");
 
+                    while (ADSB.Count != 0)
+                    {
+
+                        string id = ADSB[0].id;
+
+                        kmlfile.AppendLine("<Placemark>");
+                        kmlfile.AppendLine("<Style id='yellowLineGreenPoly'>");
+                        kmlfile.AppendLine("<LineStyle>");
+                        kmlfile.AppendLine("<color>ff00ff00</color>"); // GREEN
+                        kmlfile.AppendLine("<width>3</width>");
+                        kmlfile.AppendLine("</LineStyle>");
+                        kmlfile.AppendLine("<PolyStyle>");
+                        kmlfile.AppendLine("<color>ff00ff00</color>");
+                        kmlfile.AppendLine("</PolyStyle>");
+                        kmlfile.AppendLine("</Style>");
+                        kmlfile.AppendLine("<name>" + "ADSB" + "</name>");
+                        kmlfile.AppendLine("<description>" + "Time: " + TimeSpan.FromSeconds(ADSB[0].time).ToString(@"hh\:mm\:ss") + " Target Address: " + id + "</description>");
+                        kmlfile.AppendLine("<styleUrl>#yellowLineGreenPoly</styleUrl>");
+                        kmlfile.AppendLine("<LineString>");
+                        kmlfile.AppendLine("<coordinates>");
+
+                        List<marker> allMyId = ADSB.FindAll(p => p.id == id);
+
+                        for (int i = 0; i < allMyId.Count; i++)
+                        {
+                           kmlfile.AppendLine(Convert.ToString(allMyId[i].Position.Lng).Replace(",", ".") + "," + Convert.ToString(allMyId[i].Position.Lat).Replace(",", "."));
+                        }
+
+                        kmlfile.AppendLine("</coordinates>");
+                        kmlfile.AppendLine("</LineString>");
+                        kmlfile.AppendLine("</Placemark>");
+
+                        ADSB.RemoveAll(p => p.id == id);
+                    }
                 }
 
 
