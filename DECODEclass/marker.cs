@@ -15,7 +15,7 @@ namespace DECODEclass
 {
     public class marker : GMarkerGoogle //Uso de Herencia
     {
-        public string trackNumber { get; set; }
+        public string id { get; set; }
        
         public double time { get; set; }
 
@@ -28,7 +28,7 @@ namespace DECODEclass
         public int SIC { get; set; }
 
 
-        public static marker myMarker(double t, string c, int i, int SIC, double pos1, double pos2, string tn)
+        public static marker myMarker(double t, string c, int i, int SIC, double pos1, double pos2, string id)
         {
             GMarkerGoogleType type=new GMarkerGoogleType();
             PointLatLng point = new PointLatLng() ;
@@ -62,18 +62,18 @@ namespace DECODEclass
                     break;
             }
 
-            return new marker(type,point,t,c,i,SIC,tn);
+            return new marker(type,point,t,c,i,SIC,id);
         }
 
 
 
-        private marker(GMarkerGoogleType type,PointLatLng point,double t, string c, int i,int sic, string tn) : base(point,type)
+        private marker(GMarkerGoogleType type,PointLatLng point,double t, string c, int i,int sic, string id) : base(point,type)
         {
             this.time = t;
             this.CAT = c;
             this.indexList = i;
             this.SIC = sic;
-            this.trackNumber = tn;
+            this.id = id;
             
             switch (CAT)
             {

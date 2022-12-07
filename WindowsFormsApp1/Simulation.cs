@@ -11,6 +11,7 @@ using GMap.NET;
 using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
+using System.IO;
 
 using DECODEclass;
 
@@ -121,7 +122,16 @@ namespace WindowsFormsApp1
                 {
                     if (Main.main.myListCAT10[i].MessageType == "Target Report")
                     {
-                        markers.Add(marker.myMarker(Main.main.myListCAT10[i].TimeOfDay, "10", i, Main.main.myListCAT10[i].SIC, Main.main.myListCAT10[i].x, Main.main.myListCAT10[i].y, Convert.ToString(Main.main.myListCAT10[i].trackNumber)));
+                        switch (Main.main.myListCAT10[i].SIC)
+                        {
+                            case 7:
+                                markers.Add(marker.myMarker(Main.main.myListCAT10[i].TimeOfDay, "10", i, Main.main.myListCAT10[i].SIC, Main.main.myListCAT10[i].x, Main.main.myListCAT10[i].y, Convert.ToString(Main.main.myListCAT10[i].trackNumber)));
+                                break;
+                        case 107:
+                                markers.Add(marker.myMarker(Main.main.myListCAT10[i].TimeOfDay, "10", i, Main.main.myListCAT10[i].SIC, Main.main.myListCAT10[i].x, Main.main.myListCAT10[i].y, Convert.ToString(Main.main.myListCAT10[i].targetAddress)));
+                                break;
+                        }
+                        
                     }
 
 
@@ -134,7 +144,7 @@ namespace WindowsFormsApp1
 
                 for (int i = 0; i < Main.main.myListCAT21.Count; i++)
                 {
-                    markers.Add(marker.myMarker(Main.main.myListCAT21[i].timeReportTrans, "21", i, Main.main.myListCAT21[i].SIC, Main.main.myListCAT21[i].latitude, Main.main.myListCAT21[i].longitude, Convert.ToString(Main.main.myListCAT21[i].trackNumber)));
+                    markers.Add(marker.myMarker(Main.main.myListCAT21[i].timeReportTrans, "21", i, Main.main.myListCAT21[i].SIC, Main.main.myListCAT21[i].latitude, Main.main.myListCAT21[i].longitude, Convert.ToString(Main.main.myListCAT21[i].targetAddress)));
                 }
 
 
@@ -198,7 +208,7 @@ namespace WindowsFormsApp1
             switch (f)
             {
                 case 0:
-                    ind = currentSMR.FindIndex(tn => tn.trackNumber == m.trackNumber);
+                    ind = currentSMR.FindIndex(tn => tn.id == m.id);
 
                     if (ind >= 0)
                     {
@@ -207,7 +217,7 @@ namespace WindowsFormsApp1
                     }
                     break;
                 case 1:
-                    ind = currentMLAT.FindIndex(tn => tn.trackNumber == m.trackNumber);
+                    ind = currentMLAT.FindIndex(tn => tn.id == m.id);
 
                     if (ind >= 0)
                     {
@@ -216,7 +226,7 @@ namespace WindowsFormsApp1
                     }
                     break;
                 case 2:
-                    ind = currentADSB.FindIndex(tn => tn.trackNumber == m.trackNumber);
+                    ind = currentADSB.FindIndex(tn => tn.id == m.id);
 
                     if (ind >= 0)
                     {
@@ -329,7 +339,7 @@ namespace WindowsFormsApp1
         private void createRoutes(string tn, Color myColor)
         {
             Route.Routes.Clear();
-            List<marker> aircraftsADSB = markers.FindAll(c=>c.trackNumber==tn);
+            List<marker> aircraftsADSB = markers.FindAll(c=>c.id==tn);
             List<PointLatLng> wayPoints = new List<PointLatLng>();
 
             foreach(marker m in aircraftsADSB)
@@ -399,38 +409,96 @@ namespace WindowsFormsApp1
                     Hlabel.Text = Main.main.myListCAT21[markers[pos].indexList].geometricHeight == null ? "Height: N/A" : "Height : " + Main.main.myListCAT21[markers[pos].indexList].geometricHeight + " ft";
                     trackNumberlabel.Text = Main.main.myListCAT21[markers[pos].indexList].trackNumber == 0 ? "Track Number: N/A" : "Track Number:: " + Main.main.myListCAT21[markers[pos].indexList].trackNumber;
 
-                    if (RoutecheckBox.Checked == true)
-                    {
-                        createRoutes(markers[pos].trackNumber,Color.Black);
 
-                    }
 
                     break;
+            }
+            if (RoutecheckBox.Checked == true)
+            {
+                createRoutes(markers[pos].id, Color.Black);
+
             }
         }
 
         private void exportToKMLbutton_Click(object sender, EventArgs e)
         {
+            SaveFileDialog sfd = new SaveFileDialog() { Filter = "KML|*.kml" };
             StringBuilder kmlfile = new StringBuilder();
-            kmlfile.AppendLine("<?xml version='1.0' encoding='UTF-8'?>");
-            kmlfile.AppendLine("<kml xmlns='http://www.opengis.net/kml/2.2'>");
-            kmlfile.AppendLine("<Document>");
 
-            if (InscCheckedListBox.GetItemChecked(0)==true)
+            if (sfd.ShowDialog() == DialogResult.OK)
             {
-                
-   
+
+            
+                kmlfile.AppendLine("<?xml version='1.0' encoding='UTF-8'?>");
+                kmlfile.AppendLine("<kml xmlns='http://www.opengis.net/kml/2.2'>");
+                kmlfile.AppendLine("<Document>");
+
+                if (InscCheckedListBox.GetItemChecked(0) == true)
+                {
+                    List<string> created = new List<string>();
+
+                    List<marker> SMR = markers.FindAll(p => p.ins == "SMR" && p.Position.Lat!= 41.29561833 && p.Position.Lng!= 2.095114167);
+
+                    while (SMR.Count != 0)
+                    {
+                        string id = SMR[0].id;
+
+                        kmlfile.AppendLine("<Placemark>");
+                        kmlfile.AppendLine("<Style id='yellowLineGreenPoly'>");
+                        kmlfile.AppendLine("<LineStyle>");
+                        kmlfile.AppendLine("<color>ff00ffff</color>"); ///color 501400FF red ok , 50000000 black ok , FFF60808 blue OK
+                        kmlfile.AppendLine("<width>3</width>");
+                        kmlfile.AppendLine("</LineStyle>"); 
+                        kmlfile.AppendLine("<PolyStyle>");
+                        kmlfile.AppendLine("<color>ff00ffff</color>"); ///color
+                        kmlfile.AppendLine("</PolyStyle>");
+                        kmlfile.AppendLine("</Style>");
+                        kmlfile.AppendLine("<name>" + id + "</name>");
+                        kmlfile.AppendLine("<description>" + "Track Number: " + id + "</description>");
+                        kmlfile.AppendLine("<styleUrl>#yellowLineGreenPoly</styleUrl>");
+                        kmlfile.AppendLine("<LineString>");
+                        kmlfile.AppendLine("<coordinates>");
+
+                        List<marker> allMyId = SMR.FindAll(p => p.id == id );
+
+                        for (int i = 0; i < allMyId.Count; i++)
+                        {
+
+                            //if (allMyId[i].Position.Lng!= 2.095114167 && allMyId[i].Position.Lat != 41.29561833) //41.29561833 , 2.095114167
+                            //{
+                                kmlfile.AppendLine(Convert.ToString(allMyId[i].Position.Lng).Replace(",", ".") + "," + Convert.ToString(allMyId[i].Position.Lat).Replace(",", "."));
+                            
+                            
+                                
+                          
+                            
+                        }
+
+                        kmlfile.AppendLine("</coordinates>");
+                        kmlfile.AppendLine("</LineString>");
+                        kmlfile.AppendLine("</Placemark>");
+
+                        SMR.RemoveAll(p => p.id == id);
+                }
+
 
             }
 
-            if (InscCheckedListBox.GetItemChecked(1) == true)
-            {
+                if (InscCheckedListBox.GetItemChecked(1) == true)
+                {
 
-            }
+                }
 
-            if (InscCheckedListBox.GetItemChecked(2) == true)
-            {
+                if (InscCheckedListBox.GetItemChecked(2) == true)
+                {
 
+                }
+
+
+                kmlfile.AppendLine("</Document>");
+                kmlfile.AppendLine("</kml>");
+                File.WriteAllText(sfd.FileName, kmlfile.ToString());
+                MessageBox.Show(".kml created sucessfully!");
             }
         }
     }

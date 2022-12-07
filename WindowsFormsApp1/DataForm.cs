@@ -142,7 +142,7 @@ namespace WindowsFormsApp1
 
         private void csvbutton_Click(object sender, EventArgs e)
         {
-            DataGridView dg = new DataGridView();
+           
             SaveFileDialog sfd = new SaveFileDialog() { Filter = "CSV|*.csv" };
             List<string> rows = new List<string>();
             string SEP = ";";
