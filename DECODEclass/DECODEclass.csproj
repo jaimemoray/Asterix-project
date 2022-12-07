@@ -84,6 +84,7 @@
   <ItemGroup>
     <Compile Include="CAT10.cs" />
     <Compile Include="CAT21.cs" />
+    <Compile Include="MOPS_MLAT.cs" />
     <Compile Include="Fichero.cs" />
     <Compile Include="marker.cs" />
     <Compile Include="GeneralMatrix.cs" />
