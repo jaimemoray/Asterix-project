@@ -1043,6 +1043,8 @@ namespace DECODEclass
             myChars.Add(char7);
             myChars.Add(char8);
 
+            this.targetIdentification = "";
+
             for (int j = 0; j < 8; j++)
             {
                 string[] sections = myChars[j].Split(' ');

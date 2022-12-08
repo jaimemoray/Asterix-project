@@ -70,6 +70,7 @@ namespace WindowsFormsApp1
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.messagedataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.messagedataGrid.ColumnHeadersHeight = 29;
             this.messagedataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.messagedataGrid.EnableHeadersVisualStyles = false;
             this.messagedataGrid.GridColor = System.Drawing.Color.RoyalBlue;
@@ -130,6 +131,7 @@ namespace WindowsFormsApp1
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ButtonHighlight;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataItemsGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dataItemsGridView.ColumnHeadersHeight = 29;
             this.dataItemsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataItemsGridView.EnableHeadersVisualStyles = false;
             this.dataItemsGridView.Location = new System.Drawing.Point(570, 68);
@@ -199,6 +201,7 @@ namespace WindowsFormsApp1
             // comboBoxFilter
             // 
             this.comboBoxFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxFilter.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxFilter.FormattingEnabled = true;
             this.comboBoxFilter.Location = new System.Drawing.Point(723, 512);

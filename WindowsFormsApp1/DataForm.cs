@@ -590,6 +590,8 @@ namespace WindowsFormsApp1
                 messagedataGrid.Rows.Clear();
                 dataItemsGridView.Rows.Clear();
                 ItemInformationTextBox.Text = "";
+
+
                 string myFilter = Convert.ToString(comboBoxFilter.SelectedItem);
 
 
@@ -617,6 +619,7 @@ namespace WindowsFormsApp1
 
                         if (FilterL10.Count!=0)
                         {
+                            messagedataGrid.RowCount = FilterL10.Count;
                             for (int i = 0; i < FilterL10.Count; i++)
                             {
                                 messagedataGrid.Rows[i].Cells[0].Value = Main.main.myListCAT10.FindIndex(m => m == FilterL10[i]);
@@ -627,7 +630,7 @@ namespace WindowsFormsApp1
 
 
                             }
-                            messagedataGrid.RowCount = FilterL10.Count;
+                            
                         }
                         else
                         {
