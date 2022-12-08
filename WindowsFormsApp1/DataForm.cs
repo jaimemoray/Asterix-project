@@ -34,17 +34,7 @@ namespace WindowsFormsApp1
         private void CreateDataGridView()
         {
             messagedataGrid.Rows.Clear();
-            messagedataGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            messagedataGrid.ReadOnly = true;
-            messagedataGrid.RowHeadersVisible = false;
-            messagedataGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
 
-            messagedataGrid.ColumnCount = 5; //ID, CAT, TIME,Length
-            messagedataGrid.Columns[0].HeaderText = "ID";
-            messagedataGrid.Columns[1].HeaderText = "CAT";
-            messagedataGrid.Columns[2].HeaderText = "Time of Day";
-            messagedataGrid.Columns[3].HeaderText = "Length";
-            messagedataGrid.Columns[4].HeaderText = "Data Items";
 
             switch (flag)
             {
@@ -55,6 +45,7 @@ namespace WindowsFormsApp1
 
                             for (int i = 0; i < Main.main.myListCAT10.Count; i++)
                             {
+                                Main.main.myListCAT10[i].id = i;
                                 messagedataGrid.Rows[i].Cells[0].Value = i;
                                 messagedataGrid.Rows[i].Cells[1].Value = 10;
                                 messagedataGrid.Rows[i].Cells[2].Value = Main.main.myListCAT10[i].convert2TimeOfDay(Main.main.myListCAT10[i].TimeOfDay);
@@ -74,6 +65,7 @@ namespace WindowsFormsApp1
 
                     for (int i = 0; i < Main.main.myListCAT21.Count; i++)
                     {
+                        Main.main.myListCAT21[i].id = i;
                         messagedataGrid.Rows[i].Cells[0].Value = i;
                         messagedataGrid.Rows[i].Cells[1].Value = 21;
                         messagedataGrid.Rows[i].Cells[2].Value = " ";
@@ -101,6 +93,18 @@ namespace WindowsFormsApp1
         }
         private void DataForm_Load(object sender, EventArgs e)
         {
+            messagedataGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            messagedataGrid.ReadOnly = true;
+            messagedataGrid.RowHeadersVisible = false;
+            messagedataGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+
+            messagedataGrid.ColumnCount = 5; //ID, CAT, TIME,Length
+            messagedataGrid.Columns[0].HeaderText = "ID";
+            messagedataGrid.Columns[1].HeaderText = "CAT";
+            messagedataGrid.Columns[2].HeaderText = "Time of Day";
+            messagedataGrid.Columns[3].HeaderText = "Length";
+            messagedataGrid.Columns[4].HeaderText = "Data Items";
+            
             CreateDataGridView();
 
 
@@ -585,14 +589,13 @@ namespace WindowsFormsApp1
         {
             filter = filter == false ? true : false;
 
+            
+
+            
+
             if (filter == true)
             {
-                messagedataGrid.Rows.Clear();
-                dataItemsGridView.Rows.Clear();
-                ItemInformationTextBox.Text = "";
-
-
-                string myFilter = Convert.ToString(comboBoxFilter.SelectedItem);
+                int myFilter = comboBoxFilter.SelectedIndex;
 
 
 
@@ -602,27 +605,31 @@ namespace WindowsFormsApp1
 
                         switch (myFilter)
                         {
-                            case "MESSAGE TYPE":
+                            case 0:
                                 FilterL10 = Main.main.myListCAT10.FindAll(m => m.MessageType == textBoxSearch.Text);
                                 break;
-                            case "TARGET IDENTIFICATION":
+                            case 1:
                                 FilterL10 = Main.main.myListCAT10.FindAll(m => m.targetIdentification == textBoxSearch.Text);
                                 break;
-                            case "TRACK NUMBER":
+                            case 2:
                                 FilterL10 = Main.main.myListCAT10.FindAll(m => Convert.ToString(m.trackNumber) == textBoxSearch.Text);
                                 break;
-                            case "TARGET ADDRESS":
+                            case 3:
                                 FilterL10 = Main.main.myListCAT10.FindAll(m => Convert.ToString(m.targetAddress) == textBoxSearch.Text);
                                 break;
 
                         }
 
-                        if (FilterL10.Count!=0)
+                        if (FilterL10.Count != 0)
                         {
+                            messagedataGrid.Rows.Clear();
+                            dataItemsGridView.Rows.Clear();
+                            ItemInformationTextBox.Text = "";
+
                             messagedataGrid.RowCount = FilterL10.Count;
                             for (int i = 0; i < FilterL10.Count; i++)
                             {
-                                messagedataGrid.Rows[i].Cells[0].Value = Main.main.myListCAT10.FindIndex(m => m == FilterL10[i]);
+                                messagedataGrid.Rows[i].Cells[0].Value = FilterL10[i].id; /*Main.main.myListCAT10.FindIndex(m => m == FilterL10[i]);*/
                                 messagedataGrid.Rows[i].Cells[1].Value = 10;
                                 messagedataGrid.Rows[i].Cells[2].Value = FilterL10[i].convert2TimeOfDay(FilterL10[i].TimeOfDay);
                                 messagedataGrid.Rows[i].Cells[3].Value = FilterL10[i].GetLength();
@@ -630,28 +637,28 @@ namespace WindowsFormsApp1
 
 
                             }
-                            
+
+                            buttonSearch.Text = "QUITAR FILTRO";
                         }
                         else
                         {
                             MessageBox.Show("No messages found");
+                            filter = false;
                         }
-                        
 
 
-
-                        break;
+                            break;
                     case 1:
 
                         switch (myFilter)
                         {
-                            case "TARGET IDENTIFICATION":
+                            case 0:
                                 FilterL21 = Main.main.myListCAT21.FindAll(m => m.targetIdentification == textBoxSearch.Text);
                                 break;
-                            case "TRACK NUMBER":
+                            case 1:
                                 FilterL21 = Main.main.myListCAT21.FindAll(m => Convert.ToString(m.trackNumber) == textBoxSearch.Text);
                                 break;
-                            case "TARGET ADDRESS":
+                            case 2:
                                 FilterL21 = Main.main.myListCAT21.FindAll(m => Convert.ToString(m.targetAddress) == textBoxSearch.Text);
                                 break;
 
@@ -659,11 +666,14 @@ namespace WindowsFormsApp1
 
                         if (FilterL21.Count!=0)
                         {
+                            messagedataGrid.Rows.Clear();
+                            dataItemsGridView.Rows.Clear();
+                            ItemInformationTextBox.Text = "";
                             messagedataGrid.RowCount = FilterL21.Count;
 
                             for (int i = 0; i < FilterL21.Count; i++)
                             {
-                                messagedataGrid.Rows[i].Cells[0].Value = Main.main.myListCAT21.FindIndex(m => m == FilterL21[i]);
+                                messagedataGrid.Rows[i].Cells[0].Value = FilterL21[i].id;
                                 messagedataGrid.Rows[i].Cells[1].Value = 21;
                                 messagedataGrid.Rows[i].Cells[2].Value = "";
                                 messagedataGrid.Rows[i].Cells[3].Value = FilterL21[i].GetLength();
@@ -671,20 +681,24 @@ namespace WindowsFormsApp1
 
 
                             }
-                            
+
+                            buttonSearch.Text = "QUITAR FILTRO";
                         }
                         else
                         {
                             MessageBox.Show("No messages found");
+                            filter = false;
                         }
                         break;
                 }
-                buttonSearch.Text = "QUITAR FILTRO";
+                
             }
             else
             {
                 buttonSearch.Text = "FILTRAR";
+                messagedataGrid.Rows.Clear();
                 CreateDataGridView();
+
             }
 
 

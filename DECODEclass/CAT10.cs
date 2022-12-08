@@ -12,6 +12,8 @@ namespace DECODEclass
     public class CAT10
     {
         //Atributes
+
+        public int id { get; set; }
         
         int length; //message's length
 
@@ -1064,7 +1066,7 @@ namespace DECODEclass
                                 break;
 
                             case "10":
-                                this.targetIdentification = this.targetIdentification + " ";
+                                this.targetIdentification = this.targetIdentification + "-";
                                 break;
 
                             case "11":
