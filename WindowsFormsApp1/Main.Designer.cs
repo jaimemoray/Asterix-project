@@ -41,6 +41,7 @@ namespace WindowsFormsApp1
             this.panelLogo = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelChildForm = new System.Windows.Forms.Panel();
+            this.MOPbutton = new System.Windows.Forms.Button();
             this.panelButtoms.SuspendLayout();
             this.subDataPanel.SuspendLayout();
             this.panelLogo.SuspendLayout();
@@ -52,6 +53,7 @@ namespace WindowsFormsApp1
             this.panelButtoms.AutoScroll = true;
             this.panelButtoms.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panelButtoms.Controls.Add(this.buttonHelp);
+            this.panelButtoms.Controls.Add(this.MOPbutton);
             this.panelButtoms.Controls.Add(this.simulationButton);
             this.panelButtoms.Controls.Add(this.subDataPanel);
             this.panelButtoms.Controls.Add(this.Databutton);
@@ -72,7 +74,7 @@ namespace WindowsFormsApp1
             this.buttonHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonHelp.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonHelp.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonHelp.Location = new System.Drawing.Point(0, 500);
+            this.buttonHelp.Location = new System.Drawing.Point(0, 570);
             this.buttonHelp.Name = "buttonHelp";
             this.buttonHelp.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.buttonHelp.Size = new System.Drawing.Size(200, 70);
@@ -223,6 +225,25 @@ namespace WindowsFormsApp1
             this.panelChildForm.Size = new System.Drawing.Size(1166, 658);
             this.panelChildForm.TabIndex = 1;
             // 
+            // MOPbutton
+            // 
+            this.MOPbutton.BackColor = System.Drawing.Color.Black;
+            this.MOPbutton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.MOPbutton.FlatAppearance.BorderSize = 0;
+            this.MOPbutton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.MOPbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MOPbutton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MOPbutton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.MOPbutton.Location = new System.Drawing.Point(0, 500);
+            this.MOPbutton.Name = "MOPbutton";
+            this.MOPbutton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.MOPbutton.Size = new System.Drawing.Size(200, 70);
+            this.MOPbutton.TabIndex = 6;
+            this.MOPbutton.Text = "MOPS MLAT";
+            this.MOPbutton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.MOPbutton.UseVisualStyleBackColor = false;
+            this.MOPbutton.Click += new System.EventHandler(this.MOPbutton_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -254,6 +275,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button simulationButton;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button buttonHelp;
+        private System.Windows.Forms.Button MOPbutton;
     }
 }
 

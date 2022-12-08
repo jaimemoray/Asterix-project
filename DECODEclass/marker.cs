@@ -15,6 +15,7 @@ namespace DECODEclass
 {
     public class marker : GMarkerGoogle //Uso de Herencia
     {
+        
         public string id { get; set; }
        
         public double time { get; set; }

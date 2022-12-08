@@ -20,6 +20,7 @@ namespace WindowsFormsApp1
 {
     public partial class Simulation : Form
     {
+        
         //ROUTES
         GMapOverlay Route = new GMapOverlay("Routes");
        
@@ -32,7 +33,7 @@ namespace WindowsFormsApp1
         List<marker> currentMLAT = new List<marker>();
         List<marker> currentADSB = new List<marker>();
 
-        List<marker> markers = new List<marker>();
+        public List<marker> markers = new List<marker>();
         //SMR
         //static Bitmap smrA = (Bitmap)Image.FromFile("smrR.png");
         //GMarkerGoogle SMRmarker = new GMarkerGoogle(new PointLatLng(41.29561833, 2.095114167), smrA);
@@ -524,7 +525,7 @@ namespace WindowsFormsApp1
                         kmlfile.AppendLine("</LineString>");
                         kmlfile.AppendLine("</Placemark>");
 
-                        MLAT.RemoveAll(p => p.id == id);
+                        MLAT.RemoveAll(p => p.id == id && Convert.ToString(Main.main.myListCAT10[p.indexList].trackNumber) == trackNumber);
                     }
                 }
 
@@ -566,7 +567,7 @@ namespace WindowsFormsApp1
                         kmlfile.AppendLine("</LineString>");
                         kmlfile.AppendLine("</Placemark>");
 
-                        ADSB.RemoveAll(p => p.id == id);
+                        ADSB.RemoveAll(p => p.id == id && Convert.ToString(Main.main.myListCAT21[p.indexList].trackNumber) == trackNumber);
                     }
                 }
 
