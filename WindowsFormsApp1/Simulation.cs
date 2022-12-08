@@ -494,6 +494,7 @@ namespace WindowsFormsApp1
                     while (MLAT.Count != 0)
                     {
                         string id = MLAT[0].id;
+                        string trackNumber = Convert.ToString(Main.main.myListCAT10[MLAT[0].indexList].trackNumber);
 
                         kmlfile.AppendLine("<Placemark>");
                         kmlfile.AppendLine("<Style id='yellowLineGreenPoly'>");
@@ -511,7 +512,7 @@ namespace WindowsFormsApp1
                         kmlfile.AppendLine("<LineString>");
                         kmlfile.AppendLine("<coordinates>");
 
-                        List<marker> allMyId = MLAT.FindAll(p => p.id == id );
+                        List<marker> allMyId = MLAT.FindAll(p => p.id == id &&  Convert.ToString(Main.main.myListCAT10[p.indexList].trackNumber)== trackNumber);
 
                         for (int i = 0; i < allMyId.Count; i++)
                         {
@@ -535,6 +536,8 @@ namespace WindowsFormsApp1
                     {
 
                         string id = ADSB[0].id;
+                        string trackNumber = Convert.ToString(Main.main.myListCAT21[ADSB[0].indexList].trackNumber);
+
 
                         kmlfile.AppendLine("<Placemark>");
                         kmlfile.AppendLine("<Style id='yellowLineGreenPoly'>");
@@ -552,7 +555,7 @@ namespace WindowsFormsApp1
                         kmlfile.AppendLine("<LineString>");
                         kmlfile.AppendLine("<coordinates>");
 
-                        List<marker> allMyId = ADSB.FindAll(p => p.id == id);
+                        List<marker> allMyId = ADSB.FindAll(p => p.id == id && Convert.ToString(Main.main.myListCAT21[p.indexList].trackNumber) == trackNumber);
 
                         for (int i = 0; i < allMyId.Count; i++)
                         {
