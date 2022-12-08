@@ -56,8 +56,7 @@ namespace WindowsFormsApp1
             this.messagedataGrid.AllowUserToDeleteRows = false;
             this.messagedataGrid.AllowUserToResizeColumns = false;
             this.messagedataGrid.AllowUserToResizeRows = false;
-            this.messagedataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.messagedataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.messagedataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.messagedataGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.messagedataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -117,8 +116,7 @@ namespace WindowsFormsApp1
             this.dataItemsGridView.AllowUserToDeleteRows = false;
             this.dataItemsGridView.AllowUserToResizeColumns = false;
             this.dataItemsGridView.AllowUserToResizeRows = false;
-            this.dataItemsGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataItemsGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.dataItemsGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataItemsGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dataItemsGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -157,7 +155,6 @@ namespace WindowsFormsApp1
             this.dataItemsGridView.Size = new System.Drawing.Size(546, 400);
             this.dataItemsGridView.TabIndex = 4;
             this.dataItemsGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataItemsGridView_CellClick);
-
             // 
             // ItemInformationTextBox
             // 
