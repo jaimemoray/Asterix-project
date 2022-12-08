@@ -21,7 +21,8 @@ namespace WindowsFormsApp1
 
         private void MOPForm_Load(object sender, EventArgs e)
         {
-            ProbIdentlabel.Text = "Probability Identification"+Convert.ToString(ProbIdentification());
+            ProbIdentlabel.Text = Convert.ToString(ProbIdentification());
+
         }
 
         private double ProbIdentification()
@@ -35,11 +36,11 @@ namespace WindowsFormsApp1
 
             while (allAircrafts.Count != 0)
             {
-                int correctTI = 0;
+                double correctTI = 0;
                 string id = allAircrafts[0].targetAddress;
                 string ti= allAircrafts[0].targetIdentification;
 
-                List<CAT10> myFlight = allAircrafts.FindAll(p=>p.targetAddress==id && p.targetAddress!= "N/A");
+                List<CAT10> myFlight = allAircrafts.FindAll(p=>p.targetAddress==id);
 
                 for (int i=0;i<myFlight.Count;i++)
                 {
@@ -48,9 +49,8 @@ namespace WindowsFormsApp1
                         correctTI++;
                     }
                 }
-                double po = correctTI / myFlight.Count;
-                MessageBox.Show(Convert.ToString(po));
-                allProbIdent.Add(correctTI / myFlight.Count);
+                double PI= correctTI / myFlight.Count;
+                allProbIdent.Add(PI);
                 allAircrafts.RemoveAll(p => p.targetAddress == id);
             }
 
@@ -61,6 +61,7 @@ namespace WindowsFormsApp1
                 sum = sum + allProbIdent[i];
             }
 
+            
             return sum / allProbIdent.Count;
         }
     }

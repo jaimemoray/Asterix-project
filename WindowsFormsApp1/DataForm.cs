@@ -156,7 +156,7 @@ namespace WindowsFormsApp1
                 {
                     case 0:
 
-                        string[] header10 = new string[65];
+                        string[] header10 = new string[66];
                         
 
                         
@@ -203,30 +203,30 @@ namespace WindowsFormsApp1
                         header10[39] = "[Mode 3/A in Octal Representation] G";
                         header10[40] = "[Mode 3/A in Octal Representation] L";
                         header10[41] = "[Mode 3/A in Octal Representation] Mode 3/A";
-                        header10[41] = "[Target Address]";
-                        header10[42] = "[Target Identification] STI";
-                        header10[43] = "[Target Identification]";
-                        header10[44] = "[Vehicle Fleet Identification]";
-                        header10[45] = "[Flight Level in Binary Representation] V";
-                        header10[46] = "[Flight Level in Binary Representation] G";
-                        header10[47] = "[Flight Level in Binary Representation] Flight Level";
-                        header10[48] = "[Measured Height] (ft)";
-                        header10[49] = "[Target Size and Orientation] Target Length (m)";
-                        header10[50] = "[Target Size and Orientation] Target Orientation (º)";
-                        header10[51] = "[Target Size and Orientation] Target Width (m)";
-                        header10[52] = "[System Status] NOGO";
-                        header10[53] = "[System Status] OVL";
-                        header10[54] = "[System Status] TSV";
-                        header10[55] = "[System Status] DIV";
-                        header10[56] = "[System Status] TTF";
-                        header10[57] = "[Pre-programmed Message] TRB";
-                        header10[58] = "[Pre-programmed Message] MSG";
-                        header10[59] = "[Standard Deviation of Position] sigmaX (m)";
-                        header10[60] = "[Standard Deviation of Position] sigmaY (m)";
-                        header10[61] = "[Standard Deviation of Position] sigmaXY (m^2)";
-                        header10[62] = "[Amplitude of Primary Plot]";
-                        header10[63] = "[Calculated Acceleration] Ax (m/(s^2))";
-                        header10[64] = "[Calculated Acceleration] Ay (m/(s^2))";
+                        header10[42] = "[Target Address]";
+                        header10[43] = "[Target Identification] STI";
+                        header10[44] = "[Target Identification]";
+                        header10[45] = "[Vehicle Fleet Identification]";
+                        header10[46] = "[Flight Level in Binary Representation] V";
+                        header10[47] = "[Flight Level in Binary Representation] G";
+                        header10[48] = "[Flight Level in Binary Representation] Flight Level";
+                        header10[49] = "[Measured Height] (ft)";
+                        header10[50] = "[Target Size and Orientation] Target Length (m)";
+                        header10[51] = "[Target Size and Orientation] Target Orientation (º)";
+                        header10[52] = "[Target Size and Orientation] Target Width (m)";
+                        header10[53] = "[System Status] NOGO";
+                        header10[54] = "[System Status] OVL";
+                        header10[55] = "[System Status] TSV";
+                        header10[56] = "[System Status] DIV";
+                        header10[57] = "[System Status] TTF";
+                        header10[58] = "[Pre-programmed Message] TRB";
+                        header10[59] = "[Pre-programmed Message] MSG";
+                        header10[60] = "[Standard Deviation of Position] sigmaX (m)";
+                        header10[61] = "[Standard Deviation of Position] sigmaY (m)";
+                        header10[62] = "[Standard Deviation of Position] sigmaXY (m^2)";
+                        header10[63] = "[Amplitude of Primary Plot]";
+                        header10[64] = "[Calculated Acceleration] Ax (m/(s^2))";
+                        header10[65] = "[Calculated Acceleration] Ay (m/(s^2))";
 
 
                         rows.Add(string.Join(SEP,header10));
@@ -259,8 +259,8 @@ namespace WindowsFormsApp1
                             mess10[16] = TimeSpan.FromSeconds(Main.main.myListCAT10[i].TimeOfDay).ToString(@"hh\:mm\:ss").ToString();
                             mess10[17] = Main.main.myListCAT10[i].latitude.ToString();
                             mess10[18] = Main.main.myListCAT10[i].longitude.ToString();
-                            mess10[19] = Main.main.myListCAT10[i].latitude.ToString();
-                            mess10[20] = Main.main.myListCAT10[i].longitude.ToString();
+                            mess10[19] = Main.main.myListCAT10[i].rho.ToString();
+                            mess10[20] = Main.main.myListCAT10[i].theta.ToString();
                             mess10[21] = Main.main.myListCAT10[i].x.ToString();
                             mess10[22] = Main.main.myListCAT10[i].y.ToString();
                             mess10[23] = Main.main.myListCAT10[i].groundSpeed.ToString();
@@ -1251,6 +1251,8 @@ namespace WindowsFormsApp1
                     break;
             }
         }
+
+
     }
 }
 

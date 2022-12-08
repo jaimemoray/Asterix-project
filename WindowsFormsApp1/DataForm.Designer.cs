@@ -157,6 +157,7 @@ namespace WindowsFormsApp1
             this.dataItemsGridView.Size = new System.Drawing.Size(546, 400);
             this.dataItemsGridView.TabIndex = 4;
             this.dataItemsGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataItemsGridView_CellClick);
+
             // 
             // ItemInformationTextBox
             // 

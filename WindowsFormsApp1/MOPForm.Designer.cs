@@ -35,7 +35,7 @@ namespace WindowsFormsApp1
             // ProbIdentlabel
             // 
             this.ProbIdentlabel.AutoSize = true;
-            this.ProbIdentlabel.Location = new System.Drawing.Point(418, 135);
+            this.ProbIdentlabel.Location = new System.Drawing.Point(130, 472);
             this.ProbIdentlabel.Name = "ProbIdentlabel";
             this.ProbIdentlabel.Size = new System.Drawing.Size(72, 17);
             this.ProbIdentlabel.TabIndex = 0;
