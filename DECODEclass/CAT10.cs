@@ -136,7 +136,7 @@ namespace DECODEclass
         //---------------------------------------------------FLIGHT LEVEL IN BINARY REPRESENTATION[I010/090]------------------------------------------------------
         public string V_FL { get; set; }="N/A";
         public string G_FL { get; set; }="N/A";
-        public string flightLevel { get; set; }="N/A";
+        public double flightLevel { get; set; } = -1;
 
         //----------------------------------------------------------MEASURED HIGHT[I010/091]-----------------------------------------------------------------------
 
@@ -1468,7 +1468,7 @@ namespace DECODEclass
             FLlist.Add(ConvertToByte(BYTE1));
             FLlist.Add(DataFields[1]);
 
-            this.flightLevel = Convert.ToString(computeData(FLlist, 1, -2, true));
+            this.flightLevel = computeData(FLlist, 1, -2, true);
 
 
 

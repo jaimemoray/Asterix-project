@@ -239,7 +239,7 @@ namespace WindowsFormsApp1
 
                         for (int i = 0; i < Main.main.myListCAT10.Count; i++)
                         {
-                            string[] mess10 = new string[65];
+                            string[] mess10 = new string[66];
                             mess10[0] = i.ToString();
                             mess10[1] = 10.ToString();
                             mess10[2] = Main.main.myListCAT10[i].SAC.ToString();
@@ -285,26 +285,27 @@ namespace WindowsFormsApp1
                             mess10[42] = Main.main.myListCAT10[i].targetAddress.ToString();
                             mess10[43] = Main.main.myListCAT10[i].STI.ToString();
                             mess10[44] = Main.main.myListCAT10[i].targetIdentification.ToString();
-                            mess10[45] = Main.main.myListCAT10[i].V_FL.ToString();
-                            mess10[46] = Main.main.myListCAT10[i].G_FL.ToString();
-                            mess10[47] = Main.main.myListCAT10[i].flightLevel.ToString();
-                            mess10[48] = Main.main.myListCAT10[i].height.ToString();
-                            mess10[49] = Main.main.myListCAT10[i].targetLength.ToString();
-                            mess10[50] = Main.main.myListCAT10[i].targetOrientation.ToString();
-                            mess10[51] = Main.main.myListCAT10[i].targetWidth.ToString();
-                            mess10[52] = Main.main.myListCAT10[i].NOGO.ToString();
-                            mess10[53] = Main.main.myListCAT10[i].OVL.ToString();
-                            mess10[54] = Main.main.myListCAT10[i].TSV.ToString();
-                            mess10[55] = Main.main.myListCAT10[i].DIV.ToString();
-                            mess10[56] = Main.main.myListCAT10[i].TTF.ToString();
-                            mess10[57] = Main.main.myListCAT10[i].TRB.ToString();
-                            mess10[58] = Main.main.myListCAT10[i].MSG.ToString();
-                            mess10[59] = Main.main.myListCAT10[i].sigmax.ToString();
-                            mess10[60] = Main.main.myListCAT10[i].sigmay.ToString();
-                            mess10[61] = Main.main.myListCAT10[i].sigmaxy.ToString();
-                            mess10[62] = Main.main.myListCAT10[i].PAM.ToString();
-                            mess10[63] = Main.main.myListCAT10[i].Ax.ToString();
-                            mess10[64] = Main.main.myListCAT10[i].Ay.ToString();
+                            mess10[45] = Main.main.myListCAT10[i].VFI.ToString();
+                            mess10[46] = Main.main.myListCAT10[i].V_FL.ToString();
+                            mess10[47] = Main.main.myListCAT10[i].G_FL.ToString();
+                            mess10[48] = Main.main.myListCAT10[i].flightLevel!=-1?Main.main.myListCAT10[i].flightLevel.ToString():"N/A";
+                            mess10[49] = Main.main.myListCAT10[i].height.ToString();
+                            mess10[50] = Main.main.myListCAT10[i].targetLength.ToString();
+                            mess10[51] = Main.main.myListCAT10[i].targetOrientation.ToString();
+                            mess10[52] = Main.main.myListCAT10[i].targetWidth.ToString();
+                            mess10[53] = Main.main.myListCAT10[i].NOGO.ToString();
+                            mess10[54] = Main.main.myListCAT10[i].OVL.ToString();
+                            mess10[55] = Main.main.myListCAT10[i].TSV.ToString();
+                            mess10[56] = Main.main.myListCAT10[i].DIV.ToString();
+                            mess10[57] = Main.main.myListCAT10[i].TTF.ToString();
+                            mess10[58] = Main.main.myListCAT10[i].TRB.ToString();
+                            mess10[59] = Main.main.myListCAT10[i].MSG.ToString();
+                            mess10[60] = Main.main.myListCAT10[i].sigmax.ToString();
+                            mess10[61] = Main.main.myListCAT10[i].sigmay.ToString();
+                            mess10[62] = Main.main.myListCAT10[i].sigmaxy.ToString();
+                            mess10[63] = Main.main.myListCAT10[i].PAM.ToString();
+                            mess10[64] = Main.main.myListCAT10[i].Ax.ToString();
+                            mess10[65] = Main.main.myListCAT10[i].Ay.ToString();
 
 
                             rows.Add(string.Join(SEP, mess10));
@@ -906,7 +907,7 @@ namespace WindowsFormsApp1
                         case 17:
                             ItemInformationTextBox.Text += "V FL: " + showI10[rowMess].V_FL + Environment.NewLine;
                             ItemInformationTextBox.Text += "G FL: " + showI10[rowMess].G_FL + Environment.NewLine;
-                            ItemInformationTextBox.Text += "Flight level: " + showI10[rowMess].flightLevel + Environment.NewLine;
+                            ItemInformationTextBox.Text += showI10[rowMess].flightLevel!=-1?"Flight level: " + showI10[rowMess].flightLevel + Environment.NewLine: "Flight level: N/A " + Environment.NewLine;
 
                             break;
                         case 18:
