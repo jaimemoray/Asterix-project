@@ -351,7 +351,7 @@ namespace WindowsFormsApp1
             List<marker> aircraftsADSB = markers.FindAll(c=>c.id==tn && c.ins==ins);
             List<PointLatLng> wayPoints = new List<PointLatLng>();
 
-            foreach(marker m in aircrafts)
+            foreach(marker m in aircraftsADSB)
             {
                 wayPoints.Add(m.Position);
             }
