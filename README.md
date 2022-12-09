@@ -3,8 +3,14 @@
 
 ##  Contributors
 
-
 *  Jaime Moray  
 * Mauro Sánchez
 
-## Found in
+Found in https://github.com/jaimemoray/Asterix-project
+
+# Projectes en Gestió del Transport Aeri
+
+Professors:
+
+* Albert Prades
+* Ismael Llamas
