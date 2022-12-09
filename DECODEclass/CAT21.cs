@@ -12,7 +12,8 @@ namespace DECODEclass
     public class CAT21
     {
         //Atributes
-        
+
+        public int id { get; set; }
         int length; //message's length
         //List<byte> FSPEC; //FSPEC
         List<byte> DataFields; //DataFields
@@ -2067,7 +2068,7 @@ namespace DECODEclass
                                 break;
 
                             case "10":
-                                this.targetIdentification = this.targetIdentification + " ";
+                                this.targetIdentification = this.targetIdentification + "-";
                                 break;
 
                             case "11":

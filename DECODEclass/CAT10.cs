@@ -12,6 +12,8 @@ namespace DECODEclass
     public class CAT10
     {
         //Atributes
+
+        public int id { get; set; }
         
         int length; //message's length
 
@@ -134,7 +136,7 @@ namespace DECODEclass
         //---------------------------------------------------FLIGHT LEVEL IN BINARY REPRESENTATION[I010/090]------------------------------------------------------
         public string V_FL { get; set; }="N/A";
         public string G_FL { get; set; }="N/A";
-        public string flightLevel { get; set; }="N/A";
+        public double flightLevel { get; set; } = -1;
 
         //----------------------------------------------------------MEASURED HIGHT[I010/091]-----------------------------------------------------------------------
 
@@ -1043,6 +1045,8 @@ namespace DECODEclass
             myChars.Add(char7);
             myChars.Add(char8);
 
+            this.targetIdentification = "";
+
             for (int j = 0; j < 8; j++)
             {
                 string[] sections = myChars[j].Split(' ');
@@ -1062,7 +1066,7 @@ namespace DECODEclass
                                 break;
 
                             case "10":
-                                this.targetIdentification = this.targetIdentification + " ";
+                                this.targetIdentification = this.targetIdentification + "-";
                                 break;
 
                             case "11":
@@ -1464,7 +1468,7 @@ namespace DECODEclass
             FLlist.Add(ConvertToByte(BYTE1));
             FLlist.Add(DataFields[1]);
 
-            this.flightLevel = Convert.ToString(computeData(FLlist, 1, -2, true));
+            this.flightLevel = computeData(FLlist, 1, -2, true);
 
 
 

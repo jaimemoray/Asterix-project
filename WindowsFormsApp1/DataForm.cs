@@ -34,17 +34,7 @@ namespace WindowsFormsApp1
         private void CreateDataGridView()
         {
             messagedataGrid.Rows.Clear();
-            messagedataGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            messagedataGrid.ReadOnly = true;
-            messagedataGrid.RowHeadersVisible = false;
-            messagedataGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
 
-            messagedataGrid.ColumnCount = 5; //ID, CAT, TIME,Length
-            messagedataGrid.Columns[0].HeaderText = "ID";
-            messagedataGrid.Columns[1].HeaderText = "CAT";
-            messagedataGrid.Columns[2].HeaderText = "Time of Day";
-            messagedataGrid.Columns[3].HeaderText = "Length";
-            messagedataGrid.Columns[4].HeaderText = "Data Items";
 
             switch (flag)
             {
@@ -55,6 +45,7 @@ namespace WindowsFormsApp1
 
                             for (int i = 0; i < Main.main.myListCAT10.Count; i++)
                             {
+                                Main.main.myListCAT10[i].id = i;
                                 messagedataGrid.Rows[i].Cells[0].Value = i;
                                 messagedataGrid.Rows[i].Cells[1].Value = 10;
                                 messagedataGrid.Rows[i].Cells[2].Value = Main.main.myListCAT10[i].convert2TimeOfDay(Main.main.myListCAT10[i].TimeOfDay);
@@ -74,6 +65,7 @@ namespace WindowsFormsApp1
 
                     for (int i = 0; i < Main.main.myListCAT21.Count; i++)
                     {
+                        Main.main.myListCAT21[i].id = i;
                         messagedataGrid.Rows[i].Cells[0].Value = i;
                         messagedataGrid.Rows[i].Cells[1].Value = 21;
                         messagedataGrid.Rows[i].Cells[2].Value = " ";
@@ -101,6 +93,18 @@ namespace WindowsFormsApp1
         }
         private void DataForm_Load(object sender, EventArgs e)
         {
+            messagedataGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            messagedataGrid.ReadOnly = true;
+            messagedataGrid.RowHeadersVisible = false;
+            messagedataGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+
+            messagedataGrid.ColumnCount = 5; //ID, CAT, TIME,Length
+            messagedataGrid.Columns[0].HeaderText = "ID";
+            messagedataGrid.Columns[1].HeaderText = "CAT";
+            messagedataGrid.Columns[2].HeaderText = "Time of Day";
+            messagedataGrid.Columns[3].HeaderText = "Length";
+            messagedataGrid.Columns[4].HeaderText = "Data Items";
+            
             CreateDataGridView();
 
 
@@ -152,7 +156,7 @@ namespace WindowsFormsApp1
                 {
                     case 0:
 
-                        string[] header10 = new string[65];
+                        string[] header10 = new string[66];
                         
 
                         
@@ -199,30 +203,30 @@ namespace WindowsFormsApp1
                         header10[39] = "[Mode 3/A in Octal Representation] G";
                         header10[40] = "[Mode 3/A in Octal Representation] L";
                         header10[41] = "[Mode 3/A in Octal Representation] Mode 3/A";
-                        header10[41] = "[Target Address]";
-                        header10[42] = "[Target Identification] STI";
-                        header10[43] = "[Target Identification]";
-                        header10[44] = "[Vehicle Fleet Identification]";
-                        header10[45] = "[Flight Level in Binary Representation] V";
-                        header10[46] = "[Flight Level in Binary Representation] G";
-                        header10[47] = "[Flight Level in Binary Representation] Flight Level";
-                        header10[48] = "[Measured Height] (ft)";
-                        header10[49] = "[Target Size and Orientation] Target Length (m)";
-                        header10[50] = "[Target Size and Orientation] Target Orientation (º)";
-                        header10[51] = "[Target Size and Orientation] Target Width (m)";
-                        header10[52] = "[System Status] NOGO";
-                        header10[53] = "[System Status] OVL";
-                        header10[54] = "[System Status] TSV";
-                        header10[55] = "[System Status] DIV";
-                        header10[56] = "[System Status] TTF";
-                        header10[57] = "[Pre-programmed Message] TRB";
-                        header10[58] = "[Pre-programmed Message] MSG";
-                        header10[59] = "[Standard Deviation of Position] sigmaX (m)";
-                        header10[60] = "[Standard Deviation of Position] sigmaY (m)";
-                        header10[61] = "[Standard Deviation of Position] sigmaXY (m^2)";
-                        header10[62] = "[Amplitude of Primary Plot]";
-                        header10[63] = "[Calculated Acceleration] Ax (m/(s^2))";
-                        header10[64] = "[Calculated Acceleration] Ay (m/(s^2))";
+                        header10[42] = "[Target Address]";
+                        header10[43] = "[Target Identification] STI";
+                        header10[44] = "[Target Identification]";
+                        header10[45] = "[Vehicle Fleet Identification]";
+                        header10[46] = "[Flight Level in Binary Representation] V";
+                        header10[47] = "[Flight Level in Binary Representation] G";
+                        header10[48] = "[Flight Level in Binary Representation] Flight Level";
+                        header10[49] = "[Measured Height] (ft)";
+                        header10[50] = "[Target Size and Orientation] Target Length (m)";
+                        header10[51] = "[Target Size and Orientation] Target Orientation (º)";
+                        header10[52] = "[Target Size and Orientation] Target Width (m)";
+                        header10[53] = "[System Status] NOGO";
+                        header10[54] = "[System Status] OVL";
+                        header10[55] = "[System Status] TSV";
+                        header10[56] = "[System Status] DIV";
+                        header10[57] = "[System Status] TTF";
+                        header10[58] = "[Pre-programmed Message] TRB";
+                        header10[59] = "[Pre-programmed Message] MSG";
+                        header10[60] = "[Standard Deviation of Position] sigmaX (m)";
+                        header10[61] = "[Standard Deviation of Position] sigmaY (m)";
+                        header10[62] = "[Standard Deviation of Position] sigmaXY (m^2)";
+                        header10[63] = "[Amplitude of Primary Plot]";
+                        header10[64] = "[Calculated Acceleration] Ax (m/(s^2))";
+                        header10[65] = "[Calculated Acceleration] Ay (m/(s^2))";
 
 
                         rows.Add(string.Join(SEP,header10));
@@ -235,7 +239,7 @@ namespace WindowsFormsApp1
 
                         for (int i = 0; i < Main.main.myListCAT10.Count; i++)
                         {
-                            string[] mess10 = new string[65];
+                            string[] mess10 = new string[66];
                             mess10[0] = i.ToString();
                             mess10[1] = 10.ToString();
                             mess10[2] = Main.main.myListCAT10[i].SAC.ToString();
@@ -255,8 +259,8 @@ namespace WindowsFormsApp1
                             mess10[16] = TimeSpan.FromSeconds(Main.main.myListCAT10[i].TimeOfDay).ToString(@"hh\:mm\:ss").ToString();
                             mess10[17] = Main.main.myListCAT10[i].latitude.ToString();
                             mess10[18] = Main.main.myListCAT10[i].longitude.ToString();
-                            mess10[19] = Main.main.myListCAT10[i].latitude.ToString();
-                            mess10[20] = Main.main.myListCAT10[i].longitude.ToString();
+                            mess10[19] = Main.main.myListCAT10[i].rho.ToString();
+                            mess10[20] = Main.main.myListCAT10[i].theta.ToString();
                             mess10[21] = Main.main.myListCAT10[i].x.ToString();
                             mess10[22] = Main.main.myListCAT10[i].y.ToString();
                             mess10[23] = Main.main.myListCAT10[i].groundSpeed.ToString();
@@ -281,26 +285,27 @@ namespace WindowsFormsApp1
                             mess10[42] = Main.main.myListCAT10[i].targetAddress.ToString();
                             mess10[43] = Main.main.myListCAT10[i].STI.ToString();
                             mess10[44] = Main.main.myListCAT10[i].targetIdentification.ToString();
-                            mess10[45] = Main.main.myListCAT10[i].V_FL.ToString();
-                            mess10[46] = Main.main.myListCAT10[i].G_FL.ToString();
-                            mess10[47] = Main.main.myListCAT10[i].flightLevel.ToString();
-                            mess10[48] = Main.main.myListCAT10[i].height.ToString();
-                            mess10[49] = Main.main.myListCAT10[i].targetLength.ToString();
-                            mess10[50] = Main.main.myListCAT10[i].targetOrientation.ToString();
-                            mess10[51] = Main.main.myListCAT10[i].targetWidth.ToString();
-                            mess10[52] = Main.main.myListCAT10[i].NOGO.ToString();
-                            mess10[53] = Main.main.myListCAT10[i].OVL.ToString();
-                            mess10[54] = Main.main.myListCAT10[i].TSV.ToString();
-                            mess10[55] = Main.main.myListCAT10[i].DIV.ToString();
-                            mess10[56] = Main.main.myListCAT10[i].TTF.ToString();
-                            mess10[57] = Main.main.myListCAT10[i].TRB.ToString();
-                            mess10[58] = Main.main.myListCAT10[i].MSG.ToString();
-                            mess10[59] = Main.main.myListCAT10[i].sigmax.ToString();
-                            mess10[60] = Main.main.myListCAT10[i].sigmay.ToString();
-                            mess10[61] = Main.main.myListCAT10[i].sigmaxy.ToString();
-                            mess10[62] = Main.main.myListCAT10[i].PAM.ToString();
-                            mess10[63] = Main.main.myListCAT10[i].Ax.ToString();
-                            mess10[64] = Main.main.myListCAT10[i].Ay.ToString();
+                            mess10[45] = Main.main.myListCAT10[i].VFI.ToString();
+                            mess10[46] = Main.main.myListCAT10[i].V_FL.ToString();
+                            mess10[47] = Main.main.myListCAT10[i].G_FL.ToString();
+                            mess10[48] = Main.main.myListCAT10[i].flightLevel!=-1?Main.main.myListCAT10[i].flightLevel.ToString():"N/A";
+                            mess10[49] = Main.main.myListCAT10[i].height.ToString();
+                            mess10[50] = Main.main.myListCAT10[i].targetLength.ToString();
+                            mess10[51] = Main.main.myListCAT10[i].targetOrientation.ToString();
+                            mess10[52] = Main.main.myListCAT10[i].targetWidth.ToString();
+                            mess10[53] = Main.main.myListCAT10[i].NOGO.ToString();
+                            mess10[54] = Main.main.myListCAT10[i].OVL.ToString();
+                            mess10[55] = Main.main.myListCAT10[i].TSV.ToString();
+                            mess10[56] = Main.main.myListCAT10[i].DIV.ToString();
+                            mess10[57] = Main.main.myListCAT10[i].TTF.ToString();
+                            mess10[58] = Main.main.myListCAT10[i].TRB.ToString();
+                            mess10[59] = Main.main.myListCAT10[i].MSG.ToString();
+                            mess10[60] = Main.main.myListCAT10[i].sigmax.ToString();
+                            mess10[61] = Main.main.myListCAT10[i].sigmay.ToString();
+                            mess10[62] = Main.main.myListCAT10[i].sigmaxy.ToString();
+                            mess10[63] = Main.main.myListCAT10[i].PAM.ToString();
+                            mess10[64] = Main.main.myListCAT10[i].Ax.ToString();
+                            mess10[65] = Main.main.myListCAT10[i].Ay.ToString();
 
 
                             rows.Add(string.Join(SEP, mess10));
@@ -585,12 +590,13 @@ namespace WindowsFormsApp1
         {
             filter = filter == false ? true : false;
 
+            
+
+            
+
             if (filter == true)
             {
-                messagedataGrid.Rows.Clear();
-                dataItemsGridView.Rows.Clear();
-                ItemInformationTextBox.Text = "";
-                string myFilter = Convert.ToString(comboBoxFilter.SelectedItem);
+                int myFilter = comboBoxFilter.SelectedIndex;
 
 
 
@@ -600,26 +606,31 @@ namespace WindowsFormsApp1
 
                         switch (myFilter)
                         {
-                            case "MESSAGE TYPE":
+                            case 0:
                                 FilterL10 = Main.main.myListCAT10.FindAll(m => m.MessageType == textBoxSearch.Text);
                                 break;
-                            case "TARGET IDENTIFICATION":
+                            case 1:
                                 FilterL10 = Main.main.myListCAT10.FindAll(m => m.targetIdentification == textBoxSearch.Text);
                                 break;
-                            case "TRACK NUMBER":
+                            case 2:
                                 FilterL10 = Main.main.myListCAT10.FindAll(m => Convert.ToString(m.trackNumber) == textBoxSearch.Text);
                                 break;
-                            case "TARGET ADDRESS":
+                            case 3:
                                 FilterL10 = Main.main.myListCAT10.FindAll(m => Convert.ToString(m.targetAddress) == textBoxSearch.Text);
                                 break;
 
                         }
 
-                        if (FilterL10.Count!=0)
+                        if (FilterL10.Count != 0)
                         {
+                            messagedataGrid.Rows.Clear();
+                            dataItemsGridView.Rows.Clear();
+                            ItemInformationTextBox.Text = "";
+
+                            messagedataGrid.RowCount = FilterL10.Count;
                             for (int i = 0; i < FilterL10.Count; i++)
                             {
-                                messagedataGrid.Rows[i].Cells[0].Value = Main.main.myListCAT10.FindIndex(m => m == FilterL10[i]);
+                                messagedataGrid.Rows[i].Cells[0].Value = FilterL10[i].id; /*Main.main.myListCAT10.FindIndex(m => m == FilterL10[i]);*/
                                 messagedataGrid.Rows[i].Cells[1].Value = 10;
                                 messagedataGrid.Rows[i].Cells[2].Value = FilterL10[i].convert2TimeOfDay(FilterL10[i].TimeOfDay);
                                 messagedataGrid.Rows[i].Cells[3].Value = FilterL10[i].GetLength();
@@ -627,28 +638,28 @@ namespace WindowsFormsApp1
 
 
                             }
-                            messagedataGrid.RowCount = FilterL10.Count;
+
+                            buttonSearch.Text = "QUITAR FILTRO";
                         }
                         else
                         {
                             MessageBox.Show("No messages found");
+                            filter = false;
                         }
-                        
 
 
-
-                        break;
+                            break;
                     case 1:
 
                         switch (myFilter)
                         {
-                            case "TARGET IDENTIFICATION":
+                            case 0:
                                 FilterL21 = Main.main.myListCAT21.FindAll(m => m.targetIdentification == textBoxSearch.Text);
                                 break;
-                            case "TRACK NUMBER":
+                            case 1:
                                 FilterL21 = Main.main.myListCAT21.FindAll(m => Convert.ToString(m.trackNumber) == textBoxSearch.Text);
                                 break;
-                            case "TARGET ADDRESS":
+                            case 2:
                                 FilterL21 = Main.main.myListCAT21.FindAll(m => Convert.ToString(m.targetAddress) == textBoxSearch.Text);
                                 break;
 
@@ -656,11 +667,14 @@ namespace WindowsFormsApp1
 
                         if (FilterL21.Count!=0)
                         {
+                            messagedataGrid.Rows.Clear();
+                            dataItemsGridView.Rows.Clear();
+                            ItemInformationTextBox.Text = "";
                             messagedataGrid.RowCount = FilterL21.Count;
 
                             for (int i = 0; i < FilterL21.Count; i++)
                             {
-                                messagedataGrid.Rows[i].Cells[0].Value = Main.main.myListCAT21.FindIndex(m => m == FilterL21[i]);
+                                messagedataGrid.Rows[i].Cells[0].Value = FilterL21[i].id;
                                 messagedataGrid.Rows[i].Cells[1].Value = 21;
                                 messagedataGrid.Rows[i].Cells[2].Value = "";
                                 messagedataGrid.Rows[i].Cells[3].Value = FilterL21[i].GetLength();
@@ -668,20 +682,24 @@ namespace WindowsFormsApp1
 
 
                             }
-                            
+
+                            buttonSearch.Text = "QUITAR FILTRO";
                         }
                         else
                         {
                             MessageBox.Show("No messages found");
+                            filter = false;
                         }
                         break;
                 }
-                buttonSearch.Text = "QUITAR FILTRO";
+                
             }
             else
             {
                 buttonSearch.Text = "FILTRAR";
+                messagedataGrid.Rows.Clear();
                 CreateDataGridView();
+
             }
 
 
@@ -889,7 +907,7 @@ namespace WindowsFormsApp1
                         case 17:
                             ItemInformationTextBox.Text += "V FL: " + showI10[rowMess].V_FL + Environment.NewLine;
                             ItemInformationTextBox.Text += "G FL: " + showI10[rowMess].G_FL + Environment.NewLine;
-                            ItemInformationTextBox.Text += "Flight level: " + showI10[rowMess].flightLevel + Environment.NewLine;
+                            ItemInformationTextBox.Text += showI10[rowMess].flightLevel!=-1?"Flight level: " + showI10[rowMess].flightLevel + Environment.NewLine: "Flight level: N/A " + Environment.NewLine;
 
                             break;
                         case 18:
@@ -1234,6 +1252,8 @@ namespace WindowsFormsApp1
                     break;
             }
         }
+
+
     }
 }
 

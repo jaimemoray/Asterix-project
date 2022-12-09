@@ -123,5 +123,19 @@ namespace WindowsFormsApp1
             HelpForm HF = new HelpForm();
             openChildForm(HF);
         }
+
+        private void MOPbutton_Click(object sender, EventArgs e)
+        {
+            if (myListCAT10.Count > 0)
+            {
+                MOPForm MOP = new MOPForm();
+                openChildForm(MOP);
+            }
+            else
+            {
+                MessageBox.Show("Must be loaded CAT10 file!");
+            }
+
+        }
     }
 }
