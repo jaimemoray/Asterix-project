@@ -345,10 +345,10 @@ namespace WindowsFormsApp1
             ADSBlayer.IsVisibile = InscCheckedListBox.GetItemChecked(2) == false ? false : true;
         }
 
-        private void createRoutes(string tn, Color myColor)
+        private void createRoutes(string tn,string ins,Color myColor)
         {
             Route.Routes.Clear();
-            List<marker> aircraftsADSB = markers.FindAll(c=>c.id==tn);
+            List<marker> aircraftsADSB = markers.FindAll(c=>c.id==tn && c.ins==ins);
             List<PointLatLng> wayPoints = new List<PointLatLng>();
 
             foreach(marker m in aircraftsADSB)
@@ -424,7 +424,8 @@ namespace WindowsFormsApp1
             }
             if (RoutecheckBox.Checked == true)
             {
-                createRoutes(markers[pos].id, Color.Black);
+
+                createRoutes(markers[pos].id,markers[pos].ins, Color.Black);
 
             }
         }

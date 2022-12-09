@@ -60,7 +60,8 @@ namespace WindowsFormsApp1
 
                 try
                 {
-
+                    Main.main.myListCAT10.Clear();
+                    Main.main.myListCAT21.Clear();
 
                     Fichero myFile = new Fichero(path);
                     myFile.readFile();
@@ -69,7 +70,6 @@ namespace WindowsFormsApp1
                     Main.main.myListCAT21 = myFile.GetListCAT21();
 
                     Loadlabel.Text = "File loaded successfully";
-
 
                 }
                 catch (FormatException)
